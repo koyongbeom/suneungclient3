@@ -1,0 +1,641 @@
+.voidHeader {
+    height: 82px;
+}
+
+.subHeader{
+    height: 450px;
+    min-width: 1150px;
+    background-position: 0 50%;
+    background-size: cover;
+    overflow: hidden;
+    filter: grayscale(1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+
+.subHeaderText {
+    position: absolute;
+    font-weight: 700;
+    color: white;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    font-size: 35.5px;
+    z-index: 99;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.subHeaderTextTitle{
+    margin-bottom: 16px;
+}
+
+.filter {
+    position: absolute;
+    width: 100%;
+    height: 450px;
+    background-color: black;
+    opacity: 0.2;
+}
+
+.subHeaderText_1{
+    margin-top: 82px;
+    color: white;
+    font-size: 45px;
+    font-weight: 700;
+    width: 564px;
+    margin-bottom: 15px;
+    z-index: 10;
+}
+
+.subHeaderText_2{
+    z-index: 10;
+    width: 564px;
+    color: white;
+    font-size: 45px;
+    font-weight: 700;
+}
+
+
+.houseSvg {
+    width: 18px;
+    margin-bottom: 2.5px;
+    margin-right: 20px;
+}
+
+.rightChevron {
+    width: 8px;
+    margin-right: 18px;
+}
+
+.rightChevron.second{
+    margin-left: 18px;
+}
+
+.currentMenuViewer{
+    width: 1150px;
+    margin: 0 auto;
+    display: flex;
+    height: 58px;
+    align-items: center;
+}
+
+.currentMenuViewerText_1{
+    font-weight: 100;
+    font-size: 12px;
+    letter-spacing: -0.3px;
+    color: #525252;
+}
+
+.currentMenuViewerText_2{
+    font-size: 12px;
+    letter-spacing: -0.3px;
+    color: #525252;
+}
+
+.currentMenuViewerBoarder{
+    height: 1px;
+    opacity: 0.6;
+    box-shadow: 0px 1px 1px 0 rgba(0, 0, 0, 0.22);
+}
+
+.titleText{
+    margin-top: 75px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 34.5px;
+    color: #353535;
+    letter-spacing: -0.86px;
+    margin-bottom: 15px;
+}
+
+.descriptionText{
+    text-align: center;
+    font-size: 16.5px;
+    font-weight: 100;
+    color: #7a7a7a;
+    letter-spacing: -0.41px;
+    margin-bottom: 61px;
+}
+
+.teachersList{
+    display: flex;
+    width: 1150px;
+    margin: 0 auto;
+}
+
+.eachTeacherNameDiv{
+    cursor: pointer;
+    flex-grow: 1;
+    border: 1px solid #dddddd;
+    border-right: 0;
+    height: 58px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-bottom: 1px solid black;
+}
+
+.eachTeacherName{
+    font-size: 16.5px;
+    color: #595959;
+
+    letter-spacing: -0.83px;
+}
+
+.eachTeacherNameDiv:last-child{
+    border-right: 1px solid #dddddd;
+}
+
+.eachTeacherNameDiv.active{
+    border: 1px solid black;
+    border-bottom: 0;
+}
+
+.eachTeacherName.active{
+    color: #1b49af;
+    font-weight: 700;
+}
+
+.eachTeacherSchool{
+    margin-top: 5px;
+    font-size: 13.5px;
+    font-weight: 300;
+    color: #a0a0a0;
+    letter-spacing: -0.68px;
+}
+
+.eachTeacherSchool.none{
+    display: none;
+}
+
+.teacherProfileDiv{
+    margin-bottom: 114px;
+}
+
+.teacherProfile {
+    padding-top: 81px;
+    width: 1150px;
+    margin: 0 auto;
+    display: flex;
+    padding-bottom: 61px;
+    border-bottom: 3px solid #ebebeb;
+}
+
+.teacherImg{
+    width: 442px;
+    height: 442px;
+    border-radius: 50%;
+    margin-right: 73px;
+    background-color: #eff3f6;
+    background-size: 80%;
+    background-position: 50% 20%;
+    background-repeat: no-repeat;
+}
+
+.teacherProfileDescription {
+    flex-grow: 1;
+}
+
+.teacherProfileSubject{
+    font-weight: 700;
+    font-size: 28px;
+    letter-spacing: -0.7px;
+    color: #353535;    
+}
+
+.teacherProfileSubject{
+    display: flex;
+    align-items: center;
+}
+
+
+.dashDiv{
+    margin-left: 18px;
+    height: 1px;
+    width: 75px;
+    background-color: black;
+}
+
+.teacherSubTitle {
+    margin-top: 18px;
+    color: #212121;
+    font-size: 25px;
+    font-weight: 300;
+    letter-spacing: -0.63px;
+}
+
+.teacherName {
+    margin-top: 21px;
+    font-weight: 700;
+    font-size: 48px;
+    letter-spacing: -1.2px;
+}
+
+.teacherDescription{
+    margin-top: 37px;
+    font-size: 20px;
+    letter-spacing: -0.5px;
+    line-height: 32.5px;
+    color: #353535;
+    white-space: pre-line;
+}
+
+.teacherLecturerTitle{
+    margin-top: 50px;
+    font-weight: 700;
+    font-size: 28px;
+    letter-spacing: -0.7px;
+}
+
+.teacherLecturerListDiv{
+    margin-top: 31px;
+    display: flex;
+}
+
+.teacherLecturerSubject{
+    width: 153px;
+    margin-right: 5px;
+    background-color: #f2f2f2;
+    height: 109px;
+    padding-top: 23px;
+    padding-left: 34px;
+}
+
+.teacherLecturerSubject:last-child {
+    margin-right: 0;
+}
+
+.teacherLecturerSubjectTitle{
+    font-weight: 700;
+    font-size: 14.5px;
+    letter-spacing: -0.36px;
+    color: #353535;
+    margin-bottom: 13px;
+}
+
+.eachTeacherMapName{
+    letter-spacing: -0.36px;
+    font-size: 14.5px;
+    color: #353535;
+    margin-bottom: 9px;
+}
+
+.questionDiv{
+    width: 1150px;
+    margin: 0 auto;
+    margin-bottom: 82px;
+}
+
+.questionDiv:last-child{
+    margin-bottom: 90px;
+}
+
+.questionTitle {
+    display: flex;
+}
+
+.questionTitleText {
+    font-weight: 700;
+    font-size: 26px;
+    letter-spacing: -0.65px;
+    color: #353535;
+    margin-right: 11px;
+}
+
+.rightChevronCircle {
+    display: inline-block;
+}
+
+.questionDescriptionDiv{
+    display: flex;
+    margin-top: 45px;
+}
+
+.questionAnswerA{
+    font-size: 26px;
+    color: #1b49af;
+    font-weight: 700;
+    margin-top: 8px;
+    margin-right: 25px;
+}
+
+.questionAnswer{
+    white-space: pre-line;
+    font-size: 17px;
+    font-weight: 100;
+    color: #353535;
+    letter-spacing: -0.43px;
+    line-height: 32px;
+}
+
+.interviewResultDiv{
+    margin-bottom: 168px;
+}
+
+.interviewResult {
+    width: 1150px;
+    margin: 0 auto;
+    background-color: #f6f9ff;
+    padding-top: 55px;
+    padding-bottom: 67px;
+    padding-left: 57px;
+    padding-right: 53px;
+}
+
+.interviewTitleDiv{
+    display: flex;
+    align-items: center;
+    margin-bottom: 37px;
+}
+
+.interviewTitle {
+    font-size: 26px;
+    font-weight: 700;
+    margin-right: 10px;
+}
+
+.interviewResultDescription {
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 29px;
+    letter-spacing: -0.43px;
+    color: #353535;
+    white-space: pre-line;
+}
+
+.onlymobile{
+    display: none;
+}
+
+
+@media only screen and (max-width : 1024px) {
+    .onlyPC{
+        display: none;
+    }
+
+    .onlymobile {
+        display: block;
+    }
+
+    .voidHeader {
+        height: 59px;
+    }
+
+    .subHeader{
+        min-width: 0;
+        background-position:40% 0%;
+        height: 256.5px;
+    }
+
+    .subHeaderText{
+        font-size: 21px;
+        width: 100%;
+    }
+
+    .subHeaderTextTitle {
+        margin-bottom: 12px;
+    }
+
+    .mobileTitleList {
+        margin-top: 19.5px;
+        display: flex;
+        overflow: auto;
+        border-bottom: 0.5px solid #e7e7e7;
+        margin-bottom: 49px;
+        padding-left: 20px;
+        padding-top: 17px;
+        padding-right: 240px;
+    }
+
+    .mobileTitleList::-webkit-scrollbar{
+        background-color: #f5f5f5;
+        width: 0px !important;
+        height: 0px !important;
+    }
+    
+    .mobileTitleList::-webkit-scrollbar-thumb{
+        background-color: #bbbcb6;
+        border-radius: 0px;
+    }
+
+    .mobileEachListTitle{
+        flex-shrink: 0;
+        font-size: 16px;
+        letter-spacing: -0.74px;
+        padding-left: 4px;
+        padding-right: 4px;
+        padding-bottom: 16px;
+        margin-right: 25px;
+        font-family: "Apple_SB";
+        line-break: strict !important;
+    }
+
+    .mobileEachListTitle.active{
+        border-bottom: 2.5px solid #1b49af;
+    }
+
+    .teacherProfileDiv{
+        margin-bottom: 64.5px;
+    }
+
+    .teacherProfile {
+        width: auto;
+        display: block;
+        margin: 0;
+        padding: 0;
+        padding-bottom: 64px;
+        border-bottom: 5.5px solid #ebebeb;
+    }
+
+    .teacherImg{
+        width: 62%;
+        height: 62vw;
+        border-radius: 50%;
+        margin: 0;
+        margin: 0 auto;
+        background-position: center;
+        background-size: contain;
+    }
+
+    .mobileTeacherSubject {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 14.5px;
+    }
+
+    .dashDiv_1{
+    margin-right: 4.3%;
+    height: 0.5px;
+    width: 6.9%;
+    background-color: black;
+    }
+
+    .dashDiv_2{
+    margin-left: 4.3%;
+    height: 0.5px;
+    width: 6.9%;
+    background-color: black;
+    }
+
+    .mobileTeacherSubjectText{
+        font-weight: 700;
+        font-size: 17.8px;
+        letter-spacing: -0.44px;
+        color: #353535;
+    }
+
+    .mobileTeacherSubtitleText{
+        font-size: 16.3px;
+        font-weight: 300;
+        text-align: center;
+        letter-spacing: -0.41px;
+        margin-bottom: 32.5px;
+    }
+
+    .teacherName{
+        margin-top: 30.6px;
+        text-align: center;
+        font-size: 19.8px;
+        letter-spacing: -0.49px;
+    }
+
+    .teacherDescription{
+        margin-top: 17px;
+        font-size: 13.5px;
+        letter-spacing: -0.34px;
+        line-height: 23px;
+        text-align: center;
+    }
+
+    .teacherLecturerTitle{
+        margin-top: 55px;
+        margin-left: 4.7%;
+        font-size: 17.3px;
+        letter-spacing: -0.43px;
+    }
+
+    .teacherLecturerListDiv{
+        margin-top: 15px;
+        padding-left: 4.7%;
+        padding-right: 4.7%;
+        overflow: auto;
+    }
+
+    .teacherLecturerListDiv::-webkit-scrollbar{
+        background-color: #f5f5f5;
+        width: 0px !important;
+        height: 0px !important;
+    }
+    
+    .teacherLecturerListDiv::-webkit-scrollbar-thumb{
+        background-color: #bbbcb6;
+        border-radius: 0px;
+    }
+
+    .teacherLecturerSubject{
+        flex-grow: 0;
+        flex-shrink: 0;
+        width: 106.5px;
+        height: auto;
+        padding-bottom: 15px;
+        padding-top: 15px;
+        padding-left: 24px;
+    }
+
+    .teacherLecturerSubjectTitle{
+        font-size: 11.8px;
+        letter-spacing: -0.29px;
+        margin-bottom: 8px;
+    }
+
+    .eachTeacherMapName{
+        font-size: 11.8px;
+        letter-spacing: -0.29px;
+    }
+
+    .questionDiv{
+        width: 90.6%;
+        margin-bottom: 59px;
+    }
+
+    .questionDiv:last-child{
+        margin-bottom: 57.5px;
+    }
+
+    .questionTitle{
+        display: block;
+    }
+
+    .questionTitleText {
+        font-size: 18.3px;
+        letter-spacing: -0.46px;
+        line-height: 21.3px;
+    }
+
+    .questionDescriptionDiv{
+        margin-top: 30px;
+    }
+
+    .questionAnswerA{
+        font-size: 16.8px;
+        letter-spacing: -0.42px;
+        margin-top: 6px;
+        margin-right: 10.5px;
+    }
+
+    .questionAnswer{
+        font-size: 13.2px;
+        font-weight: 300;
+        line-height: 23.8px;
+        letter-spacing: -0.33px;
+    }
+
+    .interviewResultDiv{
+        margin: 0;
+        margin-bottom: 81.5px;
+    }
+
+    .interviewResult{
+        width: 100%;
+        margin: 0;
+        padding-top: 47px;
+        padding-bottom: 40.5px;
+        padding-left: 20px;
+        padding-right: 37.5px;
+    }
+
+    .interviewTitleDiv{
+        flex-direction: row-reverse;
+        justify-content: flex-end;
+        margin-bottom: 25.5px;
+    }
+
+    .bookSvg{
+        width: 25px;
+        margin-right: 11px;
+    }
+
+    .interviewTitle{
+        margin: 0;
+        font-size: 18.3px;
+        letter-spacing: -0.46px;
+    }
+
+    .interviewResultDescription{
+        font-size: 13.3px;
+        letter-spacing: -0.33px;
+        line-height: 25.3px;
+    }
+
+}
+

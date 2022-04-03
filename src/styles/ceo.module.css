@@ -1,0 +1,450 @@
+
+
+.voidHeader {
+    height: 82px;
+}
+
+
+.subHeader{
+    height: 450px;
+    min-width: 1150px;
+    background-position: 0 50%;
+    background-size: cover;
+    overflow: hidden;
+    filter: grayscale(1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+
+.subHeaderText {
+    position: absolute;
+    font-weight: 700;
+    color: white;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    font-size: 35.5px;
+    z-index: 99;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.subHeaderTextTitle{
+    margin-bottom: 16px;
+}
+
+.filter {
+    position: absolute;
+    width: 100%;
+    height: 450px;
+    background-color: black;
+    opacity: 0.2;
+}
+
+.subHeaderText_1{
+    margin-top: 82px;
+    color: white;
+    font-size: 45px;
+    font-weight: 700;
+    width: 564px;
+    margin-bottom: 15px;
+    z-index: 10;
+}
+
+.subHeaderText_2{
+    z-index: 10;
+    width: 564px;
+    color: white;
+    font-size: 45px;
+    font-weight: 700;
+}
+
+
+.houseSvg {
+    width: 18px;
+    margin-bottom: 2.5px;
+    margin-right: 20px;
+}
+
+.rightChevron {
+    width: 8px;
+    margin-right: 18px;
+}
+
+.rightChevron.second{
+    margin-left: 18px;
+}
+
+.currentMenuViewer{
+    width: 1150px;
+    margin: 0 auto;
+    display: flex;
+    height: 58px;
+    align-items: center;
+}
+
+.currentMenuViewerText_1{
+    font-weight: 100;
+    font-size: 12px;
+    letter-spacing: -0.3px;
+    color: #525252;
+}
+
+.currentMenuViewerText_2{
+    font-size: 12px;
+    letter-spacing: -0.3px;
+    color: #525252;
+}
+
+.currentMenuViewerBoarder{
+    height: 1px;
+    opacity: 0.6;
+    box-shadow: 0px 1px 1px 0 rgba(0, 0, 0, 0.22);
+}
+
+.ceoDescriptionDiv{
+    margin-top: 123px;
+    margin-bottom: 92px;
+}
+
+.ceoDescription {
+    width: 1150px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.ceoDescriptionText {
+}
+
+.ceoDescriptionTextBox.second{
+    margin-top: 50px;
+}
+
+.ceoDescriptionTextTitle_1{
+    font-weight: 700;
+    font-size: 30.5px;
+    color: #071028;
+    letter-spacing: -0.76px;
+    margin-bottom: 14px;
+}
+
+.ceoDescriptionTextTitle_2{
+    font-weight: 700;
+    font-size: 30.5px;
+    color: #071028;
+    letter-spacing: -0.76px;
+    margin-bottom: 14px;
+}
+
+.ceoDescriptionTextTitle_3{
+    font-weight: 700;
+    font-size: 30.5px;
+    color: #071028;
+    letter-spacing: -0.76px;
+}
+
+.ceoDescriptionTextSubTitle{
+    margin-top: 42px;
+    margin-bottom: 70px;
+    font-size: 22px;
+    letter-spacing: -0.55px;
+    color: #838383;
+}
+
+.ceoDescriptionTextBoxTitle{
+    font-size: 16.5px;
+    letter-spacing: -0.41px;
+    color: #353535;
+    line-height: 32.5px;
+}
+
+.ceoDescriptionTextBoxDescription{
+    font-size: 16.5px;
+    letter-spacing: -0.41px;
+    color: #353535;
+    line-height: 32.5px;
+    font-weight: 300;
+}
+
+.ceoPictureDiv {
+    display: flex;
+    align-items: flex-end;
+    position: relative;
+    background-color: #eff3f6;
+}
+
+.ceoPicture {
+    width: 460px;
+}
+
+.ceoPictureDescription {
+    background-color: rgba(0, 0, 0, 0.45);
+    width: 460px;
+    height: 169px;
+    position: absolute;
+    padding-top: 36px;
+    padding-left: 39px;
+}
+
+.ceoPictureDescriptionTitle{
+    color: #f7f6fc;
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: -1.1px;
+    margin-bottom: 19px;
+}
+
+.ceoPictureDescription_1{
+    font-weight: 100;
+    color: rgba(247, 246, 252, 0.8);
+    font-size: 14.5px;
+    letter-spacing: -0.73px;
+    margin-bottom: 8px;
+}
+
+.ceoPictureDescription_2{
+    font-weight: 100;
+    color: rgba(247, 246, 252, 0.8);
+    font-size: 14.5px;
+    letter-spacing: -0.73px;
+    margin-bottom: 8px;
+
+}
+
+.ceoPictureDescription_3{
+    font-weight: 100;
+    color: rgba(247, 246, 252, 0.8);
+    font-size: 14.5px;
+    letter-spacing: -0.73px;
+}
+
+.ceoCareerDiv{
+    position: relative;
+}
+
+
+.ceoCareer{
+    width: 1150px;
+    margin: 0 auto;
+    margin-bottom: 261px;
+}
+
+.ceoCareerTitle {
+    font-weight: 400;
+    font-size: 28px;
+    letter-spacing: -0.7px;
+    color: #353535;
+    margin-bottom: 28px;
+}
+
+.ceoCareerPicture_1 {
+    margin-right: 48px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 308px;
+}
+
+.ceoCareerPicture_1.ceoOathPicture{
+    height: 451px;
+    object-fit: cover;
+}
+
+.ceoCareerPicture_2 {
+    margin-right: 48px;
+
+}
+
+.ceoCareerPicture_3 {
+
+}
+
+.grayBox{
+    height: 343px;
+    background-color: #f6f7f5;
+    z-index: -1;
+    position: absolute;
+    top: 284px;
+    width: 100%;
+}
+
+.onlymobile{
+    display: none;
+}
+
+@media only screen and (max-width : 1024px) {
+    .onlyPC{
+        display: none;
+    }
+
+    .onlymobile {
+        display: block;
+    }
+
+    .voidHeader {
+        height: 59px;
+    }
+
+    .subHeader{
+        min-width: 0;
+        background-position:40% 0%;
+        height: 256.5px;
+    }
+
+    .subHeaderText{
+        font-size: 21px;
+        width: 100%;
+    }
+
+    .subHeaderTextTitle {
+        margin-bottom: 12px;
+    }
+
+    .ceoDescriptionDiv{
+        margin-top: 43px;
+        padding-bottom: 53.5px;
+        border-bottom: 5.5px solid #eaeaea;
+        margin-bottom: 62.5px;
+    }
+
+    .ceoDescription{
+        width: auto;
+        flex-direction: column-reverse;
+    }
+
+    .ceoPictureDiv {
+        display: block;
+        width: 90.8%;
+        margin: 0 auto;
+        margin-bottom: 45.5px;
+    }
+
+    .ceoPicture{
+        width: 100%;
+    }
+
+    .ceoPictureDescription{
+        width: 100%;
+        bottom: 0;
+        height: 122px;
+        padding-top: 25.5px;
+        padding-left: 27.5px;
+    }
+
+    .ceoPictureDescriptionTitle{
+        font-size: 16.3px;
+        letter-spacing: -0.81px;
+        margin-bottom: 12.5px;
+    }
+
+    .ceoPictureDescription_1{
+        font-weight: 300;
+        font-size: 11.8px;
+        letter-spacing: -0.59px;
+        margin-bottom: 6px;
+    }
+
+    .ceoPictureDescription_2{
+        font-weight: 300;
+        font-size: 11.8px;
+        letter-spacing: -0.59px;
+        margin-bottom: 6px;
+    }
+
+    .ceoPictureDescription_3{
+        font-weight: 300;
+        font-size: 11.8px;
+        letter-spacing: -0.59px;
+    }
+
+    .ceoDescriptionText {
+        width: 90.8%;
+        margin: 0 auto;
+    }
+
+    .ceoDescriptionTextBox.second{
+        margin-top: 33px;
+    }
+
+    .ceoDescriptionTextTitle_1{
+        font-size: 17px;
+        letter-spacing: -0.43px;
+        margin-bottom: 10px;
+    }
+
+    .ceoDescriptionTextTitle_2{
+        font-size: 17px;
+        letter-spacing: -0.43px;
+        margin-bottom: 10px;
+    }
+
+    .ceoDescriptionTextTitle_3{
+        font-size: 17px;
+        letter-spacing: -0.43px;
+    }
+
+    .ceoDescriptionTextSubTitle{
+        margin-top: 28px;
+        font-size: 14px;
+        letter-spacing: -0.36px;
+        margin-bottom: 38.5px;
+    }
+
+    .ceoDescriptionTextBoxTitle{
+        font-size: 13.5px;
+        letter-spacing: -0.34px;
+        line-height: 23px;
+    }
+
+    .ceoDescriptionTextBoxDescription{
+        font-size: 13.5px;
+        line-height: 23px;
+        letter-spacing: -0.34px;
+    }
+
+    .ceoCareer{
+        width: auto;
+        margin: 0;
+        margin-bottom: 66px;
+    }
+
+    .ceoCareerTitle{
+        padding-left: 4.7%;
+        font-size: 17.8px;
+        font-weight: 700;
+        letter-spacing: -0.44px;
+    }
+
+    .ceoCareerPicture{
+        width: 82.7%;
+        margin: 0 auto;
+    }
+
+    .ceoCareerPicture_1{
+        margin: 0;
+        padding: 0;
+        width: 100%;
+    }
+
+    .ceoCareerPicture_2{
+        margin: 0;
+        padding: 0;
+        width: 100%;
+    }
+
+    .ceoCareerPicture_3{
+        margin-top: 43px;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+    }
+
+    
+}

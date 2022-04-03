@@ -1,0 +1,178 @@
+.main{
+    padding-top: 18px;
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 12px;
+    align-items: center;
+}
+
+.monthDiv{
+    display: flex;
+    align-items: center;
+}
+
+.arrowLeft{
+    width: 18px;
+    margin-right: 18px;
+}
+
+.monthTitle{
+    font-size: 16px;
+    padding-bottom: 2px;
+    font-weight: 700;
+}
+
+.showDemerit{
+    font-weight: 400;
+    font-size: 16px;
+}
+
+.dayList{
+    margin-top: 24px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.dayTitle.active{
+    color: red;
+}
+
+.dayTitle{
+    text-align: center;
+    flex-grow: 1;
+    font-size: 11px;
+    font-weight: 400;
+    margin-bottom: 12px;
+}
+
+.dateList{
+}
+
+.eachWeekDiv{
+    padding-left: 2px;
+    padding-right: 2px;
+    display: flex;
+    height: calc((100vh - 120px)/6);
+}
+
+.eachDay{
+    width: 20px;
+    flex-grow: 1;
+    text-align: center;
+    font-size: 12px;
+}
+
+.sunday{
+    color: red;
+}
+
+.eachDay.deactive{
+    opacity: 0.2;
+}
+
+
+
+.time{
+    margin: 0 auto;
+    width: 93%;
+    background-color: #666666;
+    color: white;
+    border-radius: 2px;
+    height: 15px;
+    line-height: 14px;
+    text-align: initial;
+    padding-left: 4px;
+    margin-top: 1.5px;
+}
+
+.time.first{
+    margin-top: 6px;
+}
+
+.time.last{
+    background-color: #243887;
+}
+
+.time.late{
+    background-color: #d42625;
+}
+
+.none {
+    display: none;
+}
+
+.modalDay{
+    font-size: 12px;
+    margin-top: 24px;
+    margin-left: 16px;
+}
+
+.modalDate{
+    margin-left: 16px;
+    margin-top: 10px;
+    font-weight: 700;
+}
+
+.modalBorder{
+    margin-top: 24px;
+    height: 0.25px;
+    width: 100%;
+    background-color: rgba(0, 0,0,0.10);
+}
+
+.eachMove{
+    display: flex;
+    height: 70px;
+    margin-left: 8px;
+    margin-right: 8px;
+    align-items: center;
+    border-bottom: 0.25px solid rgba(0, 0,0,0.10);
+}
+
+.colorBar{
+    height: 50px;
+    width: 5px;
+    background-color: #243887;
+    border-radius: 5px;
+    margin-right: 24px;
+}
+
+.colorBar.inside{
+    background-color: red;
+}
+
+.modalTime{
+    font-size: 15px;
+    margin-bottom: 4px;
+}
+
+.timeDescription{
+    font-weight: 300;
+    font-size: 13px;
+}
+
+.records{
+    height: 65vh;
+    overflow: auto;
+}
+
+.voidHeight{
+    height: 120px;
+}
+
+.btnDiv{
+    margin-top: 8px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.secondModalDescription{
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 26px;
+    letter-spacing: -0.39px;
+}

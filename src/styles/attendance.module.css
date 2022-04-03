@@ -1,0 +1,308 @@
+* {
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: 'Apple_R';
+    src: url("../styles/AppleSDGothicNeoR.woff") format('woff2'),
+	url("../styles/AppleSDGothicNeoR.ttf") format('truetype')
+
+}
+
+.main {
+    padding-top: 12px;
+    padding-bottom: 30px;
+    height: 600px;
+    overflow: auto;
+}
+
+.main::-webkit-scrollbar{
+    width: 4px !important;
+    height: 0px !important;
+}
+
+.clock {
+    margin-right: 7.1px;
+}
+
+.title {
+    width: 1164px;
+    font-family: "Apple_LB";
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.title div:first-child{
+    display: flex;
+    align-items: center;
+}
+
+.paper {
+    margin: 0 auto;
+    border-radius: 12px;
+    width: 1164px;
+    background-color: white;
+    transition: box-shadow 0.2s ease 0s;
+    box-shadow: rgb(20 20 20 / 2%) 2px 8px 12px 0px, rgb(20 20 20 / 2%) 0px 1px 3px 0px;
+}
+
+.paperTitle {
+    display: flex;
+    justify-content: space-between;
+}
+
+.paperTitleFirst {
+    display: flex;
+}
+
+
+
+.calendarFlat {
+    margin-right: 8px;
+}
+
+.studentName {
+    display: flex;
+    align-items: center;
+    font-family: "Apple_R";
+    font-size: 18px;
+    color: #303030;
+    letter-spacing: -0.9px;
+}
+
+.monthStudyTime {
+    cursor: pointer;
+    width: 180px;
+    height: 46px;
+    border: solid 1px #728aff;
+    border-radius: 4px;
+    line-height: 46px;
+    text-align: center;
+    color: #3d50b0;
+    font-family: "Apple_LB";
+    letter-spacing: -0.8px;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+}
+
+
+.chevronLeft {
+    box-sizing: border-box;
+    width: 7.4px;
+    margin-right: 26.6px;
+    cursor: pointer;
+}
+
+.chevronRight {
+    box-sizing: border-box;
+    width: 7.4px;
+    margin-left: 26.6px;
+    cursor: pointer;
+}
+
+
+.main::-webkit-scrollbar{
+    background-color: #f5f5f5;
+}
+
+.main::-webkit-scrollbar-thumb{
+    background-color: #bbbcb6;
+    border-radius: 10px;
+
+}
+
+
+.whenMonth {
+    margin-top: 10px;
+    margin-bottom: 18px;
+    font-size: 23px;
+    color: #303030;
+    font-family: "Apple_LB";
+    display: flex;
+    justify-content: center;
+}
+
+.day {
+    justify-content: stretch;
+    display: flex;
+    border-top: 4px solid #f2f2f2;
+    border-bottom: 4px solid #f2f2f2;
+}
+
+.dayList {
+    width: 300px;
+    font-family: "Apple_R";
+    height: 44px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: 3px solid #f2f2f2;
+    background-color: #ebebeb;
+}
+
+.day .dayList:first-child{
+    color: #d14e4e;
+}
+
+.dayList.last{
+    border-right: 0;
+}
+
+.calendar {
+    border: 3px solid #f2f2f2;
+    border-top: 2px solid #303030;
+    box-shadow: 0 10px 30px 0 rgba(201, 201, 201, 0.16);
+}
+
+.calendarWeek {
+    display: flex;
+    justify-content: stretch;
+}
+
+.calendarDay {
+    position: relative;
+    padding-left: 9px;
+    padding-top: 11px;
+    width: 300px;
+    height : 110px;
+    border-right: 3px solid #f2f2f2;
+}
+
+.calendarDay.active:hover{
+    cursor: pointer;
+    background-color: #f1fbff;
+}
+
+.calendarDay:hover{
+
+}
+
+.blackFilter{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #1b49af;
+    opacity: 0.75;
+    z-index: 5;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-family: "Apple_SB";
+    font-size: 18px;
+}
+
+.blackFilter:hover{
+    opacity: 1;;
+}
+
+.calendarWeek .calendarDay:nth-child(7n){
+    border-right: 0;
+}
+
+.calendarWeek .calendarDay:nth-child(7n+1){
+    color: #d14e4e;
+    font-family: "Apple_SB";
+}
+
+.calendarWeek {
+    border-bottom: 3px solid #f2f2f2;
+}
+
+.calendarDiv .calendarWeek:last-child{
+    border-bottom: 0;
+}
+
+.startTime {
+    margin-top: 11px;
+    margin-bottom: 6px;
+    color: black;
+    font-family: "Apple_SB";
+    font-size: 15px;
+}
+
+.startTime.late{
+    color: red;
+}
+
+.lastTime{
+    font-size: 15px;
+    color: black;
+    font-family: "Apple_SB";
+}
+
+.totalHours {
+    margin-left: 4.5px;
+    font-family: "Apple_SB";
+    font-size: 12px;
+    line-height: 18px;
+    text-align: center;
+    border: 1px solid #1b49af;
+    color: #1b49af;
+    border-radius: 15px;
+    width: 70px;
+    height: 18px;
+}
+
+.modalDate{
+    width: 100%;
+    background-color: #494951;
+    color: white;
+    font-family: "Apple_R";
+    height: 64px;
+    border-radius: 34px;
+    text-align: center;
+    line-height: 64px;
+    font-size: 18px;
+    margin-bottom: 6px;
+}
+
+.accessControlList {
+    overflow: auto;
+    height: 393px;
+    margin-top: 16px;
+}
+
+.accessControlList::-webkit-scrollbar{
+    background-color: #f5f5f5;
+    width: 4px !important;
+    height: 3px;
+
+}
+
+.accessControlList::-webkit-scrollbar-thumb{
+    background-color: #bbbcb6;
+    border-radius: 10px;
+}
+
+
+
+.eachAccessControl{
+    width: 360px;
+}
+
+.eachAccessControlChild{
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+    padding-right: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-size: 17px;
+    letter-spacing: -0.95px;
+    font-family: "Apple_SB";
+}
+
+.eachAccessControlChild.inside{
+    color: #ff605a;
+}
+
+.eachAccessControlChild.outside{
+    color: #3d50b0;
+}
+
+
+
+
+

@@ -1,0 +1,303 @@
+.main{
+    padding-top: 20px;
+    padding-left: 41px;
+    padding-right: 41px;
+    height: 600px;
+    overflow: auto;
+    padding-bottom: 24px;
+}
+
+.demeritMain{
+    margin-top: 48px;
+    margin-bottom: 48px;
+    padding-left: 41px;
+    padding-right: 41px;
+}
+
+.main::-webkit-scrollbar{
+    background-color: #f5f5f5;
+    width: 6px !important;
+}
+
+.main::-webkit-scrollbar-thumb{
+    background-color: #bbbcb6;
+    border-radius: 10px;
+
+}
+
+.title{
+    text-align: center;
+
+    font-size: 18px;
+    color: #6c6c6c;
+    letter-spacing: -0.45px;
+    margin-bottom: 13px;
+}
+
+.subTitle{
+    text-align: center;
+    font-weight: 700;
+    color: #1b49af;
+    font-size: 32.5px;
+    letter-spacing: -0.81px;
+    margin-bottom: 37px;
+}
+
+.header {
+    height: 63px;
+    background-color: #262f3c;
+    width: 100%;
+    display: flex;
+}
+
+.demeritHeader{
+    height: 63px;
+    background-color: #262f3c;
+    width: 100%;
+    display: flex;
+}
+
+.header.even{
+    background-color: #dfdfdf;
+}
+
+.header.odd{
+    background-color: #fafafa;
+}
+
+.headerName{
+    width: 132px;
+    text-align: center;
+    color: white;
+    line-height: 63px;
+    font-weight: 700;
+    font-size: 16.5px;
+    letter-spacing: -0.41px;
+}
+
+.demeritHeaderName{
+    width: 150px;
+    flex-grow: 1.2;
+    text-align: center;
+    color: white;
+    line-height: 63px;
+    font-weight: 700;
+    font-size: 16.5px;
+    letter-spacing: -0.41px;
+}
+
+.headerStart{
+    width: 140px;
+    text-align: center;
+    color: white;
+    line-height: 63px;
+    font-weight: 700;
+    font-size: 16.5px;
+    letter-spacing: -0.41px;
+}
+
+.demeritFirstScore{
+    width: 150px;
+
+    flex-grow: 1;
+    text-align: center;
+    color: white;
+    line-height: 63px;
+    font-weight: 700;
+    font-size: 16.5px;
+    letter-spacing: -0.41px;
+}
+
+.headerEnd{
+    width: 140px;
+    text-align: center;
+    color: white;
+    line-height: 63px;
+    font-weight: 700;
+    font-size: 16.5px;
+    letter-spacing: -0.41px;
+}
+
+.demeritSecondScore{
+    width: 150px;
+
+    flex-grow: 1.2;
+    text-align: center;
+    color: white;
+    line-height: 63px;
+    font-weight: 700;
+    font-size: 16.5px;
+    letter-spacing: -0.41px;
+}
+
+
+.headerDescription{
+    flex-grow: 1;
+    text-align: center;
+    color: white;
+    line-height: 63px;
+    font-weight: 700;
+    font-size: 16.5px;
+    letter-spacing: -0.41px;
+}
+
+.firstText{
+    margin-top: 33px;
+    font-size: 15.5px;
+    color: #353535;
+    font-weight: 400;
+    letter-spacing: -0.39px;
+    line-height: 28px;
+}
+
+.secondText{
+    margin-top: 8px;
+    font-size: 15.5px;
+    color: #353535;
+    font-weight: 400;
+    letter-spacing: -0.39px;
+}
+
+.voidHeight{
+    display: none;
+}
+
+.xBtnDiv{
+    display: none;
+}
+
+@media only screen and (max-width : 1024px) {
+    .main{
+        height: auto;
+        margin-top: 0px;
+        padding-top: 18px;
+        padding-left: 17.5px;
+        padding-right: 17.5px;
+    }
+
+    .page{
+        height: calc(100vh - 20px);
+        overflow: auto;
+    }
+
+    .page::-webkit-scrollbar{
+        background-color: #f5f5f5;
+        width: 0px !important;
+    }
+    
+    .page::-webkit-scrollbar-thumb{
+        background-color: #bbbcb6;
+        border-radius: 10px;
+    
+    }
+
+    .demeritMain{
+        margin-top: 0px;
+        padding-top: 18px;
+        padding-left: 17.5px;
+        padding-right: 17.5px;
+        height: 100vh;
+    }
+
+    .title{
+        font-size: 11.5px;
+        letter-spacing: -0.29px;
+        margin-bottom: 9px;
+    }
+
+    .subTitle{
+        font-size: 19.8px;
+        letter-spacing: -0.49px;
+        margin-bottom: 21.5px;
+    }
+
+    .header{
+        height: 43.5px;
+    }
+
+    .demeritHeader{
+        height: 43.5px;
+    }
+
+    .headerName{
+         width: 15.5vw;
+         line-height: 43.5px;
+         font-size: 12px;
+         letter-spacing: -0.3px;
+         color: #f6f9ff;
+    }
+
+    .demeritHeaderName{
+         line-height: 43.5px;
+         font-size: 12px;
+         letter-spacing: -0.3px;
+         color: #f6f9ff;
+    }
+
+    .headerStart{
+        width: 22vw;
+        line-height: 43.5px;
+         font-size: 12px;
+         letter-spacing: -0.3px;
+         color: #f6f9ff;
+    }
+
+    .demeritFirstScore{
+        line-height: 43.5px;
+        font-size: 12px;
+        letter-spacing: -0.3px;
+        color: #f6f9ff;
+    }
+
+    .headerEnd{
+        width: 22vw;
+        line-height: 43.5px;
+         font-size: 12px;
+         letter-spacing: -0.3px;
+         color: #f6f9ff;
+    }
+
+    .demeritSecondScore{
+        line-height: 43.5px;
+        font-size: 12px;
+        letter-spacing: -0.3px;
+        color: #f6f9ff; 
+    }
+
+    .headerDescription{
+        width: 22vw;
+        line-height: 43.5px;
+         font-size: 12px;
+         letter-spacing: -0.3px;
+         color: #f6f9ff;
+    }
+
+    .voidHeight{
+        display: block;
+        height: 180px;
+    }
+
+    .firstText{
+        margin-top: 21px;
+        font-weight: 400;
+        font-size: 11.5px;
+        color: #353535;
+        letter-spacing: -0.29px;
+        line-height: 21px;
+    }
+
+    .xBtnDiv{
+        display: block;
+        margin-bottom: 18px;
+    }
+
+    .xBtn{
+        padding-top: 6px;
+        padding-bottom: 6px;
+        width: 36px;
+    }
+
+    .xSvg{
+        width: 24px;
+    }
+}

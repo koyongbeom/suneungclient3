@@ -1,0 +1,519 @@
+.atag{
+    -webkit-tap-highlight-color: transparent;
+}
+
+
+.subHeaderBar{
+    height: 630px;
+    background-size: cover;
+    background-position: 0% 50%;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    filter: grayscale(1);
+}
+
+.voidHeader {
+    height: 82px;
+}
+
+.subHeader {
+    position: relative;
+    height: 450px;
+    background-size: cover;
+    background-position: 0% 55%;
+}
+
+.subHeaderText {
+    position: absolute;
+    font-weight: 700;
+    color: white;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    font-size: 35.5px;
+    z-index: 99;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.subHeaderTextTitle{
+    margin-bottom: 16px;
+}
+
+.blackFilter {
+    top: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0.25;
+}
+
+
+.houseSvg {
+    width: 18px;
+    margin-bottom: 2.5px;
+    margin-right: 20px;
+}
+
+.rightChevron {
+    width: 8px;
+    margin-right: 18px;
+}
+
+.rightChevron.second{
+    margin-left: 18px;
+}
+
+.currentMenuViewer{
+    width: 1150px;
+    margin: 0 auto;
+    display: flex;
+    height: 58px;
+    align-items: center;
+}
+
+.currentMenuViewerText_1{
+    font-weight: 100;
+    font-size: 12px;
+    letter-spacing: -0.3px;
+    color: #525252;
+}
+
+.currentMenuViewerText_2{
+    font-size: 12px;
+    letter-spacing: -0.3px;
+    color: #525252;
+}
+
+.currentMenuViewerBoarder{
+    height: 1px;
+    opacity: 0.6;
+    box-shadow: 0px 1px 1px 0 rgba(0, 0, 0, 0.22);
+}
+
+.mapDiv{
+    width: 1150px;
+    margin: 0 auto;
+    margin-top: 93px;
+    margin-bottom: 49px;
+}
+
+.map{
+    width: 1150px;
+    height: 517px;
+}
+
+.mapDescription {
+    width: 1150px;
+    margin: 0 auto;
+    padding-bottom: 90px;
+    border-bottom: 3px solid #ebebeb;
+    margin-bottom: 115px;   
+}
+
+.mapDescriptionPlace{
+    display: flex;
+    margin-bottom: 28px;
+}
+
+.placeSvg{
+    width: 18px;
+    margin-right: 24px;
+}
+
+.callSvg {
+    width: 22px;
+    margin-right: 22px;
+}
+
+.busSvg {
+    width: 19px;
+    margin-right: 22px;
+}
+
+.placeText {
+    font-weight: 700;
+    font-size: 21px;
+    color: #353535;
+    letter-spacing: -0.53px;
+}
+
+.placeText_1{
+    margin-bottom: 15px;
+}
+
+.interiorTopDiv{
+    background-color: #262f3d;
+}
+
+.interiorTop{
+    width: 1150px;
+    margin: 0 auto;
+    color: white;
+    position: relative;
+}
+
+.interiorTopText{
+    padding-top: 109px;
+    padding-bottom: 111px;
+}
+
+.interiorTopText_1{
+    font-weight: 300;
+    font-size: 39.5px;
+    letter-spacing: -0.99px;
+    margin-bottom: 20px;
+}
+
+.interiorTopText_2{
+    font-weight: 700;
+    font-size: 39.5px;
+    letter-spacing: -0.99px;
+    margin-bottom: 60px;
+}
+
+.interiorTopText_3{
+    font-weight: 700;
+    font-size: 30.5px;
+    letter-spacing: -0.76px;
+    margin-bottom: 31px;
+}
+
+.interiorTopText_4{
+    font-weight: 300;
+    font-size: 19px;
+    letter-spacing: -0.48px;
+    margin-bottom: 13px;
+    width: 350px;
+    line-height: 32.5px;
+    height: 80px;
+}
+
+.interiorTopText_5{
+    font-weight: 300;
+    font-size: 19px;
+    letter-spacing: -0.48px;
+}
+
+.interiorTopImages {
+    position: absolute;
+    bottom: -113px;
+    right: 0;
+    width: 624px;
+    overflow: hidden;
+}
+
+.interiorTopImagesWrapper{
+
+    position: relative;
+}
+
+.interiorTopRealImages{
+    pointer-events: none;
+    width: 624px;
+    transition: all 300ms ease-in;
+}
+
+.interiorBottomDiv{
+    height: 400px;
+}
+
+.left {
+    width: 16px;
+    z-index: 1;
+}
+
+.right {
+    width: 16px;
+    z-index: 1;
+}
+
+.leftCarousel {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 59px;
+    height: 59px;
+    top: 50%;
+    transform: translate(0, -50%);
+    left: 0;
+    background-color: black;
+    cursor: pointer;
+}
+
+.rightCarousel {
+    cursor: pointer;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 59px;
+    height: 59px;
+    top: 50%;
+    transform: translate(0, -50%);
+    right: 0;
+    background-color: black;
+}
+
+.interiorBottom {
+    width: 1150px;
+    margin: 0 auto;
+    margin-top: 42px;
+}
+
+.listTitleDiv{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 450px;
+}
+
+.eachList {
+    height: 36px;
+    line-height: 36px;
+    padding-right: 14px;
+    padding-left: 14px;
+    font-size: 14.5px;
+    color: #6d6d6d;
+    cursor: pointer;
+}
+
+.eachListhTitleDiv{
+    display: flex;
+    align-items: center;
+}
+
+.eachListBorder{
+    height: 13px;
+    margin-top: 3px;
+    width: 1px;
+    border-right: 1px solid #b7b7b7;
+}
+
+.eachListBorder.none{
+    display: none;
+}
+
+.eachList.active{
+    background-color: #272e3a;
+    color: white;
+    border-radius: 5px;
+    font-weight: 700;
+    font-size: 14.5px;
+}
+
+.animatedDivStyle{
+    width: 624px;
+    height: 416.55px;
+}
+
+.animatedImage{
+    position: absolute;
+    height: 416.55px;
+}
+
+
+
+.onlymobile{
+    display: none;
+}
+
+@media only screen and (max-width : 1024px) {
+    .onlyPC{
+        display: none;
+    }
+
+    .onlymobile {
+        display: block;
+    }
+
+    .voidHeader {
+        height: 59px;
+    }
+
+    .subHeader{
+        min-width: 0;
+        background-position:40% 0%;
+        height: 256.5px;
+    }
+
+    .subHeaderText{
+        font-size: 21px;
+        width: 100%;
+    }
+
+    .subHeaderTextTitle {
+        margin-bottom: 12px;
+    }
+
+    .mapDiv{
+        width: 91.5%;
+        margin: 0 auto;
+        margin-top: 56px;
+        margin-bottom: 32.5px;
+    }
+
+    .map{
+        width: 100%;
+        height: 236px;
+    }
+
+    .mapDescriptionDiv {
+        margin-bottom: 40px;
+        border-bottom: 5.5px solid #eaeaea;
+    }
+
+    .mapDescription {
+        padding: 0;
+        width: 91.5%;
+        margin: 0 auto;
+        border: 0;
+        padding-bottom: 13.5px;
+    }
+
+    .mapDescriptionPlace{
+        margin-bottom: 17px;
+    }
+
+    .mapDescriptionPlace.second{
+        align-items: center;
+    }
+
+    .svgBox{
+        width: 29px;
+        flex-shrink: 0;
+    }
+
+    .svgBox.first{
+        padding-left: 3px;
+    }
+
+    .placeSvg{
+        width: 11px;
+    }
+
+    .callSvg {
+        width: 13.5px;
+    }
+
+    .busSvg {
+        width: 12.5px;
+    }
+
+    .placeText {
+        font-size: 13.5px;
+        letter-spacing: -0.34px;
+    }
+
+    .placeText_1 {
+        margin-bottom: 11px;
+    }
+
+    .metroPlaceText_1 {
+        margin-bottom: 5px;
+    }
+
+    .metroPlaceText {
+        line-height: 23px;
+    }
+
+    .mobileTitleList {
+        display: flex;
+        overflow: auto;
+        border-bottom: 0.5px solid #e7e7e7;
+        margin-bottom: 42px;
+        padding-left: 20px;
+        padding-top: 17px;
+        
+    }
+
+    .mobileTitleList::-webkit-scrollbar{
+        background-color: #f5f5f5;
+        width: 0px !important;
+        height: 0px !important;
+    }
+    
+    .mobileTitleList::-webkit-scrollbar-thumb{
+        background-color: #bbbcb6;
+        border-radius: 0px;
+    }
+
+    .mobileEachListTitle{
+        flex-shrink: 0;
+        font-size: 16px;
+        letter-spacing: -0.74px;
+        padding-left: 4px;
+        padding-right: 4px;
+        padding-bottom: 16px;
+        margin-right: 20px;
+        font-family: "Apple_SB";
+        line-break: strict !important;
+    }
+
+    .mobileEachListTitle.active{
+        border-bottom: 2.5px solid #1b49af;
+    }
+
+    .mobileInteriorImage{
+        position: relative;
+        padding-top: 46px;
+        background-color: #262f3c;
+    }
+
+    .mobileInteriorImageTitle{
+        line-height: 30.8px;
+        color: white;
+        text-align: center;
+        font-weight: 700;
+        font-size: 21px;
+        letter-spacing: -0.53px;
+        padding-bottom: 43.46vw;
+        margin-bottom: 36.19vw;
+    }
+
+    .interiorTopImages{
+        position: absolute;
+        top : 143.5px;
+        left: 50%;
+        transform: translate(-50%, 0);
+        width: 90.9%;
+        height: 60.51vw;
+        bottom: 0;
+    }
+
+    .animatedImage{
+        height: 60.51vw;
+
+    }
+
+    .mobileInteriorText{
+        width: 90.9%;
+        margin: 0 auto;
+        border-bottom: 1px solid #e7e7e7;
+        margin-bottom: 63.5px;
+    }
+
+    .mobileInteriorTitle{
+        font-weight: 700;
+        font-size: 17.3px;
+        letter-spacing: -0.43px;
+        color: #434343;
+        margin-bottom: 22.5px;
+    }
+
+    .mobileInteriorDescription{
+        font-size: 13.5px;
+        line-height: 22px;
+        letter-spacing: -0.34px;
+        color: #353535;
+        padding-bottom: 28.5px;
+    }
+
+
+
+}

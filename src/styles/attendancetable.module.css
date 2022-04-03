@@ -1,0 +1,30 @@
+@media only screen and (max-width : 1024px) {
+    .main {
+        width: 100% !important;
+        padding: 0 !important;
+    }
+
+    .number{
+        display: none;
+    }
+
+    .choiceDiv{
+        width: 90.6% !important;
+        margin: 0 auto !important;
+        display: block !important;
+    }
+
+    .choice{
+        font-size: 12px;
+    }
+
+    .tableDivDiv{
+    }
+
+    .tableDiv{
+        height: 350px !important;
+        margin: 0 !important;
+        margin-left: 23px;
+    }
+
+}

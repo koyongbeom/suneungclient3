@@ -1,0 +1,209 @@
+.voidHeader {
+    height: 82px;
+}
+
+.headerBar{
+    height: 176px;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    color: #383838;
+    letter-spacing: -0.76px;
+    font-size: 30.5px;
+}
+
+
+.houseSvg {
+    width: 18px;
+    margin-bottom: 2.5px;
+    margin-right: 20px;
+}
+
+.rightChevron {
+    width: 8px;
+    margin-right: 18px;
+}
+
+.rightChevron.second{
+    margin-left: 18px;
+}
+
+.currentMenuViewer{
+    width: 1150px;
+    margin: 0 auto;
+    display: flex;
+    height: 58px;
+    align-items: center;
+}
+
+.currentMenuViewerText_2{
+    font-size: 12px;
+    letter-spacing: -0.3px;
+    color: #525252;
+}
+
+.currentMenuViewerBoarder{
+    height: 1px;
+    opacity: 0.6;
+    box-shadow: 0px 1px 1px 0 rgba(0, 0, 0, 0.22);
+}
+
+.titleText {
+    margin-top: 125px;
+    text-align: center;
+    font-size: 35.5px;
+    font-weight: 700;
+    line-height: 48px;
+    letter-spacing: -0.89px;
+    color: #353535;
+    margin-bottom: 85px;
+}
+
+.phoneNumber{
+    margin-top: 24px;
+    font-size: 18px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.listDiv{
+    width: 1150px;
+    margin: 0 auto;
+    display: flex;
+    border-bottom: 1px solid #e9e9ea;
+    margin-bottom: 70px;
+}
+
+.eachList{
+    cursor: pointer;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.2em;
+    padding: 0 10px 20px;
+    margin-right: 23px;
+    flex-shrink: 0;
+    color: #777777;
+}
+
+.eachList:hover{
+    color: black;
+    border-bottom: 2px solid black;
+}
+
+.eachList:last-child{
+    margin-right: 0px;
+}
+
+.eachList.active{
+    border-bottom: 2px solid black;
+    font-weight: 500;
+    color: black;
+}
+
+.selectDiv{
+    width: 1150px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.questionListDiv{
+    border-top: 2px solid black !important;
+    width: 1150px;
+    margin: 0 auto;
+    margin-bottom: 76px;
+}
+
+.eachQuestion{
+    padding: 31px 40px 32px;
+    border-bottom: 1px solid #ddd;
+}
+
+.question{
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.question:hover .questionText{
+    text-decoration-line:underline;
+    text-underline-position: under; 
+}
+
+.questionForward{
+    display: flex;
+    align-items: center;
+}
+
+.qSvg{
+    width: 16px;
+}
+
+.qSvgDiv{
+    padding-top: 2px;
+    margin-right: 22px;
+}
+
+.questionText{
+    font-weight: 700;
+    font-size: 20px;
+}
+
+
+.chevronDown{
+    width: 14px;
+    transition: all 150ms ease-out;
+}
+
+.chevronDown.active{
+    transform: rotate(180deg);
+}
+
+.answer{
+    color: #222;
+    font-size: 16px;
+    line-height: 1.9em;
+    overflow: hidden;
+    max-height: 0px;
+    transition: max-height 150ms ease-out;
+    padding-left: 40px;
+    padding-right: 50px;
+    white-space: pre-wrap;
+}
+
+.answer.active{
+    padding-top: 16px;
+    padding-bottom: 10px;
+    max-height: 1000px;
+}
+
+.pagination{
+    margin-bottom: 120px !important;
+    display: flex;
+    justify-content: center;
+}
+
+.bottomInfoDiv{
+    width: 1150px;
+    margin: 0 auto;
+    padding: 26px 38px;
+    background-color: #f7f7f7;
+    margin-bottom: 180px;
+}
+
+.bottomInfoText{
+    margin-right: 12px;
+    font-weight: 700;
+    line-height: 1.4em;
+}
+
+.bottomInfoNumber{
+    line-height: 1.4em;
+    font-size: 16px;
+    font-weight: 400;
+}

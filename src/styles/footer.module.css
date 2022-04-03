@@ -1,0 +1,85 @@
+
+.footer {
+    background-color: #333333;
+}
+
+.footerHeaderTextDiv{
+    color: #bcbcbc;
+    font-size: 15.5px;
+    letter-spacing: -0.78px;
+    text-align: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #4c4f5c;
+}
+
+.footerHeaderTextDiv span{
+    cursor: pointer;
+}
+
+.footerDiv{
+    width: 1150px;
+    padding-top: 87px;
+    padding-bottom: 27px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.footerLogo{
+    display: flex;
+}
+
+.footerLogoText{
+    margin-left: 59px;
+    font-size: 15px;
+    letter-spacing: -0.38px;
+    color: #8e8e8e;
+}
+
+.footerLogoText div{
+    margin-top: 13px;
+}
+
+.footerLogoText div:first-child{
+    margin-top: 8px;
+}
+
+@media only screen and (max-width : 1024px) {
+    .footerHeaderTextDiv{
+        font-size: 11.5px;
+        letter-spacing: -0.63px;
+        padding-top: 18.5px;
+        padding-bottom: 18.5px;
+    }
+
+    .footerDiv{
+        width: auto;
+        padding-top: 38px;
+        margin : 0;
+        padding-bottom: 83px;
+    }
+
+    .footerLogo{
+        display: block;
+        padding-left: 20px;
+    }
+
+    .footerLogoSvg{
+        width: 103.5px;
+    }
+
+    .footerLogoText{
+        margin-left: 0px;
+        font-size: 9.8px;
+        letter-spacing: -0.24px;
+    }
+
+    .footerLogoText div{
+        margin-top: 9px;
+    }
+
+    .footerLogoText div:first-child{
+        margin-top: 8px;
+    }
+}

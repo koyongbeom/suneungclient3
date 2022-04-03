@@ -1,0 +1,230 @@
+.main {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    height: 82px;
+    padding-left: 51px;
+    padding-right: 55px;
+    box-shadow: 0px 2px 2px 0px rgba(62, 62, 62, 0.1);
+    position: fixed;
+    background-color: white;
+    z-index: 999;
+}
+
+.main2 {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    height: 82px;
+    padding-left: 51px;
+    padding-right: 55px;
+    box-shadow: 0px 2px 2px 0px rgba(62, 62, 62, 0.1);
+    position: fixed;
+    background-color: white;
+    z-index: 999;
+}
+
+.logoimg{
+    width: 140px;
+    cursor: pointer;
+}
+
+
+.menu {
+    height: 100%;
+    line-height: 82px;
+}
+
+.menuUl {
+    display: flex;
+}
+
+.menuUl li {
+    font-size: 16px;
+    padding-right: 27px;
+    padding-left: 27px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.hoverBar{
+    display: none;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.8);;
+    height: 82px;
+    position: fixed;
+    top: 75px;
+}
+
+.hoverBar.active{
+    opacity: 1;
+    display: flex;
+    z-index: 999;
+    justify-content: center;
+}
+
+.bottomMenu{
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.bottomMenuTitle {
+    height: 24px;
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    font-weight: 700;
+    padding-right: 50px;
+    border-right: 3px solid black;
+    margin-right: 50px;
+}
+
+.bottomSubMenu{
+    cursor: pointer;
+    margin-right: 40px;
+    font-weight: 300;
+}
+
+.bottomMenu_1{
+
+}
+
+.bottomMenu_3{
+}
+
+.cateBox {
+    font-weight: 400;
+    position: absolute;
+    background-color: white;
+    width: 180px;
+    text-align: center;
+    left: 50%;
+    transform: translate(-50%,0);
+    font-size: 15px;
+    line-height: normal;
+    padding-top: 22px;
+    border: 1px solid #eeeeee;
+}
+
+.cateSubMenu{
+    padding-bottom: 22px;
+}
+
+.cateSubMenu:hover{
+}
+
+.cateSubMenuText{
+    transition: color 300ms ease-in-out;
+}
+
+.cateSubMenuText:hover{
+    font-weight: 500;
+    color: blue;
+    border-bottom: 1.5px solid blue;
+}
+
+.onlymobile{
+    display: none;
+}
+
+
+@media only screen and (max-width : 1024px) {
+    .none {
+        display: none !important;
+    }
+    
+    .onlyPC{
+        display: none;
+    }
+
+    .onlymobile {
+        display: block;
+    }
+
+    .main {
+        padding-left: 24px;
+        padding-right: 24px;
+        height: 59px;
+        background-color: rgba(0, 0, 0, 0.2);
+        backdrop-filter: blur(30px);
+        box-shadow: none;
+        transition: backdrop-filter 50ms ease-in-out;
+    }
+
+    .main2 {
+        position: fixed;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        align-items: center;
+        padding-left: 24px;
+        padding-right: 24px;
+        height: 59px;
+        box-shadow: none;
+        border-bottom: 1px solid rgba(0, 27, 55, 0.1);
+        background-color: white;
+    }
+
+
+    .white {
+        background-color: white;
+        border-bottom: 1px solid rgba(0, 27, 55, 0.1);
+    }
+
+    .transparent {
+        background-color: transparent;
+        backdrop-filter: blur(0px);
+    }
+
+    .logoimg{
+        width: 100px;
+    }
+
+    .newLogo{
+        width: 110px;
+    }
+
+    .menubar {
+        color: white;
+        padding: 0 8px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+
+    .headerLogoBar {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        height: 59px;
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+
+    .mobileMenuList{
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 18px;
+        padding-bottom: 18px;
+        font-size: 14px;
+        line-height: 20px;
+        color: rgb(66, 75, 88);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .mobileSubMenuList{
+        padding-left: 52px;
+        padding-right: 20px;
+        padding-top: 18px;
+        padding-bottom: 18px;
+        font-size: 14px;
+        line-height: 20px;
+        color: rgb(66, 75, 88);
+
+    }
+}

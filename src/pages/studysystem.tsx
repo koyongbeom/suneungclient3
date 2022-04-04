@@ -5,6 +5,8 @@ import HeaderTwo from "../components/header2";
 import styles from "../styles/studysystem.module.css";
 
 import { ReactComponent as RightChevronSvg } from '../svg/chevron-right-thin.svg';
+import { ReactComponent as RightChevronWhiteSvg } from '../svg/chevron-right-solid.svg';
+
 import { ReactComponent as HouseSvg } from '../svg/house-thin.svg';
 
 import { ReactComponent as StudySvg } from '../svg/icon05.svg';
@@ -516,16 +518,17 @@ const StudySystem: React.FC = (props: any) => {
                                 <ArrowRight fill="white" className={styles.arrowRight} />
                             </div>
                         </div>
-                        <div onClick={showAttendanceMobile} className={`${styles.orderBoxPictureBtn} ${styles.onlymobile}`}>
-                            <div>
-                                출입기록 기능 예시 보기
-                            </div>
-                            <div>
-                                <ClickSvg />
-                            </div>
-                        </div>
+
                         <div className={`${styles.orderBoxPictureBox} ${styles.onlymobile}`}>
                             <img src="img/attendance5.webp" className={styles.orderBoxPicture} />
+                            <div onClick={showAttendanceMobile} className={`${styles.orderBoxPictureBtn} ${styles.onlymobile}`}>
+                                <div>
+                                    기능 이용해 보기
+                                </div>
+                                <div>
+                                    <RightChevronWhiteSvg className={styles.rightChevronWhite} />
+                                </div>
+                            </div>
                         </div>
                         <div className={styles.orderBoxDescriptionBox}>
                             <div className={styles.orderBoxDescriptionBoxTitle}>

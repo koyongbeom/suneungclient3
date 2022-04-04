@@ -100,17 +100,16 @@ const HeaderTwo: any = (props: any) => {
                         학습시스템
                     </div>
                 </Link>
-                <div className={styles.mobileMenuList}>
-                    전용 프로그램
-                </div>
                 <Link to="/review" style={{ textDecoration: "none", color: "inherit" }}>
                     <div className={styles.mobileMenuList}>
                         합격생 이야기
                     </div>
                 </Link>
-                <div className={styles.mobileMenuList}>
-                    커뮤니티
-                </div>
+                <Link to="/faq" style={{ textDecoration: "none", color: "inherit" }}>
+                    <div className={styles.mobileMenuList}>
+                        자주 묻는 질문
+                    </div>
+                </Link>
             </List>
         </Box>
     );
@@ -195,8 +194,13 @@ const HeaderTwo: any = (props: any) => {
                         상담 신청하기
                     </Button>
                 </div>
-                <div onClick={toggleDrawer("top", true)} className={`${styles.menubar} ${styles.onlymobile}`}>
-                    <MenuSvg style={{ width: "20px", transition: "all 150ms ease-in" }} fill="rgb(176,184,193)" />
+                <div className={`${styles.mainRightSection} ${styles.onlymobile}`}>
+                    <div className={`${styles.mobileRegisterBtn}`}>
+                        상담 신청
+                    </div>
+                    <div onClick={toggleDrawer("top", true)} className={`${styles.menubar} ${styles.onlymobile}`}>
+                        <MenuSvg style={{ width: "20px", transition: "all 150ms ease-in" }} fill="rgb(176,184,193)" />
+                    </div>
                 </div>
             </div>
 

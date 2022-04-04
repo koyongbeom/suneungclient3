@@ -5,7 +5,10 @@ import PermIdentityOutlinedIcon from '@mui/icons-material/PermIdentityOutlined';
 import Button from '@mui/material/Button';
 import { ReactComponent as MenuSvg } from '../svg/bars-regular.svg';
 import { ReactComponent as Xmark } from "../svg/xmark-regular.svg";
+
 import { ReactComponent as Logo } from "../svg/newlogo.svg";
+import { ReactComponent as LogoWhite } from "../svg/newlogowhite.svg";
+
 
 import { rgbToHex } from '@mui/material';
 import { Link } from 'react-router-dom';
@@ -57,7 +60,7 @@ const Header: any = (props: any) => {
         >
             <div className={styles.headerLogoBar}>
                 <Link to="/" style={{textDecoration : "none", color : "inherit"}}>
-                    <img className={`${styles.logoimg}`} src="img/longlogo.svg" alt="logo" />
+                    <Logo className={styles.logoimg} />
                 </Link>
                 <Xmark onClick={toggleDrawer(anchor, false)} style={{ width: "16.4px" }} fill="rgb(176,184,193)" />
             </div>
@@ -96,9 +99,11 @@ const Header: any = (props: any) => {
                         합격생 이야기
                     </div>
                 </Link>
-                <div className={styles.mobileMenuList}>
-                    자주 묻는 질문
-                </div>
+                <Link to="/faq" style={{ textDecoration: "none", color: "inherit" }}>
+                    <div className={styles.mobileMenuList}>
+                        자주 묻는 질문
+                    </div>
+                </Link>
             </List>
         </Box>
     );
@@ -107,9 +112,12 @@ const Header: any = (props: any) => {
     return (
         <div>
             <div className={`${styles.main} ${props.headerKind === "transparent" ? styles.transparent : ""} ${props.headerKind === "white" ? styles.white : ""}`}>
-                <div className={styles.logo}>
-                    <img className={`${styles.logoimg} ${props.headerKind !== "white" ? styles.none : ""}`} src="img/longlogo.svg" alt="logo" />
-                    <img className={`${styles.logoimg} ${styles.onlymobile} ${props.headerKind === "white" ? styles.none : ""}`} src="img/whitelogo.webp" alt="logo" />
+                <div className={`${styles.logo} ${styles.onlymobile}`}>
+                    {props.headerKind === "white" && <Logo className={styles.logoimg} />}
+                    {props.headerKind === "transparent" && <LogoWhite className={styles.logoimg} />}
+                </div>
+                <div className={`${styles.logo} ${styles.onlyPC}`}>
+                    <Logo className={styles.logoimg} />
                 </div>
                 <div className={`${styles.menu} ${styles.onlyPC}`}>
                     <ul className={styles.menuUl}>
@@ -158,9 +166,7 @@ const Header: any = (props: any) => {
                             <li
                                 onMouseEnter={() => { setHover(true); setHoverKind("study"); }} onMouseLeave={() => setHover(false)}
                             >
-
                                 학습시스템
-
                             </li>
                         </Link>
                         <Link to="/review" style={{ textDecoration: "none", color: "inherit" }}>
@@ -184,9 +190,18 @@ const Header: any = (props: any) => {
                         상담 신청하기
                     </Button>
                 </div>
-                <div className={`${styles.menubar} ${styles.onlymobile}`}>
-                    <MenuSvg onClick={toggleDrawer("top", true)} style={{ width: "20px", transition: "all 150ms ease-in" }} fill={`${props.headerKind === "white" ? "rgb(176,184,193)" : "white"} `} />
+                <div className={`${styles.mainRightSection} ${styles.onlymobile}`}>
+                    {
+                        props.headerKind === "white" &&
+                        <div className={`${styles.mobileRegisterBtn}`}>
+                            상담 신청
+                        </div>
+                    }
+                    <div onClick={toggleDrawer("top", true)} className={`${styles.menubar} ${styles.onlymobile}`}>
+                        <MenuSvg style={{ width: "20px" }} fill={`${props.headerKind === "white" ? "rgb(176,184,193)" : "white"} `} />
+                    </div>
                 </div>
+
             </div>
 
 

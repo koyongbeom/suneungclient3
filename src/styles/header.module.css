@@ -187,6 +187,27 @@
         width: 110px;
     }
 
+    .mainRightSection{
+        display: flex;
+        align-items: center;
+        height: 100%;
+    }
+
+    .mobileRegisterBtn{
+        color: black;
+        background-color: #1b49af;
+        width: 72px;
+        height: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        border-radius: 15px;
+        font-size: 12px;
+        font-weight: 400;
+        margin-right: 12px;
+    }
+
     .menubar {
         color: white;
         padding: 0 8px;

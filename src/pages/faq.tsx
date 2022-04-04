@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import HeaderTwo from "../components/header2";
 import styles from "../styles/faq.module.css";
 
@@ -22,21 +21,59 @@ import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 import Footer from "../components/footer";
 
-const top100Films = [
-    { label: 'The Shawshank Redemption', year: 1994 },
-    { label: 'The Godfather', year: 1972 },
-    { label: 'The Godfather: Part II', year: 1974 },
-    { label: 'The Dark Knight', year: 2008 },
-    { label: '12 Angry Men', year: 1957 },
-    { label: "Schindler's List", year: 1993 },
-    { label: 'Pulp Fiction', year: 1994 },
+import smoothscroll from "smoothscroll-polyfill";
+
+const categoryList = [
     {
-        label: 'The Lord of the Rings: The Return of the King',
-        year: 2003,
+        name : "전체",
+        en : "total"
     },
-    { label: 'The Good, the Bad and the Ugly', year: 1966 },
-    { label: 'Fight Club', year: 1999 },
+    {
+        name : "등록",
+        en : "register"
+    },
+    {
+        name : "생활관리",
+        en : "management"
+    },
+    {
+        name : "멘토링",
+        en : "mentor"
+    },
+    {
+        name : "질의응답",
+        en : "question"
+    },
+    {
+        name : "컨텐츠",
+        en : "contents"
+    },
+    {
+        name : "과외",
+        en : "coaching"
+    },
+    {
+        name : "배치상담",
+        en : "where"
+    },
+    {
+        name : "식사",
+        en : "meal"
+    },
+    {
+        name : "시설 이용",
+        en : "interior"
+    },
+    {
+        name : "비용 및 결제",
+        en : "price"
+    },
+    {
+        name : "기타",
+        en : "etc"
+    }
 ];
+
 
 
 const Faq: React.FC<any> = (props) => {
@@ -51,6 +88,10 @@ const Faq: React.FC<any> = (props) => {
     const [currentPage, setCurrentPage] = useState(1);
     const [autoCompleteKey, setAutoCompleteKey] = useState(Math.random());
     const [autoCompleteValue, setAutoCompleteValue] = useState<any>(0);
+
+    const listRef = useRef<any>(null);
+    const eachRef = useRef<any>(new Array());
+
 
     const handlePageChange = (event: React.ChangeEvent<unknown>, value: number) => {
         setCurrentPage(value);
@@ -168,7 +209,17 @@ const Faq: React.FC<any> = (props) => {
             getTitle(newSearchList);
             setCurrentList(newSearchList);
         }
-    }, [autoCompleteValue])
+    }, [autoCompleteValue]);
+
+    useEffect(()=>{
+        smoothscroll.polyfill();
+    });
+
+    const mobileChange = (type : string, eachIndex : number) => {
+        setCurrent(type);
+        const targetScroll = eachRef.current[eachIndex].getBoundingClientRect().x;
+        listRef.current.scrollTo({ left: targetScroll + listRef.current.scrollLeft - 120, behavior: "smooth" });
+    }
 
     const click = (e: any, index: number) => {
         if (index === clickedNumber) {
@@ -177,6 +228,8 @@ const Faq: React.FC<any> = (props) => {
             setClickedNumber(index);
         }
     }
+
+
 
     return (
         <div>
@@ -200,11 +253,21 @@ const Faq: React.FC<any> = (props) => {
             <div className={`${styles.currentMenuViewerBoarder} ${styles.onlyPC}`}>
             </div>
 
-            <div className={styles.titleText}>
+            <div className={`${styles.titleText} ${styles.onlyPC}`}>
                 문제가 해결되지 않았다면<br></br>언제든 연락해주세요.
             </div>
 
-            <div className={styles.listDiv}>
+            <div ref={listRef} className={`${styles.mobileTitleList} ${styles.onlymobile}`}>
+                {categoryList.map((eachList, indexNumber) => {
+                    return (
+                        <div key={indexNumber} ref={(element) => { eachRef.current.push(element) }} onClick={() => { mobileChange(eachList.en, indexNumber); }} className={`${styles.mobileEachListTitle} ${current === eachList.en ? styles.active : ""}`}>
+                            {eachList.name.split(" ")[0]}
+                        </div>
+                    );
+                })}
+            </div>
+
+            <div className={`${styles.listDiv} ${styles.onlyPC}`}>
                 <div onClick={(e: any) => { setCurrent("total") }} className={`${styles.eachList} ${current === "total" ? styles.active : ""}`}>
                     전체
                 </div>
@@ -244,7 +307,7 @@ const Faq: React.FC<any> = (props) => {
             </div>
 
             <div className={styles.selectDiv}>
-                <Box sx={{ width: 138 }}>
+                <Box sx={{ width: 138, "@media (max-width : 1024px)" : { width : "28.9%"} }}>
                     <FormControl fullWidth>
                         <Select
                             sx={{ boxSizing: "border-box", borderRadius: 0, border: "2px solid black", fontWeight: 700, "&:hover": { border: "2px solid black" }, "& .MuiOutlinedInput-notchedOutline": { border: "0px solid transparent !important" }, "& .MuiSvgIcon-root": { color: "black" } }}
@@ -264,7 +327,7 @@ const Faq: React.FC<any> = (props) => {
                     disablePortal
                     id="combo-box-demo"
                     options={searchList}
-                    sx={{ width: 234, marginLeft: "14px", border: "2px solid black", "& .MuiOutlinedInput-root": { borderRadius: 0 }, "&:hover": { border: "2px solid black" } }}
+                    sx={{ width: 234, marginLeft: "14px", border: "2px solid black", "& .MuiOutlinedInput-root": { borderRadius: 0 }, "&:hover": { border: "2px solid black" }, "@media (max-width : 1024px)" : { width : "54.93%", marginLeft : "3.5%"} }}
                     renderInput={(params: any) => <TextField
                         {...params}
                         InputProps={{
@@ -318,9 +381,15 @@ const Faq: React.FC<any> = (props) => {
                 }
             </div>
             
-            <div className={styles.pagination}>
+            <div className={`${styles.pagination} ${styles.onlyPC}`}>
                 <Stack spacing={2}>
-                    <Pagination count={pageCount} page={currentPage} onChange={handlePageChange} size="large"  shape="rounded" />
+                    <Pagination count={pageCount} page={currentPage} onChange={handlePageChange} size="large" shape="rounded" />
+                </Stack>
+            </div>
+
+            <div className={`${styles.pagination} ${styles.onlymobile}`}>
+                <Stack spacing={2}>
+                    <Pagination siblingCount={1} count={pageCount} page={currentPage} onChange={handlePageChange} size="medium" shape="rounded" />
                 </Stack>
             </div>
 

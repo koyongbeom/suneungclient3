@@ -62,7 +62,7 @@ const columns1: GridColDef[] = [
     { field: 'subject', headerName: '튜터', width: 100 },
     { field: 'chapter', headerName: '일자', width: 50, filterable: true },
     {
-        field: "inCorrectRatio", headerName: "신청률", width: 150, renderCell: (params: any) => {
+        field: "inCorrectRatio", headerName: "신청률", width: 120, renderCell: (params: any) => {
             if (params.value) {
                 return (
                     <div style={{ width: "100%", border: "1px solid rgba(0, 0, 0, 0.12)", height: "60%", position: "relative" }}>
@@ -185,6 +185,7 @@ const QuestionCheckMobile: React.FC<any> = (props) => {
                 </div>
                 <div className={classes.root} style={{ height: 300, width: '100%', backgroundColor: "white", marginTop: "8px" }}>
                     <StyledDataGrid loading={loading} rows={rows} columns={columns}
+                        density="compact"
                         initialState={{
                             rowGrouping : {
                                 model : INITIAL_GROUPING_COLUMN_MODEL

@@ -170,7 +170,7 @@
     line-height: 1.9em;
     overflow: hidden;
     max-height: 0px;
-    transition: max-height 150ms ease-out;
+    transition: max-height 50ms ease-out;
     padding-left: 40px;
     padding-right: 50px;
     white-space: pre-wrap;
@@ -206,4 +206,151 @@
     line-height: 1.4em;
     font-size: 16px;
     font-weight: 400;
+}
+
+.onlymobile{
+    display: none;
+}
+
+@media only screen and (max-width : 1024px) {
+
+    .onlymobile{
+        display: block;
+    }
+
+    .onlyPC{
+        display: none;
+    }
+
+    .voidHeader {
+        height: 59px;
+    }
+    
+    .titleText{
+        margin-top: 61px;
+        font-size: 21px;
+        letter-spacing: -0.43px;
+        line-height: 33px;
+        margin-bottom: 30px;
+    }
+
+    .mobileTitleList {
+        margin-top: 19.5px;
+        display: flex;
+        overflow: auto;
+        border-bottom: 0.5px solid #e7e7e7;
+        margin-bottom: 49px;
+        padding-left: 20px;
+        padding-top: 17px;
+        padding-right: 240px;
+    }
+
+    .mobileTitleList::-webkit-scrollbar{
+        background-color: #f5f5f5;
+        width: 0px !important;
+        height: 0px !important;
+    }
+    
+    .mobileTitleList::-webkit-scrollbar-thumb{
+        background-color: #bbbcb6;
+        border-radius: 0px;
+    }
+
+    .mobileEachListTitle{
+        flex-shrink: 0;
+        font-size: 16px;
+        letter-spacing: -0.74px;
+        padding-left: 4px;
+        padding-right: 4px;
+        padding-bottom: 16px;
+        margin-right: 25px;
+        font-family: "Apple_SB";
+        line-break: strict !important;
+    }
+
+    .mobileEachListTitle.active{
+        border-bottom: 2.5px solid #1b49af;
+    }
+
+    .selectDiv{
+        width: auto;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 30px;
+    }
+
+    .questionListDiv{
+        width: 87.4%;
+        margin-bottom: 56.25px;
+    }
+
+    .eachQuestion{
+        padding: 0;
+        padding: 5.172vw 0;
+    }
+
+    .qSvgDiv{
+        padding-top: 4px;
+        margin-right: 8px;
+    }
+
+    .qSvg{
+        width: 14px;
+    }
+
+    .questionText{
+        font-size: 16px;
+        line-height: normal;
+    }
+
+    .questionForward{
+        align-items: initial;
+        margin-right: 12px;
+    }
+
+    .chevronDown{
+        width: 11px;
+    }
+
+    .answer{
+        padding-left: 5.215vw;
+        padding-right: 5.215vw;
+        font-size: 14px;
+    }
+
+    .answer.active{
+        padding-top: 3.78vw;
+        padding-bottom: 1.303vw;
+    }
+
+    .pagination.onlymobile{
+        width: 351px;
+        margin: 0 auto;
+        margin-bottom: 66.146px !important;
+        display: flex;
+    }
+
+    .bottomInfoDiv{
+        width: 87.4%;
+        padding: 5.3898vw 6.954vw;
+        margin-bottom: 78.1725px;
+    }
+
+    .bottomInfoText{
+        font-size: 14.175px;
+    }
+
+    .bottomInfoNumber{
+        font-size: 14.175px;
+    }
+
+}
+
+@media only screen and (max-width : 350px) {
+    .pagination{
+        width: auto;
+    }
+
+
 }

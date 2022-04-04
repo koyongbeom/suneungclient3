@@ -272,9 +272,9 @@ const Teachers: React.FC<any> = (props) => {
                 </div>
             </div>
             
-            <Fab onClick={moveTop}  size="medium" sx={{position : "fixed", bottom : 16, right : 16}} color="primary" aria-label="add">
+            {/* <Fab onClick={moveTop}  size="medium" sx={{position : "fixed", bottom : 16, right : 16}} color="primary" aria-label="add">
                 <ArrowUpwardIcon />
-            </Fab>
+            </Fab> */}
 
             <Footer />
 

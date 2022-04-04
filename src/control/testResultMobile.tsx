@@ -56,11 +56,11 @@ const INITIAL_GROUPING_COLUMN_MODEL = ['domain', 'subject'];
 
 
 const columns1: GridColDef[] = [
-    { field: 'domain', headerName: '영역', width: 80 },
-    { field: 'subject', headerName: '과목', width: 80 },
-    { field: 'chapter', headerName: '단원', width: 60, filterable: true },
+    { field: 'domain', headerName: '영역', width: 70 },
+    { field: 'subject', headerName: '과목', width: 70 },
+    { field: 'chapter', headerName: '단원', width: 70, filterable: true },
     {
-        field: "inCorrectRatio", headerName: "오답률", width: 150, renderCell: (params: any) => {
+        field: "inCorrectRatio", headerName: "오답률", width: 120, renderCell: (params: any) => {
             if (params.value) {
                 return (
                     <div style={{ width: "100%", border: "1px solid rgba(0, 0, 0, 0.12)", height: "60%", position: "relative" }}>
@@ -220,6 +220,7 @@ const TestResultMobile: React.FC<any> = (props) => {
                 </div>
                 <div className={classes.root} style={{ height: 300, width: '100%', backgroundColor: "white", marginTop: "8px" }}>
                     <StyledDataGrid loading={loading} rows={rows} columns={columns}
+                        density="compact"
                         initialState={{
                             rowGrouping: {
                                 model: INITIAL_GROUPING_COLUMN_MODEL

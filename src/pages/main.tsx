@@ -150,19 +150,15 @@ const MainPage: any = (props: any) => {
     }, []);
 
     const listener = (e: any) => {
-        const scroll = scrollRef.current.getBoundingClientRect();
-        const clientScrollY = scroll.top;
+        // const scroll = scrollRef.current.getBoundingClientRect();
+        // const clientScrollY = scroll.top;
         const scrollY = window.pageYOffset;
 
         if (scrollY === 0) {
             setHeaderKind("transparent");
         }
 
-        if (headerKind === "transparent" && scrollY > 0) {
-            setHeaderKind("filter");
-        }
-
-        if (headerKind !== "white" && clientScrollY < 110) {
+        if (headerKind === "transparent" && scrollY > 10) {
             setHeaderKind("white");
         }
     }

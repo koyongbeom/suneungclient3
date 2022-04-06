@@ -17,6 +17,7 @@ import list from "../data/interiorlist";
 import { Button } from "@mui/material";
 import ImageTransitionInterior from "../control/imagetransitioninterior";
 import { useLocation } from "react-router-dom";
+import SpeedDialComponent from "../control/speeddial";
 
 declare var naver : any;
 
@@ -326,7 +327,7 @@ const Map: React.FC<any> = (props) => {
 
 
 
-
+            <SpeedDialComponent />
 
 
             <Footer />

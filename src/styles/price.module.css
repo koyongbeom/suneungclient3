@@ -1,0 +1,288 @@
+.main{
+    background-color: #edf1f5;
+    padding-bottom: 80px;
+}
+
+.main2{
+    background-color: #e6e9f2;
+    padding-bottom: 80px;
+}
+
+.voidHeader{
+    height: 82px;
+}
+
+.innerMain{
+    width: 1080px;
+    margin: 0 auto;
+    padding-top: 70px;
+}
+
+.mainTitle{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 36px;
+    font-weight: 700;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.37;
+    letter-spacing: -1.22px;
+    color: rgb(26, 26, 26);
+}
+
+.mainSubTitle{
+    font-size: 18px;
+    line-height: 1.8;
+    letter-spacing: -1.4px;
+    color: rgb(26, 26, 26);
+    text-align: center;
+    margin-top: 22px;
+}
+
+.mainBtnDiv{
+    margin-top: 16px;
+    text-align: center;
+}
+
+.mainPriceDiv{
+    margin-top: 46px;
+    display: flex;
+}
+
+.mainPriceDiv2{
+    margin: 0 auto;
+    width: 48.986%;
+    margin-top: 46px;
+    display: flex;
+}
+
+.priceBox{
+    padding: 30px 20px 30px 20px;
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: 0px;
+    background-color: white;
+    margin-right: 22px;
+    border-radius: 20px;
+}
+
+.priceBox.last{
+    margin-right: 0;
+}
+
+.priceBoxTitle{
+    width: 100%;
+    height: 52px;
+    font-size: 24px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 52px;
+    letter-spacing: -0.62px;
+    color: #1b49af;
+}
+
+.priceBoxText{
+    height: 40px;
+    line-height: 40px;
+    width: 100%;
+    color: rgb(26, 26, 26);
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.priceBoxAmount{
+    width: 100%;
+    margin-top: 6px;
+    font-size: 16px;
+    color: rgb(26, 26, 26);
+}
+
+.number{
+    color: rgb(26, 26, 26);
+    font-size: 38px;
+    font-weight: 700;
+    font-stretch: normal;
+    font-style: normal;
+    letter-spacing: -1.2px;
+}
+
+.priceBoxSubAmount{
+    margin-top: 17px;
+    color: rgb(146, 146, 146);
+    font-size: 15px;
+    letter-spacing: -0.36px;
+}
+
+.bottomText{
+    margin-bottom: 5px;
+    width: 100%;
+    margin-top: 32px;
+    font-size: 18px;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.8;
+    letter-spacing: -1.4px;
+    color: #1a1a1a;
+}
+
+.priceSubDescription{
+    margin-top: 60px;
+}
+
+.priceSubDescription_1{
+    text-align: center;
+    color: #a3aab7;
+    font-size: 18px;
+    line-height: 1.6;
+    letter-spacing: -0.36px;
+}
+
+
+.onlymobile{
+    display: none;
+}
+
+@media only screen and (max-width : 1024px) {
+
+    .onlymobile{
+        display: block;
+    }
+
+
+    .onlyPC{
+        display: none;
+    }
+
+    .voidHeader {
+        height: 59px;
+    }
+
+    .main{
+        padding-bottom: 30px;
+    }
+
+    .main2{
+        padding-bottom: 60px;
+    }
+
+    .innerMain{
+        width: 91.5%;
+        padding-top: 51px;
+    }
+
+    .mainTitle{
+        font-size: 24px;
+        line-height: 1.5;
+        letter-spacing: -1px;
+        color: #1a1a1a;
+    }
+
+    .mainSubTitle{
+        margin-top: 26px;
+        font-size: 15px;
+        line-height: 1.5;
+        letter-spacing: -1px;
+        color: #1a1a1a;
+    }
+
+    .mainBtnDiv{
+        margin-top: 24px;
+    }
+
+    .mainPriceDiv{
+        display: block;
+        margin: 0 auto;
+        margin-top: 56px;
+        width: 230px !important;
+    }
+
+    .mainPriceDiv2{
+        display: block;
+        margin: 0 auto;
+        width: 240px !important;
+        margin-top: 56px;
+    }
+
+    .description{
+        display: none;
+        margin-top: 85px;
+        text-align: center;
+        color: rgb(163, 170, 183);
+        font-weight: 500;
+    }
+
+    .priceBox{
+        padding: 18px 20px 18px 20px;
+        margin-right: 0px;
+        width: 100%;
+        margin-bottom: 16px;
+        border-radius: 12px;
+    }
+
+    .priceBox.last{
+        margin-bottom: 0px;
+    }
+
+    .priceBoxTitle{
+        text-align: center;
+        line-height: 18px;
+        height: auto;
+        font-size: 17px;
+        letter-spacing: -0.62px;
+        margin-bottom: 7px;
+    }
+
+    .priceBoxText{
+        text-align: center;
+        height: auto;
+        line-height: 16px;
+        font-weight: 500;
+        margin-bottom: 10px;
+        letter-spacing: -0.62px;
+        font-size: 14px;
+    }
+
+    .priceBoxAmount{
+        text-align: center;
+        margin-top: 0px;
+        margin-bottom: 10px;
+        font-size: 12px;
+    }
+
+    .number{
+        font-size: 23px;
+        letter-spacing: -1.52px;
+    }
+
+    .priceBoxSubAmount{
+        display: none;
+    }
+
+    .bottomText{
+        text-align: center;
+        font-weight: 300;
+        margin-top: 0px;
+        font-size: 13px;
+        margin-bottom: 0px;
+        line-height: 17px;
+        letter-spacing: -1.4px;
+    }
+
+    .priceSubDescription{
+        margin: 0 auto;
+        margin-top: 16px;
+        width: 205.88px;
+        padding-bottom: 18px;
+    }
+
+    .priceSubDescription_1{
+        text-align: left;
+        font-size: 12px;
+        line-height: 1.5;
+        color: #a3aab7;
+        letter-spacing: -1px;
+    }
+
+}

@@ -11,7 +11,7 @@ import { ReactComponent as LogoWhite } from "../svg/newlogowhite.svg";
 
 
 import { rgbToHex } from '@mui/material';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import Box from '@mui/material/Box';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
@@ -35,6 +35,7 @@ const Header: any = (props: any) => {
         bottom: false,
         right: false,
     });
+    const navigate = useNavigate();
 
     const toggleDrawer =
         (anchor: Anchor, open: boolean) =>
@@ -85,9 +86,11 @@ const Header: any = (props: any) => {
                             위치 및 시설 소개
                         </div>
                     </Link>
-                    <div className={styles.mobileSubMenuList}>
-                        비용 안내
-                    </div>
+                    <Link to="/price" style={{ textDecoration: "none", color: "inherit" }}>
+                        <div className={styles.mobileSubMenuList}>
+                            비용 안내
+                        </div>
+                    </Link>
                 </Collapse>
                 <Link to="/studysystem" style={{ textDecoration: "none", color: "inherit" }}>
                     <div className={styles.mobileMenuList}>
@@ -112,96 +115,98 @@ const Header: any = (props: any) => {
     return (
         <div>
             <div className={`${styles.main} ${props.headerKind === "transparent" ? styles.transparent : ""} ${props.headerKind === "white" ? styles.white : ""}`}>
-                <div className={`${styles.logo} ${styles.onlymobile}`}>
-                    {props.headerKind === "white" && <Logo className={styles.logoimg} />}
-                    {props.headerKind === "transparent" && <LogoWhite className={styles.logoimg} />}
-                </div>
-                <div className={`${styles.logo} ${styles.onlyPC}`}>
-                    <Logo className={styles.logoimg} />
-                </div>
-                <div className={`${styles.menu} ${styles.onlyPC}`}>
-                    <ul className={styles.menuUl}>
-                        <li
-                            style={{ position: "relative" }}
-                            onMouseEnter={() => { setHover(true); setHoverKind("introduce"); }} onMouseLeave={() => {setHover(false); setHoverKind("")}}
-                        >
-                            <Link to="/ceo"  style={{ textDecoration: "none", color: "inherit" }}>
-                                학원소개
-                            </Link>
-                            {
-                                hoverKind === "introduce" &&
-                                <div className={styles.cateBox}>
-                                    <Link to="/ceo" style={{ textDecoration: "none", color: "inherit" }} className={styles.pcLink}>
-                                        <div className={styles.cateSubMenu}>
-                                            <span className={styles.cateSubMenuText}>
-                                                대표 소개
-                                            </span>
-                                        </div>
-                                    </Link>
-                                    <Link to="/teachers" style={{ textDecoration: "none", color: "inherit" }}>
-                                        <div className={styles.cateSubMenu}>
-                                            <span className={styles.cateSubMenuText}>
-                                                담임선생님 소개
-                                            </span>
-                                        </div>
-                                    </Link>
-                                    <Link to="/map" style={{ textDecoration: "none", color: "inherit" }}>
-                                        <div className={styles.cateSubMenu}>
-                                            <span className={styles.cateSubMenuText}>
-                                                위치 및 시설
-                                            </span>
-                                        </div>
-                                    </Link>
-                                    <Link to="/map" style={{ textDecoration: "none", color: "inherit" }}>
-                                        <div className={styles.cateSubMenu}>
-                                            <span className={styles.cateSubMenuText}>
-                                                비용 안내
-                                            </span>
-                                        </div>
-                                    </Link>
-                                </div>
-                            }
-                        </li>
-                        <Link to="/studysystem" style={{ textDecoration: "none", color: "inherit" }}>
-                            <li
-                                onMouseEnter={() => { setHover(true); setHoverKind("study"); }} onMouseLeave={() => setHover(false)}
-                            >
-                                학습시스템
-                            </li>
-                        </Link>
-                        <Link to="/review" style={{ textDecoration: "none", color: "inherit" }}>
-                            <li
-                                onMouseEnter={() => { setHover(true); setHoverKind("honor"); }} onMouseLeave={() => setHover(false)}
-                            >
-                                합격생 이야기
-                            </li>
-                        </Link>
-                        <Link to="/faq" style={{ textDecoration: "none", color: "inherit" }}>
-                            <li
-                                onMouseEnter={() => { setHover(true); setHoverKind("community"); }} onMouseLeave={() => setHover(false)}
-                            >
-                                자주 묻는 질문
-                            </li>
-                        </Link>
-                    </ul>
-                </div>
-                <div className={styles.onlyPC}>
-                    <Button sx={{ backgroundColor: "#1b49af", width: "163px", height: "51px", borderRadius: "24.6px", fontWeight: 700 }} variant="contained" startIcon={<PermIdentityOutlinedIcon />}>
-                        상담 신청하기
-                    </Button>
-                </div>
-                <div className={`${styles.mainRightSection} ${styles.onlymobile}`}>
-                    {
-                        props.headerKind === "white" &&
-                        <div className={`${styles.mobileRegisterBtn}`}>
-                            상담 신청
-                        </div>
-                    }
-                    <div onClick={toggleDrawer("top", true)} className={`${styles.menubar} ${styles.onlymobile}`}>
-                        <MenuSvg style={{ width: "20px" }} fill={`${props.headerKind === "white" ? "rgb(176,184,193)" : "white"} `} />
+                <div className={styles.mainDiv}>
+                    <div className={`${styles.logo} ${styles.onlymobile}`}>
+                        {props.headerKind === "white" && <Logo className={styles.logoimg} />}
+                        {props.headerKind === "transparent" && <LogoWhite className={styles.logoimg} />}
                     </div>
-                </div>
+                    <div className={`${styles.logo} ${styles.onlyPC}`}>
+                        <Logo className={styles.logoimg} />
+                    </div>
+                    <div className={`${styles.menu} ${styles.onlyPC}`}>
+                        <ul className={styles.menuUl}>
+                            <li
+                                style={{ position: "relative" }}
+                                onMouseEnter={() => { setHover(true); setHoverKind("introduce"); }} onMouseLeave={() => { setHover(false); setHoverKind("") }}
+                            >
+                                <Link to="/ceo" style={{ textDecoration: "none", color: "inherit" }}>
+                                    학원소개
+                                </Link>
+                                {
+                                    hoverKind === "introduce" &&
+                                    <div className={styles.cateBox}>
+                                        <Link to="/ceo" style={{ textDecoration: "none", color: "inherit" }} className={styles.pcLink}>
+                                            <div className={styles.cateSubMenu}>
+                                                <span className={styles.cateSubMenuText}>
+                                                    대표 소개
+                                                </span>
+                                            </div>
+                                        </Link>
+                                        <Link to="/teachers" style={{ textDecoration: "none", color: "inherit" }}>
+                                            <div className={styles.cateSubMenu}>
+                                                <span className={styles.cateSubMenuText}>
+                                                    담임선생님 소개
+                                                </span>
+                                            </div>
+                                        </Link>
+                                        <Link to="/map" style={{ textDecoration: "none", color: "inherit" }}>
+                                            <div className={styles.cateSubMenu}>
+                                                <span className={styles.cateSubMenuText}>
+                                                    위치 및 시설
+                                                </span>
+                                            </div>
+                                        </Link>
+                                        <Link to="/price" style={{ textDecoration: "none", color: "inherit" }}>
+                                            <div className={styles.cateSubMenu}>
+                                                <span className={styles.cateSubMenuText}>
+                                                    비용 안내
+                                                </span>
+                                            </div>
+                                        </Link>
+                                    </div>
+                                }
+                            </li>
+                            <Link to="/studysystem" style={{ textDecoration: "none", color: "inherit" }}>
+                                <li
+                                    onMouseEnter={() => { setHover(true); setHoverKind("study"); }} onMouseLeave={() => setHover(false)}
+                                >
+                                    학습시스템
+                                </li>
+                            </Link>
+                            <Link to="/review" style={{ textDecoration: "none", color: "inherit" }}>
+                                <li
+                                    onMouseEnter={() => { setHover(true); setHoverKind("honor"); }} onMouseLeave={() => setHover(false)}
+                                >
+                                    합격생 이야기
+                                </li>
+                            </Link>
+                            <Link to="/faq" style={{ textDecoration: "none", color: "inherit" }}>
+                                <li
+                                    onMouseEnter={() => { setHover(true); setHoverKind("community"); }} onMouseLeave={() => setHover(false)}
+                                >
+                                    자주 묻는 질문
+                                </li>
+                            </Link>
+                        </ul>
+                    </div>
+                    <div className={styles.onlyPC}>
+                        <Button onClick={(e : any)=>{navigate("/register")}} sx={{ backgroundColor: "#1b49af !important", width: "163px", height: "51px", borderRadius: "9px", fontWeight: 700 }} variant="contained" startIcon={<PermIdentityOutlinedIcon />}>
+                            상담 신청하기
+                        </Button>
+                    </div>
+                    <div className={`${styles.mainRightSection} ${styles.onlymobile}`}>
+                        {
+                            props.headerKind === "white" &&
+                            <div onClick={(e : any)=>{navigate("/register")}} className={`${styles.mobileRegisterBtn}`}>
+                                상담 신청
+                            </div>
+                        }
+                        <div onClick={toggleDrawer("top", true)} className={`${styles.menubar} ${styles.onlymobile}`}>
+                            <MenuSvg style={{ width: "20px" }} fill={`${props.headerKind === "white" ? "rgb(176,184,193)" : "white"} `} />
+                        </div>
+                    </div>
 
+                </div>
             </div>
 
 

@@ -12,9 +12,9 @@
 }
 
 .subHeader{
-    height: 513px;
+    height: 450px;
     min-width: 1150px;
-    background-position: 0% 32%;
+    background-position: 0% 30%;
     background-size: 100% auto;
     overflow: hidden;
     /* filter: grayscale(1); */

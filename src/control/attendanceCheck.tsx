@@ -694,9 +694,9 @@ const SecondTotalAttendanceProcess: React.FC<any> = (props) => {
             </div>
 
             <div>
-                <div className={styles.number} style={{fontFamily : "Apple_R", fontSize : "14px"}}>
+                {/* <div className={styles.number} style={{fontFamily : "Apple_R", fontSize : "14px"}}>
                     OUT : {outNumber}명 / IN : {inNumber}명
-                </div>
+                </div> */}
             </div>
 
             {/* {

@@ -14,6 +14,7 @@ import { ReactComponent as BookSvg2 } from "../svg/auto_stories.svg";
 import list from "../data/teacherslist"
 import Footer from "../components/footer";
 import { Button } from "@mui/material";
+import SpeedDialComponent from "../control/speeddial";
 
 const Teachers: React.FC<any> = (props) => {
     const [index, setIndex] = useState(0);
@@ -275,6 +276,8 @@ const Teachers: React.FC<any> = (props) => {
             {/* <Fab onClick={moveTop}  size="medium" sx={{position : "fixed", bottom : 16, right : 16}} color="primary" aria-label="add">
                 <ArrowUpwardIcon />
             </Fab> */}
+
+            <SpeedDialComponent />
 
             <Footer />
 

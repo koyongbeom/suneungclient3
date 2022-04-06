@@ -12,6 +12,7 @@ import cookieFunction from "../data/cookies"
 import cookies from "../data/cookies";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
+import SpeedDialComponent from "../control/speeddial";
 
 
 
@@ -373,6 +374,8 @@ const Review: React.FC<any> = (props) => {
                     영상으로 만나는<br></br>합격생들의 이야기
                 </div>
             </div>
+
+            <SpeedDialComponent />
 
             <Footer />
 

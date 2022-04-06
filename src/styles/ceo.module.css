@@ -416,7 +416,7 @@
     }
 
     .ceoCareerTitle{
-        padding-left: 4.7%;
+        padding-left: 8.65%;
         font-size: 17.8px;
         font-weight: 700;
         letter-spacing: -0.44px;
@@ -446,5 +446,13 @@
         width: 100%;
     }
 
-    
+    .btnFilter{
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.6);
+        z-index: 1;
+        position: fixed;
+        top: 0;
+        left: 0;
+    }
 }

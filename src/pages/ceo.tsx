@@ -2,23 +2,26 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Footer from '../components/footer';
 import HeaderTwo from '../components/header2';
+import SpeedDialComponent from '../control/speeddial';
 import styles from "../styles/ceo.module.css";
-
 import { ReactComponent as RightChevronSvg } from '../svg/chevron-right-thin.svg';
 import { ReactComponent as HouseSvg } from '../svg/house-thin.svg';
 
 
+
 const Ceo: any = (props: any) => {
+
 
     const navigate = useNavigate();
 
-    useEffect(()=>{
+    useEffect(() => {
         window.scrollTo(0, 0);
     }, [])
 
     return (
         <div className={styles.main}>
             <HeaderTwo />
+
             <div className={styles.voidHeader}>
 
             </div>
@@ -81,7 +84,7 @@ const Ceo: any = (props: any) => {
                                 갈피를 못 잡고 헤메는 경우가 대다수였습니다. 하지만, 현재 공부법을 면밀히 분석한 후<br></br>개선점을 하나씩 찾아내 조금씩 바꿔나가면 학생도 적응이 빠르고 훨씬 더 좋은 결과를<br></br>도출했습니다. 이 경험을 학습 상담에 적용시키고 있습니다.
                             </div>
                             <div className={`${styles.ceoDescriptionTextBoxDescription} ${styles.onlymobile}`}>
-                                가장 좋은 공부법은 학생의 공부 스타일을 180도 바꿔버리는 것이 아니고 현재 공부 스타일을 면밀히 확인한 후 개선점을 찾아나가는 것이었습니다. 학생의 현재 공부법을 180도 바꾸려고 했을 때 오히려 학생은 현재까지 해왔던 공부방법과 너무 달라 
+                                가장 좋은 공부법은 학생의 공부 스타일을 180도 바꿔버리는 것이 아니고 현재 공부 스타일을 면밀히 확인한 후 개선점을 찾아나가는 것이었습니다. 학생의 현재 공부법을 180도 바꾸려고 했을 때 오히려 학생은 현재까지 해왔던 공부방법과 너무 달라
                                 갈피를 못 잡고 헤메는 경우가 대다수였습니다. 하지만, 현재 공부법을 면밀히 분석한 후 개선점을 하나씩 찾아내 조금씩 바꿔나가면 학생도 적응이 빠르고 훨씬 더 좋은 결과를 도출했습니다. 이 경험을 학습 상담에 적용시키고 있습니다.
                             </div>
                         </div>
@@ -94,7 +97,7 @@ const Ceo: any = (props: any) => {
                                 경쟁자들 옆에서 공부하기 위함입니다. 저는 독학관리학원의 기본을 확실히 하는데 모든<br></br>노력을 쏟고 있으며 어떤 업체보다 기본이 확실하다는 자부심을 갖고 있습니다.
                             </div>
                             <div className={`${styles.ceoDescriptionTextBoxDescription} ${styles.onlymobile}`}>
-                                기본이라 함은 학생들이 독학관리학원을 선택하는 가장 큰 니즈를 충족시켜주는 것입니다. 학생들이 독학관리학원을 선택하는 이유는 엄격한 생활 관리, 양질의 상담/질의응답을 받으며 
+                                기본이라 함은 학생들이 독학관리학원을 선택하는 가장 큰 니즈를 충족시켜주는 것입니다. 학생들이 독학관리학원을 선택하는 이유는 엄격한 생활 관리, 양질의 상담/질의응답을 받으며
                                 경쟁자들 옆에서 공부하기 위함입니다. 저는 독학관리학원의 기본을 확실히 하는데 모든 노력을 쏟고 있으며 어떤 업체보다 기본이 확실하다는 자부심을 갖고 있습니다.
                             </div>
 
@@ -127,18 +130,18 @@ const Ceo: any = (props: any) => {
                     </div>
                     <div className={styles.ceoCareerPicture}>
                         <img className={`${styles.ceoCareerPicture_1} ${styles.ceoOathPicture}`} src="img/oath5.webp" alt="ceo" />
-                        <div className={styles.onlymobile} style={{height : "43px"}}></div>
+                        <div className={styles.onlymobile} style={{ height: "43px" }}></div>
                         <img className={styles.ceoCareerPicture_2} src="img/oath3.webp" alt="oath" />
-                        <div className={styles.onlymobile} style={{height : "43px"}}></div>
+                        <div className={styles.onlymobile} style={{ height: "43px" }}></div>
                         <img className={styles.ceoCareerPicture_3} src="img/consult3.webp" alt="consult" />
                     </div>
                 </div>
                 <div className={`${styles.grayBox} ${styles.onlyPC}`}>
-                
+
                 </div>
             </div>
 
-
+            <SpeedDialComponent />
 
             <Footer />
         </div>

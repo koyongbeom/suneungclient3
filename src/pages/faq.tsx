@@ -22,6 +22,7 @@ import Stack from '@mui/material/Stack';
 import Footer from "../components/footer";
 
 import smoothscroll from "smoothscroll-polyfill";
+import SpeedDialComponent from "../control/speeddial";
 
 const categoryList = [
     {
@@ -401,6 +402,8 @@ const Faq: React.FC<any> = (props) => {
                     010-9809-0489
                 </span>
             </div>
+
+            <SpeedDialComponent />
 
             <Footer />
         </div>

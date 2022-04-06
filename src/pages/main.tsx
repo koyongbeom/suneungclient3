@@ -20,6 +20,7 @@ import ImageTransition from '../control/imagetransition';
 import Footer from '../components/footer';
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
+import SpeedDialComponent from '../control/speeddial';
 
 const mobileTutorList = [
     {
@@ -225,21 +226,27 @@ const MainPage: any = (props: any) => {
     return (
         <div className={styles.main}>
             <Header className={styles.menubar} headerKind={headerKind} />
-            <div style={{ backgroundImage: "url(img/main3.webp)" }} className={styles.mainImgDiv}>
+            <div style={{ backgroundImage: "url(img/main99999.webp)" }} className={styles.mainImgDiv}>
                 <animated.div style={titleprops} className={styles.mainText}>
-                    <div>독학관리전문 수능선배에서</div>
+                    <div>독학재수전문 수능선배에서</div>
                     <div className={`${styles.onlyPC} ${styles.firstSectionPCTitle_1}`}>매일 12시간씩 집중하게 될겁니다</div>
                     <div className={`${styles.onlymobile} ${styles.firstSectionMobileTitle_1}`}>매일 12시간씩</div>
                     <div className={`${styles.onlymobile} ${styles.firstSectionMobileTitle_2}`}>집중하게 될겁니다</div>
-                    <div className={`${styles.onlyPC} ${styles.firstSectionPCTitle_2}`}>엄격한 생활관리와, 초호화 튜터진 수능선배입니다</div>
                     <div className={styles.chevronDownDiv}>
                         <Mount />
                     </div>
                 </animated.div>
+
+                <div className={styles.mainBlackFilter}>
+
+                </div>
             </div>
+
+
             <div className={styles.secondSection}>
 
-                <div style={{ backgroundImage: "url(img/secondbg.webp)" }} className={styles.secondSectionBackground}>
+                {/* <div style={{ backgroundImage: "url(img/secondbg.webp)" }} className={styles.secondSectionBackground}> */}
+                <div className={styles.secondSectionBackground}>
                     <div className={`${styles.secondSectionTitle_1} ${styles.onlyPC}`}>
                         독학관리에 진심인 사람들이 함께 모여
                     </div>
@@ -1344,6 +1351,11 @@ const MainPage: any = (props: any) => {
 
                 </div>
             </div>
+            
+            {
+                headerKind === "white" &&
+                <SpeedDialComponent />
+            }
 
             <Footer />
 

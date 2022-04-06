@@ -58,6 +58,7 @@ import TestResultMobile from "../control/testResultMobile";
 import PreviousChart from "../control/chart";
 import QuestionCheckMobile from "../control/questioncheckmobile";
 import { useNavigate } from "react-router-dom";
+import SpeedDialComponent from "../control/speeddial";
 
 const StudySystem: React.FC = (props: any) => {
     const [open, setOpen] = React.useState(false);
@@ -1525,6 +1526,7 @@ const StudySystem: React.FC = (props: any) => {
 
 
 
+        <SpeedDialComponent />
 
         </div>
     );

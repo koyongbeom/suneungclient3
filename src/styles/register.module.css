@@ -1,0 +1,77 @@
+.voidHeader {
+    height: 82px;
+}
+
+.titleText{
+    margin-top: 101px;
+    text-align: center;
+    font-size: 30.5px;
+    font-weight: 700;
+    letter-spacing: -0.76px;
+    line-height: 42px;
+    color: #272727;
+}
+
+.subTitleText{
+    margin-top: 42px;
+    text-align: center;
+    font-size: 15.5px;
+    font-weight: 300;
+    line-height: 28px;
+    letter-spacing: -0.39px;
+    color: #646464;
+}
+
+.formBody{
+    width: 500px;
+    margin: 0 auto;
+}
+
+.questionText{
+    border-bottom: 2px solid #c5c5c5;
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: -0.55px;
+    color: #353535;
+    padding-bottom: 23px;
+}
+
+.questionText.first{
+    margin-top: 80px;
+    border-bottom: 2px solid black;
+    margin-bottom: 30px;
+}
+
+.selectDiv{
+    display: flex;
+}
+
+.select{
+    cursor: pointer;
+    flex-basis: 0;
+    flex-shrink: 0;
+    flex-grow: 1;
+    margin-right: 9px;
+    border: 1px solid #c8c8c8;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    border-radius: 6px;
+    color: #c8c8c8;
+}
+
+.select.last{
+    margin-right: 0px;
+}
+
+.select.active{
+    background-color: #1b49af;
+    color: white;
+    border: 0px;
+}
+
+.questionText.second{
+    margin-top: 72px;
+    margin-bottom: 42px;
+}
+

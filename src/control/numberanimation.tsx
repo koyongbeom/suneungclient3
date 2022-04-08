@@ -23,7 +23,7 @@ const NumberAnimation = (props : any) => {
         observer.observe(ref_1.current);
     }, [])
 
-    const numberprops = useSpring({ number: isVisible_1 ? props.number : 0, from: { number: 0 }, delay: props.delay, config: config.slow });
+    const numberprops = useSpring({ number: isVisible_1 ? props.number : 0, from: { number: 0 }, delay: props.delay, config: config.gentle });
 
     return (
     <animated.span ref={ref_1} className="number">

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, BrowserRouter as Router, Link, Routes } from "react-router-dom"
 import Ceo from './pages/ceo';
+import Complete from './pages/complete';
 import Faq from './pages/faq';
 import MainPage from "./pages/main";
 import Map from './pages/map';
@@ -9,7 +10,6 @@ import Register from './pages/register';
 import Review from './pages/review';
 import StudySystem from './pages/studysystem';
 import Teachers from './pages/teachers';
-
 
 function App() {
 
@@ -26,6 +26,8 @@ function App() {
           <Route path="/faq" element={<Faq />}></Route>
           <Route path="/price" element={<Price />}></Route>
           <Route path="/register" element={<Register />}></Route>
+          <Route path="/complete" element={<Complete />}></Route>
+
         </Routes>
       </div>
 

@@ -7,6 +7,8 @@ import { ReactComponent as RightChevronSvg } from '../svg/chevron-right-light.sv
 import { ReactComponent as DownChevronSvg } from '../svg/chevron-down-light.svg';
 
 import { ReactComponent as GrayLogoSvg } from '../svg/graylogo.svg';
+import { ReactComponent as GrowChart } from '../svg/growchart.svg';
+
 import { useSpring, animated, config, Transition } from "react-spring";
 
 import Button from '@mui/material/Button'
@@ -79,7 +81,7 @@ const MainPage: any = (props: any) => {
     const ref3 = useRef<any>(null);
     const ref4 = useRef<any>(null);
     const ref5 = useRef<any>(null);
-
+    const ref6 = useRef<any>(null);
 
     const [mobileFourthSectionMenuSelector, setMobileFourthSectionMenuSelector] = useState<number>(1);
 
@@ -109,6 +111,14 @@ const MainPage: any = (props: any) => {
         // }
     }
 
+
+    const intersect2 = (entries : any, observer : any) => {
+        if(entries[0].isIntersecting){
+            console.log("intersect");
+            entries[0].target.classList.add("letsgo");
+        }
+    }
+
     useEffect(() => {
         console.log("swiperref");
 
@@ -117,12 +127,21 @@ const MainPage: any = (props: any) => {
             threshold: 1
         }
 
+        let options2 = {
+            rootMargin: '0px',
+            threshold: 0.3
+        }
+
         let observer = new IntersectionObserver(intersect, options);
         observer.observe(ref1.current);
         observer.observe(ref2.current);
         observer.observe(ref3.current);
         observer.observe(ref4.current);
         observer.observe(ref5.current);
+
+        let observer2 = new IntersectionObserver(intersect2, options2);
+        observer2.observe(ref6.current);
+
 
     }, [])
 
@@ -166,7 +185,7 @@ const MainPage: any = (props: any) => {
 
     useEffect(() => {
 
-        // window.scrollTo(0, 0);
+        window.scrollTo(0, 0);
 
         const throttledFn = throttle(listener, 200);
 
@@ -244,7 +263,6 @@ const MainPage: any = (props: any) => {
 
 
             <div className={styles.secondSection}>
-
                 {/* <div style={{ backgroundImage: "url(img/secondbg.webp)" }} className={styles.secondSectionBackground}> */}
                 <div className={styles.secondSectionBackground}>
                     <div className={`${styles.secondSectionTitle_1} ${styles.onlyPC}`}>
@@ -273,7 +291,7 @@ const MainPage: any = (props: any) => {
                                     </div>
                                     <div className={styles.numberBoxDescription}>
                                         <span className={styles.autoNumber}>
-                                            <NumberAnimation number={2100} fixed={0} delay={500} />
+                                            <NumberAnimation number={1600} fixed={0} delay={500} />
                                         </span>명 +
                                     </div>
                                 </div>
@@ -319,6 +337,10 @@ const MainPage: any = (props: any) => {
                             <div className={`${styles.whenNumber} ${styles.onlymobile}`}>
                                 2021.03월 기준
                             </div>
+                        </div>
+
+                        <div ref={ref6} className={styles.growChartDiv}>
+                            <GrowChart />
                         </div>
                     </div>
 
@@ -778,7 +800,7 @@ const MainPage: any = (props: any) => {
                         <LeftChevronSvg className={styles.chevron} />
                     </Button>
                     <div className={styles.carouselWrapper}>
-                        {/* <Carousel
+                        <Carousel
                             showArrows={false}
                             ref={carouselRef}
                             isRTL={false} initialFirstItem={30} itemsToShow={3} disableArrowsOnEnd={false} >
@@ -801,7 +823,7 @@ const MainPage: any = (props: any) => {
                                     </div>
                                 );
                             })}
-                        </Carousel> */}
+                        </Carousel>
                     </div>
                     <Button sx={{ "&:hover": { border: "1px solid black" }, width: "59px", height: "59px", border: "1px solid #939393", display: "flex", justifyContent: "center", alignItems: "center", marginBottom: "120px", marginLeft: "16px" }} variant="outlined" onClick={(e) => { if (list.length - 3 !== indexNumber) { carouselRef.current.goTo(indexNumber + 1); setIndexNumber(indexNumber + 1); } }}>
                         <RightChevronSvg className={styles.chevron} />

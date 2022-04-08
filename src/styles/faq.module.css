@@ -345,6 +345,11 @@
         font-size: 14.175px;
     }
 
+    .question:hover .questionText{
+        text-decoration-line: none;
+        text-underline-position: initial; 
+    }
+
 }
 
 @media only screen and (max-width : 350px) {

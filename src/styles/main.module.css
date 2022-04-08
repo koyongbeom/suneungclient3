@@ -1,6 +1,6 @@
 @keyframes move {
     from {
-        transform: translate(-180px, 0px);
+        transform: translate(0px, 25px);
         opacity: 0;
     }
     to {
@@ -15,7 +15,7 @@
 
 .move{
     animation-name: move;
-    animation-duration: 800ms;
+    animation-duration: 600ms;
     animation-delay: 50ms;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
@@ -40,9 +40,9 @@
 }
 
 .mainBlackFilter{
-    background-color: black;
+    background-color : black;
     z-index: 0;
-    opacity: 0.4;
+    opacity: 0.3;
     position: absolute;
     width: 100%;
     height: 100%;
@@ -89,6 +89,15 @@
     position: relative;
 }
 
+.growChartDiv{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+}
+
 .autoNumber {
     font-family: "Paybooc_EB";
     font-size: 59px;
@@ -100,13 +109,14 @@
 }
 
 .secondSectionBackground {
-    background-color: black;
+    background-color: rgb(12, 14, 17);
     overflow: hidden;
     background-position: center;
     background-size: cover;
     padding-top: 146px;
     padding-bottom: 293px;
     margin-bottom: 588px;
+    position: relative;
 }
 
 .secondSectionTitle_1 {
@@ -971,6 +981,7 @@
 
     .mainText{
         margin-top: 0;
+        margin-bottom: 40px;
     }
 
     .mainImgDiv{
@@ -987,11 +998,11 @@
 
     .mainImgDiv{
         background-position: 70% 0%;
-        height: 90vh;
+        height: 100vh;
     }
 
     .mainBlackFilter{
-        opacity: 0.5;
+        opacity: 0.3;
     }
 
     .firstSectionMobileTitle_1{
@@ -1010,7 +1021,7 @@
     }
 
     .chevronDownDiv{
-        bottom: 90px;
+        bottom: 130px;
     }
 
     .secondSectionBackground{

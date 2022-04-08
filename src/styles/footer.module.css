@@ -30,6 +30,10 @@
     display: flex;
 }
 
+.footerLogoSvg{
+    width: 159px;
+}
+
 .footerLogoText{
     margin-left: 59px;
     font-size: 15px;

@@ -7,14 +7,20 @@ import FileCopyIcon from '@mui/icons-material/FileCopyOutlined';
 import SaveIcon from '@mui/icons-material/Save';
 import PrintIcon from '@mui/icons-material/Print';
 import ShareIcon from '@mui/icons-material/Share';
+import CallIcon from '@mui/icons-material/Call';
+import MailIcon from '@mui/icons-material/Mail';
+import SmsIcon from '@mui/icons-material/Sms';
+import EditIcon from '@mui/icons-material/Edit';
+
 import { ReactComponent as SupportSvg } from '../svg/support_agent_white.svg';
+import { useNavigate } from "react-router-dom";
 
 
 const actions = [
-    { icon: <FileCopyIcon />, name: 'Copy' },
-    { icon: <SaveIcon />, name: 'Save' },
-    { icon: <PrintIcon />, name: 'Print' },
-    { icon: <ShareIcon />, name: 'Share' },
+    { icon: <CallIcon />, name: '전화문의' },
+    { icon: <MailIcon />, name: '문자문의' },
+    { icon: <SmsIcon />, name: '카카오톡' },
+    { icon: <EditIcon />, name: '상담신청' },
 ];
 
 
@@ -23,6 +29,23 @@ const SpeedDialComponent: React.FC<any> = (props) => {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+    const navigate = useNavigate();
+
+    const click = (e : any, index : number) => {
+        if(index === 0){
+        window.location.href = "tel://01098800489";
+        }
+        if(index === 1){
+            window.location.href = "sms:01098800489";
+        }
+        if(index === 2){
+            window.location.href = "http://pf.kakao.com/_ViHeb/chat";
+        }
+        if(index === 3){
+            navigate("/register");
+        }
+        handleClose();
+    }
 
     return (
         <Box sx={{ height: open ? "100vh" : 330, width : open ? "100vw" : "auto",transform: 'translateZ(0px)', flexGrow: 1, position: "fixed", bottom: 0, right: 0, zIndex : 999 }}>
@@ -41,17 +64,18 @@ const SpeedDialComponent: React.FC<any> = (props) => {
                 onOpen={handleOpen}
                 open={open}
             >
-                {actions.map((action) => (
-                    <SpeedDialAction
-                        FabProps={{
-                            size: "medium"
-                        }}
-                        key={action.name}
-                        icon={action.icon}
-                        tooltipTitle={action.name}
-                        tooltipOpen
-                        onClick={handleClose}
-                    />
+                {actions.map((action, index: number) => (
+
+                        <SpeedDialAction
+                            FabProps={{
+                                size: "medium"
+                            }}
+                            key={action.name}
+                            icon={action.icon}
+                            tooltipTitle={action.name}
+                            tooltipOpen
+                            onClick={(e)=>{click(e, index)}}
+                        />
                 ))}
             </SpeedDial>
         </Box>

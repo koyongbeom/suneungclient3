@@ -1,0 +1,116 @@
+.void{
+    height: 200px;
+}
+
+.main{
+    width: 1150px;
+    margin: 0 auto;
+}
+
+.topBoarder{
+    width: 100%;
+    border-top: 4px solid #1b49af;
+}
+
+.checkDiv{
+    margin-top: 128px;
+    display: flex;
+    justify-content: center;
+}
+
+.checkTitle{
+    margin-top: 80px;
+    font-weight: 700;
+    font-size: 26px;
+    text-align: center;
+    letter-spacing: -0.34px;
+}
+
+.checkText{
+    text-align: center;
+    margin-top: 50px;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 300;
+    letter-spacing: -0.34px;
+}
+
+.toHomeBtnDiv{
+    margin-top: 70px;
+    text-align: center;
+}
+
+.contactBox{
+    margin: 0 auto;
+    margin-top: 70px;
+    width: 450px;
+    padding: 24px 0px;
+    text-align: center;
+    background-color: rgb(232, 238, 252);
+    color: #1b49af;
+    font-size: 15px;
+}
+
+.time{
+    font-weight: 500;
+}
+
+.onlymobile{
+    display: none;
+}
+
+@media only screen and (max-width : 500px) {
+    .main{
+        padding-bottom: 100px;
+    }
+
+    .onlymobile{
+        display: block;
+    }
+
+
+    .onlyPC{
+        display: none;
+    }
+
+    .voidHeader {
+        height: 59px;
+    }
+
+    .void{
+        height: 120px;
+    }
+
+    .main{
+        width: 90%;
+    }
+
+    .contactBox{
+        width: 90%;
+    }
+
+    .checkDiv{
+        margin-top: 80px;
+    }
+
+    .checkTitle{
+        margin-top: 55px;
+        font-size: 21px;
+        letter-spacing: -0.24px;
+    }
+
+    .checkText{
+        margin-top: 34px;
+        font-size: 13.5px;
+        letter-spacing: -0.24px;
+    }
+
+    .toHomeBtnDiv{
+        margin-top: 50px;
+    }
+
+    .contactBox{
+        margin-top: 50px;
+        font-size: 13.5px;
+    }
+}

@@ -59,6 +59,11 @@ table {
 	box-sizing: border-box;
 }
 
+*{
+	-webkit-tap-highlight-color: transparent;
+}
+
+
 .sc-iBkjds{
 	display: none !important;
 }
@@ -66,6 +71,49 @@ table {
 a{
 	-webkit-tap-highlight-color: transparent;
 }
+
+.chart-fill{
+	opacity: 0;
+	fill: url(#gradient);
+}
+
+.letsgo .chart-fill{
+	animation: fill 2s linear 0.5s forwards;
+}
+
+.chart-line{
+	fill: none;
+	stroke : url(#gradient);
+	stroke-dasharray: 2000;
+	stroke-dashoffset: 2000;
+	stroke-linecap: round;
+	stroke-width: 2;
+}
+
+.letsgo .chart-line{
+	animation: draw 2s linear 0.5s forwards;
+}
+
+@keyframes fill {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 0.4;
+	}
+}
+
+@keyframes draw {
+	0% {
+		
+	}
+	100% {
+		stroke-dashoffset: 0;
+	}
+}
+
+
+
 
 @font-face {
     font-family: 'Paybooc_EB';

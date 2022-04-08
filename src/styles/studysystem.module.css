@@ -201,23 +201,29 @@
 }
 
 .lifeSvg{
-    width: 59px;
+    width: 90px;
+
+    width: 65px;
 }
 
 .tutorSvg{
     width: 59px;
+    width: 120px;
 }
 
 .questionSvg{
     width: 59px;
+    width: 110px;
 }
 
 .offlineSvg{
     width: 59px;
+    width: 65px;
 }
 
 .studySvg{
     width: 57px;
+    width: 65px;
 }
 
 .administratorDiv{
@@ -993,22 +999,38 @@
 
     .lifeSvg{
         width: 44.5px;
+
+        width: 90px;
+
+        width: 50px;
     }
 
     .tutorSvg{
         width: 44.5px;
+
+        width: 50px;
+
+        width: 90px;
     }
 
     .questionSvg{
         width: 42.5px;
+
+        width: 90px;
+
     }
 
     .offlineSvg{
         width: 40px;
+
+        width: 50px;
+
     }
 
     .studySvg{
         width: 40px;
+
+        width: 50px;
     }
 
     .administratorDiv{
@@ -1221,11 +1243,11 @@
 
     .orderBoxPictureBtn{
         width: 100%;
-        font-size: 11.8px;
+        font-size: 12.5px;
         font-weight: 700;
         color: white;
         background-color: #2a2c59;
-        height: 34.5px;
+        height: 43px;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -1237,8 +1259,12 @@
         border-bottom-right-radius: 2.5px;
     }
 
+    .orderBoxPictureBtn:hover{
+        background-color: #1b49af;
+    }
+
     .rightChevronWhite{
-        width: 8px;
+        width: 10px;
     }
 
     .differentiationTitle{
@@ -1539,6 +1565,10 @@
         font-size: 12.5px;
         letter-spacing: -0.31px;
         line-height: 25px;
+    }
+
+    .orderBoxNumberMobile{
+        display: none;
     }
 
 }   

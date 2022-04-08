@@ -341,12 +341,12 @@ const Review: React.FC<any> = (props) => {
                                                 <div className={styles.heartText}>
                                                     도움 됐어요 {
                                                         likeCount &&
-                                                        likeCount.map((eachLike: any) => {
+                                                        likeCount.map((eachLike: any, index : number) => {
                                                             if ((eachLike.questionNumber === 2) && (eachLike.answerNumber === index)) {
                                                                 return (
-                                                                    <>
+                                                                    <span key={eachLike.id}>
                                                                         {eachLike.count}
-                                                                    </>
+                                                                    </span>
                                                                 );
                                                             }
                                                         })

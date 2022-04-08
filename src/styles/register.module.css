@@ -2,6 +2,10 @@
     height: 82px;
 }
 
+.void{
+    height: 180px;
+}
+
 .titleText{
     margin-top: 101px;
     text-align: center;
@@ -34,6 +38,7 @@
     letter-spacing: -0.55px;
     color: #353535;
     padding-bottom: 23px;
+    border-bottom: 2px solid black;
 }
 
 .questionText.first{
@@ -58,6 +63,7 @@
     text-align: center;
     border-radius: 6px;
     color: #c8c8c8;
+    letter-spacing: -0.88px;
 }
 
 .select.last{
@@ -73,5 +79,652 @@
 .questionText.second{
     margin-top: 72px;
     margin-bottom: 42px;
+}
+
+.calendarBox{
+    border: 2px solid #dedede;
+    padding-top: 36px;
+    padding-bottom: 36px;
+    border-radius: 4px;
+}
+
+.calendarWrap{
+    width: 80%;
+    margin: 0 auto;
+}
+
+.firstRow{
+    margin: 0 auto;
+    width: 89%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.leftDiv{
+    cursor: pointer;
+}
+
+.rightDiv{
+    cursor: pointer;
+}
+
+.left{
+    width: 13px;   
+}
+
+.month{
+    font-size: 21.5px;
+    font-weight: 700;
+}
+
+.right{
+    width: 13px;
+}
+
+.row{
+    display: flex;
+}
+
+
+.day{
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: 0;
+    text-align: center;
+    height: 56.69px;
+    line-height: 56.69px;
+    font-size: 18px;
+    color: #505050;
+    font-weight: 500;
+}
+
+.date{
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: 0;
+    text-align: center;
+    height: 56.69px;
+    font-size: 18px;
+    font-weight: 500;
+    color: #505050;
+}
+
+.date .today{
+    position: absolute;
+    top : 50%;
+    left: 50%;
+    transform: translate(-50%, 120%);
+    font-size: 14px;
+    color: #1b49af;
+}
+
+.date.todayDate{
+    color: #1b49af;
+}
+
+.date.active .eachDate{
+    width: 48px;
+    height: 48px;
+    background-color: #1b49af;
+    color: white;
+    border-radius: 50%;
+    line-height: 48px;
+}
+
+.date.active .today{
+    display: none;
+}
+
+
+
+.date.pastDate{
+    color: rgba(80, 80, 80, 0.4);
+    cursor: not-allowed;
+}
+
+.date.sunday{
+    color: #eb4a4a;
+}
+
+.date.pastDate.sunday{
+    color: rgba(235, 74, 74, 0.4);
+}
+
+.none{
+    display: none;
+}
+
+.timeBox{
+    border: 2px solid #dedede;
+    margin-top: 31px;
+    padding: 53px 28px 43px 28px;
+}
+
+.boxTitle{
+    font-weight: 700;
+    font-size: 17.5px;
+    color: #2f2f2f;
+    letter-spacing: -0.44px;
+    margin-bottom: 17px;
+}
+
+.noneBox{
+    font-weight: 700;
+    font-size: 19px;
+    line-height: 34px;
+    color: #2f2f2f;
+    letter-spacing: -0.44px;
+    margin-bottom: 17px;
+}
+
+.amTimeBox{
+    margin-bottom: 29px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.pmTimeBox{
+    margin-bottom: 39px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.eachTime{
+    width: 104px;
+    height: 47px;
+    background-color: rgba(27, 73, 175, 0.1);
+    background-color: #e7e7e7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    margin-right: 6px;
+    border-radius: 23.5px;
+    font-size: 15.5px;
+    letter-spacing: -0.39px;
+    color: #625f5f;
+    font-weight: 500;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.eachTime.active{
+    background-color: #1b49af;;
+    color: white;
+}
+
+.eachTime.booked{
+    background-color: white;
+    border: 2px solid #e2e5e8;
+    color: #ddd;
+    cursor: not-allowed;
+}
+
+.descriptionDiv{
+    margin-top: 31px;
+    display: flex;
+    justify-content: end;
+}
+
+.firstDescription{
+    display: flex;
+    align-items: center;
+}
+
+.firstSqure{
+    width: 20px;
+    height: 20px;
+    background-color: #1b49af;
+    margin-right: 12px;
+}
+
+.firstDescriptionText{
+    font-size: 13.5px;
+    letter-spacing: -0.34px;
+    color: #2f2f2f;
+}
+
+.secondDescription{
+    display: flex;
+    margin-left: 19px;
+    align-items: center;
+}
+
+.secondSqure{
+    width: 20px;
+    height: 20px;
+    border: 1px solid #dedede;
+    margin-right: 12px;
+}
+
+.secondDescriptionText{
+    font-size: 13.5px;
+    letter-spacing: -0.34px;
+    color: #2f2f2f;
+}
+
+
+.questionText.third{
+    margin-top: 55px;
+    margin-bottom: 31px;
+}
+
+.inputDiv{
+    border: 1px solid #dddddd;
+}
+
+.input{
+    padding-left: 16px;
+    padding-right: 30px;
+    border: 0;
+    height: 50px;
+    width: 100%;
+    background-color: #fafafa;
+}
+
+.placeHoler{
+
+}
+
+.input:focus{
+    outline: none;
+}
+
+.telephoneDiv{
+    width: 100%;
+    margin-top: 22px;
+    display: flex;
+    align-items: center;
+}
+
+.telephoneInputDiv{
+    border: 1px solid #dddddd;
+    border-right: 0;
+    flex-shrink: 0;
+    flex-grow: 284;
+}
+
+.telephoneInput{
+    padding-left: 16px;
+    padding-right: 30px;
+    width: 100%;
+    background-color: #fafafa;
+    height: 50px;
+    border: 0;
+}
+
+.telephoneInput:focus{
+    outline: none
+}
+
+.telephoneBtnDiv{
+    flex-shrink: 0;
+    flex-grow: 206;
+}
+
+.certBtn{
+    background-color: #bdbdbd;
+    color: white;
+    height: 52px;
+    text-align: center;
+    line-height: 52px;
+    cursor: not-allowed;
+    transition: background-color 150ms ease-in;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.certBtn.active{
+    cursor: pointer;
+    background-color: #1b49af;
+}
+
+.btnText{
+    display: block;
+    width: 100px;
+    margin: 0 auto;
+}
+
+.loadingBox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+}
+
+.inputDiv.cert{
+    margin-top: 22px;
+}
+
+.certText{
+    height: 32.5px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    font-size: 13.5px;
+    letter-spacing: -0.36px;
+    color: #2f2f2f;
+}
+
+.recert{
+    cursor: pointer;
+    font-weight: 700;
+    color: #1b49af;
+}
+
+.recert2{
+    cursor: pointer;
+    font-weight: 700;
+    color: #bdbdbd;
+}
+
+.certifyFail{
+    font-weight: 700;
+    color: #eb4a4a;
+}
+
+.certifySuccess{
+    font-weight: 700;
+    color: #1b49af;
+    font-size: 14px;
+}
+
+.informResult{
+    font-size: 13.5px;
+    font-weight: 700;
+    margin-top: 53px;
+    height: 20px;
+    text-align: center;
+    color: #eb4a4a;
+}
+
+.submitBtnDiv{
+
+}
+
+.bottomText{
+    margin-top: 23px;
+    font-weight: 300;
+    font-size: 14.5px;
+    letter-spacing: -0.36px;
+    color: #2f2f2f;
+}
+
+.onlymobile{
+    display: none;
+}
+
+@media only screen and (max-width : 500px) {
+    .main{
+
+    }
+
+
+    .onlymobile{
+        display: block;
+    }
+
+
+    .onlyPC{
+        display: none;
+    }
+
+    .voidHeader {
+        height: 59px;
+    }
+
+    .formBody{
+        max-width: 500px;
+        width: 90.8%;
+    }
+
+    .titleText{
+        margin-top: 60px;
+        font-size: 21.3px;
+        letter-spacing: -0.53px;
+        line-height: 29.3px;
+    }
+
+    .subTitleText{
+        margin-top: 25px;
+        font-size: 11.8px;
+        line-height: 19.8px;
+        letter-spacing: -0.29px;
+    }
+
+    .questionText{
+        border-bottom: 1px solid black;
+        font-size: 16px;
+        letter-spacing: -0.4px;
+        padding-bottom: 17px;
+    }
+
+    .questionText.first{
+        margin-top: 60px;
+        margin-bottom: 21.5px;
+        border-bottom: 1px solid black;
+    }
+    
+    .select{
+        font-size: 11.5px;
+        letter-spacing: -0.63px;
+        font-weight: 700;
+        border-radius: 4px;
+    }
+
+    .questionText.second{
+        margin-top: 50.5px;
+        margin-bottom: 29px;
+    }
+
+    .calendarBox{
+        border: 1px solid #cfcfcf;
+        padding-top: 27px;
+        padding-bottom: 23px;
+        border-radius: 2px;
+    }
+
+    .calendarWrap{
+        width: 86%;
+    }
+
+    .firstRow{
+        margin-bottom: 12px;
+    }
+
+    .left{
+        width: 9px;
+    }
+
+    .right{
+        width: 9px;
+    }
+
+    .month{
+        font-size: 15.3px;
+    }
+
+    .day{
+        font-size: 12.5px;
+        letter-spacing: -0.31px;
+        height: auto;
+        line-height: normal;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+    .date{
+        font-size: 12.5px;
+        height: auto;
+        line-height: normal;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .date .today {
+        font-size: 9.8px;
+        letter-spacing: -0.24px;
+        transform: translate(-50%, 55%);
+    }
+
+    .date.todayDate{
+
+    }
+
+    .date.active .eachDate{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 33.5px;
+        height: 33.5px;
+        line-height: normal;
+    }
+
+    .timeBox{
+        border: 1px solid #cfcfcf;
+        margin-top: 21.5px;
+        padding: 37px 14.5px 30.5px 14.5px;
+    }
+
+    .boxTitle{
+        font-size: 12.5px;
+        letter-spacing: -0.31px;
+    }
+
+    .noneBox{
+        font-size: 18px;
+        letter-spacing: -0.31px;
+        height: 150px;
+        line-height: 32px;
+    }
+
+    .amTimeBox{
+        margin-bottom: 27px;
+    }
+
+    .pmTimeBox{
+        margin-bottom: 21.5px;
+    }
+
+    .eachTime{
+        width: 22%;
+        height: 33px;
+        border-radius: 16.4px;
+        font-size: 11px;
+        letter-spacing: -0.28px;
+    }
+
+    .eachTime.booked{
+        border: 1px solid #e2e5e8;
+    }
+
+    .descriptionDiv{
+        justify-content: flex-end;
+        margin-top: 21.5px;
+        width: 100%;
+        padding-right: 20px;
+    }
+
+    .firstSqure{
+        width: 14px;
+        height: 14px;
+        margin-right: 8px;
+    }
+
+    .secondSqure{
+        width: 14px;
+        height: 14px;
+        margin-right: 8px; 
+    }
+
+    .secondDescription{
+        margin-left: 13.5px;
+    }
+
+    .firstDescriptionText{
+        font-size: 9.3px;
+        letter-spacing: -0.23px;
+    }
+
+    .secondDescriptionText{
+        font-size: 9.3px;
+        letter-spacing: -0.23px;
+    }
+
+    .questionText.third{
+        margin-top: 41px;
+        margin-bottom: 21.5px;
+    }
+
+    .input::placeholder{
+        color: #4f4f4f;
+        font-size: 13px;
+        font-family: 'Noto Sans KR', sans-serif;
+    }
+
+    .input{
+        height: 45.5px;
+        font-size: 16px;
+        font-family: 'Noto Sans KR', sans-serif;
+    }
+
+    .telephoneInputDiv{
+        flex-shrink: 1;
+        flex-grow: 284;
+    }
+
+    .telephoneInput{
+        height: 45.5px;
+        font-size: 16px;
+        flex-shrink: 1;
+        font-family: 'Noto Sans KR', sans-serif;
+    }
+
+    .telephoneBtnDiv{
+        flex-grow: 150;
+    }
+
+    .certBtn{
+        height: 47.5px;
+        line-height: 47.5px;
+        font-size: 12.5px;
+        letter-spacing: -0.31px;
+    }
+
+    .telephoneInput::placeholder{
+        font-size: 13px;       
+        color: #4f4f4f;
+        font-family: 'Noto Sans KR', sans-serif;
+    }
+
+    .certText{
+        height: 25px;
+        font-size: 12.5px;
+    }
+
+    .informResult{
+        font-size: 12.5px;
+        color: #eb4a4a;
+    }
+
+    .bottomText{
+        margin-top: 14px;
+        font-size: 11.8px;
+        letter-spacing: -0.29px;
+    }
+    
+    .void{
+        height: 166.5px;
+    }
 }
 

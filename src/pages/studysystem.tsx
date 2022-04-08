@@ -9,13 +9,28 @@ import { ReactComponent as RightChevronWhiteSvg } from '../svg/chevron-right-sol
 
 import { ReactComponent as HouseSvg } from '../svg/house-thin.svg';
 
-import { ReactComponent as StudySvg } from '../svg/icon05.svg';
+// import { ReactComponent as StudySvg } from '../svg/icon05.svg';
 import { ReactComponent as ClickSvg } from '../svg/click.svg';
 
-import { ReactComponent as OfflineSvg } from '../svg/icon04.svg';
-import { ReactComponent as QuestionSvg } from '../svg/icon03.svg';
-import { ReactComponent as LifeSvg } from '../svg/icon01.svg';
-import { ReactComponent as TutorImageSvg } from '../svg/icon02.svg';
+// import { ReactComponent as OfflineSvg } from '../svg/icon04.svg';
+// import { ReactComponent as QuestionSvg } from '../svg/icon03.svg';
+// import { ReactComponent as LifeSvg } from '../svg/icon01.svg';
+// import { ReactComponent as TutorImageSvg } from '../svg/icon02.svg';
+
+// import { ReactComponent as OfflineSvg } from '../svg/flat1.svg';
+// import { ReactComponent as QuestionSvg } from '../svg/flat2.svg';
+// import { ReactComponent as LifeSvg } from '../svg/flat3.svg';
+// import { ReactComponent as TutorImageSvg } from '../svg/flat4.svg';
+// import { ReactComponent as StudySvg } from '../svg/flat5.svg';
+
+import { ReactComponent as OfflineSvg } from '../svg/flat4.svg';
+import { ReactComponent as QuestionSvg } from '../svg/flat3.svg';
+import { ReactComponent as LifeSvg } from '../svg/flat1.svg';
+import { ReactComponent as TutorImageSvg } from '../svg/flat2.svg';
+import { ReactComponent as StudySvg } from '../svg/flat5.svg';
+
+
+
 import { ReactComponent as DowndownSvg } from '../svg/downdown.svg';
 import { ReactComponent as DownSvg } from '../svg/chevron-down-thin-cropped.svg';
 import { ReactComponent as RightRightSvg } from '../svg/right-right-arrow.svg';

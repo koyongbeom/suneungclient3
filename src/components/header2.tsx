@@ -211,6 +211,42 @@ const HeaderTwo: any = (props: any) => {
                 </div>
             </div>
 
+            <div className={`${styles.bottomMenuBar} ${styles.onlymobile}`}>
+                <div className={styles.bottomMenuDiv}>
+                    <div className={styles.listTab}>
+                        <div onClick={(e : any)=>{navigate("/teachers")}} className={styles.bottomMenuList}>
+                            튜터소개
+                            <div className={styles.dot1}>
+
+                            </div>
+                        </div>
+                        <div onClick={(e : any)=>{navigate("/studysystem")}} className={styles.bottomMenuList}>
+                            학습시스템
+                            <div className={styles.dot2}>
+                                
+                            </div>
+                        </div>
+                        <div onClick={(e : any)=>{navigate("/price")}} className={styles.bottomMenuList}>
+                            비용안내
+                        </div>
+                        <div onClick={(e : any)=>{navigate("/map")}} className={styles.bottomMenuList}>
+                            위치안내
+                        </div>
+                        <div onClick={(e : any)=>{navigate("/review")}} className={styles.bottomMenuList}>
+                            합격자후기
+                        </div>
+                        <div onClick={(e : any)=>{navigate("/faq")}} className={styles.bottomMenuList}>
+                            자주묻는질문
+                        </div>
+                        <div onClick={(e : any)=>{navigate("/ceo")}} className={styles.bottomMenuList}>
+                            대표소개
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
 
             <SwipeableDrawer
                 anchor="top"

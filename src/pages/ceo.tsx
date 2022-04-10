@@ -73,7 +73,7 @@ const Ceo: any = (props: any) => {
                             고민해왔습니다.
                         </div>
                         <div className={styles.ceoDescriptionTextSubTitle}>
-                            독학관리학원을 6년 동안 운영해오며 많은 것을 배웠습니다.
+                            6년 동안 독학관리학원을 운영해오며 많은 것을 배웠습니다.
                         </div>
                         <div className={styles.ceoDescriptionTextBox}>
                             <div className={styles.ceoDescriptionTextBoxTitle}>
@@ -110,13 +110,13 @@ const Ceo: any = (props: any) => {
                                 약력
                             </div>
                             <div className={styles.ceoPictureDescription_1}>
-                                수능선배 대표
+                                경희대학교 약학대학 수석 입학
                             </div>
                             <div className={styles.ceoPictureDescription_2}>
-                                경희대 약학과 수석 입학
+                                (현) 피트선배 대표
                             </div>
                             <div className={styles.ceoPictureDescription_3}>
-                                피트선배 대표
+                                (현) 수능선배 대표
                             </div>
                         </div>
                     </div>

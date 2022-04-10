@@ -152,7 +152,7 @@
 }
 
 .ceoDescriptionTextSubTitle{
-    margin-top: 42px;
+    margin-top: 70px;
     margin-bottom: 70px;
     font-size: 22px;
     letter-spacing: -0.55px;
@@ -164,6 +164,7 @@
     letter-spacing: -0.41px;
     color: #353535;
     line-height: 32.5px;
+    margin-bottom: 16px;
 }
 
 .ceoDescriptionTextBoxDescription{
@@ -208,6 +209,7 @@
     font-size: 14.5px;
     letter-spacing: -0.73px;
     margin-bottom: 8px;
+    color: white;
 }
 
 .ceoPictureDescription_2{
@@ -290,6 +292,8 @@
 
     .voidHeader {
         height: 59px;
+        
+        height: 104px;
     }
 
     .subHeader{
@@ -391,16 +395,17 @@
     }
 
     .ceoDescriptionTextSubTitle{
-        margin-top: 28px;
+        margin-top: 32px;
         font-size: 14px;
         letter-spacing: -0.36px;
-        margin-bottom: 38.5px;
+        margin-bottom: 32px;
     }
 
     .ceoDescriptionTextBoxTitle{
         font-size: 13.5px;
         letter-spacing: -0.34px;
         line-height: 23px;
+        margin-bottom: 12px;
     }
 
     .ceoDescriptionTextBoxDescription{

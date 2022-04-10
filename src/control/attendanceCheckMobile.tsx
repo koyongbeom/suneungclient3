@@ -7,7 +7,8 @@ import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import styles from "../styles/attendancetable.module.css";
 import CustomPagination from "../data/custompagination";
-import fullRowDatas from "../data/attendanceCheckRows";
+// import fullRowDatas from "../data/attendanceCheckRows";
+import fullRowDatas from "../data/attendanceCheckRows2";
 import userList from "../data/users";
 import StyledDataGrid from "../data/tablestyles";
 

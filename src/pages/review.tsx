@@ -136,8 +136,8 @@ const Review: React.FC<any> = (props) => {
                                     const description = { __html: eachList.description.replace(/b\W+b/gm, (it: any) => `<b>${it.slice(1, it.length - 1)}</b>`) };
 
                                     return (
-                                        <SwiperSlide>
-                                            <div key={eachList.name} className={`${styles.eachDescriptionMobile} ${index % 3 === 0 ? styles.first : ""} ${index % 3 === 1 ? styles.second : ""} ${index % 3 === 2 ? styles.third : ""}`}>
+                                        <SwiperSlide key={eachList.name}>
+                                            <div className={`${styles.eachDescriptionMobile} ${index % 3 === 0 ? styles.first : ""} ${index % 3 === 1 ? styles.second : ""} ${index % 3 === 2 ? styles.third : ""}`}>
                                                 <div dangerouslySetInnerHTML={description} className={styles.eachDescriptionTextMobile}>
 
                                                 </div>
@@ -206,8 +206,8 @@ const Review: React.FC<any> = (props) => {
                                     const description = { __html: eachList.description.replace(/b\W+b/gm, (it: any) => `<b>${it.slice(1, it.length - 1)}</b>`) };
 
                                     return (
-                                        <SwiperSlide>
-                                            <div key={eachList.name} className={`${styles.eachDescriptionMobile} ${styles.eachDescriptionMobileSecond} ${index % 3 === 0 ? styles.first : ""} ${index % 3 === 1 ? styles.second : ""} ${index % 3 === 2 ? styles.third : ""}`}>
+                                        <SwiperSlide key={eachList.name}>
+                                            <div className={`${styles.eachDescriptionMobile} ${styles.eachDescriptionMobileSecond} ${index % 3 === 0 ? styles.first : ""} ${index % 3 === 1 ? styles.second : ""} ${index % 3 === 2 ? styles.third : ""}`}>
                                                 <div dangerouslySetInnerHTML={description} className={styles.eachDescriptionTextMobile}>
 
                                                 </div>
@@ -221,6 +221,7 @@ const Review: React.FC<any> = (props) => {
                                                                 likeCount &&
                                                                 likeCount.map((eachLike: any) => {
                                                                     if ((eachLike.questionNumber === 2) && (eachLike.answerNumber === index)) {
+                                                                        console.log(2);
                                                                         return (
                                                                             <span key={eachLike.id}>
                                                                                 {eachLike.count}
@@ -272,7 +273,7 @@ const Review: React.FC<any> = (props) => {
                                 const description = { __html: eachList.description.replace(/b\W+b/gm, (it: any) => `<b>${it.slice(1, it.length - 1)}</b>`) };
 
                                 return (
-                                    <div key={eachList.name} className={`${styles.eachDescription} ${index % 3 === 0 ? styles.first : ""} ${index % 3 === 1 ? styles.second : ""} ${index % 3 === 2 ? styles.third : ""}`}>
+                                    <div key={index} className={`${styles.eachDescription} ${index % 3 === 0 ? styles.first : ""} ${index % 3 === 1 ? styles.second : ""} ${index % 3 === 2 ? styles.third : ""}`}>
                                         <div dangerouslySetInnerHTML={description} className={styles.eachDescriptionText}>
 
                                         </div>
@@ -341,7 +342,7 @@ const Review: React.FC<any> = (props) => {
                                                 <div className={styles.heartText}>
                                                     도움 됐어요 {
                                                         likeCount &&
-                                                        likeCount.map((eachLike: any, index : number) => {
+                                                        likeCount.map((eachLike: any) => {
                                                             if ((eachLike.questionNumber === 2) && (eachLike.answerNumber === index)) {
                                                                 return (
                                                                     <span key={eachLike.id}>

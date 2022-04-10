@@ -60,7 +60,7 @@ const Header: any = (props: any) => {
             onKeyDown={toggleDrawer(anchor, false)}
         >
             <div className={styles.headerLogoBar}>
-                <Link to="/" style={{textDecoration : "none", color : "inherit"}}>
+                <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
                     <Logo className={styles.logoimg} />
                 </Link>
                 <Xmark onClick={toggleDrawer(anchor, false)} style={{ width: "16.4px" }} fill="rgb(176,184,193)" />
@@ -190,14 +190,14 @@ const Header: any = (props: any) => {
                         </ul>
                     </div>
                     <div className={styles.onlyPC}>
-                        <Button onClick={(e : any)=>{navigate("/register")}} sx={{ backgroundColor: "#1b49af !important", width: "163px", height: "51px", borderRadius: "9px", fontWeight: 700 }} variant="contained" startIcon={<PermIdentityOutlinedIcon />}>
+                        <Button onClick={(e: any) => { navigate("/register") }} sx={{ backgroundColor: "#1b49af !important", width: "163px", height: "51px", borderRadius: "9px", fontWeight: 700 }} variant="contained" startIcon={<PermIdentityOutlinedIcon />}>
                             상담 신청하기
                         </Button>
                     </div>
                     <div className={`${styles.mainRightSection} ${styles.onlymobile}`}>
                         {
                             props.headerKind === "white" &&
-                            <div onClick={(e : any)=>{navigate("/register")}} className={`${styles.mobileRegisterBtn}`}>
+                            <div onClick={(e: any) => { navigate("/register") }} className={`${styles.mobileRegisterBtn}`}>
                                 상담 신청
                             </div>
                         }
@@ -209,6 +209,44 @@ const Header: any = (props: any) => {
                 </div>
             </div>
 
+
+            {
+                (props.isBottomMenu && props.headerKind === "white") &&
+                <div className={`${styles.bottomMenuBar} ${styles.onlymobile}`}>
+                    <div className={styles.bottomMenuDiv}>
+                        <div className={styles.listTab}>
+                            <div onClick={(e: any) => { navigate("/teachers") }} className={styles.bottomMenuList}>
+                                튜터소개
+                                <div className={styles.dot1}>
+
+                                </div>
+                            </div>
+                            <div onClick={(e: any) => { navigate("/studysystem") }} className={styles.bottomMenuList}>
+                                학습시스템
+                                <div className={styles.dot2}>
+
+                                </div>
+                            </div>
+                            <div onClick={(e: any) => { navigate("/price") }} className={styles.bottomMenuList}>
+                                비용안내
+                            </div>
+                            <div onClick={(e: any) => { navigate("/map") }} className={styles.bottomMenuList}>
+                                위치안내
+                            </div>
+                            <div onClick={(e: any) => { navigate("/review") }} className={styles.bottomMenuList}>
+                                합격자후기
+                            </div>
+                            <div onClick={(e: any) => { navigate("/faq") }} className={styles.bottomMenuList}>
+                                자주묻는질문
+                            </div>
+                            <div onClick={(e: any) => { navigate("/ceo") }} className={styles.bottomMenuList}>
+                                대표소개
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            }
 
             <SwipeableDrawer
                 anchor="top"

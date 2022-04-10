@@ -5,6 +5,7 @@ import Complete from './pages/complete';
 import Faq from './pages/faq';
 import MainPage from "./pages/main";
 import Map from './pages/map';
+import Parkgaeul from './pages/parkgaeul';
 import Price from './pages/price';
 import Register from './pages/register';
 import Review from './pages/review';
@@ -27,7 +28,7 @@ function App() {
           <Route path="/price" element={<Price />}></Route>
           <Route path="/register" element={<Register />}></Route>
           <Route path="/complete" element={<Complete />}></Route>
-
+          <Route path="/parkgaeul" element={<Parkgaeul />}></Route>
         </Routes>
       </div>
 

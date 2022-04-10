@@ -224,6 +224,12 @@
 
     .voidHeader {
         height: 59px;
+
+        height: 104px;
+    }
+
+    .headerBar{
+        font-size: 24px;
     }
     
     .titleText{

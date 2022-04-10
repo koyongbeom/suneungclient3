@@ -702,12 +702,14 @@
 .bannerFirst{
     font-weight: 400;
     font-size: 43px;
+    font-size: 35px;
     letter-spacing: -2.15px;
     margin-bottom: 26px;
 }
 
 .bannerSecond {
     font-size: 43px;
+    font-size: 35px;
     font-weight: 700;
     letter-spacing: -2.15px;
     margin-bottom: 34px;
@@ -716,6 +718,7 @@
 .bannerThird{
     font-weight: 400;
     font-size: 43px;
+    font-size: 35px;
     letter-spacing: -1.08px;
 }
 
@@ -775,6 +778,10 @@
     margin-top: 23px;
     display: flex;
 
+}
+
+.avatarPic{
+    width: 59px;
 }
 
 .avatarSide {
@@ -1553,6 +1560,7 @@
         letter-spacing: -0.34px;
         color: #333333;
         line-height: 22.3px;
+        white-space: pre-wrap;
     }
 
     .eachPeopleAvatar{

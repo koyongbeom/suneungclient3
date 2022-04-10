@@ -51,6 +51,35 @@ const mobileTutorList = [
     }
 ]
 
+var isBottomMenuBoolean = false;
+
+const reviewList = [
+    {
+        name : "강민구",
+        firstLine : "단국대 치대 합격생",
+        secondLine : "1년 동안 재원",
+        description : "\"멘토님과의 상담을 통해서 지금\n하고 있는 공부의 방향이 맞게\n흘러가고 있는지를 점검할 수\n있었습니다\""
+    },
+    {
+        name : "정미진",
+        firstLine : "서울대 약대 합격생",
+        secondLine : "1년 동안 재원",
+        description :  "\"멘토님과 매주 공부 분량을\n자세하게 계획하였고\n매주 상담시간이 정해진 분량을\n끝마쳤는지 확인했습니다\""
+    },
+    {
+        name : "백진식",
+        firstLine : "서울대 약대 합격생",
+        secondLine : "2년 동안 재원",
+        description :  "\"동일한 공부를 하는 학생들과\n특유의 생활관리형 시스템으로\n긴장감이 상당히 잘 조성되어\n있습니다\""
+    },
+    {
+        name : "정민지",
+        firstLine : "제주대 약대 합격생",
+        secondLine : "2년 동안 재원",
+        description :  "\"독서실에서 혼자 공부를 하면\n시기에 맞는 공부를 하고 있는지\n불안감이 들었는데, 이를\n해소하기 위해 선택했습니다\""
+    }
+]
+
 
 const MainPage: any = (props: any) => {
 
@@ -61,9 +90,9 @@ const MainPage: any = (props: any) => {
     const [list2, setList2] = useState([
         "guide2", "patrol", "question", "question2", "test3"
     ]);
-    const [reviewList, setReviewList] = useState([
-        1, 2, 3, 4
-    ]);
+    // const [reviewList, setReviewList] = useState([
+    //     1, 2, 3, 4
+    // ]);
     const [pictureIndex, setPictureIndex] = useState(0);
     const carouselRef = useRef<any>(null);
     const [windowInnerWidth, setWindowInnerWidth] = useState(1500);
@@ -76,12 +105,15 @@ const MainPage: any = (props: any) => {
 
     const [headerKind, setHeaderKind] = useState("transparent");
 
+    const [isBottomMenu, setIsBottomMenu] = useState(false);
+
     const ref1 = useRef<any>(null);
     const ref2 = useRef<any>(null);
     const ref3 = useRef<any>(null);
     const ref4 = useRef<any>(null);
     const ref5 = useRef<any>(null);
     const ref6 = useRef<any>(null);
+
 
     const [mobileFourthSectionMenuSelector, setMobileFourthSectionMenuSelector] = useState<number>(1);
 
@@ -118,6 +150,7 @@ const MainPage: any = (props: any) => {
             entries[0].target.classList.add("letsgo");
         }
     }
+
 
     useEffect(() => {
         console.log("swiperref");
@@ -170,8 +203,20 @@ const MainPage: any = (props: any) => {
     }, []);
 
     const listener = (e: any) => {
-        // const scroll = scrollRef.current.getBoundingClientRect();
-        // const clientScrollY = scroll.top;
+        const scroll = scrollRef.current.getBoundingClientRect();
+        const clientScrollY = scroll.top;
+
+        if(isBottomMenuBoolean === false && clientScrollY < 180){
+            setIsBottomMenu(true);
+            isBottomMenuBoolean = true;
+        }
+        console.log(isBottomMenuBoolean);
+        if(isBottomMenuBoolean === true && clientScrollY >= 180){
+            setIsBottomMenu(false);
+            isBottomMenuBoolean = false;
+        }
+
+
         const scrollY = window.pageYOffset;
 
         if (scrollY === 0) {
@@ -185,9 +230,9 @@ const MainPage: any = (props: any) => {
 
     useEffect(() => {
 
-        window.scrollTo(0, 0);
+        // window.scrollTo(0, 0);
 
-        const throttledFn = throttle(listener, 200);
+        const throttledFn = throttle(listener, 500);
 
         window.addEventListener("scroll", throttledFn);
         return () => {
@@ -244,10 +289,10 @@ const MainPage: any = (props: any) => {
 
     return (
         <div className={styles.main}>
-            <Header className={styles.menubar} headerKind={headerKind} />
+            <Header className={styles.menubar} headerKind={headerKind} isBottomMenu={isBottomMenu} />
             <div style={{ backgroundImage: "url(img/main99999.webp)" }} className={styles.mainImgDiv}>
                 <animated.div style={titleprops} className={styles.mainText}>
-                    <div>독학재수전문 수능선배에서</div>
+                    <div>독학 관리 전문 수능선배에서</div>
                     <div className={`${styles.onlyPC} ${styles.firstSectionPCTitle_1}`}>매일 12시간씩 집중하게 될겁니다</div>
                     <div className={`${styles.onlymobile} ${styles.firstSectionMobileTitle_1}`}>매일 12시간씩</div>
                     <div className={`${styles.onlymobile} ${styles.firstSectionMobileTitle_2}`}>집중하게 될겁니다</div>
@@ -266,10 +311,10 @@ const MainPage: any = (props: any) => {
                 {/* <div style={{ backgroundImage: "url(img/secondbg.webp)" }} className={styles.secondSectionBackground}> */}
                 <div className={styles.secondSectionBackground}>
                     <div className={`${styles.secondSectionTitle_1} ${styles.onlyPC}`}>
-                        독학관리에 진심인 사람들이 함께 모여
+                        독학 관리에 진심인 사람들이 모여
                     </div>
                     <div className={`${styles.secondSectionTitle_2} ${styles.onlyPC}`}>
-                        최고의 독학 관리학원을 만듭니다.
+                        최고의 독학 관리 학원을 만듭니다
                     </div>
 
                     <div className={`${styles.secondSectionTitle_1} ${styles.onlymobile}`}>
@@ -363,7 +408,7 @@ const MainPage: any = (props: any) => {
                         수능선배에서 공부하면
                     </div>
                     <div className={`${styles.thirdSectionTitleMobile} ${styles.second}`}>
-                        반드시 집중력이 향상됩니다.
+                        반드시 집중력이 향상됩니다
                     </div>
                 </div>
                 <div className={styles.mobileImageDiv}>
@@ -375,10 +420,10 @@ const MainPage: any = (props: any) => {
                         오픈석
                     </div>
                     <div className={styles.mobileImageBoxDescription}>
-                        쾌적하고 아늑한 휴게실에서 편안한 휴식과
+                        시야가 뚫려있는 공간에서 주변 학생들과 함께
                     </div>
                     <div className={`${styles.mobileImageBoxDescription} ${styles.second}`}>
-                        식사를 즐길 수 있습니다.
+                        공부하고 싶은 학생들에게 좋은 좌석입니다.
                     </div>
                 </div>
                 <div className={styles.mobileImageDiv}>
@@ -431,7 +476,7 @@ const MainPage: any = (props: any) => {
                         이런 분들에게
                     </div>
                     <div className={`${styles.mobileFourthSectionTitle} ${styles.second}`}>
-                        수능선배를 추천합니다!
+                        수능선배를 추천합니다
                     </div>
                 </div>
                 <div className={styles.mobileFourthSectionMenu}>
@@ -458,14 +503,14 @@ const MainPage: any = (props: any) => {
                                     <div>
                                         <div className={styles.mobileFourthSectionDescriptionText}>
                                             <div>
-                                                시간이 지날수록 <span className={styles.textColor}>생활관리가 헤이해지는</span>
+                                                시간이 지날수록 <span className={styles.textColor}>생활관리가 느슨해지는</span>
                                             </div>
                                             <div>
                                                 <span className={styles.textColor}>독학관리학원</span>이 싫으신 분
                                             </div>
                                         </div>
                                         <div className={styles.mobileFourthSectionDescriptionSubText}>
-                                            저희 수능선배는 조교가 기본적으로 하루에 6번씩 출석체크를 하고 자습시간 중에는 출입 통제를 위해 화장실 외 출입을 막고 학원 운영진이 수능선배 전용 관리 프로그램을 통해 모든 학생에 대한 출입기록, 외출시간 등을 한 눈에 확인하며 출석관리가 빈틈이 없는지 매일 점검합니다. 동시에 학부모님께서는 수능선배 전용 앱을 통해 학생의 등하원 시간 뿐만 아니라 모든 외출기록 및 출석관리 피드백을 조회하실 수 있습니다.
+                                            3중 시스템으로 출결을 관리합니다. 생활관리 전담 조교가 교시마다 대면 출석 체크를 수행하고, 프로그램이 지문 출입기록을 파악하여 공석을 체크하면 이를 운영진이 감시하며, 전용 어플을 통해 실시간 출결 사항을 학부모님들게 공유합니다.
                                         </div>
                                     </div>
 
@@ -477,14 +522,14 @@ const MainPage: any = (props: any) => {
                                     <div>
                                         <div className={styles.mobileFourthSectionDescriptionText}>
                                             <div>
-                                                도움 되지 않는 <span className={styles.textColor}>뜬구름잡는 튜터 상담에</span>
+                                                도움 되지 않는 <span className={styles.textColor}>학습 상담에</span>
                                             </div>
                                             <div>
                                                 <span className={styles.textColor}>시간이 아깝다고</span> 느끼신 분
                                             </div>
                                         </div>
                                         <div className={styles.mobileFourthSectionDescriptionSubText}>
-                                            수능선배는 서류, 운영진 면접을 통해 경쟁률 50대 1로 선발 후 교육과정과 매달 학생 케이스 회의를 통해 실력 있는 튜터들만을 고집합니다. 또한 튜터들이 학생들의 실력을 객관적으로 평가하고 상담하기 위해 매주 공부한 단원에 대한 실력에 맞춘 개개인별 미니테스트를 실시합니다. 동시에 학부모님께서는 수능선배 전용 앱을 통해 모든 상담 기록을 조회하실 수 있습니다.
+                                            수능선배는 실력 없는 학습 담당자가 상담을 진행하지 않습니다. 오직 실력으로 증명된 최상위권 튜터만을 고집합니다. 50대 1의 경쟁률을 뚫고 서류 평가, 성적 기준, 실전 문제 풀이 테스트를 통과한 튜터들에게만 학습 조언의 자격을 부여합니다.
                                         </div>
                                     </div>
 
@@ -496,14 +541,14 @@ const MainPage: any = (props: any) => {
                                     <div>
                                         <div className={styles.mobileFourthSectionDescriptionText}>
                                             <div>
-                                                맛 없고 메뉴도 못 고르는 <span className={styles.textColor}>획일적인 식사에</span>
+                                                맛 없고 메뉴도 못 고르는 <span className={styles.textColor}>식사 제공에</span>
                                             </div>
                                             <div>
                                                 <span className={styles.textColor}>지겨움</span>을 느끼신 분
                                             </div>
                                         </div>
                                         <div className={styles.mobileFourthSectionDescriptionSubText}>
-                                            수능선배는 수강생 전용 프로그램을 통해서 여러 업체들 중 본인이 희망하는 메뉴를 선택할 수 있으며 매끼니별로 식사 여부를 선택할 수 있습니다. 메뉴 선택이 힘든 학생들은 수험생 영양을 고려해 만든 메뉴 구성으로 식사할 수 있습니다.
+                                            맛있는 식사, 다양한 메뉴를 제공합니다. 수강생 전용 프로그램에서 업체와 메뉴를 고르실 수 있습니다. 매 끼니별로 신청 여부를 선택할 수 있습니다.
                                         </div>
                                     </div>
 
@@ -518,13 +563,13 @@ const MainPage: any = (props: any) => {
             <div className={`${styles.mobileFifthSection} ${styles.onlymobile}`}>
                 <div className={styles.animationTitle} ref={ref3}>
                     <div className={styles.mobileFifthSectionTitle}>
-                        각 과목 최고의 튜터와 함께합니다.
+                        각 과목 최고의 튜터와 함께합니다
                     </div>
                     <div className={`${styles.mobileFifthSectionDescription}`}>
-                        "개개인의 취약 과목에 따라 해당 과목 전문
+                        "학생별 학습 성향과 취약 과목에 따라
                     </div>
                     <div className={`${styles.mobileFifthSectionDescription} ${styles.second}`}>
-                        일대일 멘토가 붙습니다."
+                        전문 튜터가 매칭됩니다."
                     </div>
                 </div>
 
@@ -626,10 +671,10 @@ const MainPage: any = (props: any) => {
                         수능선배 자물쇠반은
                     </div>
                     <div className={`${styles.mobileSixthSectionTitle} ${styles.second}`}>
-                        독학의 단점을
+                        독학의 부족한 점을
                     </div>
                     <div className={`${styles.mobileSixthSectionTitle} ${styles.third}`}>
-                        정확히 채워드립니다!
+                        정확히 채워드립니다
                     </div>
                 </div>
 
@@ -791,7 +836,7 @@ const MainPage: any = (props: any) => {
                     수능선배에서 공부하면
                 </div>
                 <div className={styles.thirdSectionTitle_2}>
-                    반드시 집중력이 향상 됩니다.
+                    반드시 집중력이 향상됩니다
                 </div>
 
 
@@ -800,7 +845,7 @@ const MainPage: any = (props: any) => {
                         <LeftChevronSvg className={styles.chevron} />
                     </Button>
                     <div className={styles.carouselWrapper}>
-                        <Carousel
+                        {/* <Carousel
                             showArrows={false}
                             ref={carouselRef}
                             isRTL={false} initialFirstItem={30} itemsToShow={3} disableArrowsOnEnd={false} >
@@ -823,7 +868,7 @@ const MainPage: any = (props: any) => {
                                     </div>
                                 );
                             })}
-                        </Carousel>
+                        </Carousel> */}
                     </div>
                     <Button sx={{ "&:hover": { border: "1px solid black" }, width: "59px", height: "59px", border: "1px solid #939393", display: "flex", justifyContent: "center", alignItems: "center", marginBottom: "120px", marginLeft: "16px" }} variant="outlined" onClick={(e) => { if (list.length - 3 !== indexNumber) { carouselRef.current.goTo(indexNumber + 1); setIndexNumber(indexNumber + 1); } }}>
                         <RightChevronSvg className={styles.chevron} />
@@ -844,29 +889,29 @@ const MainPage: any = (props: any) => {
                 <div>
                     <div className={styles.fourthBox}>
                         <div>
-                            시간이 지날수록 생활관리가 헤이해지는 독학관리학원이 싫으신 분
+                            시간이 지날수록 생활관리가 느슨해지는 독학관리학원이 싫으신 분
                         </div>
                         <div>
-                            수능선배는 생활관리 전문 조교가 기본적으로 생활관리를 맡고 자습시간 중에는 출입 통제를 위해 화장실 외 출입을 막으며 학원 운영진이<br></br>
-                            수능선배 전용 프로그램을 통해 모든 학생에 대한 출입관리를 한 눈에 확인하며 출석관리가 빈틈이 없는지 매일 철저히 확인합니다.
-                        </div>
-                    </div>
-                    <div className={styles.fourthBox}>
-                        <div>
-                            도움 되지 않는 튜터 상담에 시간이 아깝다고 느끼신 분
-                        </div>
-                        <div>
-                            수능선배는 서류, 운영진 면접을 통해 경쟁률 50대 1로 선발 후 교육과정과 매달 학생 케이스 회의를 통해 실력 있는 튜터들만을 고집합니다.<br></br>
-                            또한 튜터들이 학생들의 실력을 객관적으로 평가하고 상담하기 위해 매주 공부한 단원에 대한 실력에 맞춘 개개인별 미니테스트를 실시합니다.
+                            3중 시스템으로 출결을 관리합니다. 생활관리 전담 조교가 교시마다 대면 출석 체크를 수행하고, 프로그램이 지문 출입기록을 파악하여<br></br>
+                            공석을 체크하면 이를 운영진이 감시하며, 전용 어플을 통해 실시간 출결 사항을 학부모님들께 공유합니다.
                         </div>
                     </div>
                     <div className={styles.fourthBox}>
                         <div>
-                            맛 없는 식사에 싫증이 나신 분
+                            도움 되지 않는 학습 상담에 시간이 아깝다고 느끼신 분
                         </div>
                         <div>
-                            수능선배는 수강생 전용 프로그램을 통해서 여러 업체들 중 본인이 희망하는 메뉴를 선택할 수 있으며 매끼니별로 식사 여부를<br></br>
-                            선택할 수 있습니다. 메뉴 선택이 힘든 학생들은 수험생 영양을 고려해 만든 메뉴 구성으로 식사할 수 있습니다.
+                            수능선배는 실력 없는 학습 담당자가 상담을 진행하지 않습니다. 오직 실력으로 증명된 최상위권 튜터만을 고집합니다. 50대 1의 경쟁률을 뚫고<br></br>
+                            서류 평가, 성적 기준, 실전 문제 풀이 테스트를 통과한 튜터들에게만 학습 조언의 자격을 부여합니다.
+                        </div>
+                    </div>
+                    <div className={styles.fourthBox}>
+                        <div>
+                            맛 없고 메뉴도 못 고르는 식사 제공에 지겨움을 느끼신 분
+                        </div>
+                        <div>
+                            맛있는 식사, 다양한 메뉴를 제공합니다. 수강생 전용 프로그램에서 업체와 메뉴를 고르실 수 있습니다.<br></br>
+                            매 끼니별로 신청 여부를 선택할 수 있습니다.
                         </div>
                     </div>
                 </div>
@@ -876,10 +921,10 @@ const MainPage: any = (props: any) => {
 
             <div className={`${styles.fifthSection} ${styles.onlyPC}`}>
                 <div className={styles.fifthSectionTitle_1}>
-                    각 과목 최고의 튜터와 함께합니다.
+                    각 과목 최고의 튜터와 함께합니다
                 </div>
                 <div className={styles.fifthSectionTitle_2}>
-                    "개개인의 취약 과목에 따라 해당 과목 전문 일대일 멘토가 붙습니다."
+                    "학생별 학습 성향과 취약 과목에 따라 전문 튜터가 매칭됩니다."
                 </div>
 
                 <div className={styles.tutorsDiv}>
@@ -972,7 +1017,7 @@ const MainPage: any = (props: any) => {
                     수능선배 자물쇠반은
                 </div>
                 <div className={styles.sixthSectionTitle_2}>
-                    독학의 부족한 점을 정확히 채워드립니다!
+                    독학의 부족한 점을 정확히 채워드립니다
                 </div>
 
                 <div className={styles.grayDivBox}>
@@ -984,10 +1029,10 @@ const MainPage: any = (props: any) => {
                             수능선배 자물쇠반
                         </div>
                         <div>
-                            6년동안 독학관리학원을 운영한 경험으로 학생들에게
+                            6년동안 독학 관리 학원을 운영한 경험으로
                         </div>
                         <div>
-                            어떤 부분이 중요한지 정확하게 알고 있습니다.
+                            학생들에게 어떤 부분이 필요한 지 정확히 알고 있습니다.
                         </div>
                         <div>
 
@@ -1144,25 +1189,22 @@ const MainPage: any = (props: any) => {
                         return (
                             <div key={index} className={styles.peopleDivEach}>
                                 <div className={styles.eachPeopleDescription}>
-                                    "직접 서비스를 만들고,<br></br>
-                                    마케팅까지 다루니 안 할 이유가<br></br>
-                                    없을 것 같아요. 저도 정말 하고<br></br>
-                                    싶은데요?"
+                                    {each.description}
                                 </div>
                                 <div className={styles.eachPeopleAvatar}>
                                     <div className={styles.avatarDiv}>
-                                        <img src="img/avatar.png" alt="avatar" />
+                                        <img className={styles.avatarPic} src={`img/avatar${index+1}.webp`} alt="avatar" />
                                     </div>
                                     <div className={styles.avatarSide}>
                                         <div className={styles.avatarName}>
-                                            윤여현
+                                            {each.name}
                                         </div>
                                         <div className={styles.avatarDescription}>
                                             <div>
-                                                현) 구글 Industy Manager
+                                                {each.firstLine}
                                             </div>
                                             <div>
-                                                전) K벤처캐피털 투자심사역
+                                                {each.secondLine}
                                             </div>
                                         </div>
                                     </div>
@@ -1188,25 +1230,25 @@ const MainPage: any = (props: any) => {
                 <div className={styles.peopleDiv}>
                     <div className={styles.peopleDivEach}>
                         <div className={styles.eachPeopleDescription}>
-                            "직접 서비스를 만들고,<br></br>
-                            마케팅까지 다루니 안 할 이유가<br></br>
-                            없을 것 같아요. 저도 정말 하고<br></br>
-                            싶은데요?"
+                            "멘토님과의 상담을 통해서 지금<br></br>
+                            하고 있는 공부의 방향이 맞게<br></br>
+                            흘러가고 있는지를 점검할 수<br></br>
+                            있었습니다"
                         </div>
                         <div className={styles.eachPeopleAvatar}>
                             <div className={styles.avatarDiv}>
-                                <img src="img/avatar.png" alt="avatar" />
+                                <img className={styles.avatarPic} src="img/avatar1.webp" alt="avatar" />
                             </div>
                             <div className={styles.avatarSide}>
                                 <div className={styles.avatarName}>
-                                    윤여현
+                                    강민구
                                 </div>
                                 <div className={styles.avatarDescription}>
                                     <div>
-                                        현) 구글 Industy Manager
+                                        단국대 치대 합격생
                                     </div>
                                     <div>
-                                        전) K벤처캐피털 투자심사역
+                                        1년 동안 재원
                                     </div>
                                 </div>
                             </div>
@@ -1214,25 +1256,25 @@ const MainPage: any = (props: any) => {
                     </div>
                     <div className={styles.peopleDivEach}>
                         <div className={styles.eachPeopleDescription}>
-                            "직접 서비스를 만들고,<br></br>
-                            마케팅까지 다루니 안 할 이유가<br></br>
-                            없을 것 같아요. 저도 정말 하고<br></br>
-                            싶은데요?"
+                            "멘토님과 매주 공부 분량을<br></br>
+                            자세하게 계획하였고<br></br>
+                            매주 상담시간이 정해진 분량을<br></br>
+                            끝마쳤는지 확인했습니다"
                         </div>
                         <div className={styles.eachPeopleAvatar}>
                             <div className={styles.avatarDiv}>
-                                <img src="img/avatar.png" alt="avatar" />
+                                <img className={styles.avatarPic} src="img/avatar2.webp" alt="avatar" />
                             </div>
                             <div className={styles.avatarSide}>
                                 <div className={styles.avatarName}>
-                                    윤여현
+                                    정미진
                                 </div>
                                 <div className={styles.avatarDescription}>
                                     <div>
-                                        현) 구글 Industy Manager
+                                        서울대 약대 합격생
                                     </div>
                                     <div>
-                                        전) K벤처캐피털 투자심사역
+                                        1년 동안 재원
                                     </div>
                                 </div>
                             </div>
@@ -1240,25 +1282,25 @@ const MainPage: any = (props: any) => {
                     </div>
                     <div className={styles.peopleDivEach}>
                         <div className={styles.eachPeopleDescription}>
-                            "직접 서비스를 만들고,<br></br>
-                            마케팅까지 다루니 안 할 이유가<br></br>
-                            없을 것 같아요. 저도 정말 하고<br></br>
-                            싶은데요?"
+                            "동일한 공부를 하는 학생들과<br></br>
+                            특유의 생활관리형 시스템으로<br></br>
+                            긴장감이 상당히 잘 조성되어<br></br>
+                            있습니다"
                         </div>
                         <div className={styles.eachPeopleAvatar}>
                             <div className={styles.avatarDiv}>
-                                <img src="img/avatar.png" alt="avatar" />
+                                <img className={styles.avatarPic} src="img/avatar3.webp" alt="avatar" />
                             </div>
                             <div className={styles.avatarSide}>
                                 <div className={styles.avatarName}>
-                                    윤여현
+                                    백진식
                                 </div>
                                 <div className={styles.avatarDescription}>
                                     <div>
-                                        현) 구글 Industy Manager
+                                        서울대 약대 합격생
                                     </div>
                                     <div>
-                                        전) K벤처캐피털 투자심사역
+                                        2년 동안 재원
                                     </div>
                                 </div>
                             </div>
@@ -1266,25 +1308,25 @@ const MainPage: any = (props: any) => {
                     </div>
                     <div className={styles.peopleDivEach}>
                         <div className={styles.eachPeopleDescription}>
-                            "직접 서비스를 만들고,<br></br>
-                            마케팅까지 다루니 안 할 이유가<br></br>
-                            없을 것 같아요. 저도 정말 하고<br></br>
-                            싶은데요?"
+                            "독서실에서 혼자 공부를 하면<br></br>
+                            시기에 맞는 공부를 하고 있는지<br></br>
+                            불안감이 들었는데, 이를<br></br>
+                            해소하기 위해 선택했습니다"
                         </div>
                         <div className={styles.eachPeopleAvatar}>
                             <div className={styles.avatarDiv}>
-                                <img src="img/avatar.png" alt="avatar" />
+                                <img className={styles.avatarPic} src="img/avatar4.webp" alt="avatar" />
                             </div>
                             <div className={styles.avatarSide}>
                                 <div className={styles.avatarName}>
-                                    윤여현
+                                    정민지
                                 </div>
                                 <div className={styles.avatarDescription}>
                                     <div>
-                                        현) 구글 Industy Manager
+                                        제주대 약대 합격생
                                     </div>
                                     <div>
-                                        전) K벤처캐피털 투자심사역
+                                        2년 동안 재원
                                     </div>
                                 </div>
                             </div>

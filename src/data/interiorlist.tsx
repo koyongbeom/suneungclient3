@@ -10,7 +10,7 @@ const list = [
         src : "img/07_1.webp"
     },
     {
-        title : "일인석",
+        title : "1인석",
         description : "독립된 공간에서 공부하길 원하는 학생들에게 추천하는 일인석 좌석이며 의자는 시디즈 제품입니다.",
         src : "img/10.webp"
     },

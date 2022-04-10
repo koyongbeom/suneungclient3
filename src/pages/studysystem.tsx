@@ -74,6 +74,7 @@ import PreviousChart from "../control/chart";
 import QuestionCheckMobile from "../control/questioncheckmobile";
 import { useNavigate } from "react-router-dom";
 import SpeedDialComponent from "../control/speeddial";
+import AttendanceCheck2 from "../control/attendanceCheck2";
 
 const StudySystem: React.FC = (props: any) => {
     const [open, setOpen] = React.useState(false);
@@ -1494,7 +1495,8 @@ const StudySystem: React.FC = (props: any) => {
                 <Box sx={style}>
                     {
                         kind === "attendanceCheck" &&
-                        <SecondTotalAttendanceProcess />
+                        // <SecondTotalAttendanceProcess />
+                        <AttendanceCheck2 />
                     }
                     {
                         kind === "attendance" &&

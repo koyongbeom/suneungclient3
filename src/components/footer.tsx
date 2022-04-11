@@ -29,7 +29,7 @@ const Footer: React.FC<any> = (props) => {
                                 대표자:고용범
                             </div>
                             <div>
-                                선배스터디센터
+                                선배스터디센터(TEL : 050-7871-3574)
                             </div>
                             <div>
                                 사업자 등록번호 : 598-97-01049

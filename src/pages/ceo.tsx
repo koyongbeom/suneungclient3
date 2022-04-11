@@ -9,7 +9,9 @@ import { ReactComponent as HouseSvg } from '../svg/house-thin.svg';
 
 
 
+
 const Ceo: any = (props: any) => {
+
 
 
     const navigate = useNavigate();

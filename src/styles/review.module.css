@@ -247,7 +247,6 @@
     padding-top: 128px;
     background-color: #f3f2f2;
     padding-bottom: 131px;
-    margin-bottom: 139px;
 }
 
 .titleText.second{
@@ -267,6 +266,13 @@
 
 .heart{
     width: 18px;
+}
+
+.vimeoWrapper{
+    width: 944px;
+    margin: 0 auto;
+    border-radius: 20px;
+    overflow: hidden;
 }
 
 .none{
@@ -487,4 +493,13 @@
         margin-bottom: 0;
     }
 
+    .titleText.second{
+        margin-bottom: 40px;
+    }
+
+
+    .vimeoWrapper{
+        width: 88%;
+        border-radius: 10px;
+    }
 }

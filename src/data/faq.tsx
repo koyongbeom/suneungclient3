@@ -3,7 +3,7 @@ const list =
     {
         category: "register",
         question: '등록 원할 시 예약 후 방문해야 하나요?',
-        answer: '아닙니다. 평일 오전 9시 ~ 오후 10시 사이에 방문하시면 간단하게 시설 및 시스템 안내드리고 있습니다.\n상담 원하실 경우 010-9809-0489(문자, 전화 모두 가능)로 예약 후 방문하시면 됩니다.'
+        answer: '아닙니다. 평일 오전 9시 ~ 오후 10시 사이에 방문하시면 간단하게 시설 및 시스템 안내드리고 있습니다.\n상담 원하실 경우 050-7871-3574(문자, 전화 모두 가능) 예약 후 방문하시면 됩니다.'
     },
     {
         category: "register",
@@ -28,23 +28,23 @@ const list =
     {
         category: "register",
         question: '상담 예약을 하고 싶은데 어디로 연락하면 되나요?',
-        answer: '아래 링크를 통해 신청하시거나 010-9809-0489로 연락주시면 됩니다\n<a href="https://suneungsunbae.com/register">상담 신청하기</a>'
+        answer: '아래 링크를 통해 신청하시거나 050-7871-3574로 연락주시면 됩니다\n<a href="https://suneungsunbae.com/register">상담 신청하기</a>'
     },
     {
         category: "register",
         question: '전화상담도 가능한가요?',
-        answer: '네, 가능합니다. 010-9809-0489로 연락주시면 됩니다.'
+        answer: '네, 가능합니다. 050-7871-3574로 연락주시면 됩니다.'
     },
     {
         category: "register",
         question: '등록 전 예약할 수 있나요?',
         answer: '네, 등록 예약 가능하며 고정 좌석 예약은 등원 3일 전부터 가능합니다.'
     },
-    {
-        category: "register",
-        question: '남은 좌석 현황은 어디서 볼 수 있나요?',
-        answer: 'OO > OO 페이지에 들어가시면 보실 수 있습니다.'
-    },
+    // {
+    //     category: "register",
+    //     question: '남은 좌석 현황은 어디서 볼 수 있나요?',
+    //     answer: 'OO > OO 페이지에 들어가시면 보실 수 있습니다.'
+    // },
     {
         category: "register",
         question: '1일 체험 가능한가요?',
@@ -58,7 +58,7 @@ const list =
     {
         category: "register",
         question: '개인적으로 궁금한 문의 사항은 어디로 연락하면 되나요?',
-        answer: '010-9809-0489로 연락주시거나 아래 링크 카카오톡 플러스 친구로 연락주시면 됩니다'
+        answer: '050-7871-3574로 연락주시거나 아래 링크 카카오톡 플러스 친구로 연락주시면 됩니다\n<a href="http://pf.kakao.com/_ViHeb/chat">카카오톡 상담</a>'
     },
     {
         category: "register",
@@ -360,11 +360,11 @@ const list =
         question: '환불규정은 어떻게 되나요? ',
         answer: '학원법에 따라 \n1. 이용시작 전 : 수강료 전액 환불\n2. 1/3 경과 전 : 수강료 2/3 해당액 환불\n3. 1/2 경과 전 : 수강료의 1/2 해당액 환불\n4. 1/2이상이 경과한 경우 수강료 환불 불가'
     },
-    {
-        category : "price",
-        question: '장학금 제도가 있나요?',
-        answer: '네, ddd 50% ddd 30%입니다.'
-    },
+    // {
+    //     category : "price",
+    //     question: '장학금 제도가 있나요?',
+    //     answer: '네, ddd 50% ddd 30%입니다.'
+    // },
     {
         category : "etc",
         question: '지방에서 올라온 학생들은 보통 어디에 거주하는지 정보를 알 수 있을까요?',

@@ -15,7 +15,6 @@ import "swiper/css";
 import SpeedDialComponent from "../control/speeddial";
 
 
-
 const Review: React.FC<any> = (props) => {
 
     const [likeCount, setLikeCount] = useState<any>();
@@ -24,6 +23,11 @@ const Review: React.FC<any> = (props) => {
 
     const [mainImageIndex, setMainImageIndex ]= useState(0);
     const [secondMainImageIndex, setSecondMainImageIndex ]= useState(0);
+
+    useEffect(()=>{
+        window.scrollTo(0, 0);
+    }, [])
+
 
 
     useEffect(() => {
@@ -373,6 +377,14 @@ const Review: React.FC<any> = (props) => {
             <div className={styles.secondSection}>
                 <div className={`${styles.titleText} ${styles.second}`}>
                     영상으로 만나는<br></br>합격생들의 이야기
+                </div>
+
+                <div className={styles.vimeoWrapper}>
+                    <div style={{padding: "56.25% 0 0 0", position : "relative", borderRadius : "10px"}}>
+                        <iframe src="https://player.vimeo.com/video/698227324?h=7e7ea93748&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameBorder="0" allow="autoplay; fullscreen; picture-in-picture" allowFullScreen style={{position : "absolute", top:0, left:0, width : "100%", height:"100%", borderRadius : "10px"}} title="3차수정본_합격자인터뷰.mp4">
+                        </iframe>
+                    </div>
+                    <script src="https://player.vimeo.com/api/player.js"></script>
                 </div>
             </div>
 

@@ -33,10 +33,10 @@ const SpeedDialComponent: React.FC<any> = (props) => {
 
     const click = (e : any, index : number) => {
         if(index === 0){
-        window.location.href = "tel://01098800489";
+        window.location.href = "tel://05078713574";
         }
         if(index === 1){
-            window.location.href = "sms:01098800489";
+            window.location.href = "sms:05078713574";
         }
         if(index === 2){
             window.location.href = "http://pf.kakao.com/_ViHeb/chat";

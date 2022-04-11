@@ -19,6 +19,7 @@ import ImageTransitionInterior from "../control/imagetransitioninterior";
 import { useLocation } from "react-router-dom";
 import SpeedDialComponent from "../control/speeddial";
 
+
 declare var naver : any;
 
 const Map: React.FC<any> = (props) => {
@@ -35,6 +36,7 @@ const Map: React.FC<any> = (props) => {
     const [touchEnd, setTouchEnd] = useState(null);
     const [touchStartY, setTouchStartY] = useState(null);
     const [touchEndY, setTouchEndY] = useState(null);
+
 
 
     useEffect(() => {
@@ -205,7 +207,7 @@ const Map: React.FC<any> = (props) => {
                         <div className={styles.placeText}>
                             <a href="tel:01098800489" className={styles.atag} style={{ textDecoration: "none", color: "inherit" }}>
                                 <div>
-                                    TEL 010.9880.0489
+                                    TEL 050.7871.3574
                                 </div>
                             </a>
                         </div>

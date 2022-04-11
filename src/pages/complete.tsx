@@ -17,6 +17,12 @@ const Complete: React.FC<any> = (props) => {
     const [minutes, setMinutes] = useState<any>();
     const [select, setSelect] = useState<any>();
 
+    useEffect(()=>{
+        window.scrollTo(0, 0);
+    }, [])
+
+
+
 
     const start = (state : any) => {
         if(!state){
@@ -121,7 +127,7 @@ const Complete: React.FC<any> = (props) => {
                     </Button>
                 </div>
                 <div className={styles.contactBox}>
-                    수능선배 연락처 | 010-9880-0489<br></br>
+                    수능선배 연락처 | 050-7871-3574<br></br>
                 </div>
 
             </div>

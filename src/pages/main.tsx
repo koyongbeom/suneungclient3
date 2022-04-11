@@ -22,32 +22,39 @@ import ImageTransition from '../control/imagetransition';
 import Footer from '../components/footer';
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
+import "swiper/css/pagination";
+
+import { Pagination } from "swiper";
+
 import SpeedDialComponent from '../control/speeddial';
+import { useMediaQuery } from "react-responsive";
+
+
 
 const mobileTutorList = [
     {
-        img : 21,
-        name : "이선행",
-        record : "수능 전국 151등",
-        school : "가톨릭대 의대",
-        ment1 : "수험생활에 도움이 되기 위한 고민을",
-        ment2 : "끊임없이 하는 튜터입니다."
+        img: 31,
+        name: "이선행",
+        record: "수능 전국 151등",
+        school: "가톨릭대 의대",
+        ment1: "수험생활에 도움이 되기 위한 고민을",
+        ment2: "끊임없이 하는 튜터입니다."
     },
     {
-        img : 22,
-        name : "김희선",
-        record : "정시 합격",
-        school : "서울대학교 소비자학과",
-        ment1 : "사례들을 체계적으로 비교 분석하여",
-        ment2 : "알맞은 해결책을 제시해드리겠습니다"
+        img: 32,
+        name: "김희선",
+        record: "정시 합격",
+        school: "서울대학교 소비자학과",
+        ment1: "사례들을 체계적으로 비교 분석하여",
+        ment2: "알맞은 해결책을 제시해드리겠습니다"
     },
     {
-        img : 23,
-        name : "이재훈",
-        record : "수능 전국 200등",
-        school : "경희대 의대",
-        ment1 : "힘겨운 길을 같이 걷는",
-        ment2 : "동반자가 되어드리겠습니다."
+        img: 33,
+        name: "이재훈",
+        record: "수능 전국 200등",
+        school: "경희대 의대",
+        ment1: "힘겨운 길을 같이 걷는",
+        ment2: "동반자가 되어드리겠습니다."
     }
 ]
 
@@ -55,28 +62,52 @@ var isBottomMenuBoolean = false;
 
 const reviewList = [
     {
-        name : "강민구",
-        firstLine : "단국대 치대 합격생",
-        secondLine : "1년 동안 재원",
-        description : "\"멘토님과의 상담을 통해서 지금\n하고 있는 공부의 방향이 맞게\n흘러가고 있는지를 점검할 수\n있었습니다\""
+        name: "강민구",
+        firstLine: "단국대 치대 합격생",
+        secondLine: "1년 동안 재원",
+        description: "\"멘토님과의 상담을 통해서 지금\n하고 있는 공부의 방향이 맞게\n흘러가고 있는지를 점검할 수\n있었습니다\""
     },
     {
-        name : "정미진",
-        firstLine : "서울대 약대 합격생",
-        secondLine : "1년 동안 재원",
-        description :  "\"멘토님과 매주 공부 분량을\n자세하게 계획하였고\n매주 상담시간이 정해진 분량을\n끝마쳤는지 확인했습니다\""
+        name: "김민석",
+        firstLine: "서울대 약대 합격생",
+        secondLine: "1년 동안 재원",
+        description: "\"쾌적한 시설이 좋았습니다\n책상을 넓게 쓰고\n편안한 의자에 앉아서 공부하는\n것이 좋았습니다\""
     },
     {
-        name : "백진식",
-        firstLine : "서울대 약대 합격생",
-        secondLine : "2년 동안 재원",
-        description :  "\"동일한 공부를 하는 학생들과\n특유의 생활관리형 시스템으로\n긴장감이 상당히 잘 조성되어\n있습니다\""
+        name: "정미진",
+        firstLine: "서울대 약대 합격생",
+        secondLine: "1년 동안 재원",
+        description: "\"멘토님과 매주 공부 분량을\n자세하게 계획하였고\n매주 상담시간이 정해진 분량을\n끝마쳤는지 확인했습니다\""
     },
     {
-        name : "정민지",
-        firstLine : "제주대 약대 합격생",
-        secondLine : "2년 동안 재원",
-        description :  "\"독서실에서 혼자 공부를 하면\n시기에 맞는 공부를 하고 있는지\n불안감이 들었는데, 이를\n해소하기 위해 선택했습니다\""
+        name: "백진식",
+        firstLine: "서울대 약대 합격생",
+        secondLine: "2년 동안 재원",
+        description: "\"동일한 공부를 하는 학생들과\n특유의 생활관리형 시스템으로\n긴장감이 상당히 잘 조성되어\n있습니다\""
+    },
+    {
+        name: "김소연",
+        firstLine: "중앙대 약대 합격생",
+        secondLine: "1년 동안 재원",
+        description: "\"독학으로 공부하는 수험생으로\n늘 불안함과 외로움이 있었습니다\n입시를 성공한 선배와의 상담을\n통해 공부에 집중할 수 있었습니다\""
+    },
+    {
+        name: "이성진",
+        firstLine: "중앙대 약대 합격생",
+        secondLine: "1년 동안 재원",
+        description: "\"인강 온라인 질의응답만으로\n부족한 점이 많아\n질의응답을 원활히 할 수 있는\n곳을 선택했습니다\""
+    },
+    {
+        name: "정종훈",
+        firstLine: "성균관대 약대 합격생",
+        secondLine: "1년 동안 재원",
+        description: "\"원장선생님의 공부계획 관리를\n통해서 좀 더 효율적이고\n체계적인 공부를 할 수 있게\n된다는 점이 좋았습니다\""
+    },
+    {
+        name: "정민지",
+        firstLine: "제주대 약대 합격생",
+        secondLine: "2년 동안 재원",
+        description: "\"독서실에서 혼자 공부를 하면\n시기에 맞는 공부를 하고 있는지\n불안감이 들었는데, 이를\n해소하기 위해 선택했습니다\""
     }
 ]
 
@@ -114,10 +145,16 @@ const MainPage: any = (props: any) => {
     const ref5 = useRef<any>(null);
     const ref6 = useRef<any>(null);
 
+    const [screenWidth, setScreenWidth] = useState<any>();
+
 
     const [mobileFourthSectionMenuSelector, setMobileFourthSectionMenuSelector] = useState<number>(1);
 
     const titleprops = useSpring({ to: { opacity: 1, y: 0 }, from: { opacity: 0, y: 20 }, config: { duration: 600 }, delay: 300 })
+
+    const isLargeMobile = useMediaQuery({query : '(min-width : 405px)'});
+    const isTablet = useMediaQuery({query : `(min-width : 768px)`});
+    const isLargeTablet = useMediaQuery({query : `(min-width : 810px)`});
 
     useInterval(() => {
         if (pictureIndex < 4) {
@@ -144,8 +181,8 @@ const MainPage: any = (props: any) => {
     }
 
 
-    const intersect2 = (entries : any, observer : any) => {
-        if(entries[0].isIntersecting){
+    const intersect2 = (entries: any, observer: any) => {
+        if (entries[0].isIntersecting) {
             console.log("intersect");
             entries[0].target.classList.add("letsgo");
         }
@@ -206,12 +243,12 @@ const MainPage: any = (props: any) => {
         const scroll = scrollRef.current.getBoundingClientRect();
         const clientScrollY = scroll.top;
 
-        if(isBottomMenuBoolean === false && clientScrollY < 180){
+        if (isBottomMenuBoolean === false && clientScrollY < 180) {
             setIsBottomMenu(true);
             isBottomMenuBoolean = true;
         }
         console.log(isBottomMenuBoolean);
-        if(isBottomMenuBoolean === true && clientScrollY >= 180){
+        if (isBottomMenuBoolean === true && clientScrollY >= 180) {
             setIsBottomMenu(false);
             isBottomMenuBoolean = false;
         }
@@ -230,7 +267,7 @@ const MainPage: any = (props: any) => {
 
     useEffect(() => {
 
-        // window.scrollTo(0, 0);
+        window.scrollTo(0, 0);
 
         const throttledFn = throttle(listener, 500);
 
@@ -615,13 +652,13 @@ const MainPage: any = (props: any) => {
                     </Carousel> */}
                     {
                         <Swiper
-                            
+
                             slidesPerView={1.32}
                             spaceBetween={30}
                             className={styles.swiper}
                         >
                             {
-                                mobileTutorList.map((each : any, index) => {
+                                mobileTutorList.map((each: any, index) => {
                                     return (
                                         <SwiperSlide
                                         >
@@ -634,7 +671,7 @@ const MainPage: any = (props: any) => {
                                                         </div>
                                                         <div className={styles.mobileEachTutorImgBoxDescription_2}>
                                                             <div>
-                                                                
+
                                                             </div>
                                                             <div>
                                                                 {each.record}
@@ -845,7 +882,7 @@ const MainPage: any = (props: any) => {
                         <LeftChevronSvg className={styles.chevron} />
                     </Button>
                     <div className={styles.carouselWrapper}>
-                        {/* <Carousel
+                        <Carousel
                             showArrows={false}
                             ref={carouselRef}
                             isRTL={false} initialFirstItem={30} itemsToShow={3} disableArrowsOnEnd={false} >
@@ -868,7 +905,7 @@ const MainPage: any = (props: any) => {
                                     </div>
                                 );
                             })}
-                        </Carousel> */}
+                        </Carousel>
                     </div>
                     <Button sx={{ "&:hover": { border: "1px solid black" }, width: "59px", height: "59px", border: "1px solid #939393", display: "flex", justifyContent: "center", alignItems: "center", marginBottom: "120px", marginLeft: "16px" }} variant="outlined" onClick={(e) => { if (list.length - 3 !== indexNumber) { carouselRef.current.goTo(indexNumber + 1); setIndexNumber(indexNumber + 1); } }}>
                         <RightChevronSvg className={styles.chevron} />
@@ -929,7 +966,7 @@ const MainPage: any = (props: any) => {
 
                 <div className={styles.tutorsDiv}>
                     <div className={styles.eachBox}>
-                        <div style={{ backgroundImage: "url(img/tutor21.webp)" }} className={styles.tutorsDivEach}>
+                        <div style={{ backgroundImage: "url(img/tutor31.webp)" }} className={styles.tutorsDivEach}>
                             <div className={styles.pictureDescription}>
                                 <div className={styles.tutorName}>
                                     튜터 이선행
@@ -944,7 +981,7 @@ const MainPage: any = (props: any) => {
                         </div>
                         <div className={styles.tutorMentDiv}>
                             <div className={styles.tutorMentTitle}>
-                               "수험생활에 도움이 되기 위한 고민을"<br></br>끊임없이 하는 튜터가 되어드리겠습니다.
+                                "수험생활에 도움이 되기 위한 고민을"<br></br>끊임없이 하는 튜터가 되어드리겠습니다.
                             </div>
                             <div className={styles.tutorMentDescription}>
                                 "학생의 약점이 어디인지에 따라 어떻게 공부해야 할지<br></br>
@@ -956,7 +993,7 @@ const MainPage: any = (props: any) => {
                         </div>
                     </div>
                     <div className={styles.eachBox}>
-                        <div style={{ backgroundImage: "url(img/tutor22.webp)" }} className={styles.tutorsDivEach}>
+                        <div style={{ backgroundImage: "url(img/tutor32.webp)" }} className={styles.tutorsDivEach}>
                             <div className={styles.pictureDescription}>
                                 <div className={styles.tutorName}>
                                     튜터 김희선
@@ -983,7 +1020,7 @@ const MainPage: any = (props: any) => {
                         </div>
                     </div>
                     <div className={styles.eachBox}>
-                        <div style={{ backgroundImage: "url(img/tutor23.webp)" }} className={styles.tutorsDivEach}>
+                        <div style={{ backgroundImage: "url(img/tutor33.webp)" }} className={styles.tutorsDivEach}>
                             <div className={styles.pictureDescription}>
                                 <div className={styles.tutorName}>
                                     튜터 이재훈
@@ -1170,21 +1207,21 @@ const MainPage: any = (props: any) => {
                 </div>
             </div>
 
-            <div className={`${styles.mobileEightSection} ${styles.onlymobile}`} style={{ backgroundImage: "url(img/reviewBackground.webp)" }}>
+            <div className={`${styles.mobileEightSection} ${styles.onlymobile}`}>
                 <div className={styles.animationTitle} ref={ref5}>
                     <div className={styles.mobileEightSectionTitle_1}>
-                        수십명의 합객생들의
+                        수 십명의 합격생들의
                     </div>
                     <div className={styles.mobileEightSectionTitle_2}>
                         리뷰가 증명합니다
                     </div>
                 </div>
 
-                <div className={styles.mobileEightSectionVideoDiv}>
+                {/* <div className={styles.mobileEightSectionVideoDiv}>
                     <img src="img/video2.png" className={styles.mobileVideoEight} alt="video" />
-                </div>
+                </div> */}
 
-                <div className={styles.mobileEightSectionCarouselWrapper}>
+                {/* <div className={styles.mobileEightSectionCarouselWrapper}>
                     {reviewList.map((each, index) => {
                         return (
                             <div key={index} className={styles.peopleDivEach}>
@@ -1193,7 +1230,7 @@ const MainPage: any = (props: any) => {
                                 </div>
                                 <div className={styles.eachPeopleAvatar}>
                                     <div className={styles.avatarDiv}>
-                                        <img className={styles.avatarPic} src={`img/avatar${index+1}.webp`} alt="avatar" />
+                                        <img className={styles.avatarPic} src={`img/avatar1${index + 1}.webp`} alt="avatar" />
                                     </div>
                                     <div className={styles.avatarSide}>
                                         <div className={styles.avatarName}>
@@ -1212,10 +1249,52 @@ const MainPage: any = (props: any) => {
                             </div>
                         );
                     })}
-                </div>
+                </div> */}
+
+                {
+                    <Swiper
+                        slidesPerView={isLargeTablet ? 3 : isTablet ? 2.8 : isLargeMobile ? 1.5 : 1.4}
+                        spaceBetween={20}
+                        className={styles.swiper2}
+                        pagination={true}
+                        modules={[Pagination]}
+                    >
+                        {
+                            reviewList.map((each, index) => {
+                                return (
+                                    <SwiperSlide key={index}>
+                                        <div key={index} className={styles.peopleDivEach}>
+                                            <div className={styles.eachPeopleDescription}>
+                                                {each.description}
+                                            </div>
+                                            <div className={styles.eachPeopleAvatar}>
+                                                <div className={styles.avatarDiv}>
+                                                    <img className={styles.avatarPic} src={`img/avatar1${index + 1}.webp`} alt="avatar" />
+                                                </div>
+                                                <div className={styles.avatarSide}>
+                                                    <div className={styles.avatarName}>
+                                                        {each.name}
+                                                    </div>
+                                                    <div className={styles.avatarDescription}>
+                                                        <div>
+                                                            {each.firstLine}
+                                                        </div>
+                                                        <div>
+                                                            {each.secondLine}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </SwiperSlide>
+                                );
+                            })}
+                    </Swiper>
+                }
+
             </div>
 
-            <div style={{ backgroundImage: "url(img/reviewBackground.webp)" }} className={`${styles.eightSection} ${styles.onlyPC}`}>
+            <div className={`${styles.eightSection} ${styles.onlyPC}`}>
                 <div className={styles.eightSectionTitle}>
                     <div className={styles.eightSectionTitle_1}>
                         수십 명의 합격생들의
@@ -1224,9 +1303,9 @@ const MainPage: any = (props: any) => {
                         리뷰가 증명합니다
                     </div>
                 </div>
-                <div className={styles.videoDiv}>
+                {/* <div className={styles.videoDiv}>
                     <img src="img/video2.png" alt="video" />
-                </div>
+                </div> */}
                 <div className={styles.peopleDiv}>
                     <div className={styles.peopleDivEach}>
                         <div className={styles.eachPeopleDescription}>
@@ -1237,7 +1316,7 @@ const MainPage: any = (props: any) => {
                         </div>
                         <div className={styles.eachPeopleAvatar}>
                             <div className={styles.avatarDiv}>
-                                <img className={styles.avatarPic} src="img/avatar1.webp" alt="avatar" />
+                                <img className={styles.avatarPic} src="img/avatar11.webp" alt="avatar" />
                             </div>
                             <div className={styles.avatarSide}>
                                 <div className={styles.avatarName}>
@@ -1256,6 +1335,32 @@ const MainPage: any = (props: any) => {
                     </div>
                     <div className={styles.peopleDivEach}>
                         <div className={styles.eachPeopleDescription}>
+                            "쾌적한 시설이 좋았습니다<br></br>
+                            책상을 넓게 쓰고<br></br>
+                            편안한 의자에 앉아서 공부하는<br></br>
+                            것이 좋았습니다"
+                        </div>
+                        <div className={styles.eachPeopleAvatar}>
+                            <div className={styles.avatarDiv}>
+                                <img className={styles.avatarPic} src="img/avatar12.webp" alt="avatar" />
+                            </div>
+                            <div className={styles.avatarSide}>
+                                <div className={styles.avatarName}>
+                                    김민석
+                                </div>
+                                <div className={styles.avatarDescription}>
+                                    <div>
+                                        서울대 약대 합격생
+                                    </div>
+                                    <div>
+                                        1년 동안 재원
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className={styles.peopleDivEach}>
+                        <div className={styles.eachPeopleDescription}>
                             "멘토님과 매주 공부 분량을<br></br>
                             자세하게 계획하였고<br></br>
                             매주 상담시간이 정해진 분량을<br></br>
@@ -1263,7 +1368,7 @@ const MainPage: any = (props: any) => {
                         </div>
                         <div className={styles.eachPeopleAvatar}>
                             <div className={styles.avatarDiv}>
-                                <img className={styles.avatarPic} src="img/avatar2.webp" alt="avatar" />
+                                <img className={styles.avatarPic} src="img/avatar13.webp" alt="avatar" />
                             </div>
                             <div className={styles.avatarSide}>
                                 <div className={styles.avatarName}>
@@ -1289,7 +1394,7 @@ const MainPage: any = (props: any) => {
                         </div>
                         <div className={styles.eachPeopleAvatar}>
                             <div className={styles.avatarDiv}>
-                                <img className={styles.avatarPic} src="img/avatar3.webp" alt="avatar" />
+                                <img className={styles.avatarPic} src="img/avatar14.webp" alt="avatar" />
                             </div>
                             <div className={styles.avatarSide}>
                                 <div className={styles.avatarName}>
@@ -1306,6 +1411,86 @@ const MainPage: any = (props: any) => {
                             </div>
                         </div>
                     </div>
+                </div>
+                <div className={`${styles.peopleDiv} ${styles.second}`}>
+                    <div className={styles.peopleDivEach}>
+                        <div className={styles.eachPeopleDescription}>
+                            "독학으로 공부하는 수험생으로<br></br>
+                            늘 불안함과 외로움이 있었습니다<br></br>
+                            입시를 성공한 선배와의 상담을<br></br>
+                            통해 공부에 집중할 수 있었습니다"
+                        </div>
+                        <div className={styles.eachPeopleAvatar}>
+                            <div className={styles.avatarDiv}>
+                                <img className={styles.avatarPic} src="img/avatar15.webp" alt="avatar" />
+                            </div>
+                            <div className={styles.avatarSide}>
+                                <div className={styles.avatarName}>
+                                    김소연
+                                </div>
+                                <div className={styles.avatarDescription}>
+                                    <div>
+                                        중앙대 약대 합격생
+                                    </div>
+                                    <div>
+                                        1년 동안 재원
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className={styles.peopleDivEach}>
+                        <div className={styles.eachPeopleDescription}>
+                            "온라인 질의응답만으로<br></br>
+                            부족한 점이 많아<br></br>
+                            질의응답을 원활히 할 수 있는<br></br>
+                            곳을 선택했습니다"
+                        </div>
+                        <div className={styles.eachPeopleAvatar}>
+                            <div className={styles.avatarDiv}>
+                                <img className={styles.avatarPic} src="img/avatar16.webp" alt="avatar" />
+                            </div>
+                            <div className={styles.avatarSide}>
+                                <div className={styles.avatarName}>
+                                    이성진
+                                </div>
+                                <div className={styles.avatarDescription}>
+                                    <div>
+                                        중앙대 약대 합격생
+                                    </div>
+                                    <div>
+                                        1년 동안 재원
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className={styles.peopleDivEach}>
+                        <div className={styles.eachPeopleDescription}>
+                            "원장선생님의 공부계획 관리를<br></br>
+                            통해서 좀 더 효율적이고<br></br>
+                            체계적인 공부를 할 수 있게<br></br>
+                            된다는 점이 좋았습니다"
+                        </div>
+                        <div className={styles.eachPeopleAvatar}>
+                            <div className={styles.avatarDiv}>
+                                <img className={styles.avatarPic} src="img/avatar17.webp" alt="avatar" />
+                            </div>
+                            <div className={styles.avatarSide}>
+                                <div className={styles.avatarName}>
+                                    정종훈
+                                </div>
+                                <div className={styles.avatarDescription}>
+                                    <div>
+                                        성균관대 약대 합격생
+                                    </div>
+                                    <div>
+                                        1년 동안 재원
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div className={styles.peopleDivEach}>
                         <div className={styles.eachPeopleDescription}>
                             "독서실에서 혼자 공부를 하면<br></br>
@@ -1315,7 +1500,7 @@ const MainPage: any = (props: any) => {
                         </div>
                         <div className={styles.eachPeopleAvatar}>
                             <div className={styles.avatarDiv}>
-                                <img className={styles.avatarPic} src="img/avatar4.webp" alt="avatar" />
+                                <img className={styles.avatarPic} src="img/avatar18.webp" alt="avatar" />
                             </div>
                             <div className={styles.avatarSide}>
                                 <div className={styles.avatarName}>
@@ -1340,30 +1525,36 @@ const MainPage: any = (props: any) => {
                     언론 속의 수능선배
                 </div>
                 <div className={styles.ninthSectionDescriptionDiv}>
-                    <div className={styles.ninthSectionDescriptionDiv_1}>
-                        <div>
-                            JTBC
+                    <a href="http://edu.donga.com/?p=article&ps=view&at_no=20220411153944332411" style={{textDecoration : "none", color : "inherit"}}>
+                        <div className={`${styles.ninthSectionDescriptionDiv_1} ${styles.first}`}>
+                            <div>
+                                에듀동아
+                            </div>
+                            <div>
+                                수능선배, "대입시장 진출 선언"..."강남 1호점"
+                            </div>
                         </div>
-                        <div>
-                            수능선배, 독학관리 업계에 반향을 일으키다.
+                    </a>
+                    <a href="https://mnews.jtbc.joins.com/News/Article.aspx?news_id=NB11848294" style={{ textDecoration: "none", color: "inherit" }}>
+                        <div className={styles.ninthSectionDescriptionDiv_1}>
+                            <div>
+                                JTBC
+                            </div>
+                            <div>
+                                피트선배, 전석 마감. 대기자 늘어
+                            </div>
                         </div>
-                    </div>
-                    <div className={styles.ninthSectionDescriptionDiv_1}>
-                        <div>
-                            매일경제
+                    </a>
+                    <a href="https://news.jtbc.joins.com/article/article.aspx?news_id=NB11879213" style={{ textDecoration: "none", color: "inherit" }}>
+                        <div className={styles.ninthSectionDescriptionDiv_1}>
+                            <div>
+                                JTBC
+                            </div>
+                            <div>
+                                피트선배, 독보적인 시스템으로 주목
+                            </div>
                         </div>
-                        <div>
-                            수능선배, 독학관리 업계에 반향을 일으키다.
-                        </div>
-                    </div>
-                    <div className={styles.ninthSectionDescriptionDiv_1}>
-                        <div>
-                            이데일리
-                        </div>
-                        <div>
-                            수능선배, 독학관리 업계에 반향을 일으키다.
-                        </div>
-                    </div>
+                    </a>
                 </div>
                 <div className={styles.ninthSectionDescriptionDiv2}>
                     <div className={`${styles.ninthSectionDescriptionDiv2_1} ${styles.onlyPC}`}>
@@ -1401,9 +1592,9 @@ const MainPage: any = (props: any) => {
                     <div className={`${styles.contactBoxTime} ${styles.onlymobile}`}>
                         평일 : 24시간 운영, 주말 : 24시간 운영
                     </div>
-                    <a href="tel:01098800489" className={styles.atag} style={{ textDecoration: "none", color: "inherit" }}>
+                    <a href="tel:05078713574" className={styles.atag} style={{ textDecoration: "none", color: "inherit" }}>
                         <div className={styles.contactBoxTelephone}>
-                            010-9880-0489
+                            050-7871-3574
                         </div>
                     </a>
                     <div className={styles.contactBoxAddress}>
@@ -1415,7 +1606,7 @@ const MainPage: any = (props: any) => {
 
                 </div>
             </div>
-            
+
             {
                 headerKind === "white" &&
                 <SpeedDialComponent />

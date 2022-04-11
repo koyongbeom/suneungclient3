@@ -24,6 +24,8 @@ import Footer from "../components/footer";
 import smoothscroll from "smoothscroll-polyfill";
 import SpeedDialComponent from "../control/speeddial";
 
+
+
 const categoryList = [
     {
         name : "전체",
@@ -93,6 +95,10 @@ const Faq: React.FC<any> = (props) => {
     const listRef = useRef<any>(null);
     const eachRef = useRef<any>(new Array());
 
+    useEffect(()=>{
+        window.scrollTo(0, 0);
+    }, [])
+
 
     const handlePageChange = (event: React.ChangeEvent<unknown>, value: number) => {
         setCurrentPage(value);
@@ -101,6 +107,7 @@ const Faq: React.FC<any> = (props) => {
     const handleChange = (event: SelectChangeEvent) => {
         setAge(event.target.value as any);
     };
+
 
     const getTitle = (list : any) => {
         list.forEach((each: any) => {
@@ -399,7 +406,7 @@ const Faq: React.FC<any> = (props) => {
                     24시 문의사항
                 </span>
                 <span className={styles.bottomInfoNumber}>
-                    010-9809-0489
+                    050-7871-3574
                 </span>
             </div>
 

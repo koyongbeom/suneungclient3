@@ -153,5 +153,9 @@ a{
 	.css-1ontqvh{
 		padding: 0 !important;
 	}
+
+	.swiper-pagination-bullet-active{
+		background-color: #1b49af !important;
+	}
 }
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Route, BrowserRouter as Router, Link, Routes } from "react-router-dom"
 import Ceo from './pages/ceo';
 import Complete from './pages/complete';
@@ -11,8 +11,13 @@ import Register from './pages/register';
 import Review from './pages/review';
 import StudySystem from './pages/studysystem';
 import Teachers from './pages/teachers';
+import ReactGa from "react-ga4";
 
 function App() {
+
+  useEffect(()=>{
+    ReactGa.initialize("G-24CD6Z291K");
+  }, []);
 
   return (
     <Router>

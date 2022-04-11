@@ -76,6 +76,7 @@ import { useNavigate } from "react-router-dom";
 import SpeedDialComponent from "../control/speeddial";
 import AttendanceCheck2 from "../control/attendanceCheck2";
 
+
 const StudySystem: React.FC = (props: any) => {
     const [open, setOpen] = React.useState(false);
     const [bool, setBool] = useState(true);
@@ -109,6 +110,7 @@ const StudySystem: React.FC = (props: any) => {
     const handleCloseHash = () => {
         navigate(-1);
     }
+
 
 
     useEffect(()=>{

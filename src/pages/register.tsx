@@ -10,7 +10,6 @@ import { useNavigate } from "react-router-dom";
 import SpeedDialComponent from "../control/speeddial";
 import { useMediaQuery } from "react-responsive";
 
-
 // const startDate = new Date();
 
 
@@ -72,6 +71,7 @@ const Register: React.FC<any> = (props) => {
 
     //가로 세로 길이 같게 만드는-----------------------------------------
     const isMobile = useMediaQuery({query : '(max-width : 500px)'});
+
 
     useEffect(() => {
         if (isMobile) {
@@ -555,7 +555,7 @@ const Register: React.FC<any> = (props) => {
                 1분 안에<br></br>상담 예약 해드릴게요!
             </div>
             <div className={styles.subTitleText}>
-                전화나 문자로 상담 예약 원하시면<br></br>010-9809-0489로 연락주세요.(24시 가능)
+                전화나 문자로 상담 예약 원하시면<br></br>050-7871-3574로 연락주세요.(24시 가능)
             </div>
 
             <div className={styles.formBody}>

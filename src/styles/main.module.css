@@ -724,10 +724,14 @@
 
 .eightSection {
     padding-top: 138px;
+    padding-top: 121px;
+    padding-top: 110px;
     padding-bottom: 156px;
+    padding-bottom: 121px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: #f6f6f6;
 }
 
 .eightSectionTitle_1{
@@ -746,11 +750,17 @@
     letter-spacing: -1.04px;
     color: #353535;
     margin-bottom: 79px;
+    margin-bottom: 0px;
 }
 
 .peopleDiv{
-    margin-top: 80px;
+    margin-top: 84px;
+    margin-top: 94px;
     display: flex;
+}
+
+.peopleDiv.second{
+    margin-top: 40px;
 }
 
 .peopleDivEach{
@@ -823,13 +833,19 @@
 .ninthSectionDescriptionDiv_1{
     display: flex;
     align-items: center;
-    margin-top: 19px;
+    padding-top: 19px;
     cursor: pointer;
 }
 
-.ninthSectionDescriptionDiv_1:first-child{
-    margin-top: 0;
+/* .ninthSectionDescriptionDiv_1:first-child{
+    padding-top: 0;
+} */
+
+.ninthSectionDescriptionDiv_1.first{
+    padding-top: 19px;
 }
+
+
 
 .ninthSectionDescriptionDiv_1 div:first-child{
     width: 168px;
@@ -1329,6 +1345,12 @@
         padding-right: 4.75% !important;
     }
 
+    .swiper2{
+        padding-left: 4.75% !important;
+        padding-right: 4.75% !important;
+        padding-bottom: 60px !important;
+    }
+
     .mobileEachTutor{
         width: 100%;
         margin-right: 27px;
@@ -1503,7 +1525,9 @@
 
     .mobileEightSection{
         padding-top: 76px;
-        padding-bottom: 81px;
+        padding-top: 60px;
+        padding-bottom: 60px;
+        background-color: #f6f6f6;
     }
 
     .mobileEightSectionTitle_1{
@@ -1522,6 +1546,7 @@
         color: #353535;
         margin-top: 8px;
         margin-bottom: 34px;
+        margin-bottom: 50px;
     }
 
     .mobileEightSectionVideoDiv{
@@ -1540,10 +1565,25 @@
         overflow: auto;
         display: flex;
         padding-right: 21px;
+        padding-bottom: 20px;
+        -webkit-overflow-scrolling: auto !important;
     }
 
     .mobileEightSectionCarouselWrapper::-webkit-scrollbar{
-        width: 0px !important;
+        width: 11px !important;
+        height: 1px !important;
+    }
+    
+    .mobileEightSectionCarouselWrapper::-webkit-scrollbar-track{
+       margin: 0 4.6vw;
+       height: 1px;
+       background-color: white;
+    }
+    
+    .mobileEightSectionCarouselWrapper::-webkit-scrollbar-thumb{
+        background-color: rgba(0, 0, 0, 0.5);
+        background-clip: padding-box;
+        border: 0px solid transparent;
     }
 
     .peopleDivEach{
@@ -1552,6 +1592,7 @@
         padding-bottom: 21.5px;
         width: 237px;
         margin-right: 21px;
+        margin-right: 0px;
     }
 
     .eachPeopleDescription {
@@ -1599,11 +1640,11 @@
     }
 
     .ninthSectionDescriptionDiv_1{
-        margin-top: 16.5px;
+        padding-top: 16.5px;
     }
 
-    .ninthSectionDescriptionDiv_1:first-child{
-        margin-top: 0;
+    .ninthSectionDescriptionDiv_1.first{
+        padding-top: 0;
     }
 
     .ninthSectionDescriptionDiv_1 div:first-child{

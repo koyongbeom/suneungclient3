@@ -1,13 +1,19 @@
 import { Button } from "@mui/material";
-import React from "react";
+import React, {useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 import Footer from "../components/footer";
 import HeaderTwo from "../components/header2";
 import SpeedDialComponent from "../control/speeddial";
 import styles from "../styles/price.module.css";
 
+
 const Price : React.FC<any> = (props) => {
     const navigate = useNavigate();
+
+    useEffect(()=>{
+        window.scrollTo(0, 0);
+    }, [])
+
 
 
     return (

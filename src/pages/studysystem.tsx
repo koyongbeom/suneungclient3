@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import { throttle } from "lodash";
+// import { throttle } from "lodash";
 
 import HeaderTwo from "../components/header2";
 import styles from "../styles/studysystem.module.css";
@@ -46,11 +46,11 @@ import { ReactComponent as LeftBottomSvg } from '../svg/leftbottom.svg';
 import { ReactComponent as RightTopSvg } from '../svg/righttop.svg';
 
 
-import { ReactComponent as PlaySvg } from '../svg/circle-play-regular.svg';
-import { ReactComponent as AttendanceSvg } from '../svg/출석.svg';
+// import { ReactComponent as PlaySvg } from '../svg/circle-play-regular.svg';
+// import { ReactComponent as AttendanceSvg } from '../svg/출석.svg';
 import { ReactComponent as ArrowRight } from '../svg/arrow-right-solid.svg';
 
-import SecondTotalAttendanceProcess from "../control/attendanceCheck";
+// import SecondTotalAttendanceProcess from "../control/attendanceCheck";
 import SecondTotalAttendanceProcessViewer from "../control/attendacneCheckViewer";
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -75,6 +75,9 @@ import QuestionCheckMobile from "../control/questioncheckmobile";
 import { useNavigate } from "react-router-dom";
 import SpeedDialComponent from "../control/speeddial";
 import AttendanceCheck2 from "../control/attendanceCheck2";
+
+import ReactGa from "react-ga4";
+
 
 
 const StudySystem: React.FC = (props: any) => {
@@ -110,6 +113,16 @@ const StudySystem: React.FC = (props: any) => {
     const handleCloseHash = () => {
         navigate(-1);
     }
+
+
+    //ga event------------------------------------------------
+    useEffect(() => {
+        ReactGa.event({
+            category: "view",
+            action: "studysystempageview"
+        })
+    }, []);
+    //--------------------------------------------------------
 
 
 
@@ -475,10 +488,10 @@ const StudySystem: React.FC = (props: any) => {
                                 </span>
                             </div>
                             <div className={`${styles.orderBoxDescriptionBoxDescription} ${styles.onlyPC}`}>
-                                아침 9시부터 밤 10시까지 하루 8번 교시별로 조교가 출석체크한 후 공석인 사람들에게<br></br>연락 후 자리에 없는 이유를 조사합니다.
+                                아침 9시부터 밤 10시까지 하루 9번 교시별로 조교가 출석체크한 후 공석인 사람들에게<br></br>연락 후 자리에 없는 이유를 조사합니다.
                             </div>
                             <div className={`${styles.orderBoxDescriptionBoxDescription} ${styles.onlymobile}`}>
-                                아침 9시부터 밤 10시까지 하루 8번 교시별로 조교가 출석체크한 후 공석인 사람들에게 연락 후 자리에 없는 이유를 조사합니다.
+                                아침 9시부터 밤 10시까지 하루 9번 교시별로 조교가 출석체크한 후 공석인 사람들에게 연락 후 자리에 없는 이유를 조사합니다.
                             </div>
                         </div>
                     </div>
@@ -619,7 +632,7 @@ const StudySystem: React.FC = (props: any) => {
                         2) 공부 분위기 관리
                     </div>
                     <div className={styles.sectionSubTitle_2}>
-                        체계화된 관리를 통한 최상의 공부 분위기 유지
+                        체계화된 관리로 최상의 공부 분위기
                     </div>
 
                     <div className={styles.orderBox}>
@@ -643,7 +656,7 @@ const StudySystem: React.FC = (props: any) => {
                                     STEP 1.
                                 </div>
                                 <span className={styles.orderBoxTitle}>
-                                    생활관리 조교가 하루 8번 순찰하며 공부 분위기 확인
+                                    하루 8번 순찰하며 학습분위기 점검
                                 </span>
                             </div>
                             <div className={`${styles.orderBoxDescriptionBoxDescription} ${styles.onlyPC}`}>
@@ -719,10 +732,10 @@ const StudySystem: React.FC = (props: any) => {
                     </div>
 
                     <div className={styles.sectionSubTitle}>
-                        2) 벌점 부과
+                        3) 벌점 부과
                     </div>
                     <div className={styles.sectionSubTitle_2}>
-                        학부모님과의 긴밀한 소통을 통한 벌점 관리
+                        학부모님과 긴밀한 소통을 통한 벌점 관리
                     </div>
 
                     <div className={styles.diagramDiv}>
@@ -1044,7 +1057,7 @@ const StudySystem: React.FC = (props: any) => {
 
                     <div className={`${styles.orderBox} ${styles.second}`}>
                         <div className={styles.orderBoxPictureBox}>
-                            <img src="img/interview10.webp" className={styles.orderBoxPicture} />
+                            <img src="img/test99.webp" className={styles.orderBoxPicture} />
                         </div>
                         <div className={styles.orderBoxDescriptionBox}>
                             <div className={styles.orderBoxDescriptionBoxTitle}>
@@ -1250,7 +1263,7 @@ const StudySystem: React.FC = (props: any) => {
                         1) 오프라인 질의응답
                     </div>
                     <div className={styles.sectionSubTitle_2}>
-                        튜터가 생각을 먼저 정리한 후 진행하는 질의응답
+                        튜터가 생각을 정리 후 진행하는 질의응답
                     </div>
                     <div className={styles.orderBox}>
                         <div className={`${styles.orderBoxPictureBox} ${styles.questionApply}`} style={{backgroundColor : "#f5f5f5"}}>

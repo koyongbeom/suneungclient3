@@ -24,6 +24,9 @@ import Footer from "../components/footer";
 import smoothscroll from "smoothscroll-polyfill";
 import SpeedDialComponent from "../control/speeddial";
 
+import ReactGa from "react-ga4";
+
+
 
 
 const categoryList = [
@@ -94,6 +97,15 @@ const Faq: React.FC<any> = (props) => {
 
     const listRef = useRef<any>(null);
     const eachRef = useRef<any>(new Array());
+
+    //ga event------------------------------------------------
+    useEffect(() => {
+        ReactGa.event({
+            category: "view",
+            action: "faqpageview"
+        })
+    }, []);
+    //--------------------------------------------------------
 
     useEffect(()=>{
         window.scrollTo(0, 0);

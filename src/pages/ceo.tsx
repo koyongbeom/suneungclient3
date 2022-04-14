@@ -7,10 +7,20 @@ import styles from "../styles/ceo.module.css";
 import { ReactComponent as RightChevronSvg } from '../svg/chevron-right-thin.svg';
 import { ReactComponent as HouseSvg } from '../svg/house-thin.svg';
 
+import ReactGa from "react-ga4";
 
 
 
 const Ceo: any = (props: any) => {
+
+    //ga event------------------------------------------------
+    useEffect(() => {
+        ReactGa.event({
+            category: "view",
+            action: "ceopageview"
+        })
+    }, []);
+    //--------------------------------------------------------
 
 
 

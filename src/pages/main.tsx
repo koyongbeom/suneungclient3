@@ -4,19 +4,19 @@ import Header from '../components/header';
 import styles from '../styles/main.module.css';
 import { ReactComponent as LeftChevronSvg } from '../svg/chevron-left-light.svg';
 import { ReactComponent as RightChevronSvg } from '../svg/chevron-right-light.svg';
-import { ReactComponent as DownChevronSvg } from '../svg/chevron-down-light.svg';
+// import { ReactComponent as DownChevronSvg } from '../svg/chevron-down-light.svg';
 
-import { ReactComponent as GrayLogoSvg } from '../svg/graylogo.svg';
+// import { ReactComponent as GrayLogoSvg } from '../svg/graylogo.svg';
 import { ReactComponent as GrowChart } from '../svg/growchart.svg';
 
-import { useSpring, animated, config, Transition } from "react-spring";
+import { useSpring, animated} from "react-spring";
 
 import Button from '@mui/material/Button'
 import Carousel from 'react-elastic-carousel';
 import useInterval from '../control/useInterval';
 import Mount from '../control/chevrondown';
 import NumberAnimation from '../control/numberanimation';
-import TextAnimation from '../control/textanimation';
+// import TextAnimation from '../control/textanimation';
 import { interiorImageList } from '../data/imagelist';
 import ImageTransition from '../control/imagetransition';
 import Footer from '../components/footer';
@@ -28,6 +28,10 @@ import { Pagination } from "swiper";
 
 import SpeedDialComponent from '../control/speeddial';
 import { useMediaQuery } from "react-responsive";
+import Vimeo from '@u-wave/react-vimeo';
+
+import ReactGa from "react-ga4";
+
 
 
 
@@ -36,15 +40,15 @@ const mobileTutorList = [
         img: 31,
         name: "이선행",
         record: "수능 전국 151등",
-        school: "가톨릭대 의대",
+        school: "카톨릭대 의대 정시 합격",
         ment1: "수험생활에 도움이 되기 위한 고민을",
         ment2: "끊임없이 하는 튜터입니다."
     },
     {
         img: 32,
         name: "김희선",
-        record: "정시 합격",
-        school: "서울대학교 소비자학과",
+        record: "전국 상위 0.2%",
+        school: "서울대학교 소비자학과 정시 합격",
         ment1: "사례들을 체계적으로 비교 분석하여",
         ment2: "알맞은 해결책을 제시해드리겠습니다"
     },
@@ -52,7 +56,7 @@ const mobileTutorList = [
         img: 33,
         name: "이재훈",
         record: "수능 전국 200등",
-        school: "경희대 의대",
+        school: "경희대 의대 정시 합격",
         ment1: "힘겨운 길을 같이 걷는",
         ment2: "동반자가 되어드리겠습니다."
     }
@@ -114,6 +118,9 @@ const reviewList = [
 
 const MainPage: any = (props: any) => {
 
+    const [play, setPlay] = useState(true);
+    const [pause, setPause] = useState(false);
+
     const [indexNumber, setIndexNumber] = useState(30);
 
     const [list, setList] = useState(interiorImageList);
@@ -156,6 +163,16 @@ const MainPage: any = (props: any) => {
     const isTablet = useMediaQuery({query : `(min-width : 768px)`});
     const isLargeTablet = useMediaQuery({query : `(min-width : 810px)`});
 
+
+    //ga event------------------------------------------------
+    useEffect(()=>{
+        ReactGa.event({
+            category : "view",
+            action : "mainpageview"
+        })
+    }, []);
+    //--------------------------------------------------------
+
     useInterval(() => {
         if (pictureIndex < 4) {
             setPictureIndex(pictureIndex + 1);
@@ -188,6 +205,13 @@ const MainPage: any = (props: any) => {
         }
     }
 
+    const intersect3 = (entries : any, observer : any) => {
+        if(entries[0].isIntersecting){
+            console.log("intersect");
+            setPause(false);
+        }
+    }
+
 
     useEffect(() => {
         console.log("swiperref");
@@ -202,6 +226,11 @@ const MainPage: any = (props: any) => {
             threshold: 0.3
         }
 
+        let options3 = {
+            rootMargin: '0px',
+            threshold: 0.6
+        }
+
         let observer = new IntersectionObserver(intersect, options);
         observer.observe(ref1.current);
         observer.observe(ref2.current);
@@ -211,6 +240,9 @@ const MainPage: any = (props: any) => {
 
         let observer2 = new IntersectionObserver(intersect2, options2);
         observer2.observe(ref6.current);
+
+        let observer3 = new IntersectionObserver(intersect3, options3);
+        observer3.observe(scrollRef.current);
 
 
     }, [])
@@ -430,10 +462,25 @@ const MainPage: any = (props: any) => {
                 </div>
 
                 <div ref={scrollRef} className={styles.ceoVideo}>
-                    <img src="img/ceovideo.png" alt="ceovideo" />
+                    <div className={styles.videoBox}>
+                        <div className={styles.vimeoWrapper}>
+                            <Vimeo
+                                responsive
+                                width="100%"
+                                height="100%"
+                                video="https://vimeo.com/698227324"
+                                autoplay={play}
+                                paused={pause}
+                                muted
+                                className={styles.player}
+                                onReady={(e: any) => { setTimeout(() => { setPause(true); }, 2000) }}
+                            />
+                        </div>
+                    </div>
                 </div>
+
                 <div className={`${styles.ceoVideoText} ${styles.onlymobile}`}>
-                    수능선배에서 공부하면 성적이 오르는 이유
+                    합격자 8인의 합격수기
                 </div>
 
 
@@ -730,7 +777,7 @@ const MainPage: any = (props: any) => {
                         </div>
                         <div className={styles.mobileSixthSectionEachBoxDescription}>
                             <div className={styles.mobileSixthSectionEachBoxDescription_1}>
-                                - 생활관리 조교가 상주하며 교시마다 하루 6번 출석체크
+                                - 생활관리 조교가 상주하며 교시마다 하루 9번 출석체크
                             </div>
                             <div className={styles.mobileSixthSectionEachBoxDescription_1}>
                                 - 교시 중 학원 외출 금지를 위해 출입문 잠금
@@ -810,7 +857,7 @@ const MainPage: any = (props: any) => {
                 </div>
 
                 <div className={`${styles.mobileSixthSectionEachBox}`}>
-                    <div className={styles.mobileSixthSectionEachBoxImg} style={{ backgroundImage: "url(img/test3.webp)", backgroundPosition: "0 30%" }}>
+                    <div className={styles.mobileSixthSectionEachBoxImg} style={{ backgroundImage: "url(img/test99.webp)", backgroundPosition: "0 30%" }}>
 
                     </div>
                     <div className={styles.mobileSixthSectionEachBoxText}>
@@ -974,7 +1021,7 @@ const MainPage: any = (props: any) => {
                                 <div className={styles.tutorDescription}>
                                     <div className={styles.tutorDescription_1}>
                                         수능 전국 151등<br></br>
-                                        가톨릭대 의대
+                                        카톨릭대 의대 정시 합격
                                     </div>
                                 </div>
                             </div>
@@ -1000,8 +1047,8 @@ const MainPage: any = (props: any) => {
                                 </div>
                                 <div className={styles.tutorDescription}>
                                     <div className={styles.tutorDescription_1}>
-                                        서울대학교 정시 합격<br></br>
-                                        서울대학교 소비자학과
+                                        전국 상위 0.2%<br></br>
+                                        서울대학교 소비자학과 정시합격
                                     </div>
                                 </div>
                             </div>
@@ -1028,7 +1075,7 @@ const MainPage: any = (props: any) => {
                                 <div className={styles.tutorDescription}>
                                     <div className={styles.tutorDescription_1}>
                                         수능 전국 200등<br></br>
-                                        경희대 의대
+                                        경희대 의대 정시 합격
                                     </div>
                                 </div>
                             </div>
@@ -1098,7 +1145,7 @@ const MainPage: any = (props: any) => {
                         </div>
                         <div className={styles.prosListDescription}>
                             <div className={styles.prosListDescriptionBottom}>
-                                - 의무자습 내 생활관리 조교가 상주하며 교시마다 하루 6번 출석체크
+                                - 의무자습 내 생활관리 조교가 상주하며 교시마다 하루 9번 출석체크
                             </div>
                             <div className={styles.prosListDescriptionBottom}>
                                 - 교시 중 학원 외출 금지를 위해 출입문 잠금

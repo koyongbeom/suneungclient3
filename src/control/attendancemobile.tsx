@@ -3,7 +3,6 @@ import { ReactComponent as ArrowLeft } from '../svg/arrow-left-light.svg';
 import styles from "../styles/attendancemobile.module.css";
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import StyledDataGrid from "../data/tablestyles";
 import { GridColDef } from '@mui/x-data-grid-pro';

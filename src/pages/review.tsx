@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "../styles/review.module.css";
 import HeaderTwo from "../components/header2";
 import { ReactComponent as RightChevronSvg } from '../svg/chevron-right-thin.svg';
@@ -9,23 +9,62 @@ import Footer from "../components/footer";
 import { ReactComponent as HeartSvg } from "../svg/heart-regular.svg";
 import { ReactComponent as HeartSolidSvg } from "../svg/heart-solid.svg";
 import cookieFunction from "../data/cookies"
-import cookies from "../data/cookies";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import SpeedDialComponent from "../control/speeddial";
+import Vimeo from '@u-wave/react-vimeo';
+
+import ReactGa from "react-ga4";
+
+
+
 
 
 const Review: React.FC<any> = (props) => {
 
+    const [play, setPlay] = useState(true);
+    const [pause, setPause] = useState(false);
     const [likeCount, setLikeCount] = useState<any>();
     const [update, setUpdate] = useState(Math.random());
     const [likeData, setLikeData] = useState<any>([]);
-
+    const [count, setCount] = useState(0);
+    const [muted, setMuted] = useState(true);
+    const [volume, setVolume] = useState(0);
     const [mainImageIndex, setMainImageIndex ]= useState(0);
     const [secondMainImageIndex, setSecondMainImageIndex ]= useState(0);
 
+    const ref = useRef<any>(null);
+
+    //ga event------------------------------------------------
+    useEffect(() => {
+        ReactGa.event({
+            category: "view",
+            action: "reviewpageview"
+        })
+    }, []);
+    //--------------------------------------------------------
+
     useEffect(()=>{
         window.scrollTo(0, 0);
+    }, []);
+
+    const intersect = (entries : any, observer : any) => {
+        console.log(entries);
+        if(entries[0].isIntersecting){
+            console.log("intersect");
+            setPause(false);
+        }
+    }
+
+    useEffect(()=>{
+        let options2 = {
+            rootMargin: '0px',
+            threshold: 0.5
+        }
+
+        let observer = new IntersectionObserver(intersect, options2);
+        observer.observe(ref.current);
+
     }, [])
 
 
@@ -378,15 +417,31 @@ const Review: React.FC<any> = (props) => {
                 <div className={`${styles.titleText} ${styles.second}`}>
                     영상으로 만나는<br></br>합격생들의 이야기
                 </div>
-
-                <div className={styles.vimeoWrapper}>
-                    <div style={{padding: "56.25% 0 0 0", position : "relative", borderRadius : "10px"}}>
-                        <iframe src="https://player.vimeo.com/video/698227324?h=7e7ea93748&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameBorder="0" allow="autoplay; fullscreen; picture-in-picture" allowFullScreen style={{position : "absolute", top:0, left:0, width : "100%", height:"100%", borderRadius : "10px"}} title="3차수정본_합격자인터뷰.mp4">
-                        </iframe>
+                
+                <div className={styles.videoBox}>
+                    <div ref={ref} className={styles.vimeoWrapper}>
+                        <Vimeo
+                            responsive
+                            width="100%"
+                            height="100%"
+                            video="https://vimeo.com/698227324"
+                            autoplay={play}
+                            paused={pause}
+                            muted
+                            className={styles.player}
+                            onReady={(e : any)=>{setTimeout(()=>{setPause(true);}, 2000)}}
+                        />
                     </div>
-                    <script src="https://player.vimeo.com/api/player.js"></script>
                 </div>
+
+                {/* <div className={styles.vimeoWrapper}>
+                    <ReactPlayer className={styles.player} url='https://vimeo.com/698227324' width="100%" height="100%" onReady={(e : any)=>{setPlay(true);}} controls={true} playing={play} muted={true} volume={1} />
+                </div> */}
+
+
             </div>
+
+
 
             <SpeedDialComponent />
 

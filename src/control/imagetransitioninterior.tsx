@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { useSpring, animated, config, useTransition } from "react-spring";
+import React, { useState } from 'react';
+import {  animated, useTransition } from "react-spring";
 import list from "../data/interiorlist";
 import styles2 from "../styles/map.module.css";
 

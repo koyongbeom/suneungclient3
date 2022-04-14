@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { useSpring, animated, config, easings } from "react-spring";
+import { useSpring, animated, config } from "react-spring";
 
 const NumberAnimation = (props : any) => {
     const [isVisible_1, setIsVisible_1] = useState(false);

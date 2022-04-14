@@ -639,5 +639,11 @@
         line-height: 25.3px;
     }
 
+    @media only screen and (min-width : 500px) {
+        .subHeader{
+            background-position: 40% 55%;
+        }
+    }
+
 }
 

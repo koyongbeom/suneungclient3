@@ -2,13 +2,16 @@ import React, { useEffect, useState } from "react";
 import HeaderTwo from "../components/header2";
 import styles from "../styles/parkgaeul.module.css";
 import StyledDataGrid from "../data/tablestyles";
-import { GridRenderCellParams, GridSelectionModel, DataGridPro, GridRowsProp, GridColDef, GridToolbar, LicenseInfo, useGridApiRef, GridEditRowsModel, GridFilterModel } from '@mui/x-data-grid-pro';
+import { GridSelectionModel, GridColDef, GridToolbar} from '@mui/x-data-grid-pro';
 import renderCellExpand from "../data/rendercellexpand";
 import { createTheme, darken, lighten } from '@mui/material/styles';
 import { createStyles, makeStyles } from '@mui/styles';
 import Button from '@mui/material/Button';
 import DeleteIcon from '@mui/icons-material/Delete';
 import RegisterForEmployee from "./registerForEmployee";
+
+import ReactGa from "react-ga4";
+
 
 
 
@@ -75,6 +78,15 @@ const Parkgaeul: React.FC<any> = (props) => {
     const [loading, setLoading] = useState(false);
     const [selectionModel, setSelectionModel] = React.useState<GridSelectionModel>([]);
     const [update, setUpdate] = useState(Math.random());
+
+    //ga event------------------------------------------------
+    useEffect(() => {
+        ReactGa.event({
+            category: "view",
+            action: "parkgaeulpageview"
+        })
+    }, []);
+    //--------------------------------------------------------
 
     useEffect(() => {
         setLoading(true);

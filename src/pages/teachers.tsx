@@ -1,8 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 import smoothscroll from "smoothscroll-polyfill";
-import Fab from '@mui/material/Fab';
-import AddIcon from '@mui/icons-material/Add';
-import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 
 import HeaderTwo from "../components/header2";
 import styles from "../styles/teachers.module.css";
@@ -13,14 +10,25 @@ import { ReactComponent as BookSvg } from "../svg/book.svg";
 import { ReactComponent as BookSvg2 } from "../svg/auto_stories.svg";
 import list from "../data/teacherslist"
 import Footer from "../components/footer";
-import { Button } from "@mui/material";
 import SpeedDialComponent from "../control/speeddial";
+
+import ReactGa from "react-ga4";
+
 
 
 const Teachers: React.FC<any> = (props) => {
     const [index, setIndex] = useState(0);
     const listRef = useRef<any>(null);
     const eachRef = useRef<any>(new Array());
+
+    //ga event------------------------------------------------
+    useEffect(() => {
+        ReactGa.event({
+            category: "view",
+            action: "teacherspageview"
+        })
+    }, []);
+    //--------------------------------------------------------
 
     const mobileChange = (eachIndex: number) => {
         setIndex(eachIndex);

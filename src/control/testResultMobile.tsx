@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { GridColDef, useGridApiRef } from '@mui/x-data-grid-pro';
-import { Theme, styled } from '@mui/material/styles';
-import { createStyles, makeStyles, StylesContext } from '@mui/styles';
-import renderCellExpand from "../data/rendercellexpand";
+import { makeStyles } from '@mui/styles';
 import { createTheme, darken, lighten } from '@mui/material/styles';
 import StyledDataGrid from "../data/tablestyles";
 import useKeepGroupingColumnsHidden from "../data/groupingColumns";
-import { Button } from "@mui/material";
 
 const defaultTheme = createTheme();
 const useStyles2 = makeStyles(

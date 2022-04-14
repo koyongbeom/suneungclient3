@@ -460,4 +460,23 @@
         top: 0;
         left: 0;
     }
+
+    @media only screen and (min-width : 500px) {
+        .subHeader{
+            background-position: 40% 55%;
+        }
+
+        .ceoPictureDiv{
+            max-width: 450px;
+        }
+
+        .ceoCareerPicture{
+            max-width: 450px;
+        }
+
+        .ceoCareerTitle{
+            padding-left: calc((100% - 450px) / 2);
+        }
+
+    }
 }

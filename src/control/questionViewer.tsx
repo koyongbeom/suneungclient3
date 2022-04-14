@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { DataGridPro, GridColDef, GridToolbar, LicenseInfo, useGridApiRef, GridFilterModel} from '@mui/x-data-grid-pro';
-import { Theme, styled } from '@mui/material/styles';
-import { createStyles, makeStyles } from '@mui/styles';
-import renderCellExpand from "../data/rendercellexpand";
+import { GridColDef, LicenseInfo, useGridApiRef} from '@mui/x-data-grid-pro';
+import { makeStyles } from '@mui/styles';
 import { createTheme, darken, lighten } from '@mui/material/styles';
 import StyledDataGrid from "../data/tablestyles";
 import useKeepGroupingColumnsHidden from "../data/groupingColumns";

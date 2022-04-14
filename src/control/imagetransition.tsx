@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { useSpring, animated, config, useTransition } from "react-spring";
+import { animated, useTransition } from "react-spring";
 
 const images = [
     "guide2", "patrol5", "answer2", "team11", "tutor6"

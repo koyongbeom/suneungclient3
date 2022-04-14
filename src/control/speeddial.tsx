@@ -3,10 +3,6 @@ import Box from '@mui/material/Box';
 import Backdrop from '@mui/material/Backdrop';
 import SpeedDial from '@mui/material/SpeedDial';
 import SpeedDialAction from '@mui/material/SpeedDialAction';
-import FileCopyIcon from '@mui/icons-material/FileCopyOutlined';
-import SaveIcon from '@mui/icons-material/Save';
-import PrintIcon from '@mui/icons-material/Print';
-import ShareIcon from '@mui/icons-material/Share';
 import CallIcon from '@mui/icons-material/Call';
 import MailIcon from '@mui/icons-material/Mail';
 import SmsIcon from '@mui/icons-material/Sms';
@@ -14,6 +10,9 @@ import EditIcon from '@mui/icons-material/Edit';
 
 import { ReactComponent as SupportSvg } from '../svg/support_agent_white.svg';
 import { useNavigate } from "react-router-dom";
+
+import ReactGa from "react-ga4";
+
 
 
 const actions = [
@@ -33,13 +32,31 @@ const SpeedDialComponent: React.FC<any> = (props) => {
 
     const click = (e : any, index : number) => {
         if(index === 0){
-        window.location.href = "tel://05078713574";
+            window.location.href = "tel://05078713574";
+            
+            ReactGa.event({
+                category : "contact",
+                action : "call"
+            })
+
         }
         if(index === 1){
             window.location.href = "sms:05078713574";
+
+            ReactGa.event({
+                category : "contact",
+                action : "sms"
+            })
+
         }
         if(index === 2){
             window.location.href = "http://pf.kakao.com/_ViHeb/chat";
+
+            ReactGa.event({
+                category : "contact",
+                action : "kakao"
+            })
+
         }
         if(index === 3){
             navigate("/register");

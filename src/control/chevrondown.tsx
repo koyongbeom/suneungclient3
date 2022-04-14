@@ -1,4 +1,4 @@
-import { useSpring, animated, config, useTransition } from "react-spring";
+import { animated, config, useTransition } from "react-spring";
 import { useState} from 'react'
 import { ReactComponent as DownChevronSvg } from '../svg/chevron-down-light.svg';
 

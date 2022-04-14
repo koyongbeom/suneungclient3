@@ -16,8 +16,10 @@ import { ReactComponent as RightChevronLightSvg } from '../svg/chevron-right-lig
 import list from "../data/interiorlist";
 import { Button } from "@mui/material";
 import ImageTransitionInterior from "../control/imagetransitioninterior";
-import { useLocation } from "react-router-dom";
 import SpeedDialComponent from "../control/speeddial";
+
+import ReactGa from "react-ga4";
+
 
 
 declare var naver : any;
@@ -36,6 +38,16 @@ const Map: React.FC<any> = (props) => {
     const [touchEnd, setTouchEnd] = useState(null);
     const [touchStartY, setTouchStartY] = useState(null);
     const [touchEndY, setTouchEndY] = useState(null);
+
+
+    //ga event------------------------------------------------
+    useEffect(() => {
+        ReactGa.event({
+            category: "view",
+            action: "mappageview"
+        })
+    }, []);
+    //--------------------------------------------------------
 
 
 

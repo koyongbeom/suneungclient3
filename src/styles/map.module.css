@@ -517,5 +517,20 @@
     }
 
 
+    @media only screen and (min-width : 500px) {
+        .map{
+            height: 400px;
+        }
+        
+        .mobileInteriorImageTitle{
+            margin-bottom: 28vw;
+        }
+
+        .subHeader{
+            background-position:40% 50%;
+        }
+
+    }
+
 
 }

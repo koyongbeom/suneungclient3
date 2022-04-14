@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import styles from "../styles/header.module.css";
-import SendIcon from '@mui/icons-material/Send';
 import PermIdentityOutlinedIcon from '@mui/icons-material/PermIdentityOutlined';
 import Button from '@mui/material/Button';
 import { ReactComponent as MenuSvg } from '../svg/bars-regular.svg';
 import { ReactComponent as Xmark } from "../svg/xmark-regular.svg";
 import { ReactComponent as Logo } from "../svg/newlogo.svg";
 
-import { rgbToHex } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
 
 import Box from '@mui/material/Box';
@@ -16,15 +14,6 @@ import List from '@mui/material/List';
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import Collapse from '@mui/material/Collapse';
-import Divider from '@mui/material/Divider';
-import ListItem from '@mui/material/ListItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
-import StarBorder from '@mui/icons-material/StarBorder';
-import ListItemButton from '@mui/material/ListItemButton';
-import { rgb } from '@react-spring/shared';
 
 type Anchor = 'top' | 'left' | 'bottom' | 'right';
 
@@ -135,9 +124,7 @@ const HeaderTwo: any = (props: any) => {
                                 style={{ position: "relative" }}
                                 onMouseEnter={() => { setHover(true); setHoverKind("introduce"); }} onMouseLeave={() => { setHover(false); setHoverKind("") }}
                             >
-                                <Link to="/ceo" style={{ textDecoration: "none", color: "inherit" }}>
                                     학원소개
-                                </Link>
                                 {
                                     hoverKind === "introduce" &&
                                     <div className={styles.cateBox}>

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import styles from "../styles/header.module.css";
-import SendIcon from '@mui/icons-material/Send';
 import PermIdentityOutlinedIcon from '@mui/icons-material/PermIdentityOutlined';
 import Button from '@mui/material/Button';
 import { ReactComponent as MenuSvg } from '../svg/bars-regular.svg';
@@ -10,7 +9,6 @@ import { ReactComponent as Logo } from "../svg/newlogo.svg";
 import { ReactComponent as LogoWhite } from "../svg/newlogowhite.svg";
 
 
-import { rgbToHex } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
 
 import Box from '@mui/material/Box';
@@ -129,9 +127,7 @@ const Header: any = (props: any) => {
                                 style={{ position: "relative" }}
                                 onMouseEnter={() => { setHover(true); setHoverKind("introduce"); }} onMouseLeave={() => { setHover(false); setHoverKind("") }}
                             >
-                                <Link to="/ceo" style={{ textDecoration: "none", color: "inherit" }}>
                                     학원소개
-                                </Link>
                                 {
                                     hoverKind === "introduce" &&
                                     <div className={styles.cateBox}>

@@ -4,6 +4,8 @@ import { useLocation, useNavigate } from "react-router-dom";
 import HeaderTwo from "../components/header2";
 import styles from "../styles/complete.module.css";
 import { ReactComponent as Check } from '../svg/check.svg';
+import ReactGa from "react-ga4";
+
 
 
 const Complete: React.FC<any> = (props) => {
@@ -19,7 +21,16 @@ const Complete: React.FC<any> = (props) => {
 
     useEffect(()=>{
         window.scrollTo(0, 0);
-    }, [])
+    }, []);
+
+    //ga event------------------------------------------------
+    useEffect(() => {
+        ReactGa.event({
+            category: "view",
+            action: "completepageview"
+        })
+    }, []);
+    //--------------------------------------------------------
 
 
 
@@ -76,13 +87,13 @@ const Complete: React.FC<any> = (props) => {
 
         switch(state.select){
             case 0 :
-                setSelect("원장 대면 상담");
+                setSelect("방문 상담");
                 break;
             case 1 :
-                setSelect("원장 전화 상담");
+                setSelect("전화 상담");
                 break;
             case 2 :
-                setSelect("상담 없이 시설 구경");
+                setSelect("시설 구경");
                 break;
         }
     }

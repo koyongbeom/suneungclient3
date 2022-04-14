@@ -1,4 +1,3 @@
-import { Alert, LinearProgress, Stack } from '@mui/material';
 import React, { useState, useRef, useEffect } from 'react';
 import styles from '../styles/chart.module.css';
 

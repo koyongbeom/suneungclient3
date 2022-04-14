@@ -5,6 +5,8 @@ import Footer from "../components/footer";
 import HeaderTwo from "../components/header2";
 import SpeedDialComponent from "../control/speeddial";
 import styles from "../styles/price.module.css";
+import ReactGa from "react-ga4";
+
 
 
 const Price : React.FC<any> = (props) => {
@@ -12,7 +14,16 @@ const Price : React.FC<any> = (props) => {
 
     useEffect(()=>{
         window.scrollTo(0, 0);
-    }, [])
+    }, []);
+
+    //ga event------------------------------------------------
+    useEffect(() => {
+        ReactGa.event({
+            category: "view",
+            action: "pricepageview"
+        })
+    }, []);
+    //--------------------------------------------------------
 
 
 

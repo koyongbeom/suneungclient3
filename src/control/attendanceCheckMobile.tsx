@@ -1,15 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { GridRenderCellParams, DataGridPro, GridRowsProp, GridColDef, GridToolbar, LicenseInfo, useGridApiRef, GridEditRowsModel, GridFilterModel } from '@mui/x-data-grid-pro';
-import { createStyles, makeStyles } from '@mui/styles';
+import { GridColDef, LicenseInfo, useGridApiRef,  GridFilterModel } from '@mui/x-data-grid-pro';
+import { makeStyles } from '@mui/styles';
 import renderCellExpand from "../data/rendercellexpand";
 import { createTheme, darken, lighten } from '@mui/material/styles';
-import ToggleButton from '@mui/material/ToggleButton';
-import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import styles from "../styles/attendancetable.module.css";
 import CustomPagination from "../data/custompagination";
 // import fullRowDatas from "../data/attendanceCheckRows";
 import fullRowDatas from "../data/attendanceCheckRows2";
-import userList from "../data/users";
 import StyledDataGrid from "../data/tablestyles";
 
 LicenseInfo.setLicenseKey("e3ec4d79d1fa1f36cc88ecffd4e68392T1JERVI6MzMyMjMsRVhQSVJZPTE2NjkzODUyMDIwMDAsS0VZVkVSU0lPTj0x");

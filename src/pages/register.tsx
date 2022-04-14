@@ -9,6 +9,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import { useNavigate } from "react-router-dom";
 import SpeedDialComponent from "../control/speeddial";
 import { useMediaQuery } from "react-responsive";
+import ReactGa from "react-ga4";
 
 // const startDate = new Date();
 
@@ -71,6 +72,16 @@ const Register: React.FC<any> = (props) => {
 
     //가로 세로 길이 같게 만드는-----------------------------------------
     const isMobile = useMediaQuery({query : '(max-width : 500px)'});
+
+
+    //ga event------------------------------------------------
+    useEffect(() => {
+        ReactGa.event({
+            category: "view",
+            action: "registerpageview"
+        })
+    }, []);
+    //--------------------------------------------------------
 
 
     useEffect(() => {
@@ -490,6 +501,8 @@ const Register: React.FC<any> = (props) => {
 
 
     const submit = () => {
+
+
         if (!selectedTime) {
             console.log("noTime");
             setSubmitStatus("noTime");
@@ -543,6 +556,10 @@ const Register: React.FC<any> = (props) => {
                 })
         })
 
+        ReactGa.event({
+            category : "booking",
+            action : "bookingbtnclick"
+        })
     }
 
     return (
@@ -564,13 +581,13 @@ const Register: React.FC<any> = (props) => {
                 </div>
                 <div className={styles.selectDiv}>
                     <div onClick={(e: any) => { setSelect(0); }} className={`${styles.select} ${select === 0 ? styles.active : ""}`}>
-                        원장 대면 상담
+                        방문 상담
                     </div>
                     <div onClick={(e: any) => { setSelect(1); }} className={`${styles.select} ${select === 1 ? styles.active : ""}`}>
-                        원장 전화 상담
+                        전화 상담
                     </div>
                     <div onClick={(e: any) => { setSelect(2); }} className={`${styles.select} ${select === 2 ? styles.active : ""} ${styles.last}`}>
-                        상담 없이 시설 구경
+                        시설 구경
                     </div>
                 </div>
 

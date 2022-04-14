@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-import HeaderTwo from "../components/header2";
 import styles from "../styles/register.module.css";
 import { ReactComponent as ChevronRight } from '../svg/chevron-right-solid-black.svg';
 import { ReactComponent as ChevronLeft } from '../svg/chevron-left-solid-black.svg';

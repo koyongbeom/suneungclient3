@@ -34,30 +34,29 @@ import ReactGa from "react-ga4";
 
 
 
-
 const mobileTutorList = [
     {
         img: 31,
         name: "이선행",
         record: "수능 전국 151등",
         school: "카톨릭대 의대 정시 합격",
-        ment1: "수험생활에 도움이 되기 위한 고민을",
-        ment2: "끊임없이 하는 튜터입니다."
+        ment1: "약점을 파악하고",
+        ment2: "전략을 함께 고민하겠습니다."
     },
     {
         img: 32,
         name: "김희선",
-        record: "전국 상위 0.2%",
+        record: "수능 상위 0.2%",
         school: "서울대학교 소비자학과 정시 합격",
-        ment1: "사례들을 체계적으로 비교 분석하여",
-        ment2: "알맞은 해결책을 제시해드리겠습니다"
+        ment1: "학생에 대한 정확한 이해로",
+        ment2: "맞춤 솔루션을 제공하겠습니다"
     },
     {
         img: 33,
         name: "이재훈",
         record: "수능 전국 200등",
         school: "경희대 의대 정시 합격",
-        ment1: "힘겨운 길을 같이 걷는",
+        ment1: "N수생의 힘겨운 길을 같이 걷는",
         ment2: "동반자가 되어드리겠습니다."
     }
 ]
@@ -121,7 +120,7 @@ const MainPage: any = (props: any) => {
     const [play, setPlay] = useState(true);
     const [pause, setPause] = useState(false);
 
-    const [indexNumber, setIndexNumber] = useState(30);
+    const [indexNumber, setIndexNumber] = useState(15);
 
     const [list, setList] = useState(interiorImageList);
 
@@ -166,10 +165,16 @@ const MainPage: any = (props: any) => {
 
     //ga event------------------------------------------------
     useEffect(()=>{
-        ReactGa.event({
-            category : "view",
-            action : "mainpageview"
-        })
+
+        ReactGa.send({
+            hitType : "pageview",
+            page_title : "main"
+        });
+
+        // ReactGa.event({
+        //     category : "view",
+        //     action : "mainpageview"
+        // })
     }, []);
     //--------------------------------------------------------
 
@@ -183,7 +188,7 @@ const MainPage: any = (props: any) => {
 
     const intersect = (entries: any, observer: any) => {
         console.log(entries);
-        console.log(observer);
+
         entries.forEach((entry: any, i: number) => {
             if (entry.isIntersecting) {
                 entry.target.classList.add(styles.move);
@@ -231,12 +236,12 @@ const MainPage: any = (props: any) => {
             threshold: 0.6
         }
 
-        let observer = new IntersectionObserver(intersect, options);
-        observer.observe(ref1.current);
-        observer.observe(ref2.current);
-        observer.observe(ref3.current);
-        observer.observe(ref4.current);
-        observer.observe(ref5.current);
+        // let observer = new IntersectionObserver(intersect, options);
+        // observer.observe(ref1.current);
+        // observer.observe(ref2.current);
+        // observer.observe(ref3.current);
+        // observer.observe(ref4.current);
+        // observer.observe(ref5.current);
 
         let observer2 = new IntersectionObserver(intersect2, options2);
         observer2.observe(ref6.current);
@@ -295,11 +300,13 @@ const MainPage: any = (props: any) => {
         if (headerKind === "transparent" && scrollY > 10) {
             setHeaderKind("white");
         }
+
+
     }
 
     useEffect(() => {
 
-        window.scrollTo(0, 0);
+        // window.scrollTo(0, 0);
 
         const throttledFn = throttle(listener, 500);
 
@@ -361,10 +368,10 @@ const MainPage: any = (props: any) => {
             <Header className={styles.menubar} headerKind={headerKind} isBottomMenu={isBottomMenu} />
             <div style={{ backgroundImage: "url(img/main99999.webp)" }} className={styles.mainImgDiv}>
                 <animated.div style={titleprops} className={styles.mainText}>
-                    <div>독학 관리 전문 수능선배에서</div>
-                    <div className={`${styles.onlyPC} ${styles.firstSectionPCTitle_1}`}>매일 12시간씩 집중하게 될겁니다</div>
-                    <div className={`${styles.onlymobile} ${styles.firstSectionMobileTitle_1}`}>매일 12시간씩</div>
-                    <div className={`${styles.onlymobile} ${styles.firstSectionMobileTitle_2}`}>집중하게 될겁니다</div>
+                    <div>독학재수전문 수능선배는</div>
+                    <div className={`${styles.onlyPC} ${styles.firstSectionPCTitle_1}`}>성공 노하우를 전수하기 위해 존재합니다</div>
+                    <div className={`${styles.onlymobile} ${styles.firstSectionMobileTitle_1}`}>성공 노하우를</div>
+                    <div className={`${styles.onlymobile} ${styles.firstSectionMobileTitle_2}`}>전수하기 위해 존재합니다</div>
                     <div className={styles.chevronDownDiv}>
                         <Mount />
                     </div>
@@ -380,20 +387,20 @@ const MainPage: any = (props: any) => {
                 {/* <div style={{ backgroundImage: "url(img/secondbg.webp)" }} className={styles.secondSectionBackground}> */}
                 <div className={styles.secondSectionBackground}>
                     <div className={`${styles.secondSectionTitle_1} ${styles.onlyPC}`}>
-                        독학 관리에 진심인 사람들이 모여
+                        수능선배는
                     </div>
                     <div className={`${styles.secondSectionTitle_2} ${styles.onlyPC}`}>
-                        최고의 독학 관리 학원을 만듭니다
+                        성공 실적으로 얘기합니다
                     </div>
 
                     <div className={`${styles.secondSectionTitle_1} ${styles.onlymobile}`}>
-                        독학관리에 진심인 사람들이
+                        수능선배는
                     </div>
                     <div className={`${styles.secondSectionTitle_2} ${styles.onlymobile}`}>
-                        함께모여 최고의 독학 관리학원을
+                        
                     </div>
                     <div className={`${styles.secondSectionTitle_3} ${styles.onlymobile}`}>
-                        만듭니다
+                        성공 실적으로 얘기합니다
                     </div>
 
                     <div className={styles.numberDiv}>
@@ -401,20 +408,20 @@ const MainPage: any = (props: any) => {
                             <div className={styles.numberBoxChild}>
                                 <div>
                                     <div className={styles.numberBoxTitle}>
-                                        누적 재원생 수
+                                        누적 의치약 합격자 수
                                     </div>
                                     <div className={styles.numberBoxDescription}>
                                         <span className={styles.autoNumber}>
-                                            <NumberAnimation number={1600} fixed={0} delay={500} />
-                                        </span>명 +
+                                            <NumberAnimation number={194} fixed={0} delay={500} />
+                                        </span>명
                                     </div>
                                 </div>
                                 <div>
                                     <div className={styles.numberBoxTitle2}>
-                                        희망 대학 합격률
+                                        평균 의치약 합격률
                                     </div>
                                     <div className={styles.numberBoxDescription}>
-                                        평균 대비 <span className={styles.autoNumber}>3</span>배 +
+                                        <NumberAnimation number={28.6} fixed={1} delay={500} />%
                                     </div>
                                 </div>
                                 <div>
@@ -431,7 +438,7 @@ const MainPage: any = (props: any) => {
                                     <div className={styles.numberBoxDescription}>
                                         <span className={styles.autoNumber}>
                                             <NumberAnimation number={97.3} fixed={1} delay={500} />
-                                        </span>% +
+                                        </span>%
                                     </div>
                                 </div>
                                 <div>
@@ -449,7 +456,7 @@ const MainPage: any = (props: any) => {
 
                             </div>
                             <div className={`${styles.whenNumber} ${styles.onlymobile}`}>
-                                2021.03월 기준
+                                2022.03월 기준
                             </div>
                         </div>
 
@@ -461,6 +468,10 @@ const MainPage: any = (props: any) => {
 
                 </div>
 
+                <div className={`${styles.ceoVideoText} ${styles.onlymobile}`}>
+                    의치약 합격자들의<br></br>생생한 후기를 공개합니다
+                </div>
+
                 <div ref={scrollRef} className={styles.ceoVideo}>
                     <div className={styles.videoBox}>
                         <div className={styles.vimeoWrapper}>
@@ -468,7 +479,7 @@ const MainPage: any = (props: any) => {
                                 responsive
                                 width="100%"
                                 height="100%"
-                                video="https://vimeo.com/698227324"
+                                video="https://vimeo.com/700228719"
                                 autoplay={play}
                                 paused={pause}
                                 muted
@@ -479,181 +490,22 @@ const MainPage: any = (props: any) => {
                     </div>
                 </div>
 
-                <div className={`${styles.ceoVideoText} ${styles.onlymobile}`}>
-                    합격자 8인의 합격수기
-                </div>
+
 
 
             </div>
 
-            <div className={`${styles.thirdSectionMobile} ${styles.onlymobile}`}>
-                <div className={styles.animationTitle} ref={ref1}>
-                    <div className={`${styles.thirdSectionTitleMobile} ${styles.move}`}>
-                        수능선배에서 공부하면
-                    </div>
-                    <div className={`${styles.thirdSectionTitleMobile} ${styles.second}`}>
-                        반드시 집중력이 향상됩니다
-                    </div>
-                </div>
-                <div className={styles.mobileImageDiv}>
-                    <div className={styles.mobileImageBox}>
-                        <img className={styles.mobileImageInterior} src="img/13.webp" alt="open" />
-                        {/* <img className={styles.test} src="img/attendanceCheck2.webp" alt="open" /> */}
-                    </div>
-                    <div className={styles.mobileImageBoxTitle}>
-                        오픈석
-                    </div>
-                    <div className={styles.mobileImageBoxDescription}>
-                        시야가 뚫려있는 공간에서 주변 학생들과 함께
-                    </div>
-                    <div className={`${styles.mobileImageBoxDescription} ${styles.second}`}>
-                        공부하고 싶은 학생들에게 좋은 좌석입니다.
-                    </div>
-                </div>
-                <div className={styles.mobileImageDiv}>
-                    <div className={styles.mobileImageBox}>
-                        <img className={styles.mobileImageInterior} src="img/10.webp" alt="open" />
-                    </div>
-                    <div className={styles.mobileImageBoxTitle}>
-                        일인석
-                    </div>
-                    <div className={styles.mobileImageBoxDescription}>
-                        집중력을 높이기 위해 마련된 1인석은 독립적인 공간이
-                    </div>
-                    <div className={`${styles.mobileImageBoxDescription} ${styles.second}`}>
-                        보장되고 방해 받지 않기에 최적화 되어 있습니다.
-                    </div>
-                </div>
-                <div className={styles.mobileImageDiv}>
-                    <div className={styles.mobileImageBox}>
-                        <img className={styles.mobileImageInterior} src="img/12.webp" alt="open" />
-                    </div>
-                    <div className={styles.mobileImageBoxTitle}>
-                        칸막이석
-                    </div>
-                    <div className={styles.mobileImageBoxDescription}>
-                        집중이 잘되는 칸막이석은 주변 시야가 차단
-                    </div>
-                    <div className={`${styles.mobileImageBoxDescription} ${styles.second}`}>
-                        되기 원하는 학생분에게 안성 맞춤입니다.
-                    </div>
-                </div>
-                <div className={styles.mobileImageDiv}>
-                    <div className={styles.mobileImageBox}>
-                        <img className={styles.mobileImageInterior} src="img/7.webp" alt="open" />
-                    </div>
-                    <div className={styles.mobileImageBoxTitle}>
-                        휴게실
-                    </div>
-                    <div className={styles.mobileImageBoxDescription}>
-                        넓고 쾌적한 휴게실에서 쾌적한 식사와
-                    </div>
-                    <div className={`${styles.mobileImageBoxDescription} ${styles.second}`}>
-                        편안한 공부를 할 수 있습니다.
-                    </div>
-                </div>
-            </div>
 
-            <div className={`${styles.mobileFourthSection} ${styles.onlymobile}`}>
-                <div ref={ref2} className={styles.animationTitle}>
-                    <div className={styles.mobileFourthSectionTitle}>
-                        이런 분들에게
-                    </div>
-                    <div className={`${styles.mobileFourthSectionTitle} ${styles.second}`}>
-                        수능선배를 추천합니다
-                    </div>
-                </div>
-                <div className={styles.mobileFourthSectionMenu}>
-                    <div className={`${styles.mobileFourthSectionMenuText} ${mobileFourthSectionMenuSelector === 1 ? styles.active : ""}`} onClick={(e) => { setMobileFourthSectionMenuSelector(1) }}>
-                        생활관리
-                    </div>
-                    <div className={`${styles.mobileFourthSectionMenuText} ${mobileFourthSectionMenuSelector === 2 ? styles.active : ""}`} onClick={(e) => { setMobileFourthSectionMenuSelector(2) }}>
-                        튜터상담
-                    </div>
-                    <div className={`${styles.mobileFourthSectionMenuText} ${mobileFourthSectionMenuSelector === 3 ? styles.active : ""}`} onClick={(e) => { setMobileFourthSectionMenuSelector(3) }}>
-                        식사메뉴
-                    </div>
-                </div>
+            <div className={`${styles.mobileFifthSection} ${styles.onlymobile} fifthSection`}>
                 <div>
-                    <div>
-                        <div className={styles.mobileFourthSectionDescription} onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd}>
-                            <div className={styles.mobileFourthSectionDescriptionImg}>
-                                <img src="img/patrol5.webp" alt="patrol" className={`${styles.patrolImg} ${mobileFourthSectionMenuSelector !== 1 ? styles.transparent : ""}`} />
-                                <img src="img/education55.webp" alt="patrol" className={`${styles.patrolImg} ${styles.patrolImg2} ${mobileFourthSectionMenuSelector !== 2 ? styles.transparent : ""}`} />
-                                <img src="img/bon2.webp" alt="patrol" className={`${styles.patrolImg} ${mobileFourthSectionMenuSelector !== 3 ? styles.transparent : ""}`} />
-                            </div>
-                            {
-                                mobileFourthSectionMenuSelector === 1 ?
-                                    <div>
-                                        <div className={styles.mobileFourthSectionDescriptionText}>
-                                            <div>
-                                                시간이 지날수록 <span className={styles.textColor}>생활관리가 느슨해지는</span>
-                                            </div>
-                                            <div>
-                                                <span className={styles.textColor}>독학관리학원</span>이 싫으신 분
-                                            </div>
-                                        </div>
-                                        <div className={styles.mobileFourthSectionDescriptionSubText}>
-                                            3중 시스템으로 출결을 관리합니다. 생활관리 전담 조교가 교시마다 대면 출석 체크를 수행하고, 프로그램이 지문 출입기록을 파악하여 공석을 체크하면 이를 운영진이 감시하며, 전용 어플을 통해 실시간 출결 사항을 학부모님들게 공유합니다.
-                                        </div>
-                                    </div>
-
-                                    :
-                                    ""
-                            }
-                            {
-                                mobileFourthSectionMenuSelector === 2 ?
-                                    <div>
-                                        <div className={styles.mobileFourthSectionDescriptionText}>
-                                            <div>
-                                                도움 되지 않는 <span className={styles.textColor}>학습 상담에</span>
-                                            </div>
-                                            <div>
-                                                <span className={styles.textColor}>시간이 아깝다고</span> 느끼신 분
-                                            </div>
-                                        </div>
-                                        <div className={styles.mobileFourthSectionDescriptionSubText}>
-                                            수능선배는 실력 없는 학습 담당자가 상담을 진행하지 않습니다. 오직 실력으로 증명된 최상위권 튜터만을 고집합니다. 50대 1의 경쟁률을 뚫고 서류 평가, 성적 기준, 실전 문제 풀이 테스트를 통과한 튜터들에게만 학습 조언의 자격을 부여합니다.
-                                        </div>
-                                    </div>
-
-                                    :
-                                    ""
-                            }
-                            {
-                                mobileFourthSectionMenuSelector === 3 ?
-                                    <div>
-                                        <div className={styles.mobileFourthSectionDescriptionText}>
-                                            <div>
-                                                맛 없고 메뉴도 못 고르는 <span className={styles.textColor}>식사 제공에</span>
-                                            </div>
-                                            <div>
-                                                <span className={styles.textColor}>지겨움</span>을 느끼신 분
-                                            </div>
-                                        </div>
-                                        <div className={styles.mobileFourthSectionDescriptionSubText}>
-                                            맛있는 식사, 다양한 메뉴를 제공합니다. 수강생 전용 프로그램에서 업체와 메뉴를 고르실 수 있습니다. 매 끼니별로 신청 여부를 선택할 수 있습니다.
-                                        </div>
-                                    </div>
-
-                                    :
-                                    ""
-                            }
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div className={`${styles.mobileFifthSection} ${styles.onlymobile}`}>
-                <div className={styles.animationTitle} ref={ref3}>
                     <div className={styles.mobileFifthSectionTitle}>
-                        각 과목 최고의 튜터와 함께합니다
+                        <span className={styles.textColor}>공부를 잘하는 법</span>을<br></br>확실하게 아는 수능선배가<br></br>독학의 방향을 코칭합니다
                     </div>
                     <div className={`${styles.mobileFifthSectionDescription}`}>
                         "학생별 학습 성향과 취약 과목에 따라
                     </div>
                     <div className={`${styles.mobileFifthSectionDescription} ${styles.second}`}>
-                        전문 튜터가 매칭됩니다."
+                        담임멘토가 매칭됩니다."
                     </div>
                 </div>
 
@@ -699,8 +551,7 @@ const MainPage: any = (props: any) => {
                     </Carousel> */}
                     {
                         <Swiper
-
-                            slidesPerView={1.32}
+                            slidesPerView={1.4}
                             spaceBetween={30}
                             className={styles.swiper}
                         >
@@ -714,7 +565,7 @@ const MainPage: any = (props: any) => {
                                                     <img className={styles.mobileEachTutorImg} src={`img/tutor${each.img}.webp`} alt="tutor" />
                                                     <div className={styles.mobileEachTutorImgBoxDescription}>
                                                         <div className={styles.mobileEachTutorImgBoxDescription_1}>
-                                                            튜터 {each.name}
+                                                            담임멘토 {each.name}
                                                         </div>
                                                         <div className={styles.mobileEachTutorImgBoxDescription_2}>
                                                             <div>
@@ -729,11 +580,13 @@ const MainPage: any = (props: any) => {
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div className={styles.mobileEachTutorDescriptionBox_1}>
-                                                    "{each.ment1}
-                                                </div>
-                                                <div className={styles.mobileEachTutorDescriptionBox_2}>
-                                                    {each.ment2}"
+                                                <div className={styles.tutorDescriptionDivWrapper}>
+                                                    <div className={styles.mobileEachTutorDescriptionBox_1}>
+                                                        "{each.ment1}
+                                                    </div>
+                                                    <div className={styles.mobileEachTutorDescriptionBox_2}>
+                                                        {each.ment2}"
+                                                    </div>
                                                 </div>
                                             </div>
                                         </SwiperSlide>
@@ -744,15 +597,176 @@ const MainPage: any = (props: any) => {
                     }
                 </div>
             </div>
+            
 
-            <div className={`${styles.mobileFifthSectionBorder} ${styles.onlymobile}`}>
+            <div className={`${styles.mobileFourthSection} ${styles.onlymobile}`}>
+                <div>
+                    <div className={styles.mobileFourthSectionTitle}>
+                        평범한 독재와
+                    </div>
+                    <div className={`${styles.mobileFourthSectionTitle} ${styles.second}`}>
+                        이런 점이 다릅니다
+                    </div>
+                </div>
+                <div className={styles.mobileFourthSectionMenu}>
+                    <div className={`${styles.mobileFourthSectionMenuText} ${mobileFourthSectionMenuSelector === 1 ? styles.active : ""}`} onClick={(e) => { setMobileFourthSectionMenuSelector(1) }}>
+                        담임상담
+                    </div>
+                    <div className={`${styles.mobileFourthSectionMenuText} ${mobileFourthSectionMenuSelector === 2 ? styles.active : ""}`} onClick={(e) => { setMobileFourthSectionMenuSelector(2) }}>
+                        질의응답
+                    </div>
+                    <div className={`${styles.mobileFourthSectionMenuText} ${mobileFourthSectionMenuSelector === 3 ? styles.active : ""}`} onClick={(e) => { setMobileFourthSectionMenuSelector(3) }}>
+                        식사메뉴
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <div className={styles.mobileFourthSectionDescription} onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd}>
+                            <div className={styles.mobileFourthSectionDescriptionImg}>
+                                    <img src="img/answer2.webp" alt="patrol" className={`${styles.patrolImg} ${mobileFourthSectionMenuSelector !== 2 ? styles.transparent : ""}`} />
+                                    <img src="img/education55.webp" alt="patrol" className={`${styles.patrolImg} ${styles.patrolImg2} ${mobileFourthSectionMenuSelector !== 1 ? styles.transparent : ""}`} />
+                                    <img src="img/bon2.webp" alt="patrol" className={`${styles.patrolImg} ${mobileFourthSectionMenuSelector !== 3 ? styles.transparent : ""}`} />
+                            </div>
+                            {
+                                mobileFourthSectionMenuSelector === 2 ?
+                                    <div>
+                                        <div className={styles.mobileFourthSectionDescriptionText}>
+                                            <div>
+                                                <span className={styles.textColor}>의치약 튜터</span>에게
+                                            </div>
+                                            <div>
+                                                <span className={styles.textColor}>매일 질의응답</span>이 가능합니다
+                                            </div>
+                                        </div>
+                                        <div className={styles.mobileFourthSectionDescriptionSubText}>
+                                            질의응답 전용 신청 프로그램을 통해 예약하고 대기 없이 질의응답이 가능합니다. 질문할 내용을 미리 튜터에게 전달 후 튜터가 생각을 정리한 후 답변을 해주기 때문에 정돈된 답변을 들을 수 있습니다.
+                                        </div>
+                                    </div>
 
+                                    :
+                                    ""
+                            }
+                            {
+                                mobileFourthSectionMenuSelector === 1 ?
+                                    <div>
+                                        <div className={styles.mobileFourthSectionDescriptionText}>
+                                            <div>
+                                                <span className={styles.textColor}>실력 없는 선생님</span>이
+                                            </div>
+                                            <div>
+                                                <span className={styles.textColor}>학습 상담</span>을 진행하지 않습니다
+                                            </div>
+                                        </div>
+                                        <div className={styles.mobileFourthSectionDescriptionSubText}>
+                                            최신 입시 경향을 아는 최상위권 담임 멘토를 고집합니다. 50대 1의 경쟁률을 뚫고 서류 평가, 성적 기준, 실전 문제 풀이 테스트를 통과한 분들에게만 학습 조언의 자격을 부여합니다.
+                                        </div>
+                                    </div>
+
+                                    :
+                                    ""
+                            }
+                            {
+                                mobileFourthSectionMenuSelector === 3 ?
+                                    <div>
+                                        <div className={styles.mobileFourthSectionDescriptionText}>
+                                            <div>
+                                                <span className={styles.textColor}>유명 프랜차이즈 도시락</span>을
+                                            </div>
+                                            <div>
+                                                <span className={styles.textColor}>넓고 쾌적한 공간</span>에서 드실 수 있습니다
+                                            </div>
+                                        </div>
+                                        <div className={styles.mobileFourthSectionDescriptionSubText}>
+                                            맛있는 식사, 다양한 메뉴를 제공합니다. 수강생 전용 프로그램에서 업체와 메뉴를 고르실 수 있습니다. 매 끼니별로 신청 여부를 선택할 수 있습니다.
+                                        </div>
+                                    </div>
+
+                                    :
+                                    ""
+                            }
+                        </div>
+                    </div>
+                </div>
             </div>
 
+
+
+
+
+
+            <div className={`${styles.thirdSectionMobile} ${styles.onlymobile}`}>
+                <div ref={ref1}>
+                    <div className={`${styles.thirdSectionTitleMobile}`}>
+                        쾌적한 자습실에서
+                    </div>
+                    <div className={`${styles.thirdSectionTitleMobile} ${styles.second}`}>
+                        하루 14시간 집중하게 될 겁니다
+                    </div>
+                </div>
+                <div className={styles.mobileImageDiv}>
+                    <div className={styles.mobileImageBox}>
+                        <img className={styles.mobileImageInterior} src="img/13.webp" alt="open" />
+                        {/* <img className={styles.test} src="img/attendanceCheck2.webp" alt="open" /> */}
+                    </div>
+                    <div className={styles.mobileImageBoxTitle}>
+                        오픈석
+                    </div>
+                    <div className={styles.mobileImageBoxDescription}>
+                        넓은 책상과 편한 시디즈 의자에 앉아
+                    </div>
+                    <div className={`${styles.mobileImageBoxDescription} ${styles.second}`}>
+                        경쟁을 하며 공부할 수 있습니다
+                    </div>
+                </div>
+                <div className={styles.mobileImageDiv}>
+                    <div className={styles.mobileImageBox}>
+                        <img className={styles.mobileImageInterior} src="img/10.webp" alt="open" />
+                    </div>
+                    <div className={styles.mobileImageBoxTitle}>
+                        일인석
+                    </div>
+                    <div className={styles.mobileImageBoxDescription}>
+                        집중력을 높이기 위해 마련된 1인석은
+                    </div>
+                    <div className={`${styles.mobileImageBoxDescription} ${styles.second}`}>
+                        방해 받지 않기에 최적화 되어 있습니다.
+                    </div>
+                </div>
+                <div className={styles.mobileImageDiv}>
+                    <div className={styles.mobileImageBox}>
+                        <img className={styles.mobileImageInterior} src="img/12.webp" alt="open" />
+                    </div>
+                    <div className={styles.mobileImageBoxTitle}>
+                        칸막이석
+                    </div>
+                    <div className={styles.mobileImageBoxDescription}>
+                        집중이 잘 되는 칸막이석은 주변 시야가
+                    </div>
+                    <div className={`${styles.mobileImageBoxDescription} ${styles.second}`}>
+                        차단 되길 원하는 학생분에게 안성 맞춤입니다.
+                    </div>
+                </div>
+                <div className={styles.mobileImageDiv}>
+                    <div className={styles.mobileImageBox}>
+                        <img className={styles.mobileImageInterior} src="img/7.webp" alt="open" />
+                    </div>
+                    <div className={styles.mobileImageBoxTitle}>
+                        휴게실
+                    </div>
+                    <div className={styles.mobileImageBoxDescription}>
+                        넓고 쾌적한 휴게실에서 쾌적한 식사와
+                    </div>
+                    <div className={`${styles.mobileImageBoxDescription} ${styles.second}`}>
+                        편안한 공부를 할 수 있습니다.
+                    </div>
+                </div>
+            </div>
+
+
             <div className={`${styles.mobileSixthSection} ${styles.onlymobile}`}>
-                <div className={styles.animationTitle} ref={ref4}>
+                <div ref={ref4}>
                     <div className={`${styles.mobileSixthSectionTitle} ${styles.first}`}>
-                        수능선배 자물쇠반은
+                        단언컨대
                     </div>
                     <div className={`${styles.mobileSixthSectionTitle} ${styles.second}`}>
                         독학의 부족한 점을
@@ -772,12 +786,12 @@ const MainPage: any = (props: any) => {
                                 1
                             </span>
                             <div className={styles.sixthEachBoxdescription}>
-                                교시제 운영을 통한 철저한 생활관리
+                                생활관리가 강력합니다
                             </div>
                         </div>
                         <div className={styles.mobileSixthSectionEachBoxDescription}>
                             <div className={styles.mobileSixthSectionEachBoxDescription_1}>
-                                - 생활관리 조교가 상주하며 교시마다 하루 9번 출석체크
+                                - 생활관리 사감이 상주하며 교시마다 하루 9번 출석체크
                             </div>
                             <div className={styles.mobileSixthSectionEachBoxDescription_1}>
                                 - 교시 중 학원 외출 금지를 위해 출입문 잠금
@@ -802,18 +816,15 @@ const MainPage: any = (props: any) => {
                                 2
                             </span>
                             <div className={styles.sixthEachBoxdescription}>
-                                초호화 멘토와 매주 1:1 상담
+                                공부 잘하는 법을 코칭합니다
                             </div>
                         </div>
                         <div className={styles.mobileSixthSectionEachBoxDescription}>
                             <div className={styles.mobileSixthSectionEachBoxDescription_1}>
-                                - 서류심사, 임원진 면접, 교육기간, 전체 회의, 담임 평가를 거친 담임멘토와의 매주 1:1 상담
+                                - 엄격한 선발 절차를 거친 담임선생님과 매주 1:1 상담
                             </div>
                             <div className={styles.mobileSixthSectionEachBoxDescription_1}>
-                                - 매달 학생 케이스 회의를 통해 학생에게 가장 도움되는 길 연구
-                            </div>
-                            <div className={styles.mobileSixthSectionEachBoxDescription_1}>
-                                - 학생의 취약과목 전문 멘토와 연결
+                                - 학생의 취약과목 전문 담임과 연결
                             </div>
                             <div className={styles.mobileSixthSectionEachBoxDescription_1}>
                                 - 매주 학생 실력/진도에 맞는 개개인별 테스트 시행
@@ -839,7 +850,7 @@ const MainPage: any = (props: any) => {
                                 3
                             </span>
                             <div className={styles.sixthEachBoxdescription}>
-                                각 과목별 상위 1% 선배와의 질의응답
+                                질문은 당일에 해결합니다
                             </div>
                         </div>
                         <div className={styles.mobileSixthSectionEachBoxDescription}>
@@ -850,13 +861,13 @@ const MainPage: any = (props: any) => {
                                 - 온라인 : 과목별 전문멘토가 담당, 당일~익일 즉시 답변
                             </div>
                             <div className={styles.mobileSixthSectionEachBoxDescription_1}>
-                                - 질의응답 멘토 질문 신청률을 통해 인기 많은 멘토만 유지
+                                - 질의응답 멘토 질문 신청률을 통해 실력 있는 멘토만 유지
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div className={`${styles.mobileSixthSectionEachBox}`}>
+                <div className={`${styles.mobileSixthSectionEachBox} ${styles.last}`}>
                     <div className={styles.mobileSixthSectionEachBoxImg} style={{ backgroundImage: "url(img/test99.webp)", backgroundPosition: "0 30%" }}>
 
                     </div>
@@ -866,7 +877,7 @@ const MainPage: any = (props: any) => {
                                 4
                             </span>
                             <div className={styles.sixthEachBoxdescription}>
-                                양질의 컨텐츠 모의고사 시행
+                                컨텐츠를 부족함 없이 제공합니다
                             </div>
                         </div>
                         <div className={styles.mobileSixthSectionEachBoxDescription}>
@@ -877,17 +888,14 @@ const MainPage: any = (props: any) => {
                                 - 학원 내에서 제한 시간 안에 모의고사 푸는 연습
                             </div>
                             <div className={styles.mobileSixthSectionEachBoxDescription_1}>
-                                - 모든 오답 내용을 튜터가 프로그램에 기록 후 오답 반복 연습
-                            </div>
-                            <div className={styles.mobileSixthSectionEachBoxDescription_1}>
-                                - 모의고사는 신청자에 한해 시행
+                                - 모든 오답을 튜터가 프로그램에 기록 후 오답 반복 연습
                             </div>
                         </div>
                     </div>
                 </div>
 
 
-                <div className={`${styles.mobileSixthSectionEachBox} ${styles.last}`}>
+                {/* <div className={`${styles.mobileSixthSectionEachBox} ${styles.last}`}>
                     <div className={styles.mobileSixthSectionEachBoxImg} style={{ backgroundImage: "url(img/question.webp)", backgroundPosition: "0 30%" }}>
 
                     </div>
@@ -912,7 +920,7 @@ const MainPage: any = (props: any) => {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> */}
             </div>
 
             <div style={{ backgroundImage: "url(img/thirdbackground.webp)" }} className={`${styles.thirdSection} ${styles.onlyPC}`}>
@@ -932,7 +940,7 @@ const MainPage: any = (props: any) => {
                         <Carousel
                             showArrows={false}
                             ref={carouselRef}
-                            isRTL={false} initialFirstItem={30} itemsToShow={3} disableArrowsOnEnd={false} >
+                            isRTL={false} initialFirstItem={15} itemsToShow={3} disableArrowsOnEnd={false} >
                             {list.map((each) => {
                                 return (
                                     <div key={Math.random()} className={styles.eachChevronDiv}>
@@ -973,7 +981,7 @@ const MainPage: any = (props: any) => {
                 <div>
                     <div className={styles.fourthBox}>
                         <div>
-                            시간이 지날수록 생활관리가 느슨해지는 독학관리학원이 싫으신 분
+                            엄격한 생활관리를 받으며 하루에 12시간 공부에 몰입해보고 싶으신분
                         </div>
                         <div>
                             3중 시스템으로 출결을 관리합니다. 생활관리 전담 조교가 교시마다 대면 출석 체크를 수행하고, 프로그램이 지문 출입기록을 파악하여<br></br>
@@ -982,16 +990,16 @@ const MainPage: any = (props: any) => {
                     </div>
                     <div className={styles.fourthBox}>
                         <div>
-                            도움 되지 않는 학습 상담에 시간이 아깝다고 느끼신 분
+                            도움되지 않는 학습상담을 시간낭비라고 생각하시는 분
                         </div>
                         <div>
-                            수능선배는 실력 없는 학습 담당자가 상담을 진행하지 않습니다. 오직 실력으로 증명된 최상위권 튜터만을 고집합니다. 50대 1의 경쟁률을 뚫고<br></br>
-                            서류 평가, 성적 기준, 실전 문제 풀이 테스트를 통과한 튜터들에게만 학습 조언의 자격을 부여합니다.
+                            수능선배는 실력 없는 학습 담당자가 상담을 진행하지 않습니다. 오직 실력으로 증명된 최상위권 담임만을 고집합니다. 50대 1의 경쟁률을 뚫고<br></br>
+                            서류 평가, 성적 기준, 실전 문제 풀이 테스트를 통과한 담임들에게만 학습 조언의 자격을 부여합니다.
                         </div>
                     </div>
                     <div className={styles.fourthBox}>
                         <div>
-                            맛 없고 메뉴도 못 고르는 식사 제공에 지겨움을 느끼신 분
+                            학생이 원하는 메뉴를 고를 수 있고 넓은 식사공간에서 식사를 하고 싶으신 분
                         </div>
                         <div>
                             맛있는 식사, 다양한 메뉴를 제공합니다. 수강생 전용 프로그램에서 업체와 메뉴를 고르실 수 있습니다.<br></br>
@@ -1005,10 +1013,10 @@ const MainPage: any = (props: any) => {
 
             <div className={`${styles.fifthSection} ${styles.onlyPC}`}>
                 <div className={styles.fifthSectionTitle_1}>
-                    각 과목 최고의 튜터와 함께합니다
+                    각 과목 최고의 담임과 함께합니다
                 </div>
                 <div className={styles.fifthSectionTitle_2}>
-                    "학생별 학습 성향과 취약 과목에 따라 전문 튜터가 매칭됩니다."
+                    "학생별 학습 성향과 취약 과목에 따라 전문 담임이 매칭됩니다."
                 </div>
 
                 <div className={styles.tutorsDiv}>
@@ -1016,7 +1024,7 @@ const MainPage: any = (props: any) => {
                         <div style={{ backgroundImage: "url(img/tutor31.webp)" }} className={styles.tutorsDivEach}>
                             <div className={styles.pictureDescription}>
                                 <div className={styles.tutorName}>
-                                    튜터 이선행
+                                    담임 이선행
                                 </div>
                                 <div className={styles.tutorDescription}>
                                     <div className={styles.tutorDescription_1}>
@@ -1028,7 +1036,7 @@ const MainPage: any = (props: any) => {
                         </div>
                         <div className={styles.tutorMentDiv}>
                             <div className={styles.tutorMentTitle}>
-                                "수험생활에 도움이 되기 위한 고민을"<br></br>끊임없이 하는 튜터가 되어드리겠습니다.
+                                "수험생활에 도움이 되기 위한 고민을"<br></br>끊임없이 하는 담임이 되어드리겠습니다.
                             </div>
                             <div className={styles.tutorMentDescription}>
                                 "학생의 약점이 어디인지에 따라 어떻게 공부해야 할지<br></br>
@@ -1043,7 +1051,7 @@ const MainPage: any = (props: any) => {
                         <div style={{ backgroundImage: "url(img/tutor32.webp)" }} className={styles.tutorsDivEach}>
                             <div className={styles.pictureDescription}>
                                 <div className={styles.tutorName}>
-                                    튜터 김희선
+                                    담임 김희선
                                 </div>
                                 <div className={styles.tutorDescription}>
                                     <div className={styles.tutorDescription_1}>
@@ -1070,7 +1078,7 @@ const MainPage: any = (props: any) => {
                         <div style={{ backgroundImage: "url(img/tutor33.webp)" }} className={styles.tutorsDivEach}>
                             <div className={styles.pictureDescription}>
                                 <div className={styles.tutorName}>
-                                    튜터 이재훈
+                                    담임 이재훈
                                 </div>
                                 <div className={styles.tutorDescription}>
                                     <div className={styles.tutorDescription_1}>
@@ -1145,7 +1153,7 @@ const MainPage: any = (props: any) => {
                         </div>
                         <div className={styles.prosListDescription}>
                             <div className={styles.prosListDescriptionBottom}>
-                                - 의무자습 내 생활관리 조교가 상주하며 교시마다 하루 9번 출석체크
+                                - 의무자습 내 생활관리 사감이 상주하며 교시마다 하루 9번 출석체크
                             </div>
                             <div className={styles.prosListDescriptionBottom}>
                                 - 교시 중 학원 외출 금지를 위해 출입문 잠금
@@ -1160,11 +1168,11 @@ const MainPage: any = (props: any) => {
 
                         <div className={`${styles.prosListTitle} ${styles.second}`}>
                             <div className={styles.prosCircle}>2</div>
-                            <div className={styles.prosListTitleDescription}>서류심사, 임원진 면접, 교육기간, 전체 회의, 담임 평가를 거친 담임멘토와의 매주 1:1 상담</div>
+                            <div className={styles.prosListTitleDescription}>서류심사, 임원진 면접, 교육기간, 전체 회의, 담임 평가를 거친 담임선생님과의 매주 1:1 상담</div>
                         </div>
                         <div className={styles.prosListDescription}>
                             <div className={styles.prosListDescriptionBottom}>
-                                - 학생의 취약과목 전문 멘토와 연결
+                                - 학생의 취약과목 전문 담임과 연결
                             </div>
                             <div className={styles.prosListDescriptionBottom}>
                                 - 매주 학생 실력/진도에 맞는 개개인별 테스트 시행
@@ -1228,39 +1236,14 @@ const MainPage: any = (props: any) => {
                 </div>
             </div>
 
-            <div className={styles.seventhSection}>
-                <div style={{ backgroundImage: "url(img/banner.webp)" }} className={styles.banner}>
-                    <div className={`${styles.bannerFirst} ${styles.onlyPC}`}>
-                        수능선배는 독학관리 학원의 가장 기본인
-                    </div>
-                    <div className={`${styles.bannerFirst} ${styles.onlymobile}`}>
-                        수능선배는 독학관리 학원의 가장 기본인
-                    </div>
-                    <div className={`${styles.bannerSecond} ${styles.onlyPC}`}>
-                        엄격한 생활관리, 양질의 튜터 상담 및 질의응답, 쾌적한 공부환경을
-                    </div>
-                    <div className={`${styles.bannerSecond} ${styles.onlymobile}`}>
-                        엄격한 생활관리, 양질의 튜터 상담 및 질의응답,
-                    </div>
-                    <div className={`${styles.bannerSecond} ${styles.onlymobile}`}>
-                        쾌적한 공부환경을 제공하는 것을
-                    </div>
-                    <div className={`${styles.bannerThird} ${styles.onlyPC}`}>
-                        가장 중요하게 생각하며 완벽하게 제공하기 위해 노력합니다.
-                    </div>
-                    <div className={`${styles.bannerThird} ${styles.onlymobile}`}>
-                        가장 중요하게 생각하며 완벽하게 제공합니다.
-                    </div>
-                </div>
-            </div>
 
             <div className={`${styles.mobileEightSection} ${styles.onlymobile}`}>
-                <div className={styles.animationTitle} ref={ref5}>
+                <div ref={ref5}>
                     <div className={styles.mobileEightSectionTitle_1}>
-                        수 십명의 합격생들의
+                        왜 최상위권들은
                     </div>
                     <div className={styles.mobileEightSectionTitle_2}>
-                        리뷰가 증명합니다
+                        수능선배를 선택했을까?
                     </div>
                 </div>
 
@@ -1340,6 +1323,33 @@ const MainPage: any = (props: any) => {
                 }
 
             </div>
+
+            <div className={styles.seventhSection}>
+                <div style={{ backgroundImage: "url(img/banner.webp)" }} className={styles.banner}>
+                    <div className={`${styles.bannerFirst} ${styles.onlyPC}`}>
+                        수능선배는 독학관리 학원의 가장 기본인
+                    </div>
+                    <div className={`${styles.bannerFirst} ${styles.onlymobile}`}>
+                        수능선배는 독학관리 학원의 가장 기본인
+                    </div>
+                    <div className={`${styles.bannerSecond} ${styles.onlyPC}`}>
+                        엄격한 생활관리, 양질의 튜터 상담 및 질의응답, 쾌적한 공부환경을
+                    </div>
+                    <div className={`${styles.bannerSecond} ${styles.onlymobile}`}>
+                        엄격한 생활관리, 양질의 튜터 상담 및 질의응답,
+                    </div>
+                    <div className={`${styles.bannerSecond} ${styles.onlymobile}`}>
+                        쾌적한 공부환경을 제공하는 것을
+                    </div>
+                    <div className={`${styles.bannerThird} ${styles.onlyPC}`}>
+                        가장 중요하게 생각하며 완벽하게 제공하기 위해 노력합니다.
+                    </div>
+                    <div className={`${styles.bannerThird} ${styles.onlymobile}`}>
+                        가장 중요하게 생각하며 완벽하게 제공합니다.
+                    </div>
+                </div>
+            </div>
+
 
             <div className={`${styles.eightSection} ${styles.onlyPC}`}>
                 <div className={styles.eightSectionTitle}>

@@ -42,10 +42,16 @@ const Map: React.FC<any> = (props) => {
 
     //ga event------------------------------------------------
     useEffect(() => {
-        ReactGa.event({
-            category: "view",
-            action: "mappageview"
-        })
+        // ReactGa.event({
+        //     category: "view",
+        //     action: "mappageview"
+        // })
+
+        ReactGa.send({
+            hitType : "pageview",
+            page_title : "map"
+        });
+        
     }, []);
     //--------------------------------------------------------
 

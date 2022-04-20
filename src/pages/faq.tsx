@@ -43,7 +43,7 @@ const categoryList = [
         en : "management"
     },
     {
-        name : "멘토링",
+        name : "담임상담",
         en : "mentor"
     },
     {
@@ -100,10 +100,16 @@ const Faq: React.FC<any> = (props) => {
 
     //ga event------------------------------------------------
     useEffect(() => {
-        ReactGa.event({
-            category: "view",
-            action: "faqpageview"
-        })
+        // ReactGa.event({
+        //     category: "view",
+        //     action: "faqpageview"
+        // })
+
+        ReactGa.send({
+            hitType : "pageview",
+            page_title : "faq"
+        });
+
     }, []);
     //--------------------------------------------------------
 
@@ -131,7 +137,7 @@ const Faq: React.FC<any> = (props) => {
                     each.string = "생활관리"
                     break;
                 case "mentor":
-                    each.string = "멘토링"
+                    each.string = "담임상담"
                     break;
                 case "question":
                     each.string = "질의응답"
@@ -143,7 +149,7 @@ const Faq: React.FC<any> = (props) => {
                     each.string = "과외"
                     break;
                 case "where":
-                    each.string = "입시상담"
+                    each.string = "배치상담"
                     break;
                 case "meal":
                     each.string = "식사"
@@ -298,7 +304,7 @@ const Faq: React.FC<any> = (props) => {
                     생활관리
                 </div>
                 <div onClick={(e: any) => { setCurrent("mentor") }} className={`${styles.eachList} ${current === "mentor" ? styles.active : ""}`}>
-                    멘토링
+                    담임상담
                 </div>
                 <div onClick={(e: any) => { setCurrent("question") }} className={`${styles.eachList} ${current === "question" ? styles.active : ""}`}>
                     질의응답

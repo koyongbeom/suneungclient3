@@ -202,7 +202,7 @@ const HeaderTwo: any = (props: any) => {
                 <div className={styles.bottomMenuDiv}>
                     <div className={styles.listTab}>
                         <div onClick={(e : any)=>{navigate("/teachers")}} className={styles.bottomMenuList}>
-                            튜터소개
+                            담임소개
                             <div className={styles.dot1}>
 
                             </div>
@@ -217,7 +217,7 @@ const HeaderTwo: any = (props: any) => {
                             비용안내
                         </div>
                         <div onClick={(e : any)=>{navigate("/map")}} className={styles.bottomMenuList}>
-                            위치안내
+                            위치및시설
                         </div>
                         <div onClick={(e : any)=>{navigate("/review")}} className={styles.bottomMenuList}>
                             합격자후기

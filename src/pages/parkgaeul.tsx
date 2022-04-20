@@ -81,10 +81,16 @@ const Parkgaeul: React.FC<any> = (props) => {
 
     //ga event------------------------------------------------
     useEffect(() => {
-        ReactGa.event({
-            category: "view",
-            action: "parkgaeulpageview"
-        })
+        // ReactGa.event({
+        //     category: "view",
+        //     action: "parkgaeulpageview"
+        // })
+
+        ReactGa.send({
+            hitType : "pageview",
+            page_title : "parkgaeul"
+        });
+        
     }, []);
     //--------------------------------------------------------
 

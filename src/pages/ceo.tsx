@@ -15,10 +15,16 @@ const Ceo: any = (props: any) => {
 
     //ga event------------------------------------------------
     useEffect(() => {
-        ReactGa.event({
-            category: "view",
-            action: "ceopageview"
-        })
+        // ReactGa.event({
+        //     category: "view",
+        //     action: "ceopageview"
+        // })
+
+        ReactGa.send({
+            hitType : "pageview",
+            page_title : "ceo"
+        });
+
     }, []);
     //--------------------------------------------------------
 

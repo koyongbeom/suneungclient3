@@ -23,10 +23,16 @@ const Teachers: React.FC<any> = (props) => {
 
     //ga event------------------------------------------------
     useEffect(() => {
-        ReactGa.event({
-            category: "view",
-            action: "teacherspageview"
-        })
+        // ReactGa.event({
+        //     category: "view",
+        //     action: "teacherspageview"
+        // })
+
+        ReactGa.send({
+            hitType : "pageview",
+            page_title : "teachers"
+        });
+
     }, []);
     //--------------------------------------------------------
 
@@ -57,7 +63,7 @@ const Teachers: React.FC<any> = (props) => {
                 </div>
                 <div className={styles.subHeaderText}>
                     <div className={styles.subHeaderTextTitle}>
-                        한 명의 튜터를 뽑기 위해서
+                        한 명의 담임을 뽑기 위해서
                     </div>
                     <div className={styles.subHeaderTextTitle2}>
                         한 달의 시간이 걸립니다

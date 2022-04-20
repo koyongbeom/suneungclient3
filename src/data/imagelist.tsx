@@ -19,8 +19,8 @@ export const interiorImageList = [{
 {
     number: 13,
     title: "오픈석",
-    description_1: "공부 중 딴짓을 절대 할 수 없는",
-    description_2: "개방석입니다."
+    description_1: "넓은 책상과 편한 시디즈 의자에 앉아",
+    description_2: "경쟁을 하며 공부할 수 있습니다."
 },
 {
     number: 3,

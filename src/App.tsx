@@ -1,4 +1,4 @@
-import React, { useEffect, Suspense } from 'react';
+import React, { useEffect, Suspense, useRef } from 'react';
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom"
 // import Ceo from './pages/ceo';
 // import Complete from './pages/complete';
@@ -33,11 +33,16 @@ const Teachers = React.lazy(() => import("./pages/teachers"));
 
 function App() {
 
+  const ref = useRef<any>(null);
+
+
   useEffect(() => {
-
-    ReactGa.initialize("G-24CD6Z291K");
-    ReactGa.send("pageview");
-
+    ReactGa.initialize([
+      {
+        trackingId : "G-24CD6Z291K",
+        gtagOptions : {sendPageView : false}
+      }
+    ]);
   }, [])
 
   return (
@@ -45,11 +50,11 @@ function App() {
       <div id="routing-container">
         <Suspense
           fallback={
-            <div style={{width : "100%", height : "100vh", display : "flex", flexDirection : "column", justifyContent : "center", alignItems : "center"}}>
-              <Logo style={{width : "120px", marginBottom : "24px"}} />
-              <h1>
-                Loading...
-              </h1>
+            <div ref={ref} className="loadingPageDiv" style={{width : "100%", display : "flex", flexDirection : "column", justifyContent : "center", alignItems : "center"}}>
+              <Logo className="loadingPageLogo" />
+              <div>
+                
+              </div>
             </div>
           }
         >

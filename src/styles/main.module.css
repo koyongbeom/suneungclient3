@@ -121,7 +121,7 @@
 
 .secondSectionTitle_1 {
     text-align: center;
-    font-size: 37px;
+    font-size: 48.5px;
     font-weight: 700;
     letter-spacing: -0.93px;
     /* color: rgba(255,255,255,0.8); */
@@ -131,7 +131,7 @@
 
 .secondSectionTitle_2 {
     text-align: center;
-    font-size: 37px;
+    font-size: 48.5px;
     font-weight: 700;
     letter-spacing: -0.93px;
     /* color: rgba(255,255,255,0.8); */
@@ -1090,21 +1090,21 @@
 
     .secondSectionTitle_1{
         font-weight: 700;
-        font-size: 20.8px;
+        font-size: 25.8px;
         letter-spacing: -0.49px;
         margin-bottom: 16px;
     }
 
     .secondSectionTitle_2{
         font-weight: 700;
-        font-size: 20.8px;
+        font-size: 25.8px;
         letter-spacing: -0.49px;
         margin-bottom: 16px;
     }
 
     .secondSectionTitle_3{
         font-weight: 700;
-        font-size: 20.8px;
+        font-size: 25.8px;
         letter-spacing: -0.49px;
         color: rgba(255,255,255,0.8);
         color: white;
@@ -1126,15 +1126,18 @@
 
     .numberBoxTitle{
         font-size: 14.5px;
+        font-size: 17px;
         letter-spacing: -0.36px;
-        margin-bottom: 17px;
+        margin-bottom: 10px;
     }
 
     .numberBoxTitle2{
         margin-top: 0;
         font-size: 14.5px;
+        font-size: 17px;
         letter-spacing: -0.36px;
         margin-bottom: 17px;
+        margin-bottom: 10px;
     }
 
     .autoNumber {
@@ -1157,6 +1160,11 @@
         padding-bottom: 79px;
         padding-top: 80.5px;
         margin-bottom: 67px;
+        margin-bottom: 78px;
+    }
+
+    .textColor{
+        color: #1b49af;
     }
 
     .ceoVideo{
@@ -1165,18 +1173,26 @@
         width: 91.1%;
         margin: 0 auto;
         margin-bottom: 30.5px;
+        margin-bottom: 67px;
+        margin-bottom: 81.5px;
     }
 
     .ceoVideoText {
         text-align: center;
         font-size: 13.5px;
+        font-size: 20.8px;
         letter-spacing: -0.34px;
         color: #373737;
-        margin-bottom: 62px;
+        margin-bottom: 45px;
+        line-height: 27px;
+        font-weight: 500;
+        color: #353535;
+        font-weight: 700;
     }
 
     .thirdSectionMobile {
         padding-top: 73.5px;
+        padding-top: 81.5px;
         padding-bottom: 69.5px;
         background-color: #f5f6f8;
     }
@@ -1190,8 +1206,9 @@
     }
 
     .thirdSectionTitleMobile.second{
-        margin-top: 12px;
+        margin-top: 6.2px;
         margin-bottom: 34.5px;
+        margin-bottom: 46px;
     }
 
     .mobileImageDiv{
@@ -1204,10 +1221,9 @@
 
     .mobileImageBox {
         margin: 0 auto;
-        background-color: white;
         width: 83.1%;
-        padding: 4px;
         margin-bottom: 25px;
+        margin-bottom: 17.5px;
     }
 
     .mobileImageInterior {
@@ -1221,7 +1237,7 @@
     .mobileImageBoxTitle{
         text-align: center;
         font-weight: 700;
-        font-size: 17px;
+        font-size: 17.5px;
         letter-spacing: -0.85px;
         color: #353535;
         margin-bottom: 17.5px;
@@ -1231,17 +1247,20 @@
         width: 83.1%;
         margin: 0 auto;
         font-weight: 300;
-        font-size: 12.8px;
+        font-size: 13.3px;
         letter-spacing: -0.64px;
+        text-align: center;
     }
 
     .mobileImageBoxDescription.second{
-        margin-top: 12px;
+        margin-top: 5px;
+        text-align: center;
+
     }
 
     .mobileFourthSection {
-        padding-top: 77px;
-        padding-bottom: 72.5px;
+        padding-top: 81.5px;
+        padding-bottom: 81.5px;
     }
 
     .mobileFourthSectionTitle {
@@ -1253,7 +1272,7 @@
     }
 
     .mobileFourthSectionTitle.second{
-        margin-top: 9px;
+        margin-top: 6.2px;
     }
 
     .mobileFourthSectionMenu{
@@ -1261,18 +1280,19 @@
         width: 59.2%;
         margin: 0 auto;
         justify-content: space-between;
-        margin-top: 31px;
+        margin-top: 46px;
     }
 
     .mobileFourthSectionMenu {
         font-weight: 700;
         color: #a4adb5;
         font-size: 13px;
+        font-size: 15px;
         letter-spacing: -0.65px;
     }
 
     .mobileFourthSectionMenuText{
-        width: 52px;
+        width: 56px;
         text-align: center;
         padding-bottom: 7px;
     }
@@ -1285,20 +1305,24 @@
     }
 
     .mobileFourthSectionDescription {
-        margin-top: 26px;
+        margin-top: 18px;
     }
 
     .mobileFourthSectionDescriptionImg{
         width: 90.56%;
+        width: 83.1vw;
         padding-bottom: 56.04%;
         position: relative;
         margin: 0 auto;
-        margin-bottom: 30px;
+        margin-bottom: 0px;
     }
 
     .patrolImg {
         position: absolute;
         width: 100%;
+        width: 83.1vw;
+        height: 49.86vw;
+        object-fit: cover;
     }
 
     .patrolImg.transparent{
@@ -1307,6 +1331,7 @@
 
     .mobileFourthSectionDescriptionText{
         width: 90.56%;
+        width: 83.1%;
         margin: 0 auto;
     }
 
@@ -1328,8 +1353,9 @@
 
     .mobileFourthSectionDescriptionSubText{
         width: 90.56%;
+        width: 83.1%;
         margin: 0 auto;
-        margin-top: 33px;
+        margin-top: 18px;
         font-size: 13.3px;
         font-weight: 300;
         line-height: 23px;
@@ -1338,31 +1364,38 @@
     }
 
     .mobileFifthSection{
-        padding-top: 83.5px;
+        padding-top: 81.5px;
         padding-bottom: 81.5px;
         background-color: #28313e;
-        margin-bottom: 89px;
+        background-color: #f5f6f8;
     }
 
     .mobileFifthSectionTitle {
         font-weight: 700;
         font-size: 20.8px;
         letter-spacing: -0.52px;
-        color: white;text-align: center;
+        color: white;
+        text-align: center;
+        color: #353535;
+        line-height: 27px;
     }
 
     .mobileFifthSectionDescription {
-        font-size: 12.3px;
+        font-size: 15px;
         font-weight: 300;
         letter-spacing: -0.61px;
         color: rgba(245, 249, 251, 0.8);
         text-align: center;
         margin-top: 24px;
+        color: #353535;
+
     }
 
     .mobileFifthSectionDescription.second{
-        margin-top: 10px;
+        margin-top: 5px;
         margin-bottom: 40.5px;
+        color: #353535;
+
     }
 
     .swiper{
@@ -1373,7 +1406,7 @@
     .swiper2{
         padding-left: 4.75% !important;
         padding-right: 4.75% !important;
-        padding-bottom: 60px !important;
+        padding-bottom: 65px !important;
     }
 
     .mobileEachTutor{
@@ -1392,20 +1425,22 @@
     }
 
     .mobileEachTutorImgBoxDescription{
-        background-color: rgba(0, 0, 0, 0.5);
+        background-color: rgba(0, 0, 0, 0.6);
         height: 97.5px;
         width: 100%;
         position: absolute;
         bottom: 0;
         padding-left: 20px;
-        padding-top: 20px;
+        padding-top: 17.5px;
+        padding-left: 0px;
     }
 
     .mobileEachTutorImgBoxDescription_1{
         color: #f7f6fc;
         font-weight: 700;
-        font-size: 15.5px;
+        font-size: 17px;
         letter-spacing: -0.78px;
+        text-align: center;
     }
 
     .mobileEachTutorImgBoxDescription_2{
@@ -1413,27 +1448,41 @@
         color: white;
         font-size: 10.3px;
         font-size: 12px;
+        font-size: 14px;
         font-weight: 300;
         margin-top: 12.5px;
+        letter-spacing: -0.78px;
+        text-align: center;
     }
 
     .mobileEachTutorImgBoxDescription_2 div{
-        margin-bottom: 7px;
+        margin-bottom: 5px;
+    }
+
+    .tutorDescriptionDivWrapper{
+        padding-left: 10px;
+        padding-right: 10px;
     }
 
     .mobileEachTutorDescriptionBox_1{
-        margin-top: 33.5px;
+        text-align: center;
+        padding-top: 18px;
         color: #f7f6fc;
-        font-weight: 700;
+        font-weight: 500;
         font-size: 15.5px;
         letter-spacing: -0.78px;
+        color: #353535;
     }
+
     .mobileEachTutorDescriptionBox_2{
+        text-align: center;
         color: #f7f6fc;
-        font-weight: 700;
+        font-weight: 500;
         font-size: 15.5px;
         letter-spacing: -0.78px;
-        margin-top: 12px;
+        margin-top: 6px;
+        color: #353535;
+
     }
 
     .mobileFifthSectionBorder{
@@ -1442,8 +1491,10 @@
         margin-bottom: 74px;
     }
 
+
     .mobileSixthSection{
-        padding-bottom: 77.5px;
+        padding-top: 81.5px;
+        padding-bottom: 80px;
     }
 
     .mobileSixthSectionTitle{
@@ -1452,15 +1503,16 @@
         font-size: 20.8px;
         color: #353535;
         letter-spacing: -0.52px;
-        margin-bottom: 9px;
+        margin-bottom: 6.2px;
     }
 
     .mobileSixthSectionTitle.third{
-        margin-bottom: 39px;
+        margin-bottom: 46px;
     }
 
     .mobileSixthSectionEachBox{
         width: 90.7%;
+        width: 83.1%;
         margin: 0 auto;
         margin-bottom: 48px;
     }
@@ -1476,6 +1528,7 @@
     .mobileSixthSectionEachBoxImg{
         width: 100%;
         padding-bottom: 48.8%;
+        padding-bottom: 49.86vw;
         background-size: cover;
         background-repeat: no-repeat;
     }
@@ -1489,14 +1542,21 @@
         display: inline-block;
         width: 38.5px;
         height: 38.5px;
+        width: 25px;
+        height: 25px;
+        width: 23px;
+        height: 23px;
         border-radius: 50%;
         background-color: #262262;
         font-size: 18.8px;
+        font-size: 16px;
+        font-size: 15px;
         color: white;
         display: flex;
         justify-content: center;
         align-items: center;
         padding-bottom: 2px;
+        color: #f5f6f8;
     }
 
     .mobileSixthSectionEachBoxTitle{
@@ -1506,6 +1566,7 @@
     .sixthEachBoxdescription{
         display: inline-block;
         margin-left: 11px;
+        margin-left: 6px;
         font-size: 18px;
         font-weight: 700;
         color: #464646;
@@ -1526,6 +1587,10 @@
 
     .seventhSection{
         padding-bottom: 93px;
+    }
+
+    .banner{
+        height: 250px;
     }
 
     .bannerFirst{
@@ -1549,9 +1614,10 @@
     }
 
     .mobileEightSection{
-        padding-top: 76px;
         padding-top: 60px;
+        padding-top: 81.5px;
         padding-bottom: 60px;
+        padding-bottom: 79px;
         background-color: #f6f6f6;
     }
 
@@ -1571,7 +1637,7 @@
         color: #353535;
         margin-top: 8px;
         margin-bottom: 34px;
-        margin-bottom: 50px;
+        margin-bottom: 46px;
     }
 
     .mobileEightSectionVideoDiv{

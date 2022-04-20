@@ -37,10 +37,16 @@ const Review: React.FC<any> = (props) => {
 
     //ga event------------------------------------------------
     useEffect(() => {
-        ReactGa.event({
-            category: "view",
-            action: "reviewpageview"
-        })
+        // ReactGa.event({
+        //     category: "view",
+        //     action: "reviewpageview"
+        // })
+
+        ReactGa.send({
+            hitType : "pageview",
+            page_title : "review"
+        });
+
     }, []);
     //--------------------------------------------------------
 
@@ -424,12 +430,12 @@ const Review: React.FC<any> = (props) => {
                             responsive
                             width="100%"
                             height="100%"
-                            video="https://vimeo.com/698227324"
-                            autoplay={play}
-                            paused={pause}
-                            muted
+                            video="https://vimeo.com/700228719"
+                            // autoplay={play}
+                            // paused={pause}
+                            // muted
                             className={styles.player}
-                            onReady={(e : any)=>{setTimeout(()=>{setPause(true);}, 2000)}}
+                            // onReady={(e : any)=>{setTimeout(()=>{setPause(true);}, 2000)}}
                         />
                     </div>
                 </div>

@@ -76,10 +76,16 @@ const Register: React.FC<any> = (props) => {
 
     //ga event------------------------------------------------
     useEffect(() => {
-        ReactGa.event({
-            category: "view",
-            action: "registerpageview"
-        })
+        // ReactGa.event({
+        //     category: "view",
+        //     action: "registerpageview"
+        // })
+
+        ReactGa.send({
+            hitType : "pageview",
+            page_title : "register"
+        });
+        
     }, []);
     //--------------------------------------------------------
 
@@ -556,10 +562,10 @@ const Register: React.FC<any> = (props) => {
                 })
         })
 
-        ReactGa.event({
-            category : "booking",
-            action : "bookingbtnclick"
-        })
+        // ReactGa.event({
+        //     category : "booking",
+        //     action : "bookingbtnclick"
+        // })
     }
 
     return (

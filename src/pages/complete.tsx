@@ -25,10 +25,16 @@ const Complete: React.FC<any> = (props) => {
 
     //ga event------------------------------------------------
     useEffect(() => {
-        ReactGa.event({
-            category: "view",
-            action: "completepageview"
-        })
+        // ReactGa.event({
+        //     category: "view",
+        //     action: "completepageview"
+        // })
+
+        ReactGa.send({
+            hitType : "pageview",
+            page_title : "complete"
+        });
+
     }, []);
     //--------------------------------------------------------
 

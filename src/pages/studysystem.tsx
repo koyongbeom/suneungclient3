@@ -41,9 +41,9 @@ import { ReactComponent as RightRightSvg } from '../svg/right-right-arrow.svg';
 // import { ReactComponent as RightTopSvg } from '../svg/right-top-arrow.svg';
 
 
-import { ReactComponent as RightBottomSvg } from '../svg/rightbottom.svg';
-import { ReactComponent as LeftBottomSvg } from '../svg/leftbottom.svg';
-import { ReactComponent as RightTopSvg } from '../svg/righttop.svg';
+import { ReactComponent as RightBottomSvg } from '../svg/arrow-right-long-regular.svg';
+import { ReactComponent as LeftBottomSvg } from '../svg/arrow-right-arrow-left-regular.svg';
+import { ReactComponent as RightTopSvg } from '../svg/arrow-right-long-regular.svg';
 
 
 // import { ReactComponent as PlaySvg } from '../svg/circle-play-regular.svg';
@@ -117,10 +117,21 @@ const StudySystem: React.FC = (props: any) => {
 
     //ga event------------------------------------------------
     useEffect(() => {
-        ReactGa.event({
-            category: "view",
-            action: "studysystempageview"
-        })
+        // ReactGa.event({
+        //     category: "view",
+        //     action: "studysystempageview"
+        // });
+
+        // ReactGa.send({
+        //     hitType : "pageview",
+        //     page_title : "/studysystem"
+        // })
+
+        ReactGa.send({
+            hitType : "pageview",
+            page_title : "studysystem"
+        });
+
     }, []);
     //--------------------------------------------------------
 
@@ -151,7 +162,7 @@ const StudySystem: React.FC = (props: any) => {
 
     useEffect(() => {
 
-        window.scrollTo(0, 0);
+        // window.scrollTo(0, 0);
 
         const newBookList : any = [];
         for(var i=0; i < 10; i++){
@@ -198,6 +209,7 @@ const StudySystem: React.FC = (props: any) => {
         });
         setKind("attendance");
         handleOpen();
+
     }
 
     const showPatrolReport = () => {
@@ -239,6 +251,8 @@ const StudySystem: React.FC = (props: any) => {
         });
         setKind("scheduler");
         handleOpen();
+
+
     }
     
     const showDemerit = () => {
@@ -247,6 +261,7 @@ const StudySystem: React.FC = (props: any) => {
         });
         setKind("demerit");
         handleOpen();
+
     }
 
     const showAttendanceMobile = () => {
@@ -256,6 +271,8 @@ const StudySystem: React.FC = (props: any) => {
         setKind("attendanceMobile");
         window.location.assign("/studysystem#modal");
         // handleOpen();
+
+
     }
 
     const showSchedulerMobile = () => {
@@ -265,6 +282,7 @@ const StudySystem: React.FC = (props: any) => {
         setKind("schedulerMobile");
         window.location.assign("/studysystem#modal");
         //handleOpen();
+
     }
 
     const showDemeritMobile = () => {
@@ -274,6 +292,7 @@ const StudySystem: React.FC = (props: any) => {
         setKind("demeritMobile");
         window.location.assign("/studysystem#modal");
         //handleOpen();
+
     }
 
     return (
@@ -290,10 +309,10 @@ const StudySystem: React.FC = (props: any) => {
                 </div>
                 <div className={styles.subHeaderText}>
                     <div className={styles.subHeaderTextTitle}>
-                        수능선배 자물쇠반은
+                        실패 없는 1년을
                     </div>
                     <div className={styles.subHeaderTextTitle2}>
-                        체계적입니다
+                        만들어 드리겠습니다
                     </div>
                     <div className={styles.subHeaderTextSubTitle}>
 
@@ -330,10 +349,10 @@ const StudySystem: React.FC = (props: any) => {
                             3중 확인을 통한
                         </div>
                         <div className={styles.eachSvgBoxTitle_2}>
-                            철저한 생활관리
+                            엄격한 생활관리
                         </div>
                         <div className={styles.eachSvgBoxSubTitle_1}>
-                            조교의 하루 9번 출석체크
+                            하루 9번 출석체크
                         </div>
                         <div className={styles.eachSvgBoxSubTitle_2}>
                             전용 프로그램을 통한 실시간 조회
@@ -350,13 +369,13 @@ const StudySystem: React.FC = (props: any) => {
                             도움되는
                         </div>
                         <div className={styles.eachSvgBoxTitle_2}>
-                            튜터 상담
+                            담임 상담
                         </div>
                         <div className={styles.eachSvgBoxSubTitle_1}>
-                            타학원 튜터 상담 신청률 50%의
+                            타사 상담 신청률 50%의
                         </div>
                         <div className={styles.eachSvgBoxSubTitle_2}>
-                            두 배에 가까운 97%의 상담 신청률
+                            두배에 가까운 98%의 상담 신청률
                         </div>
                     </div>
                     <div className={`${styles.eachSvgBox} ${styles.last}`}>
@@ -373,10 +392,10 @@ const StudySystem: React.FC = (props: any) => {
                             질의응답
                         </div>
                         <div className={styles.eachSvgBoxSubTitle_1}>
-                            튜터별 질의응답 신청률, 만족도
+                            튜터별 질의응답 신청률 데이터를
                         </div>
                         <div className={styles.eachSvgBoxSubTitle_2}>
-                            데이터를 분석해 인기 많은 위주로 운영
+                            분석해 학생들의 만족도 반영
                         </div>
                     </div>
                 </div>
@@ -484,14 +503,14 @@ const StudySystem: React.FC = (props: any) => {
                                     STEP 1.
                                 </div>
                                 <span className={styles.orderBoxTitle}>
-                                    조교가 매교시마다 순찰하며 출석체크
+                                    매교시마다 순찰하며 출석체크
                                 </span>
                             </div>
                             <div className={`${styles.orderBoxDescriptionBoxDescription} ${styles.onlyPC}`}>
-                                아침 9시부터 밤 10시까지 하루 9번 교시별로 조교가 출석체크한 후 공석인 사람들에게<br></br>연락 후 자리에 없는 이유를 조사합니다.
+                                생활관리 담당 사감이 아침 9시부터 밤 10시까지 하루 9번 교시별로 출석체크 후<br></br>공석인 사람들에게 연락해 자리에 없는 이유를 조사합니다.
                             </div>
                             <div className={`${styles.orderBoxDescriptionBoxDescription} ${styles.onlymobile}`}>
-                                아침 9시부터 밤 10시까지 하루 9번 교시별로 조교가 출석체크한 후 공석인 사람들에게 연락 후 자리에 없는 이유를 조사합니다.
+                                생활관리 담당 사감이 아침 9시부터 밤 10시까지 하루 9번 교시별로 출석체크 후 공석인 사람들에게 연락해 자리에 없는 이유를 조사합니다.
                             </div>
                         </div>
                     </div>
@@ -530,10 +549,10 @@ const StudySystem: React.FC = (props: any) => {
                                 </span>
                             </div>
                             <div className={`${styles.orderBoxDescriptionBoxDescription} ${styles.onlyPC}`}>
-                                공석인 학생들의 목록을 보여주는 전용 프로그램의 기능을 통해 출석체크에서 <br></br>빠트린 학생이 없는지 재확인 후 운영진에게 출석결과를 매교시 보고합니다.
+                                공석인 학생들의 목록을 보여주는 전용 프로그램의 기능을 통해 출석체크에서 <br></br>빠트린 학생이 없는지 재확인 후 원장선생님께 출석결과를 매교시 보고합니다.
                             </div>
                             <div className={`${styles.orderBoxDescriptionBoxDescription} ${styles.onlymobile}`}>
-                                공석인 학생들의 목록을 보여주는 전용 프로그램의 기능을 통해 출석체크에서 빠트린 학생이 없는지 재확인 후 운영진에게 출석결과를 매교시 보고합니다.
+                                공석인 학생들의 목록을 보여주는 전용 프로그램의 기능을 통해 출석체크에서 빠트린 학생이 없는지 재확인 후 원장선생님께 출석결과를 매교시 보고합니다.
                             </div>
                         </div>
                     </div>
@@ -660,10 +679,10 @@ const StudySystem: React.FC = (props: any) => {
                                 </span>
                             </div>
                             <div className={`${styles.orderBoxDescriptionBoxDescription} ${styles.onlyPC}`}>
-                                생활관리 조교가 학원의 모든 구역을 하루 8번 순찰하며 공부 분위기 확인합니다.<br></br>특정 구역을 순찰한 후 해당 구역에 부착되어 있는 QR CODE를 태깅 후 순찰일지를 작성합니다.
+                                생활관리 사감이 학원의 모든 구역을 하루 8번 순찰하며 공부 분위기 확인합니다.<br></br>특정 구역을 순찰한 후 해당 구역에 부착되어 있는 QR CODE를 태깅 후 순찰일지를 작성합니다.
                             </div>
                             <div className={`${styles.orderBoxDescriptionBoxDescription} ${styles.onlymobile}`}>
-                                생활관리 조교가 학원의 모든 구역을 하루 8번 순찰하며 공부 분위기 확인합니다. 특정 구역을 순찰한 후 해당 구역에 부착되어 있는 QR CODE를 태깅 후 순찰일지를 작성합니다.
+                                생활관리 사감이 학원의 모든 구역을 하루 8번 순찰하며 공부 분위기 확인합니다. 특정 구역을 순찰한 후 해당 구역에 부착되어 있는 QR CODE를 태깅 후 순찰일지를 작성합니다.
                             </div>
                             <div onClick={showPatrolReport} className={`${styles.subDescription} ${styles.onlyPC}`}>
                                 순찰일지 보기
@@ -691,14 +710,14 @@ const StudySystem: React.FC = (props: any) => {
                                     STEP 2.
                                 </div>
                                 <span className={styles.orderBoxTitle}>
-                                    운영진의 생활관리 완벽성 여부 재검토
+                                    원장이 생활관리 완벽성 여부 재검토
                                 </span>
                             </div>
                             <div className={`${styles.orderBoxDescriptionBoxDescription} ${styles.onlyPC}`}>
-                                조교가 순찰 후 QR코드를 태깅하는 순간 해당구역 CCTV 스크린샷이 촬영됩니다.<br></br>운영진이 CCTV 스크린샷과 조교의 순찰 보고서를 토대로 생활관리가 완벽한지를 재검토합니다.
+                                생활관리 사감이 순찰 후 QR코드를 태깅하는 순간 해당구역 CCTV 스크린샷이 촬영됩니다.<br></br>원장이 CCTV 스크린샷과 사감의 순찰 보고서를 토대로 생활관리가 완벽한지를 재검토합니다.
                             </div>
                             <div className={`${styles.orderBoxDescriptionBoxDescription} ${styles.onlymobile}`}>
-                                조교가 순찰 후 QR코드를 태깅하는 순간 해당구역 CCTV 스크린샷이 촬영됩니다. 운영진이 CCTV 스크린샷과 조교의 순찰 보고서를 토대로 생활관리가 완벽한지를 재검토합니다.
+                                생활관리 사감이 순찰 후 QR코드를 태깅하는 순간 해당구역 CCTV 스크린샷이 촬영됩니다. 원장이 CCTV 스크린샷과 사감의 순찰 보고서를 토대로 생활관리가 완벽한지를 재검토합니다.
                             </div>
                         </div>
                     </div>
@@ -749,24 +768,24 @@ const StudySystem: React.FC = (props: any) => {
                                 </span>
                             </div>
                             <div className={styles.orderBoxDescriptionBoxDescription}>
-                                모든 벌점 부과내역을 학생과 학부모에게 통지하고 학생은 벌점 부과된 내역에 이의가 있으면 직원에게 벌점 이의 신청할 수 있습니다.
+                                모든 벌점 부과내역을 학생과 학부모에게 통지하고 학생은 벌점 부과된 내역에 이의가 있으면 사감에게 벌점 이의 신청할 수 있습니다.
                             </div>
                         </div>
                         <div className={styles.diagramDivFirst}>
                             <div className={styles.diagramDivFirst_1}>
-                                <div className={`${styles.circle} ${styles.chief}`}>
-                                    운영진
+                                <div className={`${styles.circle} ${styles.firstCircle} ${styles.chief}`}>
+                                    사감
                                 </div>
                             </div>
                             <div className={styles.diagramDivFirst_2}>
                                 <div className={styles.diagramDivFirst_2_1}>
-                                    <RightTopSvg className={styles.mobileRightSvg} />
+                                    <RightTopSvg fill="#666666" className={`${styles.mobileRightSvg} ${styles.chevronFirst}`} />
                                 </div>
                                 <div className={styles.diagramDivFirst_2_2}>
-                                    벌점 부과 내역 통지
+                                    {/* 벌점 부과 내역 통지 */}
                                 </div>
                                 <div className={styles.diagramDivFirst_2_3}>
-                                    <RightBottomSvg className={styles.mobileRightSvg} />
+                                    <RightBottomSvg fill="#666666" className={`${styles.mobileRightSvg} ${styles.chevronSecond}`} />
                                 </div>
                             </div>
                             <div className={styles.diagramDivFirst_3}>
@@ -800,24 +819,23 @@ const StudySystem: React.FC = (props: any) => {
                         <div className={styles.diagramDivFirst}>
                             <div className={styles.diagramDivFirst_1}>
                                 <div className={`${styles.circle} ${styles.chief}`}>
-                                    운영진
+                                    원장
                                 </div>
                             </div>
                             <div className={styles.diagramDivFirst_2}>
                                 <div className={`${styles.diagramDivFirst_2_1} ${styles.second}`}>
-                                    <RightTopSvg className={`${styles.mobileRightSvg} ${styles.rightTop}`} />
-                                    <LeftBottomSvg  className={`${styles.leftBottom} ${styles.mobileRightSvg}`} />
+                                    <LeftBottomSvg   fill="#666666" className={`${styles.leftBottom} ${styles.mobileRightSvg} ${styles.mobileRightFirstSvg}`} />
                                     <div className={styles.topRightText}>
-                                        1. 지문삭제
+                                        {/* 1. 지문삭제 */}
                                     </div>
                                     <div className={styles.bottomLeftText}>
-                                        2. 원장 상담 및 반성문 제출
+                                        {/* 2. 원장 상담 및 반성문 제출 */}
                                     </div>
                                 </div>
                                 <div className={`${styles.diagramDivFirst_2_3} ${styles.second}`}>
-                                    <RightBottomSvg className={styles.mobileRightSvg} />
+                                    <LeftBottomSvg  fill="#666666" className={`${styles.mobileRightSvg} ${styles.leftBottomFriend} ${styles.mobileRightSecondSvg}`} />
                                     <div className={styles.bottomRightText}>
-                                        3. 학부모와 상의 후<br></br>퇴원 여부 결정
+                                        {/* 3. 학부모와 상의 후<br></br>퇴원 여부 결정 */}
                                     </div>
                                 </div>
                             </div>
@@ -879,11 +897,11 @@ const StudySystem: React.FC = (props: any) => {
                             02
                         </div>
                         <div className={styles.sectionTitleText}>
-                            도움되는 튜터상담
+                            도움되는 담임상담
                         </div>
                     </div>
                     <div className={styles.sectionSubTitle}>
-                        1) 튜터 선발 절차
+                        1) 담임 선발 절차
                     </div>
                     <div className={styles.sectionSubTitle_2}>
                         실력 위주의 선발 절차
@@ -941,10 +959,10 @@ const StudySystem: React.FC = (props: any) => {
                                 </span>
                             </div>
                             <div className={`${styles.orderBoxDescriptionBoxDescription} ${styles.onlyPC}`}>
-                                튜터 면접에서는 학생 케이스에 맞는 공부방법 솔루션을 제시해보는 시뮬레이션과<br></br>자신 있는 과목에 대한 이론 및 문제 풀이 설명을 평가합니다.
+                                담임 면접에서는 학생 케이스에 맞는 공부방법 솔루션을 제시해보는 시뮬레이션과<br></br>자신 있는 과목에 대한 이론 및 문제 풀이 설명을 평가합니다.
                             </div>
                             <div className={`${styles.orderBoxDescriptionBoxDescription} ${styles.onlymobile}`}>
-                                튜터 면접에서는 학생 케이스에 맞는 공부방법 솔루션을 제시해보는 시뮬레이션과 자신 있는 과목에 대한 이론 및 문제 풀이 설명을 평가합니다.
+                                담임 면접에서는 학생 케이스에 맞는 공부방법 솔루션을 제시해보는 시뮬레이션과 자신 있는 과목에 대한 이론 및 문제 풀이 설명을 평가합니다.
                             </div>
                         </div>
                     </div>
@@ -969,14 +987,14 @@ const StudySystem: React.FC = (props: any) => {
                                     STEP 3.
                                 </div>
                                 <span className={styles.orderBoxTitle}>
-                                    6년간 쌓인 데이터 기반 튜터 교육 프로그램
+                                    6년간 쌓인 데이터 기반 담임 교육 프로그램
                                 </span>
                             </div>
                             <div className={`${styles.orderBoxDescriptionBoxDescription} ${styles.onlyPC}`}>
-                                6년간 상담을 하며 쌓인 데이터를 토대로 튜터 교육 프로그램을 구성해놓았고<br></br>이를 통해 신규 튜터에게 1:1 교육과정을 제공합니다.
+                                6년간 상담을 하며 쌓인 데이터를 토대로 담임 교육 프로그램을 구성해놓았고<br></br>이를 통해 신규 담임에게 1:1 교육과정을 제공합니다.
                             </div>
                             <div className={`${styles.orderBoxDescriptionBoxDescription} ${styles.onlymobile}`}>
-                                6년간 상담을 하며 쌓인 데이터를 토대로 튜터 교육 프로그램을 구성해놓았고 이를 통해 신규 튜터에게 1:1 교육과정을 제공합니다.
+                                6년간 상담을 하며 쌓인 데이터를 토대로 담임 교육 프로그램을 구성해놓았고 이를 통해 신규 담임에게 1:1 교육과정을 제공합니다.
                             </div>
                         </div>
                     </div>
@@ -1022,7 +1040,7 @@ const StudySystem: React.FC = (props: any) => {
                                 선발 기준
                             </div>
                             <div className={styles.differentiationList_2}>
-                                수능선배에서는 학벌 뿐만 아니라 튜터의 티칭 실력, 공부 방법 고민정도, 성실함 등을 종합적으로 판단해 선발합니다.
+                                수능선배에서는 학벌 뿐만 아니라 담임의 티칭 실력, 공부 방법 고민정도, 성실함 등을 종합적으로 판단해 선발합니다.
                             </div>
                         </div>
                         <div className={`${styles.differentiationList}`}>
@@ -1030,7 +1048,7 @@ const StudySystem: React.FC = (props: any) => {
                                 교육 프로그램
                             </div>
                             <div className={styles.differentiationList_2}>
-                                최종 선발 된 모든 튜터는 6년간 쌓인 상담 데이터를 토대로 만든 교육 프로그램을 이수해야 합니다.
+                                최종 선발 된 모든 담임은 6년간 쌓인 상담 데이터를 토대로 만든 교육 프로그램을 이수해야 합니다.
                             </div>
                         </div>
                         <div className={`${styles.differentiationList} ${styles.last}`}>
@@ -1038,7 +1056,7 @@ const StudySystem: React.FC = (props: any) => {
                                 전체 회의
                             </div>
                             <div className={styles.differentiationList_2}>
-                                매달 학생들에게 상담에 대한 평가를 받고 그 평가를 토대로 모든 튜터들이 모여 부족함 점을 개선하기 위해 노력합니다.
+                                매달 학생들에게 상담에 대한 평가를 받고 그 평가를 토대로 모든 담임들이 모여 부족함 점을 개선하기 위해 노력합니다.
                             </div>
                         </div>
                     </div>
@@ -1052,7 +1070,7 @@ const StudySystem: React.FC = (props: any) => {
                         2) 객관적인 평가를 통한 상담
                     </div>
                     <div className={styles.sectionSubTitle_2}>
-                        매주 30분 튜터상담 진행
+                        매주 30분 담임상담 진행
                     </div>
 
                     <div className={`${styles.orderBox} ${styles.second}`}>
@@ -1075,10 +1093,10 @@ const StudySystem: React.FC = (props: any) => {
                                 </span>
                             </div>
                             <div className={`${styles.orderBoxDescriptionBoxDescription} ${styles.onlyPC}`}>
-                                학생이 이번주에 나간 진도에 해당하는 문제 75%, 과거에 틀렸던 문제 25% 비율로<br></br>구성되도록 담당 튜터가 출제한 개개인별 테스트를 제한시간에 맞춰 풉니다.
+                                학생이 이번주에 나간 진도에 해당하는 문제 75%, 과거에 틀렸던 문제 25% 비율로<br></br>구성되도록 담당 담임이 출제한 개개인별 테스트를 제한시간에 맞춰 풉니다.
                             </div>
                             <div className={`${styles.orderBoxDescriptionBoxDescription} ${styles.onlymobile}`}>
-                                학생이 이번주에 나간 진도에 해당하는 문제 75%, 과거에 틀렸던 문제 25% 비율로 구성되도록 담당 튜터가 출제한 개개인별 테스트를 제한시간에 맞춰 풉니다.
+                                학생이 이번주에 나간 진도에 해당하는 문제 75%, 과거에 틀렸던 문제 25% 비율로 구성되도록 담당 담임이 출제한 개개인별 테스트를 제한시간에 맞춰 풉니다.
                             </div>
                         </div>
                     </div>
@@ -1113,14 +1131,14 @@ const StudySystem: React.FC = (props: any) => {
                                     STEP 2.
                                 </div>
                                 <span className={styles.orderBoxTitle}>
-                                    튜터가 시험지 채점 후 오답률 높은 파트 분석
+                                    담임이 시험지 채점 후 오답률 높은 파트 분석
                                 </span>
                             </div>
                             <div className={`${styles.orderBoxDescriptionBoxDescription} ${styles.onlyPC}`}>
-                                튜터가 시험지 채점 후 오답 내역을 분석해 학생의 취약 파트를 찾아낸 후<br></br>한 주 동안 공부한 내용에 대해 피드백할 점을 찾습니다.
+                                담임이 시험지 채점 후 오답 내역을 분석해 학생의 취약 파트를 찾아낸 후<br></br>한 주 동안 공부한 내용에 대해 피드백할 점을 찾습니다.
                             </div>
                             <div className={`${styles.orderBoxDescriptionBoxDescription} ${styles.onlymobile}`}>
-                                튜터가 시험지 채점 후 오답 내역을 분석해 학생의 취약 파트를 찾아낸 후 한 주 동안 공부한 내용에 대해 피드백할 점을 찾습니다.
+                                담임이 시험지 채점 후 오답 내역을 분석해 학생의 취약 파트를 찾아낸 후 한 주 동안 공부한 내용에 대해 피드백할 점을 찾습니다.
                             </div>
                         </div>
                     </div>
@@ -1202,10 +1220,10 @@ const StudySystem: React.FC = (props: any) => {
                         </div>
                         <div className={`${styles.differentiationList} ${styles.first}`}>
                             <div className={styles.differentiationList_1}>
-                                튜터 배정
+                                담임 배정
                             </div>
                             <div className={styles.differentiationList_2}>
-                                튜터 배정은 학생의 공부 성향, 수강 중인 인강 강사, 취약 과목을 토대로 배정하고 배정한 이유를 학생과 학부모님께 전달합니다.
+                                담임 배정은 학생의 공부 성향, 수강 중인 인강 강사, 취약 과목을 토대로 배정하고 배정한 이유를 학생과 학부모님께 전달합니다.
                             </div>
                         </div>
                         <div className={`${styles.differentiationList}`}>
@@ -1237,7 +1255,7 @@ const StudySystem: React.FC = (props: any) => {
                                 진도 관리
                             </div>
                             <div className={styles.differentiationList_2}>
-                                학생 진도 내역을 튜터가 직접 학생 인강 사이트 아이디로 로그인해 인강 수강기록을 확인합니다.
+                                학생 진도 내역을 담임이 직접 학생 인강 사이트 아이디로 로그인해 인강 수강기록을 확인합니다.
                             </div>
                         </div>
                     </div>

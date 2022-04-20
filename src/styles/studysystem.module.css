@@ -587,6 +587,21 @@
     display: flex;
 }
 
+@media only screen and (min-width : 1024px) {
+    .diagramDiv{
+        padding-left: 90px;
+        padding-right: 90px;
+    }
+
+
+    .diagramDivFirst{
+        width: 354px;
+        height: 354px;
+    }
+
+
+}
+
 .diagramDivFirst_1{
     width: 181px;
     height: 100%;
@@ -612,6 +627,69 @@
     position: absolute;
     top: 40px;
     left: 10px;
+}
+
+@media only screen and (min-width : 1024px) {
+    .diagramDiv{
+        padding-left: 90px;
+        padding-right: 90px;
+    }
+
+    .diagramDivFirst{
+        width: 289px;
+        height: 300px;
+        justify-content: space-between;
+    }
+
+
+    .diagramDivFirst_3{
+        width: 131px !important;
+    }
+
+    .diagramDivFirst_2_1{
+        position: relative;
+    }
+
+    .chevronFirst{
+        position: absolute;
+        left: -28px;
+        top: 11px;
+        transform: rotate(-35deg);
+    }
+
+    .diagramDivFirst_2_3{
+        position: relative;
+    }
+
+    .chevronSecond{
+        position: absolute;
+        transform: rotate(35deg);
+        left: -28px;
+        top: -37px;
+    }
+
+    .diagramDivFirst_2_1.second{
+        position: relative;
+    }
+
+    .diagramDivFirst_2_3.second{
+        position: relative;
+    }
+
+    .mobileRightFirstSvg{
+        position: absolute;
+        left: -32px;
+        top: 11px;
+        transform: rotate(-35deg);
+    }
+
+    .mobileRightSecondSvg{
+        position: absolute;
+        left: -32px;
+        top: -38px;
+        transform: rotate(35deg);
+    }
+
 }
 
 .topRightText{
@@ -645,6 +723,8 @@
     letter-spacing: -0.41px;
     line-height: 25px;
 }
+
+
 
 
 
@@ -689,11 +769,11 @@
 }
 
 .circle{
-    width: 181px;
-    height: 181px;
+    width: 131px;
+    height: 131px;
     border-radius: 50%;
     text-align: center;
-    line-height: 181px;
+    line-height: 131px;
     font-weight: 700;
     font-size: 20px;
     letter-spacing: -0.5px;
@@ -746,6 +826,8 @@
 .diagramTextDiv{
     margin-bottom: 38px;
 }
+
+
 
 .voidHeight2{
     height: 146px;
@@ -1328,10 +1410,10 @@
     }
 
     .circle{
-        width: 123.5px;
-        height: 123.5px;
+        width: 90px;
+        height: 90px;
         font-size: 13.8px;
-        line-height: 123.5px;
+        line-height: 90px;
         letter-spacing: -0.34px;
     }
 
@@ -1339,11 +1421,35 @@
         width: 20px;
     }
 
+    .mobileRightSvg.chevronFirst{
+        transform: rotate(-35deg);
+        position: absolute;
+        left: -16px;
+        top: -12px;
+    }
+
+    .mobileRightSvg.chevronSecond{
+        transform: rotate(35deg);
+        position: absolute;
+        left: -17px;
+        top: -4px;
+    }
+
+    .mobileRightFirstSvg{
+        transform: rotate(-35deg);
+    }
+
+    .mobileRightSecondSvg{
+        transform: rotate(35deg);
+        position: absolute;
+    }
+
     .diagramDivFirst{
         overflow: hidden;
-        width: 312px;
-        height: 312px;
+        width: 200px;
+        height: 220px;
         margin-left: calc((100% - 312px)/ 2);
+        margin: 0 auto;
     }
 
     .diagramDivFirst_1{
@@ -1357,13 +1463,18 @@
     }
 
     .diagramDivFirst_2_1{
-        margin-bottom: 85.5px;
+        margin-bottom: 65.5px;
+        position: relative;
     }
 
     .diagramDivFirst_2_2{
         font-size: 11.3px;
         letter-spacing: -0.28px;
         margin-left: 60px;
+    }
+
+    .diagramDivFirst_2_3{
+        position: relative;
     }
 
     .diagram.downSvgDiv{
@@ -1415,9 +1526,13 @@
         margin-bottom: 85.5px;
     }
 
+
+
     .topRightText{
         top: -20px;
-        left: -30px;
+        left: -32px;
+        top: 0px;
+        left: 0px;
     }
 
     .rightTop{
@@ -1425,8 +1540,15 @@
     }
 
     .leftBottom{
-        top: 25px;
-        left: 12px;
+        top: 12px;
+        left: -9px;
+        top: -4px;
+        left: -17px;
+    }
+
+    .leftBottomFriend{
+        left: -17px;
+        top: -17px;
     }
 
     .bottomLeftText{
@@ -1570,7 +1692,7 @@
     }
 
     .orderBoxNumberMobile{
-        display: none;
+
     }
 
     @media only screen and (min-width : 450px) {

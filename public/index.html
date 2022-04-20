@@ -34,6 +34,55 @@
   <meta property="og:image" content="https://suneungsunbae.com/img/13.jpg">
   <meta property="og:url" content="https://suneungsunbae.com">
 
+  
+  <!-- clarity code -->
+  <script type="text/javascript">
+    (function (c, l, a, r, i, t, y) {
+      c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+      t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+      y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+    })(window, document, "clarity", "script", "bj3gq9hi5n");
+  </script>
+  <!-- clarity code end -->
+
+  <script>
+
+    const setScreenSize = () => {
+    let vh = window.innerHeight * 0.01; 
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+    }
+    setScreenSize();
+
+    window.addEventListener("resize", ()=>setScreenSize());
+  </script>
+
+  <!-- Global site tag (gtag.js) - Google Ads: 10882701402 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-10882701402"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'AW-10882701402');
+  </script>
+
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-HXMB82NLPJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-HXMB82NLPJ');
+  </script> -->
+
+  <!-- 카카오 픽셀 -->
+  <script type="text/javascript" charset="UTF-8" src="//t1.daumcdn.net/adfit/static/kp.js"></script>
+  <script type="text/javascript">
+  kakaoPixel('3695209683730282521').pageView();
+  </script>
 
 </head>
 
@@ -53,6 +102,27 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
 
-</body>
-
-</html>
+      <!-- Meta Pixel Code -->
+      <script>
+        setTimeout(() => {
+          !function (f, b, e, v, n, t, s) {
+            if (f.fbq) return; n = f.fbq = function () {
+              n.callMethod ?
+                n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            };
+            if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+            n.queue = []; t = b.createElement(e); t.async = !0;
+            t.src = v; s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s)
+          }(window, document, 'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+          fbq('init', '1155865628495937');
+          fbq('track', 'PageView');
+        }, 3000);
+      </script>
+      <noscript><img height="1" width="1" style="display:none"
+          src="https://www.facebook.com/tr?id=1155865628495937&ev=PageView&noscript=1" /></noscript>
+      <!-- End Meta Pixel Code -->
+      
+      </body>
+  </html>

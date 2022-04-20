@@ -21,12 +21,12 @@ const list = [
     },
     {
         title : "스터디룸1",
-        description : "학생들이 멘토와 상담을 받고 스터디룸으로 이용할 수 있는 스터디룸입니다.",
+        description : "학생들이 담임과 상담을 받고 스터디룸으로 이용할 수 있는 스터디룸입니다.",
         src : "img/interiore/consult66.webp"
     },
     {
         title : "스터디룸2",
-        description : "학생들이 멘토와 상담을 받고 스터디룸으로 이용할 수 있는 스터디룸입니다.",
+        description : "학생들이 담임과 상담을 받고 스터디룸으로 이용할 수 있는 스터디룸입니다.",
         src : "img/interiore/consult2.webp"
     },
     {
@@ -80,8 +80,8 @@ const list = [
         src : "img/01_1.webp"
     },
     {
-        title : "카운터",
-        description : "생활관리조교님이 상주하시면서 학생들의 출석체크 및 생활관리를 하는 카운터입니다.",
+        title : "데스크",
+        description : "생활관리 사감이 상주하면서 학생들의 출석체크 및 생활관리를 하는 데스크입니다.",
         src : "img/3.webp"
     }
 ];

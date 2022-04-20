@@ -137,6 +137,22 @@ iframe{
 	display: none !important;
 }
 
+.loadingPageDiv{
+	height: calc(var(--vh, 1vh) * 100);
+}
+
+.loadingPageLogo{
+	width: 300px;
+}
+
+.fifthSection div .swiper .swiper_pagination{
+}
+
+.fifthSection div:nth-child(2) .swiper .swiper-pagination{
+	
+}
+
+
 @media only screen and (max-width : 1024px) {
 	.MuiFab-root{
 		display: flex !important;
@@ -160,6 +176,21 @@ iframe{
 
 	.swiper-pagination-bullet-active{
 		background-color: #1b49af !important;
+	}
+
+	.loadingPageLogo{
+		width: 160px;
+	}
+
+	.replay{
+		top: 80% !important;
+	}
+
+
+	@media only screen and (min-width : 500px){
+		.loadingPageLogo{
+			width: 300px;
+		}
 	}
 }
 

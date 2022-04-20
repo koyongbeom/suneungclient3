@@ -18,10 +18,16 @@ const Price : React.FC<any> = (props) => {
 
     //ga event------------------------------------------------
     useEffect(() => {
-        ReactGa.event({
-            category: "view",
-            action: "pricepageview"
-        })
+        // ReactGa.event({
+        //     category: "view",
+        //     action: "pricepageview"
+        // })
+
+        ReactGa.send({
+            hitType : "pageview",
+            page_title : "price"
+        });
+
     }, []);
     //--------------------------------------------------------
 

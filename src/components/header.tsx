@@ -76,7 +76,7 @@ const Header: any = (props: any) => {
                     </Link>
                     <Link to="/teachers" style={{ textDecoration: "none", color: "inherit" }}>
                         <div className={styles.mobileSubMenuList}>
-                            담임선생님 소개
+                            담임멘토 소개
                         </div>
                     </Link>
                     <Link to="/map" style={{ textDecoration: "none", color: "inherit" }}>
@@ -141,7 +141,7 @@ const Header: any = (props: any) => {
                                         <Link to="/teachers" style={{ textDecoration: "none", color: "inherit" }}>
                                             <div className={styles.cateSubMenu}>
                                                 <span className={styles.cateSubMenuText}>
-                                                    담임선생님 소개
+                                                    담임멘토 소개
                                                 </span>
                                             </div>
                                         </Link>
@@ -212,7 +212,7 @@ const Header: any = (props: any) => {
                     <div className={styles.bottomMenuDiv}>
                         <div className={styles.listTab}>
                             <div onClick={(e: any) => { navigate("/teachers") }} className={styles.bottomMenuList}>
-                                담임소개
+                                담임멘토
                                 <div className={styles.dot1}>
 
                                 </div>

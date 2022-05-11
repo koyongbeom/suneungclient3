@@ -247,7 +247,7 @@ const TestResultMobile: React.FC<any> = (props) => {
 
 
 
-                <div style={{ display: "flex", justifyContent: "space-between", paddingTop: "16px", paddingRight: "18px", borderTop: "1px solid rgb(224,224,224)" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", paddingTop: "10px", paddingRight: "18px", borderTop: "1px solid rgb(224,224,224)" }}>
                     <div style={{ fontWeight: 400, fontSize: "12px" }}>
 
                     </div>

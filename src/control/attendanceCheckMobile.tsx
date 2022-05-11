@@ -68,10 +68,10 @@ const useStyles2 = makeStyles(
 
 const m_columns: GridColDef[] = [
     { field: 'name', headerName: '이름', width: 60, sortable : false },
-    { field: 'status', headerName: '정시 입실 여부', width: 95, filterable: true, sortable : false },
-    { field: 'last', headerName: '마지막 기록', width: 130, filterable: false, sortable : false },
-    { field: 'firstReply', headerName: '자리에 없는 이유', width: 300, filterable: false, renderCell: renderCellExpand, sortable : false },
-    { field: 'secondReply', headerName: '최종처리', width: 100, filterable: false, renderCell: renderCellExpand, sortable : false },
+    { field: 'status', headerName: '출석여부', width: 95, filterable: true, sortable : false },
+    { field: 'last', headerName: '마지막 출입 기록', width: 130, filterable: false, sortable : false },
+    { field: 'firstReply', headerName: '사유 확인', width: 300, filterable: false, renderCell: renderCellExpand, sortable : false },
+    { field: 'secondReply', headerName: '최종 처리', width: 100, filterable: false, renderCell: renderCellExpand, sortable : false },
 ];
 
 

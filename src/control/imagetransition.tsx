@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { animated, useTransition } from "react-spring";
 
 const images = [
-    "guide2", "patrol5", "answer2", "team11", "tutor6"
+    "guide2", "patrol33333", "answer2", "team11", "tutor6"
 ]
 
 const ImageTransition = (props : any) => {

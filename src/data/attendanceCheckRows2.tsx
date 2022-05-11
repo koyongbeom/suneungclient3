@@ -4,7 +4,7 @@ const fullRowDatas2 : any = [
       "name": "김나은",
       "oneReply_1": "9:02 등원",
       "oneReply_2": "벌점 5점 부여",
-      "firstReply": "사유 확인",
+      "firstReply": "9:01 등원",
       "secondReply": "벌점 5점 부여",
       "threeReply_1": "김예영 외출 정기일정 (12-17)",
       "threeReply_2": "벌점X",

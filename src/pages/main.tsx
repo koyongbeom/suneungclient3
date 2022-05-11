@@ -32,6 +32,10 @@ import Vimeo from '@u-wave/react-vimeo';
 
 import ReactGa from "react-ga4";
 
+import Typography from '@mui/material/Typography';
+import Modal from '@mui/material/Modal';
+import Box from '@mui/material/Box';
+
 
 
 const mobileTutorList = [
@@ -115,7 +119,26 @@ const reviewList = [
 ]
 
 
+const style5 = {
+    position: 'absolute' as 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 450,
+    bgcolor: "rgba(255,255,255, 0.9)",
+    boxShadow: 24,
+    borderRadius : "3px",
+    p: 4,
+    maxWidth : "79%",
+    outline : "none !important"
+  };
+
+
 const MainPage: any = (props: any) => {
+
+    const [open5, setOpen5] = useState(true);
+    const handleOpen = () => setOpen5(true);
+    const handleClose = () => setOpen5(false);
 
     const [play, setPlay] = useState(true);
     const [pause, setPause] = useState(false);
@@ -306,7 +329,7 @@ const MainPage: any = (props: any) => {
 
     useEffect(() => {
 
-        // window.scrollTo(0, 0);
+        window.scrollTo(0, 0);
 
         const throttledFn = throttle(listener, 500);
 
@@ -472,6 +495,14 @@ const MainPage: any = (props: any) => {
                     의치약 합격자들의<br></br>생생한 후기를 공개합니다
                 </div>
 
+                <div className={`${styles.ceoVideoTextPC} ${styles.onlyPC} ${styles.firstTextSecondSection}`}>
+                    의치약 합격자들의
+                </div>
+                <div className={`${styles.ceoVideoTextPC} ${styles.onlyPC} ${styles.SecondTextSecondSection}`}>
+                    생생한 후기를 공개합니다
+                </div>
+
+
                 <div ref={scrollRef} className={styles.ceoVideo}>
                     <div className={styles.videoBox}>
                         <div className={styles.vimeoWrapper}>
@@ -499,7 +530,7 @@ const MainPage: any = (props: any) => {
             <div className={`${styles.mobileFifthSection} ${styles.onlymobile} fifthSection`}>
                 <div>
                     <div className={styles.mobileFifthSectionTitle}>
-                        <span className={styles.textColor}>공부를 잘하는 법</span>을<br></br>확실하게 아는 수능선배가<br></br>독학의 방향을 코칭합니다
+                        <span className={styles.textColor}>공부 잘하는 방법</span>을<br></br>확실하게 아는 수능선배가<br></br>독학의 방향을 코칭합니다
                     </div>
                     <div className={`${styles.mobileFifthSectionDescription}`}>
                         "학생별 학습 성향과 취약 과목에 따라
@@ -777,7 +808,7 @@ const MainPage: any = (props: any) => {
                 </div>
 
                 <div className={`${styles.mobileSixthSectionEachBox}`}>
-                    <div className={styles.mobileSixthSectionEachBoxImg} style={{ backgroundImage: "url(img/patrol66.webp)" }}>
+                    <div className={styles.mobileSixthSectionEachBoxImg} style={{ backgroundImage: "url(img/patrol555.webp)", backgroundPosition : "0% 50%" }}>
 
                     </div>
                     <div className={styles.mobileSixthSectionEachBoxText}>
@@ -816,7 +847,7 @@ const MainPage: any = (props: any) => {
                                 2
                             </span>
                             <div className={styles.sixthEachBoxdescription}>
-                                공부 잘하는 법을 코칭합니다
+                                공부 잘하는 방법을 코칭합니다
                             </div>
                         </div>
                         <div className={styles.mobileSixthSectionEachBoxDescription}>
@@ -923,12 +954,149 @@ const MainPage: any = (props: any) => {
                 </div> */}
             </div>
 
+
+            <div className={`${styles.fifthSection} ${styles.onlyPC}`}>
+                <div className={`${styles.fifthSectionTitle_1} ${styles.first}`}>
+                    <span className={styles.textColorBlue}>공부를 잘하는 법</span>을 확실하게 아는 수능선배가
+                </div>
+                <div className={`${styles.fifthSectionTitle_1} ${styles.second}`}>
+                    독학의 방향을 코칭합니다
+                </div>
+                <div className={styles.fifthSectionTitle_2}>
+                    "학생별 학습 성향과 취약 과목에 따라 전문 담임이 매칭됩니다."
+                </div>
+
+                <div className={styles.tutorsDiv}>
+                    <div className={styles.eachBox}>
+                        <div style={{ backgroundImage: "url(img/tutor31.webp)" }} className={styles.tutorsDivEach}>
+                            <div className={styles.pictureDescription}>
+                                <div className={styles.tutorName}>
+                                    담임멘토 이선행
+                                </div>
+                                <div className={styles.tutorDescription}>
+                                    <div className={styles.tutorDescription_1}>
+                                        수능 전국 151등<br></br>
+                                        카톨릭대 의대 정시 합격
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className={styles.tutorMentDiv}>
+                            <div className={styles.tutorMentTitle}>
+                                "약점을 파악하고<br></br>전략을 함께 고민하겠습니다."
+                            </div>
+                            <div className={styles.tutorMentDescription}>
+                                "학생의 약점이 어디인지에 따라<br></br>어떻게 공부해야 할지
+                                전략을 수립합니다.<br></br>
+                                예를 들어 수학에서 계산실수를 많이 한다거나<br></br>킬러 문제에
+                                대한 접근이 힘들다거나 할 때,<br></br>그에 대한 
+                                학습법을 공유해 도움을 드리고자 합니다."
+                            </div>
+                        </div>
+                    </div>
+                    <div className={styles.eachBox}>
+                        <div style={{ backgroundImage: "url(img/tutor32.webp)" }} className={styles.tutorsDivEach}>
+                            <div className={styles.pictureDescription}>
+                                <div className={styles.tutorName}>
+                                    담임멘토 김희선
+                                </div>
+                                <div className={styles.tutorDescription}>
+                                    <div className={styles.tutorDescription_1}>
+                                        수능 상위 0.2%<br></br>
+                                        서울대학교 소비자학과 정시합격
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className={styles.tutorMentDiv}>
+                            <div className={styles.tutorMentTitle}>
+                                "학생에 대한 정확한 이해로<br></br>맞춤 솔루션을 제공하겠습니다."
+                            </div>
+                            <div className={styles.tutorMentDescription}>
+                                "학생 중심의 솔루션을 제시해드리겠습니다.<br></br>
+                                예를 들어, 국어에서 지문을 이해하지 않고<br></br>눈으로 문제를 푸는.
+                                습관이 있는 학생의 경우에는<br></br>지문을 함께 읽으며 학생이 스스로 지문을 독파하게 한 후에<br></br>문제를 
+                                풀게하여 안 좋은 습관을 고쳐드리겠습니다."
+                            </div>
+                        </div>
+                    </div>
+                    <div className={styles.eachBox}>
+                        <div style={{ backgroundImage: "url(img/tutor33.webp)" }} className={styles.tutorsDivEach}>
+                            <div className={styles.pictureDescription}>
+                                <div className={styles.tutorName}>
+                                    담임멘토 이재훈
+                                </div>
+                                <div className={styles.tutorDescription}>
+                                    <div className={styles.tutorDescription_1}>
+                                        수능 전국 200등<br></br>
+                                        경희대 의대 정시 합격
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className={styles.tutorMentDiv}>
+                            <div className={styles.tutorMentTitle}>
+                                "N수생의 힘겨운 길을 같이 걷는<br></br>동반자가 되어 드리겠습니다."
+                            </div>
+                            <div className={styles.tutorMentDescription}>
+                                "N수라는 과정은 어두운 터널을 걷는 것과 같습니다.<br></br>
+                                올바른 방법과 태도로 공부하고 계신지<br></br>한 달, 일주일 단위로 계획을 점검해드립니다.<br></br>공부는 단순히 열심히 하는 것 뿐만 아니라<br></br>무엇을 어떻게 하는지도 굉장히 중요하다고 생각합니다."
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div className={`${styles.fourthSection} ${styles.onlyPC}`}>
+                <div className={styles.fourthSectionTitle_1}>
+                    평범한 독재와
+                </div>
+                <div className={styles.fourthSectionTitle_2}>
+                    이런 점이 다릅니다
+                </div>
+                <div className={styles.line}>
+                </div>
+                <div>
+                    <div className={styles.fourthBox}>
+                        <div>
+                            실력 없는 선생님이 학습 상담을 진행하지 않습니다
+                        </div>
+                        <div>
+                            최신 입시 경향을 아는 최상위권 담임 멘토를 고집합니다.<br></br>
+                            50대 1의 경쟁률을 뚫고 서류 평가, 성적 기준, 실전 문제 풀이 테스트를 통과한 분들에게만 학습 조언의 자격을 부여합니다.
+                        </div>
+                    </div>
+                    <div className={styles.fourthBox}>
+                        <div>
+                            의치약 튜터에게 매일 질의응답이 가능합니다
+                        </div>
+                        <div>
+                            질의응답 신청 프로그램을 통해 예약하고 대기없이 질의응답이 가능합니다.<br></br>
+                            질문할 내용을 미리 튜터에게 전달 후 튜터가 생각을 정리한 후 답변을 해주기 때문에 정돈된 답변을 들을 수 있습니다.
+                        </div>
+                    </div>
+                    <div className={styles.fourthBox}>
+                        <div>
+                            유명 프랜차이즈 도시락을 넓고 쾌적한 공간에서 드실 수 있습니다
+                        </div>
+                        <div>
+                            맛있는 식사, 다양한 메뉴를 제공합니다. 수강생 전용 프로그램에서 업체와 메뉴를 고르실 수 있습니다.<br></br>
+                            매 끼니별로 신청 여부를 선택할 수 있습니다.
+                        </div>
+                    </div>
+                </div>
+                <div className={styles.line2}>
+                </div>
+            </div>
+
+
+
             <div style={{ backgroundImage: "url(img/thirdbackground.webp)" }} className={`${styles.thirdSection} ${styles.onlyPC}`}>
                 <div className={styles.thirdSectionTitle_1}>
-                    수능선배에서 공부하면
+                    쾌적한 자습실에서
                 </div>
                 <div className={styles.thirdSectionTitle_2}>
-                    반드시 집중력이 향상됩니다
+                    하루 14시간 집중하게 될 겁니다
                 </div>
 
 
@@ -969,144 +1137,10 @@ const MainPage: any = (props: any) => {
 
             </div>
 
-            <div className={`${styles.fourthSection} ${styles.onlyPC}`}>
-                <div className={styles.fourthSectionTitle_1}>
-                    이런 분들에게
-                </div>
-                <div className={styles.fourthSectionTitle_2}>
-                    수능선배를 추천합니다!
-                </div>
-                <div className={styles.line}>
-                </div>
-                <div>
-                    <div className={styles.fourthBox}>
-                        <div>
-                            엄격한 생활관리를 받으며 하루에 12시간 공부에 몰입해보고 싶으신분
-                        </div>
-                        <div>
-                            3중 시스템으로 출결을 관리합니다. 생활관리 전담 조교가 교시마다 대면 출석 체크를 수행하고, 프로그램이 지문 출입기록을 파악하여<br></br>
-                            공석을 체크하면 이를 운영진이 감시하며, 전용 어플을 통해 실시간 출결 사항을 학부모님들께 공유합니다.
-                        </div>
-                    </div>
-                    <div className={styles.fourthBox}>
-                        <div>
-                            도움되지 않는 학습상담을 시간낭비라고 생각하시는 분
-                        </div>
-                        <div>
-                            수능선배는 실력 없는 학습 담당자가 상담을 진행하지 않습니다. 오직 실력으로 증명된 최상위권 담임만을 고집합니다. 50대 1의 경쟁률을 뚫고<br></br>
-                            서류 평가, 성적 기준, 실전 문제 풀이 테스트를 통과한 담임들에게만 학습 조언의 자격을 부여합니다.
-                        </div>
-                    </div>
-                    <div className={styles.fourthBox}>
-                        <div>
-                            학생이 원하는 메뉴를 고를 수 있고 넓은 식사공간에서 식사를 하고 싶으신 분
-                        </div>
-                        <div>
-                            맛있는 식사, 다양한 메뉴를 제공합니다. 수강생 전용 프로그램에서 업체와 메뉴를 고르실 수 있습니다.<br></br>
-                            매 끼니별로 신청 여부를 선택할 수 있습니다.
-                        </div>
-                    </div>
-                </div>
-                <div className={styles.line2}>
-                </div>
-            </div>
-
-            <div className={`${styles.fifthSection} ${styles.onlyPC}`}>
-                <div className={styles.fifthSectionTitle_1}>
-                    각 과목 최고의 담임과 함께합니다
-                </div>
-                <div className={styles.fifthSectionTitle_2}>
-                    "학생별 학습 성향과 취약 과목에 따라 전문 담임이 매칭됩니다."
-                </div>
-
-                <div className={styles.tutorsDiv}>
-                    <div className={styles.eachBox}>
-                        <div style={{ backgroundImage: "url(img/tutor31.webp)" }} className={styles.tutorsDivEach}>
-                            <div className={styles.pictureDescription}>
-                                <div className={styles.tutorName}>
-                                    담임 이선행
-                                </div>
-                                <div className={styles.tutorDescription}>
-                                    <div className={styles.tutorDescription_1}>
-                                        수능 전국 151등<br></br>
-                                        카톨릭대 의대 정시 합격
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className={styles.tutorMentDiv}>
-                            <div className={styles.tutorMentTitle}>
-                                "수험생활에 도움이 되기 위한 고민을"<br></br>끊임없이 하는 담임이 되어드리겠습니다.
-                            </div>
-                            <div className={styles.tutorMentDescription}>
-                                "학생의 약점이 어디인지에 따라 어떻게 공부해야 할지<br></br>
-                                전략을 수립합니다.<br></br>
-                                예를 들어 수학에서 계산실수를 많이 한다거나 킬러 문제에<br></br>
-                                대한 접근이 힘들다거나 할 때, 그에 대한 학습 대책과<br></br>
-                                학습법을 공유해 도움을 드리고자 합니다."
-                            </div>
-                        </div>
-                    </div>
-                    <div className={styles.eachBox}>
-                        <div style={{ backgroundImage: "url(img/tutor32.webp)" }} className={styles.tutorsDivEach}>
-                            <div className={styles.pictureDescription}>
-                                <div className={styles.tutorName}>
-                                    담임 김희선
-                                </div>
-                                <div className={styles.tutorDescription}>
-                                    <div className={styles.tutorDescription_1}>
-                                        전국 상위 0.2%<br></br>
-                                        서울대학교 소비자학과 정시합격
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className={styles.tutorMentDiv}>
-                            <div className={styles.tutorMentTitle}>
-                                "사례들을 체계적으로 비교 분석하여<br></br>알맞은 해결책을 제시해드리겠습니다"
-                            </div>
-                            <div className={styles.tutorMentDescription}>
-                                "학생 중심의 솔루션을 제시해드리겠습니다.<br></br>
-                                예를 들어, 국어에서 지문을 이해하지 않고 눈으로 문제를 푸는.<br></br>
-                                습관이 있는 학생의 경우에는 지문을 함께 읽으며 학생이 시간이<br></br>
-                                걸리더라도 스스로 지문을 독파하게 한 후에 문제풀이를<br></br>
-                                진행하는 방식으로 학생의 안 좋은 습관을 고쳐드리겠습니다."
-                            </div>
-                        </div>
-                    </div>
-                    <div className={styles.eachBox}>
-                        <div style={{ backgroundImage: "url(img/tutor33.webp)" }} className={styles.tutorsDivEach}>
-                            <div className={styles.pictureDescription}>
-                                <div className={styles.tutorName}>
-                                    담임 이재훈
-                                </div>
-                                <div className={styles.tutorDescription}>
-                                    <div className={styles.tutorDescription_1}>
-                                        수능 전국 200등<br></br>
-                                        경희대 의대 정시 합격
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className={styles.tutorMentDiv}>
-                            <div className={styles.tutorMentTitle}>
-                                "목표로 가는 효율적인 로드맵을<br></br>제시해드리겠습니다."
-                            </div>
-                            <div className={styles.tutorMentDescription}>
-                                "학습 계획을 스스로 짜기 힘든 상태이거나 짜고 나서<br></br>
-                                점검을 받고 싶은 학생분의 경우 제가 1달, 1주일 단위로<br></br>
-                                학습계획을 세워드리고 그것을 잘 지켰는지 점검하는 등의<br></br>
-                                도움을 드릴 수 있습니다. 학생분의 다양성을<br></br>
-                                고려한 학습지도를 가장 중요하게 생각합니다."
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
             <div className={`${styles.sixthSection} ${styles.onlyPC}`}>
                 <div className={styles.sixthSectionTitle_1}>
-                    수능선배 자물쇠반은
+                    단언컨대
                 </div>
                 <div className={styles.sixthSectionTitle_2}>
                     독학의 부족한 점을 정확히 채워드립니다
@@ -1149,75 +1183,75 @@ const MainPage: any = (props: any) => {
                     <div className={styles.prosListBottom}>
                         <div className={styles.prosListTitle}>
                             <div className={styles.prosCircle}>1</div>
-                            <div className={styles.prosListTitleDescription}>교시제/벌점제 운영을 통한 철저한 생활관리</div>
+                            <div className={styles.prosListTitleDescription}>생활관리가 강력합니다</div>
                         </div>
                         <div className={styles.prosListDescription}>
                             <div className={styles.prosListDescriptionBottom}>
-                                - 의무자습 내 생활관리 사감이 상주하며 교시마다 하루 9번 출석체크
+                                - &nbsp;&nbsp;의무자습 내 생활관리 사감이 상주하며 교시마다 하루 9번 출석체크
                             </div>
                             <div className={styles.prosListDescriptionBottom}>
-                                - 교시 중 학원 외출 금지를 위해 출입문 잠금
+                                - &nbsp;&nbsp;교시 중 학원 외출 금지를 위해 출입문 잠금
                             </div>
                             <div className={styles.prosListDescriptionBottom}>
-                                - 지각/외출/조퇴/핸드폰 사용/친목/졸음 철저히 통제
+                                - &nbsp;&nbsp;지각/외출/조퇴/핸드폰 사용/친목/졸음 철저히 통제
                             </div>
                             <div className={styles.prosListDescriptionBottom}>
-                                - 학습 외 사이트 접속 차단
+                                - &nbsp;&nbsp;학습 외 사이트 접속 차단
                             </div>
                         </div>
 
                         <div className={`${styles.prosListTitle} ${styles.second}`}>
                             <div className={styles.prosCircle}>2</div>
-                            <div className={styles.prosListTitleDescription}>서류심사, 임원진 면접, 교육기간, 전체 회의, 담임 평가를 거친 담임선생님과의 매주 1:1 상담</div>
+                            <div className={styles.prosListTitleDescription}>공부 잘하는 방법을 코칭합니다</div>
                         </div>
                         <div className={styles.prosListDescription}>
                             <div className={styles.prosListDescriptionBottom}>
-                                - 학생의 취약과목 전문 담임과 연결
+                                - &nbsp;&nbsp;학생의 취약과목 전문 담임과 연결
                             </div>
                             <div className={styles.prosListDescriptionBottom}>
-                                - 매주 학생 실력/진도에 맞는 개개인별 테스트 시행
+                                - &nbsp;&nbsp;매주 학생 실력/진도에 맞는 개개인별 테스트 시행
                             </div>
                             <div className={styles.prosListDescriptionBottom}>
-                                - 테스트 오답 문제만 모아서 반복 테스트 시행
+                                - &nbsp;&nbsp;테스트 오답 문제만 모아서 반복 테스트 시행
                             </div>
                             <div className={styles.prosListDescriptionBottom}>
-                                - 계획표 검사 및 진도 체크
+                                - &nbsp;&nbsp;계획표 검사 및 진도 체크
                             </div>
                         </div>
 
                         <div className={`${styles.prosListTitle} ${styles.second}`}>
                             <div className={styles.prosCircle}>3</div>
-                            <div className={styles.prosListTitleDescription}>각 과목별 상위 1% 선배와의 질의응답</div>
+                            <div className={styles.prosListTitleDescription}>질문은 당일에 해결합니다</div>
                         </div>
                         <div className={styles.prosListDescription}>
                             <div className={styles.prosListDescriptionBottom}>
-                                - 오프라인 : 과목별 전문멘토가 담당, 전용 프로그램 예약시스템을 통해 대기 없이 가능
+                                - &nbsp;&nbsp;오프라인 : 과목별 전문멘토가 담당, 전용 프로그램 예약시스템을 통해 대기 없이 가능
                             </div>
                             <div className={styles.prosListDescriptionBottom}>
-                                - 온라인 : 과목별 전문멘토가 담당, 당일~익일 즉시 답변
+                                - &nbsp;&nbsp;온라인 : 과목별 전문멘토가 담당, 당일~익일 즉시 답변
                             </div>
                             <div className={styles.prosListDescriptionBottom}>
-                                - 질의응답 멘토 질문 신청률을 통해 인기 많은 멘토만 유지
+                                - &nbsp;&nbsp;질의응답 멘토 질문 신청률을 통해 인기 많은 멘토만 유지
                             </div>
                         </div>
 
                         <div className={`${styles.prosListTitle} ${styles.second}`}>
                             <div className={styles.prosCircle}>4</div>
-                            <div className={styles.prosListTitleDescription}>이감, 한수, 더프, 상상 모의고사 등 모의고사 학원 내에서 실시</div>
+                            <div className={styles.prosListTitleDescription}>컨텐츠를 부족함 없이 제공합니다</div>
                         </div>
                         <div className={styles.prosListDescription}>
                             <div className={styles.prosListDescriptionBottom}>
-                                - 학원 내에서 제한 시간 안에 모의고사 푸는 연습
+                                - &nbsp;&nbsp;학원 내에서 제한 시간 안에 모의고사 푸는 연습
                             </div>
                             <div className={styles.prosListDescriptionBottom}>
-                                - 모든 오답 내용 튜터가 프로그램에 기록 후 오답 반복 연습
+                                - &nbsp;&nbsp;모든 오답 내용 튜터가 프로그램에 기록 후 오답 반복 연습
                             </div>
                             <div className={styles.prosListDescriptionBottom}>
-                                - 모의고사는 신청자에 한해 시행
+                                - &nbsp;&nbsp;모의고사는 신청자에 한해 시행
                             </div>
                         </div>
 
-                        <div className={`${styles.prosListTitle} ${styles.second}`}>
+                        {/* <div className={`${styles.prosListTitle} ${styles.second}`}>
                             <div className={styles.prosCircle}>5</div>
                             <div className={styles.prosListTitleDescription}>학생 수준별 취약 과목 스터디 연결</div>
                         </div>
@@ -1231,7 +1265,7 @@ const MainPage: any = (props: any) => {
                             <div className={styles.prosListDescriptionBottom}>
                                 - 학생이 원하는 스터디 방식으로 운영 가능
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>
@@ -1324,40 +1358,14 @@ const MainPage: any = (props: any) => {
 
             </div>
 
-            <div className={styles.seventhSection}>
-                <div style={{ backgroundImage: "url(img/banner.webp)" }} className={styles.banner}>
-                    <div className={`${styles.bannerFirst} ${styles.onlyPC}`}>
-                        수능선배는 독학관리 학원의 가장 기본인
-                    </div>
-                    <div className={`${styles.bannerFirst} ${styles.onlymobile}`}>
-                        수능선배는 독학관리 학원의 가장 기본인
-                    </div>
-                    <div className={`${styles.bannerSecond} ${styles.onlyPC}`}>
-                        엄격한 생활관리, 양질의 튜터 상담 및 질의응답, 쾌적한 공부환경을
-                    </div>
-                    <div className={`${styles.bannerSecond} ${styles.onlymobile}`}>
-                        엄격한 생활관리, 양질의 튜터 상담 및 질의응답,
-                    </div>
-                    <div className={`${styles.bannerSecond} ${styles.onlymobile}`}>
-                        쾌적한 공부환경을 제공하는 것을
-                    </div>
-                    <div className={`${styles.bannerThird} ${styles.onlyPC}`}>
-                        가장 중요하게 생각하며 완벽하게 제공하기 위해 노력합니다.
-                    </div>
-                    <div className={`${styles.bannerThird} ${styles.onlymobile}`}>
-                        가장 중요하게 생각하며 완벽하게 제공합니다.
-                    </div>
-                </div>
-            </div>
-
 
             <div className={`${styles.eightSection} ${styles.onlyPC}`}>
                 <div className={styles.eightSectionTitle}>
                     <div className={styles.eightSectionTitle_1}>
-                        수십 명의 합격생들의
+                        왜 최상위권들은
                     </div>
                     <div className={styles.eightSectionTitle_2}>
-                        리뷰가 증명합니다
+                        수능선배를 선택했을까?
                     </div>
                 </div>
                 {/* <div className={styles.videoDiv}>
@@ -1577,6 +1585,32 @@ const MainPage: any = (props: any) => {
                 </div>
             </div>
 
+            <div className={styles.seventhSection}>
+                <div style={{ backgroundImage: "url(img/banner.webp)" }} className={styles.banner}>
+                    <div className={`${styles.bannerFirst} ${styles.onlyPC}`}>
+                        수능선배는 독학관리 학원의 가장 기본인
+                    </div>
+                    <div className={`${styles.bannerFirst} ${styles.onlymobile}`}>
+                        수능선배는 독학관리 학원의 가장 기본인
+                    </div>
+                    <div className={`${styles.bannerSecond} ${styles.onlyPC}`}>
+                        엄격한 생활관리, 양질의 튜터 상담 및 질의응답, 쾌적한 공부환경을
+                    </div>
+                    <div className={`${styles.bannerSecond} ${styles.onlymobile}`}>
+                        엄격한 생활관리, 양질의 튜터 상담 및 질의응답,
+                    </div>
+                    <div className={`${styles.bannerSecond} ${styles.onlymobile}`}>
+                        쾌적한 공부환경을 제공하는 것을
+                    </div>
+                    <div className={`${styles.bannerThird} ${styles.onlyPC}`}>
+                        가장 중요하게 생각하며 완벽하게 제공하기 위해 노력합니다.
+                    </div>
+                    <div className={`${styles.bannerThird} ${styles.onlymobile}`}>
+                        가장 중요하게 생각하며 완벽하게 제공합니다.
+                    </div>
+                </div>
+            </div>
+
             <div style={{ backgroundImage: "url(img/newsBackground.webp)" }} className={styles.ninthSection}>
                 <div className={styles.ninthSectionTitle}>
                     언론 속의 수능선배
@@ -1668,6 +1702,32 @@ const MainPage: any = (props: any) => {
                 headerKind === "white" &&
                 <SpeedDialComponent />
             }
+
+
+            <Modal
+                open={open5}
+                onClose={handleClose}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+            >
+                <Box sx={style5}>
+                    <div className={styles.modalTitle}>
+                        5월 대성 모의고사 외부인 신청
+                    </div>
+                    <div className={styles.modalDescription}>
+                        일시 : 5월 25일 수요일
+                    </div>
+                    <div className={styles.modalDescription}>
+                        대상 : 재원생 및 비재원생
+                    </div>
+                    <div className={`${styles.modalDescription} ${styles.sameDescription}`}>
+                        신청방법 : 050-7871-3574 문자 전송
+                    </div>
+                    <div className={`${styles.modalDescription} ${styles.sameDescription2}`}>
+                        (이름/연락처/성적처리여부 포함)
+                    </div>
+                </Box>
+            </Modal>
 
             <Footer />
 

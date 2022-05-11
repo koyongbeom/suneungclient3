@@ -13,6 +13,10 @@ import { Route, BrowserRouter as Router, Routes } from "react-router-dom"
 // import Teachers from './pages/teachers';
 import ReactGa from "react-ga4";
 import { ReactComponent as Logo } from "./svg/newlogo.svg";
+import AttendanceTable from './pages/attendancetable';
+import ReportToParent from './pages/reporttoparent';
+import NotificationRead from './pages/notificationread';
+// import Notification from './pages/notification';
 
 
 const Ceo = React.lazy(() => import("./pages/ceo"));
@@ -26,6 +30,7 @@ const Register = React.lazy(() => import("./pages/register"));
 const Review = React.lazy(() => import("./pages/review"));
 const StudySystem = React.lazy(() => import("./pages/studysystem"));
 const Teachers = React.lazy(() => import("./pages/teachers"));
+const Notification = React.lazy(() => import("./pages/notification"));
 
 
 
@@ -70,6 +75,10 @@ function App() {
             <Route path="/register" element={<Register />}></Route>
             <Route path="/complete" element={<Complete />}></Route>
             <Route path="/parkgaeul" element={<Parkgaeul />}></Route>
+            <Route path="/attendancetable" element={<AttendanceTable />}></Route>
+            <Route path="/consultresult" element={<ReportToParent />}></Route>
+            <Route path="/notification" element={<Notification />}></Route>
+            <Route path="/notificationRead" element={<NotificationRead />}></Route>
           </Routes>
         </Suspense>
       </div>

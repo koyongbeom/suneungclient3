@@ -17,7 +17,7 @@
     background-position: 0% 30%;
     background-size: 100% auto;
     overflow: hidden;
-    /* filter: grayscale(1); */
+    filter: grayscale(1);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -46,12 +46,14 @@
     margin-bottom: 16px;
 }
 
+
+
 .blackFilter {
     position: absolute;
     width: 100%;
     height: 513px;
     background-color: black;
-    opacity: 0.25;
+    opacity: 0.5;
 }
 
 .subHeaderText_1{
@@ -128,7 +130,7 @@
 .svgBox_2{
     display: flex;
     justify-content: center;
-    margin-bottom: 141px;
+    margin-bottom: 125px;
 }
 
 .eachSvgBox{
@@ -228,8 +230,8 @@
 
 .administratorDiv{
     background-color: #272e3a;
-    padding-top: 111px;
-    padding-bottom: 111px;
+    padding-top: 125px;
+    padding-bottom: 125px;
     margin-bottom: 130px;
 }
 
@@ -333,8 +335,10 @@
 }
 
 .downSvg {
+    /* width: 30px;
+    height: 17.14px; */
     width: 30px;
-    height: 17.14px;
+    height: 29.938px;
 }
 
 .sectionSubTitle_2{
@@ -937,13 +941,14 @@
 }
 
 .sixthSection {
-    height: 508px;
+    height: 300px;
     margin-bottom: 154px;
     background-size: cover;
 }
 
 .sixthSection{
-    padding-top: 169px;
+    padding-top: 85px;
+    background-color: #f5f5f6;
 }
 
 .sectionTitle.fifth{
@@ -1006,11 +1011,11 @@
     }
 
     .titleText{
-        margin-top: 61px;
+        margin-top: 64px;
         font-size: 21px;
         letter-spacing: -0.43px;
         line-height: 33px;
-        margin-bottom: 30px;
+        margin-bottom: 44px;
     }
 
     .svgBox_1{
@@ -1027,7 +1032,7 @@
         margin: 0 auto;
         width: 294px;
         height: 298px;
-        margin-bottom: 25px;
+        margin-bottom: 35px;
         padding-top: 23px;
         padding-bottom: 25px;
     }
@@ -1121,6 +1126,7 @@
         padding-top: 47.5px;
         padding-bottom: 161.5px;
         margin-bottom: 143.5px;
+        margin-bottom: 133.5px;
     }
 
     .administratorSubDiv{
@@ -1158,20 +1164,21 @@
     }
 
     .mobileAdministartorText{
-        margin-left: calc((100% - 341px) / 2);
-        margin-right: calc((100% - 341px) / 2);
+        margin-left: calc((100% - 325px) / 2);
+        margin-right: calc((100% - 325px) / 2);
         font-size: 13.5px;
         font-weight: 300;
         letter-spacing: -0.34px;
         color: #383838;
         line-height: 25px;
-        padding-bottom: 37.5px;
-        margin-bottom: 80px;
+        /* padding-bottom: 37.5px; */
+        margin-bottom: 70px;
         border-bottom: 1.5px solid #e8e8e8;
+        border-bottom: 0px;
     }
 
     .firstSectionDiv{
-        padding-top: 70.5px;
+        padding-top: 70px;
         margin: 0;
         width: 90.6%;
         margin: 0 auto;
@@ -1203,6 +1210,7 @@
     .sectionTitle{
         justify-content: flex-start;
         margin-bottom: 45.5px;
+        margin-bottom: 50px;
     }
 
     .sectionTitleNumber{
@@ -1212,13 +1220,19 @@
         font-size: 15.8px;
         margin-right: 11px;
         background-color: #1b49af;
-        padding-left: 0px;
+        padding: 0;
+    }
+
+    .sectionTitleNumberFirst{
+        padding-left: 1px;
+        padding-top: 0.5px;
     }
 
     .sectionTitleText{
         font-size: 22.8px;
         letter-spacing: -0.52px;
         color: #1b49af;
+        padding-bottom: 1px;
     }
 
     .sectionSubTitle{
@@ -1230,10 +1244,12 @@
 
     .sectionSubTitle_2{
         font-weight: 100;
+        font-weight: 300;
         text-align: start;
         font-size: 20px;
         letter-spacing: -0.5px;
         margin-bottom: 71.5px;
+        margin-bottom: 40px;
         line-height: 26.3px;
     }
 
@@ -1242,10 +1258,24 @@
         width: auto;
         background-color: transparent;
         margin-bottom: 56.1px;
+        margin-bottom: 40px;
         border-radius: 0;
         height: auto;
         box-shadow: none;
         flex-direction: column-reverse;
+    }
+
+    .orderBox.questionDataStyle{
+        margin-bottom: 0px;
+    }
+
+    
+    .orderBox.withTableSub{
+        margin-bottom: 25px;
+    }
+
+    .orderBox.withTableSub.second{
+        margin-bottom: 0px !important;
     }
 
     .playText{
@@ -1286,6 +1316,7 @@
         letter-spacing: -0.33px;
         color: #353535;
         margin-bottom: 39.1px;
+        margin-bottom: 26.5px;
     }
 
     .orderBoxPictureBox{
@@ -1304,14 +1335,25 @@
 
     .downSvgDiv{
         margin-bottom: 53.5px;
+        margin-bottom: 40px;
     }
 
     .orderBoxPicturBoxCaptureMobileDiv{
+        height: 372px;
+        height: 360px;
+        height: 350px;
+    }
+
+    .orderBoxPicturBoxCaptureMobileDiv.administratorReport{
         height: 372px;
     }
 
     .orderBoxPicturBoxCaptureMobileDiv.patrol{
         height: 372px;
+    }
+
+    .orderBoxPicturBoxCaptureMobileDiv.resultDataDiv{
+        height: 360px;
     }
 
     .orderBoxPictureBoxCaptureMobile{
@@ -1350,6 +1392,8 @@
         width: 10px;
     }
 
+
+
     .differentiationTitle{
         font-size: 13.5px;
         letter-spacing: -0.34px;
@@ -1358,11 +1402,19 @@
         border-radius: 7.5px;
         line-height: 37px;
         margin-top: 65.5px;
+        margin-top: 60px;
+        margin-bottom: 15px;
+    }
+
+    .differentiationTitle.questionDataTitle{
+        margin-top: 40px;
     }
 
     .differentiationList{
         padding-top: 21px;
         padding-bottom: 20.5px;
+        padding-top: 9.25px;
+        padding-bottom: 9.25px;
         border-bottom: 1px solid #dbdbdb;
         justify-content: space-between;
     }
@@ -1372,9 +1424,11 @@
     }
 
     .differentiationList_1{
+       margin-left: 5px;
        font-size: 13px;
        letter-spacing: -0.33px;
        margin-right: 25px;
+       margin-right: 20px;
        padding-top: 6px;
        flex-shrink: 0;
        width: 80px;
@@ -1388,12 +1442,21 @@
 
     .lastBtnDiv{
         margin-top: 56.5px;
+        margin-top: 60px;
+    }
+
+    .scheduleBtn{
+        
     }
 
     .voidHeight{
         border-bottom: 0;
         padding-top: 95.5px;
         margin-bottom: 95.5px;
+        margin-bottom: 20px;
+        margin-bottom: 0px;
+        height: 0px;
+        padding-top: 70px;
     }
 
     .voidHeightMobile{
@@ -1668,11 +1731,12 @@
 
     .sixthSection{
         height: 200.625px;
-        padding-top: 40px;
+        padding-top: 50px;
         margin-bottom: 84.5px;
         background-size: auto 100%;
         background-position: 45% 0%;
         background-repeat: repeat;
+        background-color: #f5f5f6;
     }
 
     .sectionTitle.fifth{
@@ -1682,6 +1746,7 @@
 
     .sectionSubTitleText.fifth{
         font-size: 21.3px;
+        font-size: 18.3px;
         margin-bottom: 21px;
     }
 

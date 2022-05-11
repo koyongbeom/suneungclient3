@@ -1,5 +1,7 @@
 import { Theme, styled } from '@mui/material/styles';
-import { DataGridPro} from '@mui/x-data-grid-pro';
+import { DataGridPro, LicenseInfo} from '@mui/x-data-grid-pro';
+
+LicenseInfo.setLicenseKey("e3ec4d79d1fa1f36cc88ecffd4e68392T1JERVI6MzMyMjMsRVhQSVJZPTE2NjkzODUyMDIwMDAsS0VZVkVSU0lPTj0x");
 
 
 

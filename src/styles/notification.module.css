@@ -1,0 +1,263 @@
+.voidHeader {
+    height: 82px;
+}
+
+.headerBar{
+    height: 176px;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    color: #383838;
+    letter-spacing: -0.76px;
+    font-size: 30.5px;
+}
+
+
+.houseSvg {
+    width: 18px;
+    margin-bottom: 2.5px;
+    margin-right: 20px;
+}
+
+.rightChevron {
+    width: 8px;
+    margin-right: 18px;
+}
+
+.rightChevron.second{
+    margin-left: 18px;
+}
+
+.currentMenuViewer{
+    width: 1150px;
+    margin: 0 auto;
+    display: flex;
+    height: 58px;
+    align-items: center;
+}
+
+.currentMenuViewerText_2{
+    font-size: 12px;
+    letter-spacing: -0.3px;
+    color: #525252;
+}
+
+.currentMenuViewerBoarder{
+    height: 1px;
+    opacity: 0.6;
+    box-shadow: 0px 1px 1px 0 rgba(0, 0, 0, 0.22);
+}
+
+.titleText {
+    margin-top: 125px;
+    text-align: center;
+    font-size: 35.5px;
+    font-weight: 700;
+    line-height: 48px;
+    letter-spacing: -0.89px;
+    color: black;
+    margin-bottom: 85px;
+}
+
+.notificationBox{
+    width: 1150px;
+    margin: 0 auto;
+}
+
+.notificationHeader{
+    display: flex;
+    height: 66.45px;
+    border-top: 2px solid #000000;
+    line-height: 66.45px;
+    font-size: 17px;
+    color: #222;
+    font-weight: 700;
+    border-bottom: 1px solid #ddd;
+}
+
+.notificationHeader.forDescription{
+    margin-top: 90px;
+    border-bottom: 0;
+    height: auto;
+    line-height: initial;
+    padding-top: 42px;
+    font-size: 35.5px;
+    color: black;
+    line-height: 1.5em;
+}
+
+.headerText1{
+    width: 143.99px;
+    text-align: center;
+}
+
+.headerText2{
+    flex-grow: 1;
+    text-align: center;
+
+}
+
+.headerText3{
+    width: 143.99px;
+    text-align: center;
+
+}
+
+.headerText4{
+    width: 143.99px;
+    text-align: center;
+
+}
+
+.headerText5{
+    width: 143.99px;
+    text-align: center;
+}
+
+.notificationBodyRow{
+    display: flex;
+    height: 65.54px;
+    line-height: 65.54px;
+    color: #222;
+    font-size: 16px;
+    border-bottom: 1px solid #ddd;
+}
+
+.bodyText1{
+    width: 143.99px;
+    text-align: center;
+    color: #333333;
+}
+
+.bodyText2{
+    flex-grow: 1;
+    overflow: hidden;
+    color: #333333;
+    cursor: pointer;
+}
+
+.bodyText2:hover span{
+    border-bottom: 2px solid black;
+}
+
+.bodyText3{
+    width: 143.99px;
+    text-align: center;
+    color: #333333;
+
+}
+
+.bodyText4{
+    width: 143.99px;
+    text-align: center;
+    color: #333333;
+
+
+}
+
+.bodyText5{
+    width: 143.99px;
+    text-align: center;
+    color: #333333;
+}
+
+.pagination{
+    margin-top: 40px;
+    margin-bottom: 120px !important;
+    display: flex;
+    justify-content: center;
+}
+
+.listDiv{
+    width: 1150px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 200px;
+    margin-top: 20px;
+}
+
+
+.onlymobile{
+    display: none;
+}
+
+.descriptionHeaderDescription{
+    height: 39px;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    margin-bottom: 55px;
+}
+
+.descriptionDivBox{
+    display: flex;
+    align-items: center;
+}
+
+.descriptionName{
+    font-size: 15px;
+    color: #333;
+    font-weight: 700;
+    letter-spacing: -.05px;
+    color: #979899;
+}
+
+.dash{
+    margin-left: 10px;
+    margin-right: 10px;
+    height: 13px;
+    width: 1px;
+    background-color: #dbdbdb;
+    color: #979899;
+
+}
+
+.descriptionDate{
+    font-size: 15px;
+    color: #333333;
+    color: #979899;
+
+}
+
+.howMany{
+    color: #979899;
+    font-size: 15px;
+}
+
+.howMany span{
+    font-weight: 700;
+}
+
+.notificationBodyHtmlDiv{
+    padding-bottom: 55px;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 55px;
+}
+
+@media only screen and (max-width : 1024px) {
+
+    .onlymobile{
+        display: block;
+    }
+
+    .onlyPC{
+        display: none;
+    }
+
+    .pagination.onlymobile{
+        width: 351px;
+        margin: 0 auto;
+        margin-bottom: 66.146px !important;
+        display: flex;
+    }
+}
+
+@media only screen and (max-width : 350px) {
+    .pagination{
+        width: auto;
+    }
+}

@@ -160,7 +160,7 @@ const Review: React.FC<any> = (props) => {
             </div>
 
             <div className={styles.titleText}>
-                텍스트로 만나는<br></br>합격생들의 이야기
+                왜 최상위권들은<br></br>수능선배를 고집할까?
             </div>
 
             <div className={styles.onlymobile}>
@@ -421,7 +421,7 @@ const Review: React.FC<any> = (props) => {
 
             <div className={styles.secondSection}>
                 <div className={`${styles.titleText} ${styles.second}`}>
-                    영상으로 만나는<br></br>합격생들의 이야기
+                    의치약 합격자들의<br></br>생생한 후기를 공개합니다
                 </div>
                 
                 <div className={styles.videoBox}>

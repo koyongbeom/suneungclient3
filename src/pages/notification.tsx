@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import HeaderTwo from "../components/header2";
 import Footer from "../components/footer";
 
@@ -17,10 +17,25 @@ const Notification :React.FC<any> = (props) => {
 
     const [pageCount, setPageCount] = useState(1);
     const [currentPage, setCurrentPage] = useState(1);
+    const [data, setData] = useState<any>();
 
     const handlePageChange = (event: React.ChangeEvent<unknown>, value: number) => {
         setCurrentPage(value);
       };
+
+    useEffect(() => {
+
+        fetch(`https://suneungsunbae.com/api/text/notifications?page=${currentPage}`, {
+            method: "get"
+        }).then((response : any)=>{
+            response.json()
+            .then((result : any)=>{
+                console.log(result);
+                setData(result.data);
+            })
+        })
+
+    }, [currentPage]);
 
 
 
@@ -53,7 +68,7 @@ const Notification :React.FC<any> = (props) => {
 
 
             <div className={styles.notificationBox}>
-                <div className={styles.notificationHeader}>
+                <div className={`${styles.notificationHeader} ${styles.onlyPC}`}>
                     <div className={styles.headerText1}>
                         번호
                     </div>
@@ -71,106 +86,56 @@ const Notification :React.FC<any> = (props) => {
                     </div>
                 </div>
 
-                <div className={styles.notificationBodyRow}>
-                    <div className={styles.bodyText1}>
-                        1
-                    </div>
-                    <div className={styles.bodyText2}>
-                        <Link to="/notificationRead" style={{ textDecoration: "none", color: "inherit", width : "100%", display : "block" }}>
-                            <span>더프 모의고사 실시</span>
-                        </Link>
-                    </div>
-                    <div className={styles.bodyText3}>
-                        수능선배
-                    </div>
-                    <div className={styles.bodyText4}>
-                        2022.05.11
-                    </div>
-                    <div className={styles.bodyText5}>
-                        37
-                    </div>
-                </div>
+                {
+                    data && data.map((eachData: any) => {
 
-                <div className={styles.notificationBodyRow}>
-                    <div className={styles.bodyText1}>
-                        1
-                    </div>
-                    <div className={styles.bodyText2}>
-                        <Link to="/notificationRead" style={{ textDecoration: "none", color: "inherit", width : "100%", display : "block" }}>
-                            <span>더프 모의고사 실시</span>
-                        </Link>
-                    </div>
-                    <div className={styles.bodyText3}>
-                        수능선배
-                    </div>
-                    <div className={styles.bodyText4}>
-                        2022.05.11
-                    </div>
-                    <div className={styles.bodyText5}>
-                        37
-                    </div>
-                </div>
+                        const date = new Date(eachData.createdAt);
 
+                        return (
+                            <div key={eachData.id}>
+                                <div className={`${styles.notificationBodyRow} ${styles.onlyPC}`}>
+                                    <div className={styles.bodyText1}>
+                                        {eachData.id}
+                                    </div>
+                                    <div className={styles.bodyText2}>
+                                        <Link to={`/notificationRead?id=${eachData.id}`} style={{ textDecoration: "none", color: "inherit", width: "100%", display: "block" }}>
+                                            <span>{eachData.title}</span>
+                                        </Link>
+                                    </div>
+                                    <div className={styles.bodyText3}>
+                                        수능선배
+                                    </div>
+                                    <div className={styles.bodyText4}>
+                                        {date.getFullYear()}.{date.getMonth()+1 < 10 ? "0" + (date.getMonth()+1) : date.getMonth()+1}.{date.getDate() < 10 ? "0" + date.getDate() : date.getDate()}
+                                    </div>
+                                    <div className={styles.bodyText5}>
+                                        {eachData.views}
+                                    </div>
+                                </div>
 
-                <div className={styles.notificationBodyRow}>
-                    <div className={styles.bodyText1}>
-                        1
-                    </div>
-                    <div className={styles.bodyText2}>
-                        <Link to="/notificationRead" style={{ textDecoration: "none", color: "inherit", width : "100%", display : "block" }}>
-                            <span>더프 모의고사 실시</span>
-                        </Link>
-                    </div>
-                    <div className={styles.bodyText3}>
-                        수능선배
-                    </div>
-                    <div className={styles.bodyText4}>
-                        2022.05.11
-                    </div>
-                    <div className={styles.bodyText5}>
-                        37
-                    </div>
-                </div>
+                                <Link to={`/notificationRead?id=${eachData.id}`} style={{ textDecoration: "none", color: "inherit", width: "100%", display: "block" }}>
+                                    <div className={`${styles.mobilenotificationBodyRow} ${styles.onlymobile}`}>
+                                        <div className={styles.mobilebodyText2}>
+                                            {eachData.title}
+                                        </div>
+                                        <div className={styles.mobileSubBodyDiv}>
+                                            <div className={styles.mobilebodyText3}>
+                                                수능선배&nbsp;&nbsp;|
+                                            </div>
+                                            <div className={styles.mobilebodyText4}>
+                                                &nbsp;&nbsp;{date.getFullYear()}.{date.getMonth()+1 < 10 ? "0" + (date.getMonth()+1) : date.getMonth()+1}.{date.getDate() < 10 ? "0" + date.getDate() : date.getDate()}&nbsp;&nbsp;|
+                                            </div>
+                                            <div className={styles.mobilebodyText5}>
+                                                &nbsp;&nbsp;{eachData.views}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </Link>
+                            </div>
+                        );
+                    })
+                }
 
-                <div className={styles.notificationBodyRow}>
-                    <div className={styles.bodyText1}>
-                        1
-                    </div>
-                    <div className={styles.bodyText2}>
-                        <Link to="/notificationRead" style={{ textDecoration: "none", color: "inherit", width : "100%", display : "block" }}>
-                            <span>더프 모의고사 실시</span>
-                        </Link>
-                    </div>
-                    <div className={styles.bodyText3}>
-                        수능선배
-                    </div>
-                    <div className={styles.bodyText4}>
-                        2022.05.11
-                    </div>
-                    <div className={styles.bodyText5}>
-                        37
-                    </div>
-                </div>
-
-                <div className={styles.notificationBodyRow}>
-                    <div className={styles.bodyText1}>
-                        1
-                    </div>
-                    <div className={styles.bodyText2}>
-                        <Link to="/notificationRead" style={{ textDecoration: "none", color: "inherit", width : "100%", display : "block" }}>
-                            <span>더프 모의고사 실시</span>
-                        </Link>
-                    </div>
-                    <div className={styles.bodyText3}>
-                        수능선배
-                    </div>
-                    <div className={styles.bodyText4}>
-                        2022.05.11
-                    </div>
-                    <div className={styles.bodyText5}>
-                        37
-                    </div>
-                </div>
             </div>
 
             <div className={`${styles.pagination} ${styles.onlyPC}`}>

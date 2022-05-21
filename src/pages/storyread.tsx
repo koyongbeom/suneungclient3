@@ -67,7 +67,7 @@ import "froala-editor/js/plugins/inline_class.min.js";
 
 
 
-const NotificationRead : React.FC<any> = (props) => {
+const Storyread : React.FC<any> = (props) => {
 
     const location = useLocation();
     const query = new URLSearchParams(location.search);
@@ -122,47 +122,58 @@ const NotificationRead : React.FC<any> = (props) => {
             <HeaderTwo />
             <div className={styles.voidHeader}>
             </div>
-            <div className={styles.headerBar}
+
+
+            {/* <div className={`${styles.headerBar} ${styles.onlyPC}`}
                 style={{ backgroundImage: "url(img/faq.webp)" }}
             >
-                공지사항
+                수능선배 이야기
             </div>
             <div className={`${styles.currentMenuViewerDiv} ${styles.onlyPC}`}>
                 <div className={styles.currentMenuViewer}>
                     <HouseSvg className={styles.houseSvg} />
                     <RightChevronSvg className={styles.rightChevron} />
                     <div className={styles.currentMenuViewerText_2}>
-                        공지사항
+                        수능선배 이야기
                     </div>
                 </div>
             </div>
             <div className={`${styles.currentMenuViewerBoarder} ${styles.onlyPC}`}>
             </div>
 
-
             <div className={`${styles.titleText} ${styles.onlyPC}`}>
-                공지사항을<br></br>안내드립니다.
+                수능선배의<br></br>자세한 이야기를 들려드릴게요
             </div>
 
 
-            <div className={`${styles.notificationBox} ${styles.forDescription}`}>
-                <div className={`${styles.notificationHeader} ${styles.forDescription}`}>
+
+            <div className={styles.mobileTitleBox}>
+                <div className={`${styles.mobileTitleText} ${styles.onlymobile}`}>
+                    수능선배 이야기
+                </div>
+                <div className={`${styles.mobileSubTitleText} ${styles.onlymobile}`}>
+                    수능선배의 자세한 이야기를 들려드릴게요
+                </div>
+            </div> */}
+
+
+
+
+            <div className={`${styles.notificationBox} ${styles.forDescription} ${styles.forStoryBox}`}>
+                <div className={`${styles.storyHeader} ${styles.forDescription}`}>
                     {data && data.title}
                 </div>
-                <div className={styles.descriptionHeaderDescription}>
-                    <div className={styles.descriptionDivBox}>
-                        <div className={styles.descriptionName}>
-                            수능선배
+                <div className={styles.storyHeaderDescription}>
+                        <div className={styles.storyDate}>
+                            {dateString} ㆍ by 수능선배
                         </div>
-                        <div className={styles.dash}>
-                        </div>
-                        <div className={styles.descriptionDate}>
-                            {dateString}
-                        </div>
-                    </div>
-                    <div className={styles.howMany}>
-                        <span>조회수</span>&nbsp;{data && data.views}
-                    </div>
+                </div>
+
+                <div className={styles.storyMainImgDiv}>
+                    {
+                        data &&
+                        <img className={styles.mainImg} src={`${data.src}`} />
+                    }
                 </div>
 
                 <div className={styles.notificationBodyHtmlDiv}>
@@ -186,4 +197,4 @@ const NotificationRead : React.FC<any> = (props) => {
     );
 }
 
-export default NotificationRead;
+export default Storyread;

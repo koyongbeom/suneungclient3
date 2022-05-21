@@ -16,6 +16,10 @@ import { ReactComponent as Logo } from "./svg/newlogo.svg";
 import AttendanceTable from './pages/attendancetable';
 import ReportToParent from './pages/reporttoparent';
 import NotificationRead from './pages/notificationread';
+import NotificationWrite from './pages/notificationwrite';
+import NotificationUpdate from './pages/notificationupdate';
+import Storys from './pages/storys';
+import Storyread from './pages/storyread';
 // import Notification from './pages/notification';
 
 
@@ -79,6 +83,10 @@ function App() {
             <Route path="/consultresult" element={<ReportToParent />}></Route>
             <Route path="/notification" element={<Notification />}></Route>
             <Route path="/notificationRead" element={<NotificationRead />}></Route>
+            <Route path="/notificationRead7" element={<NotificationUpdate />}></Route>
+            <Route path="/notificationwrite7" element={<NotificationWrite />}></Route>
+            <Route path="/storys" element={<Storys />}></Route>
+            <Route path="/storyread" element={<Storyread />}></Route>
           </Routes>
         </Suspense>
       </div>

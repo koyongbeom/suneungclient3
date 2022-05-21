@@ -222,6 +222,12 @@ const HeaderTwo: any = (props: any) => {
                         <div onClick={(e : any)=>{navigate("/review")}} className={styles.bottomMenuList}>
                             합격자후기
                         </div>
+                        <div onClick={(e : any)=>{navigate("/storys")}} className={styles.bottomMenuList}>
+                            스토리
+                        </div>
+                        <div onClick={(e : any)=>{navigate("/notification")}} className={styles.bottomMenuList}>
+                            공지사항
+                        </div>
                         <div onClick={(e : any)=>{navigate("/faq")}} className={styles.bottomMenuList}>
                             자주묻는질문
                         </div>

@@ -120,7 +120,7 @@ const style2 = {
   };
 
   const columns : GridColDef[] = [
-    {field : "date", headerName : "날짜", width : 70},
+    {field : "date", headerName : "부여날짜", width : 70},
     {field : "score", headerName : "벌점", width : 70},
     {field : "description", headerName : "사유", width : 200}
 ]
@@ -133,6 +133,11 @@ const AttendanceMobileReal: React.FC<any> = (props) => {
     const [open, setOpen] = React.useState(false);
     const [open2, setOpen2] = React.useState(false);
     const [open3, setOpen3] = React.useState(false);
+
+    const [totalScore, setTotalScore] = useState(0);
+
+
+
 
     const [targetArray, setTargetArray] = useState<any>();
     const [targetMonth, setTargetMonth] = useState(3);
@@ -228,7 +233,14 @@ const AttendanceMobileReal: React.FC<any> = (props) => {
                             newRows.push(oneRow);
                         })
 
+                        var newTotalScore = 0;
+
+                        if(result.demeritTotal.length > 0){
+                            newTotalScore = result.demeritTotal[0].totalDemerit;
+                        }
+
                         console.log(newArray);
+                        setTotalScore(newTotalScore)
                         setData(newArray);
                         setRows(newRows);
                     })
@@ -502,9 +514,9 @@ const AttendanceMobileReal: React.FC<any> = (props) => {
                 <Box sx={style3}>
                         <div style={{height : "350px", width : "100%", paddingBottom : "24px"}}>
                             <StyledDataGrid hideFooter={true} columns={columns} rows={rows} />
-                            {/* <div style={{fontFamily : "Apple_SB",  textAlign : "end", marginTop : "8px"}}>
-                                벌점 총점 : 14점
-                            </div> */}
+                            <div style={{fontFamily : "Apple_SB",  textAlign : "end", marginTop : "8px"}}>
+                                이번달 누적 벌점 : {totalScore}점
+                            </div>
                         </div>
                 </Box>
             </Modal>

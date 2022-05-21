@@ -1712,19 +1712,19 @@ const MainPage: any = (props: any) => {
             >
                 <Box sx={style5}>
                     <div className={styles.modalTitle}>
-                        5월 대성 모의고사 외부인 신청
+                        수능선배 강남점 전좌석 마감
                     </div>
                     <div className={styles.modalDescription}>
-                        일시 : 5월 25일 수요일
+                        대기신청 : 050-7871-3574 문자 전송
                     </div>
                     <div className={styles.modalDescription}>
-                        대상 : 재원생 및 비재원생
+                        (이름/연락처/등록예정시기/좌석형태)
                     </div>
                     <div className={`${styles.modalDescription} ${styles.sameDescription}`}>
-                        신청방법 : 050-7871-3574 문자 전송
+
                     </div>
                     <div className={`${styles.modalDescription} ${styles.sameDescription2}`}>
-                        (이름/연락처/성적처리여부 포함)
+                        ** 현재 대기 신청 시 한달 이상 예상합니다.
                     </div>
                 </Box>
             </Modal>

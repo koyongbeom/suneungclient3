@@ -167,7 +167,7 @@ const StudySystem: React.FC = (props: any) => {
 
     useEffect(() => {
 
-        // window.scrollTo(0, 0);
+        window.scrollTo(0, 0);
 
         const newBookList : any = [];
         for(var i=0; i < 10; i++){

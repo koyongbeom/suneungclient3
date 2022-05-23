@@ -1,4 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
+
+import { throttle } from "lodash";
 import styles from "../styles/header.module.css";
 import PermIdentityOutlinedIcon from '@mui/icons-material/PermIdentityOutlined';
 import Button from '@mui/material/Button';
@@ -21,10 +23,58 @@ import Collapse from '@mui/material/Collapse';
 type Anchor = 'top' | 'left' | 'bottom' | 'right';
 
 const Header: any = (props: any) => {
+
+
+
+    const ref = useRef<any>(null);
+
+    const listener = (e : any) => {
+        if(!ref.current) return;
+
+        console.log(ref.current.scrollLeft);
+
+        window.menuScrollX = ref.current.scrollLeft;
+    }
+
+    useEffect(() => {
+
+        if(!ref.current) return;
+        
+        ref.current.scrollTo(window.menuScrollX, 0);
+
+        const throttledFn = throttle(listener, 100);
+        if(ref.current){
+        ref.current.addEventListener("scroll", throttledFn);
+        }
+        return () => {
+            if(ref.current){
+            ref.current.removeEventListener("scroll", throttledFn);
+            }
+        };
+
+    }, [ref.current])
+
+
+
+
+
+
+
+
+
     const [open, setOpen] = React.useState(false);
     const handleClick = () => {
         setOpen(!open);
     };
+
+
+    const [open2, setOpen2] = React.useState(false);
+    const handleClick2 = () => {
+        setOpen2(!open2);
+    };
+
+
+
     const [hover, setHover] = useState(false);
     const [hoverKind, setHoverKind] = useState("");
     const [state, setState] = React.useState({
@@ -100,11 +150,27 @@ const Header: any = (props: any) => {
                         합격생 이야기
                     </div>
                 </Link>
-                <Link to="/faq" style={{ textDecoration: "none", color: "inherit" }}>
-                    <div className={styles.mobileMenuList}>
-                        자주 묻는 질문
-                    </div>
-                </Link>
+                <div onClick={handleClick2} className={styles.mobileMenuList}>
+                    <div>커뮤니티</div>
+                    {open2 ? <ExpandLess sx={{ color: "rgb(66, 75, 88)" }} /> : <ExpandMore sx={{ color: "rgb(66, 75, 88)" }} />}
+                </div>
+                <Collapse in={open2} timeout="auto" unmountOnExit>
+                    <Link to="/notification" style={{ textDecoration: "none", color: "inherit" }}>
+                        <div className={styles.mobileSubMenuList}>
+                            공지사항
+                        </div>
+                    </Link>
+                    <Link to="/storys" style={{ textDecoration: "none", color: "inherit" }}>
+                        <div className={styles.mobileSubMenuList}>
+                            수능선배 이야기
+                        </div>
+                    </Link>
+                    <Link to="/faq" style={{ textDecoration: "none", color: "inherit" }}>
+                        <div className={styles.mobileSubMenuList}>
+                            자주 묻는 질문
+                        </div>
+                    </Link>
+                </Collapse>
             </List>
         </Box>
     );
@@ -127,7 +193,7 @@ const Header: any = (props: any) => {
                                 style={{ position: "relative" }}
                                 onMouseEnter={() => { setHover(true); setHoverKind("introduce"); }} onMouseLeave={() => { setHover(false); setHoverKind("") }}
                             >
-                                    학원소개
+                                학원소개
                                 {
                                     hoverKind === "introduce" &&
                                     <div className={styles.cateBox}>
@@ -176,13 +242,46 @@ const Header: any = (props: any) => {
                                     합격생 이야기
                                 </li>
                             </Link>
-                            <Link to="/faq" style={{ textDecoration: "none", color: "inherit" }}>
+                            {/* <Link to="/faq" style={{ textDecoration: "none", color: "inherit" }}>
                                 <li
                                     onMouseEnter={() => { setHover(true); setHoverKind("community"); }} onMouseLeave={() => setHover(false)}
                                 >
                                     자주 묻는 질문
                                 </li>
-                            </Link>
+                            </Link> */}
+
+                            <li
+                                style={{ position: "relative" }}
+                                onMouseEnter={() => { setHover(true); setHoverKind("community"); }} onMouseLeave={() => { setHover(false); setHoverKind("") }}
+                            >
+                                커뮤니티
+                                {
+                                    hoverKind === "community" &&
+                                    <div className={styles.cateBox}>
+                                        <Link to="/notification" style={{ textDecoration: "none", color: "inherit" }} className={styles.pcLink}>
+                                            <div className={styles.cateSubMenu}>
+                                                <span className={styles.cateSubMenuText}>
+                                                    공지사항
+                                                </span>
+                                            </div>
+                                        </Link>
+                                        <Link to="/storys" style={{ textDecoration: "none", color: "inherit" }}>
+                                            <div className={styles.cateSubMenu}>
+                                                <span className={styles.cateSubMenuText}>
+                                                    수능선배 이야기
+                                                </span>
+                                            </div>
+                                        </Link>
+                                        <Link to="/faq" style={{ textDecoration: "none", color: "inherit" }}>
+                                            <div className={styles.cateSubMenu}>
+                                                <span className={styles.cateSubMenuText}>
+                                                    자주 묻는 질문
+                                                </span>
+                                            </div>
+                                        </Link>
+                                    </div>
+                                }
+                            </li>
                         </ul>
                     </div>
                     <div className={styles.onlyPC}>
@@ -209,7 +308,7 @@ const Header: any = (props: any) => {
             {
                 (props.isBottomMenu && props.headerKind === "white") &&
                 <div className={`${styles.bottomMenuBar} ${styles.onlymobile}`}>
-                    <div className={styles.bottomMenuDiv}>
+                    <div ref={ref} className={styles.bottomMenuDiv}>
                         <div className={styles.listTab}>
                             <div onClick={(e: any) => { navigate("/teachers") }} className={styles.bottomMenuList}>
                                 담임멘토
@@ -231,6 +330,12 @@ const Header: any = (props: any) => {
                             </div>
                             <div onClick={(e: any) => { navigate("/review") }} className={styles.bottomMenuList}>
                                 합격자후기
+                            </div>
+                            <div onClick={(e: any) => { navigate("/storys") }} className={styles.bottomMenuList}>
+                                스토리
+                            </div>
+                            <div onClick={(e: any) => { navigate("/notification") }} className={styles.bottomMenuList}>
+                                공지사항
                             </div>
                             <div onClick={(e: any) => { navigate("/faq") }} className={styles.bottomMenuList}>
                                 자주묻는질문

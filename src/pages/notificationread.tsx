@@ -9,12 +9,14 @@ import styles from "../styles/notification.module.css";
 
 import { ReactComponent as RightChevronSvg } from '../svg/chevron-right-thin.svg';
 import { ReactComponent as HouseSvg } from '../svg/house-thin.svg';
-import { Button } from "@mui/material";
+import { Button, Skeleton } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 import { useMediaQuery } from "react-responsive";
 
 import FroalaEditorView from 'react-froala-wysiwyg/FroalaEditorView';
+
+import ReactGa from "react-ga4";
 
 // Require Editor JS files.
 import 'froala-editor/js/froala_editor.pkgd.min.js';
@@ -69,6 +71,8 @@ import "froala-editor/js/plugins/inline_class.min.js";
 
 const NotificationRead : React.FC<any> = (props) => {
 
+    const [loading, setLoading] = useState(false);
+
     const location = useLocation();
     const query = new URLSearchParams(location.search);
     const [data, setData] = useState<any>();
@@ -76,10 +80,33 @@ const NotificationRead : React.FC<any> = (props) => {
 
     const isPC = useMediaQuery({query : '(min-width : 1150px)'});
 
+    //ga event------------------------------------------------
+    useEffect(() => {
+
+        ReactGa.send({
+            hitType: "pageview",
+            page_title: "notification"
+        });
+
+    }, []);
+    //--------------------------------------------------------
+
+    useEffect(()=>{
+        window.scrollTo(0,0);
+    })
+
     useEffect(()=>{
         const id = query.get("id");
         console.log(id);
         console.log("gogogo");
+
+        if (id) {
+            ReactGa.event({
+                category: "notificationView",
+                action: "notificationView",
+                value: +id
+            });
+        }
 
         fetch(`https://suneungsunbae.com/api/text/notificationdetail?id=${id}`, {
             method : "get"
@@ -90,10 +117,13 @@ const NotificationRead : React.FC<any> = (props) => {
 
                 if(isPC && result.data && result.data.body){
                     console.log("itsPC");
-                    console.log(result.data.body);
-                    console.log(result.data.body.replace("font-size: 16", "font size: 24"));
                     result.data.body = result.data.body.replaceAll("font-size: 16", "font-size: 18");
                 }
+
+                // if(result.data){
+                // result.data.body = result.data.body.replaceAll("opacity: 0.65", "display: none");
+                // }
+
 
                 setData(result.data);
                 const data = result.data;
@@ -147,7 +177,7 @@ const NotificationRead : React.FC<any> = (props) => {
 
             <div className={`${styles.notificationBox} ${styles.forDescription}`}>
                 <div className={`${styles.notificationHeader} ${styles.forDescription}`}>
-                    {data && data.title}
+                    {data ? data.title : <Skeleton sx={{width : "100%"}} />}
                 </div>
                 <div className={styles.descriptionHeaderDescription}>
                     <div className={styles.descriptionDivBox}>
@@ -157,7 +187,7 @@ const NotificationRead : React.FC<any> = (props) => {
                         <div className={styles.dash}>
                         </div>
                         <div className={styles.descriptionDate}>
-                            {dateString}
+                            {dateString ? dateString : <Skeleton sx={{width : "100%"}} />}
                         </div>
                     </div>
                     <div className={styles.howMany}>
@@ -167,10 +197,12 @@ const NotificationRead : React.FC<any> = (props) => {
 
                 <div className={styles.notificationBodyHtmlDiv}>
                     {
-                        data &&
+                        data ?
                         <FroalaEditorView
                         model={data.body}
                         />
+                        :
+                        <Skeleton variant="rectangular" sx={{width : "100%", height : "300px"}} />
                     }
                 </div>
             </div>

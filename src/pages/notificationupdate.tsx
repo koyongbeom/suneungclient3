@@ -304,8 +304,8 @@ const NotificationUpdate: React.FC<any> = (props) => {
                             "image.removed" : function(img : any){
                                 deleteImage(img[0].currentSrc);
                             }
-                        }
-
+                        },
+                        key : "sZH1rB1E7A5C4F5D3H4jdmwF-11nrzmjnccfF4fijtA2B2C2E1C5F1B1F1A3C11=="
                     }}
                     model={model}
                     onModelChange={handleModelChange}

@@ -7,11 +7,28 @@ import { ReactComponent as HouseSvg } from '../svg/house-thin.svg';
 
 import { Link } from "react-router-dom";
 
+import ReactGa from "react-ga4";
+
 
 
 const Storys: React.FC<any> = (props) => {
 
     const [data, setData] = useState<any>();
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    });
+
+    //ga event------------------------------------------------
+    useEffect(() => {
+
+        ReactGa.send({
+            hitType: "pageview",
+            page_title: "storys"
+        });
+
+    }, []);
+        //--------------------------------------------------------
 
     useEffect(() => {
 

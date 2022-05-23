@@ -11,6 +11,9 @@ import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 import { Link } from "react-router-dom";
 
+import ReactGa from "react-ga4";
+
+
 
 
 const Notification :React.FC<any> = (props) => {
@@ -18,10 +21,26 @@ const Notification :React.FC<any> = (props) => {
     const [pageCount, setPageCount] = useState(1);
     const [currentPage, setCurrentPage] = useState(1);
     const [data, setData] = useState<any>();
+    const [totalCount, setTotalCount] = useState();
 
     const handlePageChange = (event: React.ChangeEvent<unknown>, value: number) => {
         setCurrentPage(value);
       };
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    });
+
+    //ga event------------------------------------------------
+    useEffect(() => {
+
+        ReactGa.send({
+            hitType: "pageview",
+            page_title: "notification"
+        });
+
+    }, []);
+    //--------------------------------------------------------
 
     useEffect(() => {
 
@@ -32,6 +51,7 @@ const Notification :React.FC<any> = (props) => {
             .then((result : any)=>{
                 console.log(result);
                 setData(result.data);
+                setTotalCount(result.count);
             })
         })
 
@@ -87,7 +107,7 @@ const Notification :React.FC<any> = (props) => {
                 </div>
 
                 {
-                    data && data.map((eachData: any) => {
+                    data && data.map((eachData: any, dataIndex : number) => {
 
                         const date = new Date(eachData.createdAt);
 
@@ -95,7 +115,7 @@ const Notification :React.FC<any> = (props) => {
                             <div key={eachData.id}>
                                 <div className={`${styles.notificationBodyRow} ${styles.onlyPC}`}>
                                     <div className={styles.bodyText1}>
-                                        {eachData.id}
+                                        {totalCount && totalCount - dataIndex}
                                     </div>
                                     <div className={styles.bodyText2}>
                                         <Link to={`/notificationRead?id=${eachData.id}`} style={{ textDecoration: "none", color: "inherit", width: "100%", display: "block" }}>

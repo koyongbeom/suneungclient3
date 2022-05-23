@@ -1,5 +1,5 @@
-import React, { useEffect, Suspense, useRef } from 'react';
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom"
+import React, { useEffect, Suspense, useRef, useState } from 'react';
+import { Route, BrowserRouter as Router, Routes, useLocation } from "react-router-dom"
 // import Ceo from './pages/ceo';
 // import Complete from './pages/complete';
 // import Faq from './pages/faq';
@@ -20,6 +20,7 @@ import NotificationWrite from './pages/notificationwrite';
 import NotificationUpdate from './pages/notificationupdate';
 import Storys from './pages/storys';
 import Storyread from './pages/storyread';
+import HeaderTwo from './components/header2';
 // import Notification from './pages/notification';
 
 
@@ -43,7 +44,14 @@ const Notification = React.lazy(() => import("./pages/notification"));
 function App() {
 
   const ref = useRef<any>(null);
+  const [pathName, setPathName] = useState<any>("/");
 
+
+
+  useEffect(() => {
+    console.log(window.location.pathname);
+    setPathName(window.location.pathname);
+  }, [window.location.pathname]);
 
   useEffect(() => {
     ReactGa.initialize([
@@ -59,14 +67,17 @@ function App() {
       <div id="routing-container">
         <Suspense
           fallback={
-            <div ref={ref} className="loadingPageDiv" style={{width : "100%", display : "flex", flexDirection : "column", justifyContent : "center", alignItems : "center"}}>
-              <Logo className="loadingPageLogo" />
-              <div>
-                
+            <>
+              <HeaderTwo />
+              <div ref={ref} className="loadingPageDiv" style={{ width: "100%", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
+                <Logo className="loadingPageLogo" />
+                <div>
+
+                </div>
               </div>
-            </div>
+            </>
           }
-        >
+        > 
           <Routes>
             <Route path="/" element={<MainPage />}></Route>
             <Route path="/ceo" element={<Ceo />}></Route>
@@ -79,8 +90,12 @@ function App() {
             <Route path="/register" element={<Register />}></Route>
             <Route path="/complete" element={<Complete />}></Route>
             <Route path="/parkgaeul" element={<Parkgaeul />}></Route>
+            
+            
             <Route path="/attendancetable" element={<AttendanceTable />}></Route>
             <Route path="/consultresult" element={<ReportToParent />}></Route>
+            
+            
             <Route path="/notification" element={<Notification />}></Route>
             <Route path="/notificationRead" element={<NotificationRead />}></Route>
             <Route path="/notificationRead7" element={<NotificationUpdate />}></Route>

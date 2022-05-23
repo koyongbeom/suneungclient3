@@ -1724,7 +1724,7 @@ const MainPage: any = (props: any) => {
 
                     </div>
                     <div className={`${styles.modalDescription} ${styles.sameDescription2}`}>
-                        ** 현재 대기 신청 시 한달 이상 예상합니다.
+                        ** 대기 신청 시 한달 이상 예상합니다.
                     </div>
                 </Box>
             </Modal>

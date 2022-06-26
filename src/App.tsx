@@ -45,7 +45,7 @@ function App() {
 
   const ref = useRef<any>(null);
   const [pathName, setPathName] = useState<any>("/");
-
+  const [isFirst, setIsFirst] = useState(true);
 
 
   useEffect(() => {
@@ -54,6 +54,12 @@ function App() {
   }, [window.location.pathname]);
 
   useEffect(() => {
+    console.log(111);
+    setTimeout(()=>{
+      setIsFirst(false);
+    }, 3200);
+
+
     ReactGa.initialize([
       {
         trackingId : "G-24CD6Z291K",
@@ -68,7 +74,10 @@ function App() {
         <Suspense
           fallback={
             <>
-              <HeaderTwo />
+              {
+                !isFirst &&
+                <HeaderTwo />
+              }
               <div ref={ref} className="loadingPageDiv" style={{ width: "100%", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
                 <Logo className="loadingPageLogo" />
                 <div>

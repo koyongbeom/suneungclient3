@@ -172,7 +172,7 @@ const Price : React.FC<any> = (props) => {
                                 <span className={styles.number}>180,000</span>&nbsp;/월
                             </div>
                             <div className={styles.priceBoxSubAmount}>
-                                모든 독학재수관리 비용 포함
+                                한 달 4회에 대한 금액
                             </div>
                             <div className={styles.bottomText}>
                                 오답 위주의 정리를<br></br>원하는 학생에게 추천합니다
@@ -189,7 +189,7 @@ const Price : React.FC<any> = (props) => {
                                 <span className={styles.number}>360,000</span>&nbsp;/월
                             </div>
                             <div className={styles.priceBoxSubAmount}>
-                                모든 독학재수관리 비용 포함
+                                한 달 4회에 대한 금액
                             </div>
                             <div className={styles.bottomText}>
                                 이론 점검, 문제 풀이를<br></br>원하는 학생에게 추천합니다

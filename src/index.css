@@ -152,6 +152,36 @@ iframe{
 	
 }
 
+.iw_inner{
+	font-weight: 400;
+	touch-action: none;
+	padding: 16px;
+	padding-top: 12px;
+	padding-bottom: 12px;
+	line-height: 20px;
+	letter-spacing: -0.2px;
+	background-color: white;
+	border-radius: 4px;
+	border: 1px solid rgba(0, 0, 0, 0.05);
+	box-shadow: 0 2px 4px 0 rgba(0,0,0,.12);
+}
+
+.iw_inner_title{
+	color: #0068c3;
+	font-weight: 700;
+	touch-action: none;
+	margin-bottom: 7px;
+	font-size: 17px;
+}
+
+.iw_inner_phonenumber{
+	margin-top: 4px;
+}
+
+.iw_inner_phoneBtn{
+	text-decoration-line: none;
+	color: #1b49af;
+}
 
 @media only screen and (max-width : 1024px) {
 	.MuiFab-root{
@@ -188,6 +218,19 @@ iframe{
 	
 	.MuiDataGrid-columnHeadersInner{
 		background-color: #e4e4e4;
+	}
+
+	.iw_inner{
+		font-size: 14px;
+	}
+
+	.iw_inner_title{
+		margin-bottom: 5px;
+		font-size: 16px;
+	}
+
+	.iw_inner_phonenumber{
+		margin-top: 2px;
 	}
 
 	@media only screen and (min-width : 500px){

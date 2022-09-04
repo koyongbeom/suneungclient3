@@ -21,6 +21,7 @@ import NotificationUpdate from './pages/notificationupdate';
 import Storys from './pages/storys';
 import Storyread from './pages/storyread';
 import HeaderTwo from './components/header2';
+import Testmap from './pages/testmap';
 // import Notification from './pages/notification';
 
 
@@ -103,6 +104,7 @@ function App() {
             
             <Route path="/attendancetable" element={<AttendanceTable />}></Route>
             <Route path="/consultresult" element={<ReportToParent />}></Route>
+            <Route path="/testmap" element={<Testmap />}></Route>
             
             
             <Route path="/notification" element={<Notification />}></Route>

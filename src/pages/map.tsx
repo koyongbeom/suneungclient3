@@ -62,14 +62,14 @@ const Map: React.FC<any> = (props) => {
         window.scrollTo(0, 0);
 
         const map = new naver.maps.Map("map", {
-            center: new naver.maps.LatLng(37.49726, 127.03210),
+            center: new naver.maps.LatLng(37.4931655, 127.0286797),
             zoom: 16,
         });
 
         const marker = new naver.maps.Marker({
             map: map,
             title: "수능선배",
-            position: new naver.maps.LatLng(37.49726, 127.03210),
+            position: new naver.maps.LatLng(37.4931655, 127.0286797),
             animation: naver.maps.Animation.BOUNCE
         })
 
@@ -91,10 +91,10 @@ const Map: React.FC<any> = (props) => {
     const move = (kind: string) => {
         var targetIndex=0;
         if (kind === "plus") {
-            if (index < 16) {
+            if (index < 9) {
                 targetIndex = index + 1;
                 setIndex(index + 1);
-            } else if (index === 16) {
+            } else if (index === 9) {
                 targetIndex = 0;
                 setIndex(0);
             }
@@ -103,8 +103,8 @@ const Map: React.FC<any> = (props) => {
                 targetIndex = index - 1;
                 setIndex(index - 1);
             } else if (index === 0) {
-                targetIndex = 16;
-                setIndex(16);
+                targetIndex = 9;
+                setIndex(9);
             }
         }
         const targetScroll = eachRef.current[targetIndex].getBoundingClientRect().x;
@@ -167,7 +167,7 @@ const Map: React.FC<any> = (props) => {
             <div className={styles.voidHeader}>
 
             </div>
-            <div className={styles.subHeader} style={{ backgroundImage: "url(img/wallseat2.webp)" }}>
+            <div className={styles.subHeader} style={{ backgroundImage: "url(img/newinterior/02bl7589_1.webp)" }}>
                 <div className={styles.blackFilter}>
                 </div>
                 <div className={styles.subHeaderText}>
@@ -211,7 +211,7 @@ const Map: React.FC<any> = (props) => {
                         </div>
                         <div className={styles.placeText}>
                             <div className={styles.placeText_1}>
-                                서울 테헤란로 8길 25, 3층 (역삼동 828)
+                                서울 서초구 서초대로78길 52(서초동 1330-12)
                             </div>
                             <div>
                                 수강생 24시간 이용가능
@@ -239,7 +239,7 @@ const Map: React.FC<any> = (props) => {
                                 지하철 이용시
                             </div>
                             <div className={styles.metroPlaceText}>
-                                강남역 3번 출구 하차 후 크리스피크림도넛 골목 진입 후 직진(도보 5분)
+                                강남역 5번 출구 하차 후 도보 5분 이내 거리
                             </div>
                         </div>
                     </div>

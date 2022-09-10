@@ -655,7 +655,7 @@ const MainPage: any = (props: any) => {
                         <div className={styles.mobileFourthSectionDescription} onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd}>
                             <div className={styles.mobileFourthSectionDescriptionImg}>
                                     <img src="img/answer2.webp" alt="patrol" className={`${styles.patrolImg} ${mobileFourthSectionMenuSelector !== 2 ? styles.transparent : ""}`} />
-                                    <img src="img/education55.webp" alt="patrol" className={`${styles.patrolImg} ${styles.patrolImg2} ${mobileFourthSectionMenuSelector !== 1 ? styles.transparent : ""}`} />
+                                    <img src="img/newpic/dsc03650_e.webp" alt="patrol" className={`${styles.patrolImg} ${styles.patrolImg2} ${mobileFourthSectionMenuSelector !== 1 ? styles.transparent : ""}`} />
                                     <img src="img/bon2.webp" alt="patrol" className={`${styles.patrolImg} ${mobileFourthSectionMenuSelector !== 3 ? styles.transparent : ""}`} />
                             </div>
                             {
@@ -736,11 +736,11 @@ const MainPage: any = (props: any) => {
                 </div>
                 <div className={styles.mobileImageDiv}>
                     <div className={styles.mobileImageBox}>
-                        <img className={styles.mobileImageInterior} src="img/13.webp" alt="open" />
+                        <img className={styles.mobileImageInterior} src="img/newinterior/02bl7589_1.webp" alt="open" />
                         {/* <img className={styles.test} src="img/attendanceCheck2.webp" alt="open" /> */}
                     </div>
                     <div className={styles.mobileImageBoxTitle}>
-                        오픈석
+                        교실형
                     </div>
                     <div className={styles.mobileImageBoxDescription}>
                         넓은 책상과 편한 시디즈 의자에 앉아
@@ -751,24 +751,10 @@ const MainPage: any = (props: any) => {
                 </div>
                 <div className={styles.mobileImageDiv}>
                     <div className={styles.mobileImageBox}>
-                        <img className={styles.mobileImageInterior} src="img/10.webp" alt="open" />
+                        <img className={styles.mobileImageInterior} src="img/newinterior/02bl7757_1.webp" alt="open" />
                     </div>
                     <div className={styles.mobileImageBoxTitle}>
-                        일인석
-                    </div>
-                    <div className={styles.mobileImageBoxDescription}>
-                        집중력을 높이기 위해 마련된 1인석은
-                    </div>
-                    <div className={`${styles.mobileImageBoxDescription} ${styles.second}`}>
-                        방해 받지 않기에 최적화 되어 있습니다.
-                    </div>
-                </div>
-                <div className={styles.mobileImageDiv}>
-                    <div className={styles.mobileImageBox}>
-                        <img className={styles.mobileImageInterior} src="img/12.webp" alt="open" />
-                    </div>
-                    <div className={styles.mobileImageBoxTitle}>
-                        칸막이석
+                        칸막이형
                     </div>
                     <div className={styles.mobileImageBoxDescription}>
                         집중이 잘 되는 칸막이석은 주변 시야가
@@ -779,7 +765,7 @@ const MainPage: any = (props: any) => {
                 </div>
                 <div className={styles.mobileImageDiv}>
                     <div className={styles.mobileImageBox}>
-                        <img className={styles.mobileImageInterior} src="img/7.webp" alt="open" />
+                        <img className={styles.mobileImageInterior} src="img/newinterior/02bl7823_1.webp" alt="open" />
                     </div>
                     <div className={styles.mobileImageBoxTitle}>
                         휴게실
@@ -789,6 +775,20 @@ const MainPage: any = (props: any) => {
                     </div>
                     <div className={`${styles.mobileImageBoxDescription} ${styles.second}`}>
                         편안한 공부를 할 수 있습니다.
+                    </div>
+                </div>
+                <div className={styles.mobileImageDiv}>
+                    <div className={styles.mobileImageBox}>
+                        <img className={styles.mobileImageInterior} src="img/newinterior/02bl7937_1.webp" alt="open" />
+                    </div>
+                    <div className={styles.mobileImageBoxTitle}>
+                        상담실
+                    </div>
+                    <div className={styles.mobileImageBoxDescription}>
+                        자연광이 들어오는 밝은 상담실에서
+                    </div>
+                    <div className={`${styles.mobileImageBoxDescription} ${styles.second}`}>
+                        담임멘토와 상담을 진행할 수 있습니다.
                     </div>
                 </div>
             </div>
@@ -1093,7 +1093,7 @@ const MainPage: any = (props: any) => {
 
             <div style={{ backgroundImage: "url(img/thirdbackground.webp)" }} className={`${styles.thirdSection} ${styles.onlyPC}`}>
                 <div className={styles.thirdSectionTitle_1}>
-                    쾌적한 자습실에서
+                    최고의 학습 공간에서
                 </div>
                 <div className={styles.thirdSectionTitle_2}>
                     하루 14시간 집중하게 될 겁니다
@@ -1113,7 +1113,7 @@ const MainPage: any = (props: any) => {
                                 return (
                                     <div key={Math.random()} className={styles.eachChevronDiv}>
                                         <div className={styles.carouselDiv}>
-                                            <div style={{ backgroundImage: `url(img/${each.number}.webp)` }} className={styles.carouselDivDiv}>
+                                            <div style={{ backgroundImage: `url(img/newinterior/${each.number}.webp)` }} className={styles.carouselDivDiv}>
                                             </div>
                                         </div>
                                         <div className={styles.chevronTitle}>
@@ -1665,7 +1665,7 @@ const MainPage: any = (props: any) => {
                 </div>
             </div>
 
-            <div style={{ backgroundImage: `url(https://naveropenapi.apigw.ntruss.com/map-static/v2/raster-cors?w=${windowInnerWidth}&h=497&markers=type:d|size:mid|pos:127.03212%2037.49724&X-NCP-APIGW-API-KEY-ID=yhg3ot5ch1)` }} className={styles.tenthSection}>
+            <div style={{ backgroundImage: `url(https://naveropenapi.apigw.ntruss.com/map-static/v2/raster-cors?w=${windowInnerWidth}&h=497&markers=type:d|size:mid|pos:127.0286797%2037.4931655&X-NCP-APIGW-API-KEY-ID=yhg3ot5ch1)` }} className={styles.tenthSection}>
 
             </div>
 
@@ -1689,10 +1689,10 @@ const MainPage: any = (props: any) => {
                         </div>
                     </a>
                     <div className={styles.contactBoxAddress}>
-                        주소 : 서울특별시 테헤란로 8길 25
+                        주소 : 서울특별시 서초구 서초동 1330-12
                     </div>
                     <div className={`${styles.contactBoxAddress} ${styles.second}`}>
-                        커피스미스 본사 빌딩 3층(강남역 도보 5분)
+                        강남역 인앤인 빌딩(강남역 도보 5분)
                     </div>
 
                 </div>
@@ -1704,7 +1704,7 @@ const MainPage: any = (props: any) => {
             }
 
 
-            <Modal
+            {/* <Modal
                 open={open5}
                 onClose={handleClose}
                 aria-labelledby="modal-modal-title"
@@ -1727,7 +1727,7 @@ const MainPage: any = (props: any) => {
                         ** 대기 신청 시 한달 이상 예상합니다.
                     </div>
                 </Box>
-            </Modal>
+            </Modal> */}
 
             <Footer />
 

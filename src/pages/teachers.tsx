@@ -57,7 +57,7 @@ const Teachers: React.FC<any> = (props) => {
             <HeaderTwo />
             <div className={styles.voidHeader}>
             </div>
-            <div className={styles.subHeader} style={{ backgroundImage: "url(img/team.webp)" }}>
+            <div className={styles.subHeader} style={{ backgroundImage: "url(img/newpic/dsc03594_3.webp)" }}>
                 <div className={styles.filter}>
 
                 </div>

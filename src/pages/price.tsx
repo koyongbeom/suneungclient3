@@ -60,16 +60,16 @@ const Price : React.FC<any> = (props) => {
                     <div className={`${styles.description} ${styles.onlymobile}`}>
                         * 모든 독학재수관리 서비스 포함 가격
                     </div>
-                    <div className={styles.mainPriceDiv}>
+                    <div className={styles.mainPriceDiv2}>
                         <div className={styles.priceBox}>
                             <div className={styles.priceBoxTitle}>
-                                오픈석
+                                교실형
                             </div>
                             <div className={styles.priceBoxText}>
                                 자물쇠반 독학관리
                             </div>
                             <div className={styles.priceBoxAmount}>
-                                <span className={styles.number}>420,000</span>&nbsp;/월
+                                <span className={styles.number}>520,000</span>&nbsp;/월
                             </div>
                             <div className={styles.priceBoxSubAmount}>
                                 모든 독학재수관리 비용 포함
@@ -78,7 +78,7 @@ const Price : React.FC<any> = (props) => {
                                 넓은 개방형 공간을<br></br>원하는 학생에게 추천합니다
                             </div>
                         </div>
-                        <div className={styles.priceBox}>
+                        {/* <div className={styles.priceBox}>
                             <div className={styles.priceBoxTitle}>
                                 칸막이석
                             </div>
@@ -111,16 +111,16 @@ const Price : React.FC<any> = (props) => {
                             <div className={styles.bottomText}>
                                 넓은 시야와 공간을<br></br>원하는 학생에게 추천합니다
                             </div>
-                        </div>
+                        </div> */}
                         <div className={`${styles.priceBox} ${styles.last}`}>
                             <div className={styles.priceBoxTitle}>
-                                1인석
+                                칸막이형
                             </div>
                             <div className={styles.priceBoxText}>
                                 자물쇠반 독학관리
                             </div>
                             <div className={styles.priceBoxAmount}>
-                                <span className={styles.number}>480,000</span>&nbsp;/월
+                                <span className={styles.number}>520,000</span>&nbsp;/월
                             </div>
                             <div className={styles.priceBoxSubAmount}>
                                 모든 독학재수관리 비용 포함

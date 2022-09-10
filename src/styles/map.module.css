@@ -20,7 +20,7 @@
     position: relative;
     height: 450px;
     background-size: cover;
-    background-position: 0% 55%;
+    background-position: 0% 65%;
 }
 
 .subHeaderText {
@@ -49,7 +49,7 @@
     width: 100%;
     height: 100%;
     background-color: black;
-    opacity: 0.25;
+    opacity: 0.4;
 }
 
 

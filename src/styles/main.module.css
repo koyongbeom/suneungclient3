@@ -337,7 +337,7 @@
 .carouselDiv{
     width: 355px;
     height: 212px;
-    background-color: white;
+    /* background-color: white; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1349,6 +1349,7 @@
 
     .mobileImageInterior {
         width: 100%;
+        object-fit: cover;
     }
 
     .test {

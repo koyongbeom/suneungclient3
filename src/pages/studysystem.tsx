@@ -961,7 +961,7 @@ const StudySystem: React.FC = (props: any) => {
 
                     <div className={`${styles.orderBox} ${styles.second}`}>
                         <div className={styles.orderBoxPictureBox}>
-                            <img src="img/team11.webp" className={styles.orderBoxPicture} />
+                            <img src="img/newpic/dsc03594_3.webp" className={styles.orderBoxPicture} />
                         </div>
                         <div className={styles.orderBoxDescriptionBox}>
                             <div className={styles.orderBoxDescriptionBoxTitle}>
@@ -993,7 +993,7 @@ const StudySystem: React.FC = (props: any) => {
 
                     <div className={`${styles.orderBox} ${styles.second}`}>
                         <div className={styles.orderBoxPictureBox}>
-                            <img src="img/interview10.webp" className={styles.orderBoxPicture} />
+                            <img src="img/newpic/dsc03566_e.webp" className={styles.orderBoxPicture} />
                         </div>
                         <div className={styles.orderBoxDescriptionBox}>
                             <div className={styles.orderBoxDescriptionBoxTitle}>

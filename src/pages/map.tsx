@@ -167,7 +167,7 @@ const Map: React.FC<any> = (props) => {
             <div className={styles.voidHeader}>
 
             </div>
-            <div className={styles.subHeader} style={{ backgroundImage: "url(img/newinterior/02bl7589_1.webp)" }}>
+            <div className={styles.subHeader} style={{ backgroundImage: "url(img/newinterior/02BL7589_1.webp)" }}>
                 <div className={styles.blackFilter}>
                 </div>
                 <div className={styles.subHeaderText}>

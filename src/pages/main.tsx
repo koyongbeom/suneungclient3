@@ -736,7 +736,7 @@ const MainPage: any = (props: any) => {
                 </div>
                 <div className={styles.mobileImageDiv}>
                     <div className={styles.mobileImageBox}>
-                        <img className={styles.mobileImageInterior} src="img/newinterior/02bl7589_1.webp" alt="open" />
+                        <img className={styles.mobileImageInterior} src="img/newinterior/02BL7589_1.webp" alt="open" />
                         {/* <img className={styles.test} src="img/attendanceCheck2.webp" alt="open" /> */}
                     </div>
                     <div className={styles.mobileImageBoxTitle}>
@@ -751,7 +751,7 @@ const MainPage: any = (props: any) => {
                 </div>
                 <div className={styles.mobileImageDiv}>
                     <div className={styles.mobileImageBox}>
-                        <img className={styles.mobileImageInterior} src="img/newinterior/02bl7757_1.webp" alt="open" />
+                        <img className={styles.mobileImageInterior} src="img/newinterior/02BL7757_1.webp" alt="open" />
                     </div>
                     <div className={styles.mobileImageBoxTitle}>
                         칸막이형
@@ -765,7 +765,7 @@ const MainPage: any = (props: any) => {
                 </div>
                 <div className={styles.mobileImageDiv}>
                     <div className={styles.mobileImageBox}>
-                        <img className={styles.mobileImageInterior} src="img/newinterior/02bl7823_1.webp" alt="open" />
+                        <img className={styles.mobileImageInterior} src="img/newinterior/02BL7823_1.webp" alt="open" />
                     </div>
                     <div className={styles.mobileImageBoxTitle}>
                         휴게실
@@ -779,7 +779,7 @@ const MainPage: any = (props: any) => {
                 </div>
                 <div className={styles.mobileImageDiv}>
                     <div className={styles.mobileImageBox}>
-                        <img className={styles.mobileImageInterior} src="img/newinterior/02bl7937_1.webp" alt="open" />
+                        <img className={styles.mobileImageInterior} src="img/newinterior/02BL7937_1.webp" alt="open" />
                     </div>
                     <div className={styles.mobileImageBoxTitle}>
                         상담실

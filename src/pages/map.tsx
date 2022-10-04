@@ -223,7 +223,7 @@ const Map: React.FC<any> = (props) => {
                             <CallSvg className={styles.callSvg} />
                         </div>
                         <div className={styles.placeText}>
-                            <a href="tel:01098800489" className={styles.atag} style={{ textDecoration: "none", color: "inherit" }}>
+                            <a href="tel:05078713574" className={styles.atag} style={{ textDecoration: "none", color: "inherit" }}>
                                 <div>
                                     TEL 050.7871.3574
                                 </div>

@@ -132,10 +132,11 @@ const Price : React.FC<any> = (props) => {
                     </div>
                     <div className={styles.priceSubDescription}>
                         <div className={`${styles.priceSubDescription_1} ${styles.onlyPC}`}>
-                            * 자물쇠반 비용에 멘토 상담, 24시간 좌석 이용, 생활관리, 질의응답 등 모든 자물쇠반 서비스가 포함됩니다. (1일 무료체험 가능)<br></br>
+                            * 자물쇠반 비용에 멘토 상담, 24시간 좌석 이용, 생활관리, 질의응답 등 모든 자물쇠반 서비스가 포함됩니다.<br></br>
                         </div>
                         <div className={`${styles.priceSubDescription_1} ${styles.onlymobile}`}>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;▷&nbsp; 생활관리 / 멘토링 / 질의응답 포함<br></br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(자물쇠반 1일 무료체험 가능)
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;▷&nbsp; 생활관리 / 멘토링 / 질의응답 포함
+                        {/* <br></br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(자물쇠반 1일 무료체험 가능) */}
                         </div>
 
                     </div>

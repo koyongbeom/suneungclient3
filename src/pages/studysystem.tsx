@@ -497,7 +497,7 @@ const StudySystem: React.FC = (props: any) => {
                     </div>
                     <div className={styles.orderBox}>
                         <div className={styles.orderBoxPictureBox}>
-                            <img src="img/patrol33333.webp" className={styles.orderBoxPicture} />
+                            <img src="img/patrol102.webp" className={styles.orderBoxPicture} />
                         </div>
                         <div className={styles.orderBoxDescriptionBox}>
                             <div className={styles.orderBoxDescriptionBoxTitle}>
@@ -515,10 +515,10 @@ const StudySystem: React.FC = (props: any) => {
                                 </span>
                             </div>
                             <div className={`${styles.orderBoxDescriptionBoxDescription} ${styles.onlyPC}`}>
-                                생활관리 담당 사감이 아침 9시부터 밤 10시까지 하루 9번 교시별로 출석체크 후<br></br>공석인 사람들에게 연락해 자리에 없는 이유를 조사합니다.
+                                생활관리 담당 사감이 아침 8시부터 밤 10시까지 하루 9번 교시별로 출석체크 후<br></br>공석인 사람들에게 연락해 자리에 없는 이유를 조사합니다.
                             </div>
                             <div className={`${styles.orderBoxDescriptionBoxDescription} ${styles.onlymobile}`}>
-                                생활관리 담당 사감이 아침 9시부터 밤 10시까지 하루 9번 교시별로 출석체크 후 공석인 사람들에게 연락해 자리에 없는 이유를 조사합니다.
+                                생활관리 담당 사감이 아침 8시부터 밤 10시까지 하루 9번 교시별로 출석체크 후 공석인 사람들에게 연락해 자리에 없는 이유를 조사합니다.
                             </div>
                         </div>
                     </div>
@@ -625,7 +625,7 @@ const StudySystem: React.FC = (props: any) => {
                                 출석체크 횟수
                             </div>
                             <div className={styles.differentiationList_2}>
-                                아침 9시부터 밤 10시까지 하루 9번의 대면 출석체크를 통해 빈틈없이 관리합니다.
+                                아침 8시부터 밤 10시까지 하루 9번의 대면 출석체크를 통해 빈틈없이 관리합니다.
                             </div>
                         </div>
                         <div id="scheduler" className={`${styles.differentiationList}`}>
@@ -707,7 +707,7 @@ const StudySystem: React.FC = (props: any) => {
                             </div>
                         </div>
                         <div className={styles.orderBoxPictureBox}>
-                            <img src="img/patrol555.webp" className={styles.orderBoxPicture} />
+                            <img src="img/patrol101.webp" className={styles.orderBoxPicture} />
                         </div>
                         <div className={styles.orderBoxDescriptionBox}>
                             <div className={styles.orderBoxDescriptionBoxTitle}>
@@ -777,7 +777,7 @@ const StudySystem: React.FC = (props: any) => {
                         </div>
                         <div className={`${styles.differentiationList} ${styles.first}`}>
                             <div className={styles.differentiationList_1}>
-                                전자기기 차단
+                                사이트 차단
                             </div>
                             <div className={styles.differentiationList_2}>
                                 학원 등원과 동시에 핸드폰 의무 제출 및 인강 사이트 외 모든 사이트의 접속이 차단되어 있습니다.

@@ -21,11 +21,13 @@ const Notification :React.FC<any> = (props) => {
     const [pageCount, setPageCount] = useState(1);
     const [currentPage, setCurrentPage] = useState(1);
     const [data, setData] = useState<any>();
+    const [data2, setData2] = useState<any>();
     const [totalCount, setTotalCount] = useState();
 
     const handlePageChange = (event: React.ChangeEvent<unknown>, value: number) => {
         setCurrentPage(value);
-      };
+        window.location.assign("/notification#" + value);
+    };
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -44,14 +46,28 @@ const Notification :React.FC<any> = (props) => {
 
     useEffect(() => {
 
+        console.log(window.location.hash);
+        
+        if(window.location.hash){
+            const hash = window.location.hash;
+            const newPageNumber = hash.split("#")[1];
+            setCurrentPage(+newPageNumber);
+        }
+
         fetch(`https://suneungsunbae.com/api/text/notifications?page=${currentPage}`, {
             method: "get"
         }).then((response : any)=>{
             response.json()
             .then((result : any)=>{
                 console.log(result);
-                setData(result.data);
-                setTotalCount(result.count);
+                if(result.message === "success"){
+                    setData(result.data);
+                    setData2(result.data2);
+                    setTotalCount(result.count);
+                    const count = result.count;
+                    const pageCountVar = Math.floor(count/20) + 1;
+                    setPageCount(pageCountVar);    
+                }
             })
         })
 
@@ -106,6 +122,68 @@ const Notification :React.FC<any> = (props) => {
                     </div>
                 </div>
 
+
+
+
+
+
+                {
+                    data2 && data2.map((eachData: any, dataIndex : number) => {
+
+                        const date = new Date(eachData.createdAt);
+
+                        return (
+                            <div key={eachData.id}>
+                                <div className={`${styles.notificationBodyRow} ${styles.isTop} ${styles.onlyPC}`}>
+                                    <div className={styles.bodyText1}>
+                                        공지
+                                    </div>
+                                    <div className={styles.bodyText2}>
+                                        <Link to={`/notificationRead?id=${eachData.id}`} style={{ textDecoration: "none", color: "inherit", width: "100%", display: "block" }}>
+                                            <span>{eachData.title}</span>
+                                        </Link>
+                                    </div>
+                                    <div className={styles.bodyText3}>
+                                        수능선배
+                                    </div>
+                                    <div className={styles.bodyText4}>
+                                        {date.getFullYear()}.{date.getMonth()+1 < 10 ? "0" + (date.getMonth()+1) : date.getMonth()+1}.{date.getDate() < 10 ? "0" + date.getDate() : date.getDate()}
+                                    </div>
+                                    <div className={styles.bodyText5}>
+                                        {eachData.views}
+                                    </div>
+                                </div>
+
+                                <Link to={`/notificationRead?id=${eachData.id}`} style={{ textDecoration: "none", color: "inherit", width: "100%", display: "block" }}>
+                                    <div className={`${styles.mobilenotificationBodyRow} ${styles.onlymobile}`}>
+                                        <div className={styles.mobilebodyText2}>
+                                            [공지] {eachData.title}
+                                        </div>
+                                        <div className={styles.mobileSubBodyDiv}>
+                                            <div className={styles.mobilebodyText3}>
+                                                수능선배&nbsp;&nbsp;|
+                                            </div>
+                                            <div className={styles.mobilebodyText4}>
+                                                &nbsp;&nbsp;{date.getFullYear()}.{date.getMonth()+1 < 10 ? "0" + (date.getMonth()+1) : date.getMonth()+1}.{date.getDate() < 10 ? "0" + date.getDate() : date.getDate()}&nbsp;&nbsp;|
+                                            </div>
+                                            <div className={styles.mobilebodyText5}>
+                                                &nbsp;&nbsp;{eachData.views}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </Link>
+                            </div>
+                        );
+                    })
+                }
+
+
+
+
+
+
+
+
                 {
                     data && data.map((eachData: any, dataIndex : number) => {
 
@@ -115,7 +193,7 @@ const Notification :React.FC<any> = (props) => {
                             <div key={eachData.id}>
                                 <div className={`${styles.notificationBodyRow} ${styles.onlyPC}`}>
                                     <div className={styles.bodyText1}>
-                                        {totalCount && totalCount - dataIndex}
+                                        {(totalCount && pageCount) && totalCount - (currentPage - 1) * 20 - dataIndex}
                                     </div>
                                     <div className={styles.bodyText2}>
                                         <Link to={`/notificationRead?id=${eachData.id}`} style={{ textDecoration: "none", color: "inherit", width: "100%", display: "block" }}>

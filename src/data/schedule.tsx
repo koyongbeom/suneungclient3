@@ -1,4 +1,6 @@
 const schedule = [
+    {name : "0교시", start : "08:00", end : "08:50", description : "의무학습(출입통제)"},
+    {name : "휴식", start : "08:50", end : "09:00", description : "쉬는시간"},
     {name : "1교시", start : "09:00", end : "10:20", description : "의무학습(출입통제)"},
     {name : "휴식", start : "10:20", end : "10:30", description : "쉬는시간"},
     {name : "2교시", start : "10:30", end : "11:50", description : "의무학습(출입통제)"},

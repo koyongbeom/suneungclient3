@@ -808,7 +808,7 @@ const MainPage: any = (props: any) => {
                 </div>
 
                 <div className={`${styles.mobileSixthSectionEachBox}`}>
-                    <div className={styles.mobileSixthSectionEachBoxImg} style={{ backgroundImage: "url(img/patrol555.webp)", backgroundPosition : "0% 50%" }}>
+                    <div className={styles.mobileSixthSectionEachBoxImg} style={{ backgroundImage: "url(img/patrol102.webp)", backgroundPosition : "0% 50%" }}>
 
                     </div>
                     <div className={styles.mobileSixthSectionEachBoxText}>

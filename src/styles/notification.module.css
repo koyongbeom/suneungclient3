@@ -130,6 +130,10 @@
     border-bottom: 1px solid #ddd;
 }
 
+.notificationBodyRow.isTop{
+    font-weight: 700;
+}
+
 .bodyText1{
     width: 143.99px;
     text-align: center;

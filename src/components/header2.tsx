@@ -132,6 +132,11 @@ const HeaderTwo: any = (props: any) => {
                         </div>
                     </Link>
                 </Collapse>
+                <Link to="/winterschool" style={{ textDecoration: "none", color: "inherit" }}>
+                    <div className={styles.mobileMenuList}>
+                        윈터스쿨
+                    </div>
+                </Link>
                 <Link to="/studysystem" style={{ textDecoration: "none", color: "inherit" }}>
                     <div className={styles.mobileMenuList}>
                         학습시스템
@@ -218,6 +223,13 @@ const HeaderTwo: any = (props: any) => {
                                     </div>
                                 }
                             </li>
+                            <Link to="/winterschool" style={{ textDecoration: "none", color: "inherit" }}>
+                                <li
+                                    onMouseEnter={() => { setHover(true); setHoverKind("winterschool"); }} onMouseLeave={() => setHover(false)}
+                                >
+                                    윈터스쿨
+                                </li>
+                            </Link>
                             <Link to="/studysystem" style={{ textDecoration: "none", color: "inherit" }}>
                                 <li
                                     onMouseEnter={() => { setHover(true); setHoverKind("study"); }} onMouseLeave={() => setHover(false)}
@@ -292,6 +304,12 @@ const HeaderTwo: any = (props: any) => {
             <div className={`${styles.bottomMenuBar} ${styles.onlymobile}`}>
                 <div className={styles.bottomMenuDiv} ref={ref}>
                     <div className={styles.listTab}>
+                        <div onClick={(e: any) => { navigate("/winterschool") }} className={styles.bottomMenuList}>
+                                윈터스쿨
+                                <div className={styles.dot1}>
+
+                                </div>
+                            </div>
                         <div onClick={(e : any)=>{navigate("/teachers")}} className={styles.bottomMenuList}>
                             담임멘토
                             <div className={styles.dot1}>

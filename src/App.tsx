@@ -22,6 +22,7 @@ import Storys from './pages/storys';
 import Storyread from './pages/storyread';
 import HeaderTwo from './components/header2';
 import Testmap from './pages/testmap';
+import WinterSchool from './pages/winterschool';
 // import Notification from './pages/notification';
 
 
@@ -100,6 +101,7 @@ function App() {
             <Route path="/register" element={<Register />}></Route>
             <Route path="/complete" element={<Complete />}></Route>
             <Route path="/parkgaeul" element={<Parkgaeul />}></Route>
+            <Route path="/winterschool" element={<WinterSchool />}></Route>
             
             
             <Route path="/attendancetable" element={<AttendanceTable />}></Route>

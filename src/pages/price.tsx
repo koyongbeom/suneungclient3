@@ -69,7 +69,7 @@ const Price : React.FC<any> = (props) => {
                                 자물쇠반 독학관리
                             </div>
                             <div className={styles.priceBoxAmount}>
-                                <span className={styles.number}>520,000</span>&nbsp;/월
+                                <span className={styles.number}>580,000</span>&nbsp;/월
                             </div>
                             <div className={styles.priceBoxSubAmount}>
                                 모든 독학재수관리 비용 포함
@@ -120,7 +120,7 @@ const Price : React.FC<any> = (props) => {
                                 자물쇠반 독학관리
                             </div>
                             <div className={styles.priceBoxAmount}>
-                                <span className={styles.number}>520,000</span>&nbsp;/월
+                                <span className={styles.number}>580,000</span>&nbsp;/월
                             </div>
                             <div className={styles.priceBoxSubAmount}>
                                 모든 독학재수관리 비용 포함
@@ -216,10 +216,10 @@ const Price : React.FC<any> = (props) => {
                     </div>
                     <div className={styles.priceSubDescription}>
                         <div className={`${styles.priceSubDescription_1} ${styles.onlyPC}`}>
-                            * 과외 수업 1회 수강 후 불만족 시 지불한 금액 100% 환불 가능합니다.
+                            {/* * 과외 수업 1회 수강 후 불만족 시 지불한 금액 100% 환불 가능합니다. */}
                         </div>
                         <div className={`${styles.priceSubDescription_1} ${styles.onlymobile}`}>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;▷&nbsp; 과외 수업 1회 수강 후 불만족 시<br></br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;지불한 금액 100% 환불 가능합니다.
+                            {/* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;▷&nbsp; 과외 수업 1회 수강 후 불만족 시<br></br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;지불한 금액 100% 환불 가능합니다. */}
                         </div>
                     </div>
                 </div>

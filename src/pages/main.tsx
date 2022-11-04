@@ -1616,13 +1616,23 @@ const MainPage: any = (props: any) => {
                     언론 속의 수능선배
                 </div>
                 <div className={styles.ninthSectionDescriptionDiv}>
-                    <a href="http://edu.donga.com/?p=article&ps=view&at_no=20220411153944332411" style={{textDecoration : "none", color : "inherit"}}>
+                    <a href="http://edu.donga.com/?p=article&ps=view&at_no=20221104145341243668" style={{textDecoration : "none", color : "inherit"}}>
                         <div className={`${styles.ninthSectionDescriptionDiv_1} ${styles.first}`}>
                             <div>
                                 에듀동아
                             </div>
                             <div>
-                                수능선배, "대입시장 진출 선언"..."강남 1호점"
+                                수능선배, '2023 윈터스쿨' 모집
+                            </div>
+                        </div>
+                    </a>
+                    <a href="http://edu.donga.com/?p=article&ps=view&at_no=20220527163509873121" style={{ textDecoration: "none", color: "inherit" }}>
+                        <div className={styles.ninthSectionDescriptionDiv_1}>
+                            <div>
+                                에듀동아
+                            </div>
+                            <div>
+                                수능선배, 전석 마감. 대기자 접수
                             </div>
                         </div>
                     </a>
@@ -1633,16 +1643,6 @@ const MainPage: any = (props: any) => {
                             </div>
                             <div>
                                 피트선배, 전석 마감. 대기자 늘어
-                            </div>
-                        </div>
-                    </a>
-                    <a href="https://news.jtbc.joins.com/article/article.aspx?news_id=NB11879213" style={{ textDecoration: "none", color: "inherit" }}>
-                        <div className={styles.ninthSectionDescriptionDiv_1}>
-                            <div>
-                                JTBC
-                            </div>
-                            <div>
-                                피트선배, 독보적인 시스템으로 주목
                             </div>
                         </div>
                     </a>
@@ -1704,7 +1704,7 @@ const MainPage: any = (props: any) => {
             }
 
 
-            {/* <Modal
+            <Modal
                 open={open5}
                 onClose={handleClose}
                 aria-labelledby="modal-modal-title"
@@ -1712,22 +1712,22 @@ const MainPage: any = (props: any) => {
             >
                 <Box sx={style5}>
                     <div className={styles.modalTitle}>
-                        수능선배 강남점 전좌석 마감
+                        수능선배 강남점 윈터스쿨 모집
                     </div>
                     <div className={styles.modalDescription}>
-                        대기신청 : 050-7871-3574 문자 전송
+                        신청방법 : 윈터스쿨 페이지 확인
                     </div>
                     <div className={styles.modalDescription}>
-                        (이름/연락처/등록예정시기/좌석형태)
+                        (예비 고1~3 대상)
                     </div>
                     <div className={`${styles.modalDescription} ${styles.sameDescription}`}>
 
                     </div>
                     <div className={`${styles.modalDescription} ${styles.sameDescription2}`}>
-                        ** 대기 신청 시 한달 이상 예상합니다.
+                        ** 마감 임박(40명 정원 마감)
                     </div>
                 </Box>
-            </Modal> */}
+            </Modal>
 
             <Footer />
 

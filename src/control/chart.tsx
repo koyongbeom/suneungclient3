@@ -196,11 +196,14 @@ const PreviousChart: React.FC<any> = (props) => {
 
 
     return (
-        <div className={styles.mainModal}>
-            <div className={styles.manageModalDivTitle}>
-                <div>학습관리({month ? month : ""}월 {date ? date : ""}일) - {teacherName} 담임선생님</div>
-                <div></div>
-            </div>
+        <div className={`${styles.mainModal} ${props.winterschool ? styles.winterschoolmain : ""}`}>
+            {
+                !props.winterschool &&
+                <div className={styles.manageModalDivTitle}>
+                    <div>학습관리({month ? month : ""}월 {date ? date : ""}일) - {teacherName} 담임선생님</div>
+                    <div></div>
+                </div>
+            }
             <div className={styles.manageTableModalDiv}>
                 <div className={styles.manageModalTable}>
                     <div className={styles.firstRow}>

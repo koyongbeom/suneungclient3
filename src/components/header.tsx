@@ -28,8 +28,8 @@ const Header: any = (props: any) => {
 
     const ref = useRef<any>(null);
 
-    const listener = (e : any) => {
-        if(!ref.current) return;
+    const listener = (e: any) => {
+        if (!ref.current) return;
 
         console.log(ref.current.scrollLeft);
 
@@ -38,17 +38,17 @@ const Header: any = (props: any) => {
 
     useEffect(() => {
 
-        if(!ref.current) return;
-        
+        if (!ref.current) return;
+
         ref.current.scrollTo(window.menuScrollX, 0);
 
         const throttledFn = throttle(listener, 100);
-        if(ref.current){
-        ref.current.addEventListener("scroll", throttledFn);
+        if (ref.current) {
+            ref.current.addEventListener("scroll", throttledFn);
         }
         return () => {
-            if(ref.current){
-            ref.current.removeEventListener("scroll", throttledFn);
+            if (ref.current) {
+                ref.current.removeEventListener("scroll", throttledFn);
             }
         };
 
@@ -140,6 +140,11 @@ const Header: any = (props: any) => {
                         </div>
                     </Link>
                 </Collapse>
+                <Link to="/winterschool" style={{ textDecoration: "none", color: "inherit" }}>
+                    <div className={styles.mobileMenuList}>
+                        윈터스쿨
+                    </div>
+                </Link>
                 <Link to="/studysystem" style={{ textDecoration: "none", color: "inherit" }}>
                     <div className={styles.mobileMenuList}>
                         학습시스템
@@ -228,6 +233,13 @@ const Header: any = (props: any) => {
                                     </div>
                                 }
                             </li>
+                            <Link to="/winterschool" style={{ textDecoration: "none", color: "inherit" }}>
+                                <li
+                                    onMouseEnter={() => { setHover(true); setHoverKind("winterschool"); }} onMouseLeave={() => setHover(false)}
+                                >
+                                    윈터스쿨
+                                </li>
+                            </Link>
                             <Link to="/studysystem" style={{ textDecoration: "none", color: "inherit" }}>
                                 <li
                                     onMouseEnter={() => { setHover(true); setHoverKind("study"); }} onMouseLeave={() => setHover(false)}
@@ -310,6 +322,12 @@ const Header: any = (props: any) => {
                 <div className={`${styles.bottomMenuBar} ${styles.onlymobile}`}>
                     <div ref={ref} className={styles.bottomMenuDiv}>
                         <div className={styles.listTab}>
+                            <div onClick={(e: any) => { navigate("/winterschool") }} className={styles.bottomMenuList}>
+                                윈터스쿨
+                                <div className={styles.dot1}>
+
+                                </div>
+                            </div>
                             <div onClick={(e: any) => { navigate("/teachers") }} className={styles.bottomMenuList}>
                                 담임멘토
                                 <div className={styles.dot1}>

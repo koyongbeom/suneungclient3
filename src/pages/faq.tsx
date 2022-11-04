@@ -423,9 +423,11 @@ const Faq: React.FC<any> = (props) => {
                 <span className={styles.bottomInfoText}>
                     24시 문의사항
                 </span>
-                <span className={styles.bottomInfoNumber}>
-                    050-7871-3574
-                </span>
+                <a href="tel:05078713574" className={styles.atag} style={{ textDecoration: "none", color: "inherit" }}>
+                    <span className={styles.bottomInfoNumber}>
+                        050-7871-3574
+                    </span>
+                </a>
             </div>
 
             <SpeedDialComponent />

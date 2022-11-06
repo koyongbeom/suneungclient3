@@ -183,6 +183,10 @@
     margin-bottom: 40px;
 }
 
+.listTitleDiv.wide{
+    width: 850px;
+}
+
 .listTitleDiv.none {
     display: none;
 }
@@ -232,6 +236,10 @@
     justify-content: center;
 }
 
+.submenuDescriptionTextDiv.moreMargin{
+    margin-bottom: 70px;
+}
+
 .submenuDescriptionDiv {
     display: flex;
     justify-content: center;
@@ -253,6 +261,7 @@
 
 
 
+
 .chartDiv {
     width: 1150px;
     margin: 0 auto;
@@ -268,12 +277,18 @@
     margin: 0 auto;
     display: flex;
     justify-content: center;
+    cursor: pointer;
 }
 
 .submenuImage {
     width: 80%;
     object-fit: contain;
     max-height: 600px;
+}
+
+.submenuImage.bigSize{
+    width: 100%;
+    max-height: none;
 }
 
 .mealDiv {
@@ -621,6 +636,10 @@
         margin: 0 auto;
         margin-bottom: 16px;
     }
+
+    .mobileDescriptionWrapper.moreBottomMargin{
+        margin-bottom: 40px;
+    }
     
     .submenuDescriptionTextDiv{
         width: 80%;
@@ -668,4 +687,9 @@
 
 
 
+}
+
+.modalImg{
+    width: 100%;
+    object-fit: cover;
 }

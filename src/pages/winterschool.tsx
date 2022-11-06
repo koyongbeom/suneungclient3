@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, useCallback } from "react";
 import smoothscroll from "smoothscroll-polyfill";
 import { throttle } from "lodash";
 
@@ -28,6 +28,33 @@ import { animated, useTransition } from "react-spring";
 import AttendanceCheck2 from "../control/attendanceCheck2";
 
 import { useMediaQuery } from "react-responsive";
+
+import Modal from '@mui/material/Modal';
+import Box from '@mui/material/Box';
+
+const style = {
+    position: 'absolute' as 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: "95%",
+    bgcolor: 'background.paper',
+    outline : "none",
+    boxShadow: 12,
+    p: 1,
+};
+
+const style2 = {
+    position: 'absolute' as 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 1150,
+    bgcolor: 'background.paper',
+    outline : "none",
+    boxShadow: 24,
+    p: 2,
+  };
 
 
 const mobileInteriorList = [
@@ -110,8 +137,18 @@ const data: any = [
         titleText: "나에게 필요한 강의, 컨텐츠, 공부전략을\n멘토와 함께 상의하고 계획하고 이행합니다",
         subMenu: [
             {
-                title: "8주 계획",
-                src: "img/8ju.webp",
+                title: "학습상담보고서(이과)",
+                src: "img/consultreport1.webp",
+                description: "입학 전, 종합 상담을 통해 학습 상태를 진단하고\n방학 동안의 학습전략과 강의/컨텐츠를 추천(이과생 예시)"
+            },
+            {
+                title: "학습상담보고서(문과)",
+                src: "img/consultreport3.webp",
+                description: "입학 전, 종합 상담을 통해 학습 상태를 진단하고\n방학 동안의 학습전략과 강의/컨텐츠를 추천(문과생 예시)"
+            },
+            {
+                title: "8주 계획(문이과)",
+                src: "img/eightweeks1.webp",
                 description: "입학 전, 종합 상담을 통해 8주간의 목표와 장기계획을 수립"
             },
             {
@@ -154,7 +191,7 @@ const data: any = [
     },
     {
         title: "고퀄리티 식사",
-        titleText: "고품질의 도시락과 특식 중\n선택할 수 있습니다"
+        titleText: "고급의 한식 도시락과 특식 중\n선택할 수 있습니다"
     }
 ]
 
@@ -164,9 +201,19 @@ const mobileData: any = [
         titleText: "나에게 필요한\n강의, 컨텐츠, 공부전략을\n멘토와 함께 상의하고\n계획하고 이행합니다",
         subMenu: [
             {
-                title: "8주 계획",
-                src: "img/8ju.webp",
-                description: "입학 전, 종합 상담을 통해 8주간의\n목표와 장기계획을 수립"
+                title: "학습상담보고서(이과)",
+                src: "img/consultreport1.webp",
+                description: "입학 전, 종합 상담을 통해\n학습 상태를 진단하고\n방학 동안의 학습전략과\n강의/컨텐츠를 추천(이과생)"
+            },
+            {
+                title: "학습상담보고서(문과)",
+                src: "img/consultreport3.webp",
+                description: "입학 전, 종합 상담을 통해\n학습 상태를 진단하고\n방학 동안의 학습전략과\n강의/컨텐츠를 추천(문과생)"
+            },
+            {
+                title: "8주 계획(문이과)",
+                src: "img/eightweeks1.webp",
+                description: "입학 전, 종합 상담을 통해\n8주간의 목표와 장기계획을 수립"
             },
             {
                 title: "매주 상담일지",
@@ -208,7 +255,7 @@ const mobileData: any = [
     },
     {
         title: "고퀄리티 식사",
-        titleText: "고품질의 도시락과 특식 중\n선택할 수 있습니다",
+        titleText: "고급 한식 도시락과 특식 중\n선택할 수 있습니다",
         subMenu: [
             {
                 title: "본도시락 1",
@@ -259,14 +306,83 @@ var scrollValue = 0;
 
 const WinterSchool: React.FC<any> = (props) => {
 
+    const [open, setOpen] = useState(false);
+    const [imgSrc, setImgSrc] = useState("");
+    const handleOpen = (src : string) => { setImgSrc(src); setOpen(true);  clearInterval(intervalRef);}
+    const handleClose = () => {setOpen(false); startInterval();}
+
+
+    const [open2, setOpen2] = useState(false);
+    const [imgSrc2, setImgSrc2] = useState("");
+    const handleOpen2 = (src : string) => { setImgSrc2(src); setOpen2(true);  clearInterval(intervalRef);}
+    const handleClose2 = () => {setOpen2(false); startInterval();}
+
+
+
     const isLargeTablet = useMediaQuery({ query: `(max-width : 1024px)` });
+    const isTablet = useMediaQuery({ query: `(min-width : 500px )` })
+
+    const [mobileBlankHeight, setMobileBlankHeight] = useState(0);
 
     const [index, setIndex] = useState(0);
     const [submenuIndex, setSubmenuIndex] = useState(0);
     const listRef = useRef<any>(null);
     const eachRef = useRef<any>(new Array());
 
+    const mobileDescriptionWrapperRef = useCallback((node) => {
+        if (!node) {
+            return;
+        }
+
+        calcBlankHeight();
+
+    }, []);
+    const mobileDescriptionRef = useRef<any>(null);
+
     const [isHeaderOpen, setIsHeaderOpen] = useState(true);
+
+
+    useEffect(() => {
+
+        calcBlankHeight();
+
+    }, [mobileDescriptionRef.current, mobileDescriptionRef, index, submenuIndex]);
+
+    const calcBlankHeight = () => {
+
+        // if (!isLargeTablet || !isTablet) {
+        //     return;
+        // }
+
+        // console.log("beforeIndex");
+        // console.log(mobileDescriptionRef);
+
+        // setTimeout(() => {
+        //     console.log("late");
+
+        //     console.log("beforeIndex");
+        //     console.log(mobileDescriptionRef);
+        //     if (!mobileDescriptionRef || !mobileDescriptionRef.current) {
+        //         return;
+        //     }
+
+        //     console.log("effect");
+        //     const height = mobileDescriptionRef.current.offsetHeight;
+        //     setMobileBlankHeight(height + 30);
+        // }, 1000);
+
+        // if (!mobileDescriptionRef || !mobileDescriptionRef.current) {
+        //     return;
+        // }
+
+        // console.log("effect");
+        // const height = mobileDescriptionRef.current.offsetHeight;
+        // setMobileBlankHeight(height + 30);
+
+
+
+    }
+
 
     const handleSubmenuIndex = (e: any, index: number) => {
         setSubmenuIndex(index);
@@ -513,7 +629,7 @@ const WinterSchool: React.FC<any> = (props) => {
                     }
                 </div>
 
-                <div className={`${styles.listTitleDiv} ${styles.onlyPC} ${index === 3 ? styles.none : ""}`}>
+                <div className={`${styles.listTitleDiv} ${styles.onlyPC} ${index === 3 ? styles.none : ""} ${index === 0 ? styles.wide : ""}`}>
                     {
                         data[index].subMenu && data[index].subMenu?.map((eachList: any, eachIndex: any) => {
                             return (
@@ -521,7 +637,7 @@ const WinterSchool: React.FC<any> = (props) => {
                                     <div onClick={(e) => { handleSubmenuIndex(e, eachIndex) }} className={`${styles.eachList} ${eachIndex === submenuIndex ? styles.active : ""}`}>
                                         {eachList.title}
                                     </div>
-                                    <div className={`${styles.eachListBorder} ${(index === 0 && eachIndex === 1) || (index === 1 && eachIndex === 3) || (index === 2 && eachIndex === 4) || (index === 2 && eachIndex === 9) ? styles.none : ""}`}>
+                                    <div className={`${styles.eachListBorder} ${(index === 0 && eachIndex === 3) || (index === 1 && eachIndex === 3) || (index === 2 && eachIndex === 4) || (index === 2 && eachIndex === 9) ? styles.none : ""}`}>
 
                                     </div>
                                 </div>
@@ -550,8 +666,8 @@ const WinterSchool: React.FC<any> = (props) => {
                                 {
                                     (data[index].subMenu && data[index].subMenu[submenuIndex] && data[index].subMenu[submenuIndex].description)
                                     &&
-                                    <div className={styles.submenuDescriptionTextDiv}>
-                                        <div className={styles.checkDiv}>
+                                    <div className={`${styles.submenuDescriptionTextDiv} ${(index === 0 && submenuIndex === 3) ? styles.moreMargin : ""}`}>
+                                        <div className={`${styles.checkDiv}`}>
                                             <Check className={styles.check} />
                                         </div>
                                         {data[index].subMenu[submenuIndex].description}
@@ -561,14 +677,23 @@ const WinterSchool: React.FC<any> = (props) => {
                                 {
                                     (data[index].subMenu && data[index].subMenu[submenuIndex] && data[index].subMenu[submenuIndex].src) &&
                                     <div>
-                                        <div className={styles.imgDiv}>
-                                            <img src={data[index].subMenu[submenuIndex].src} className={styles.submenuImage} />
+                                        <div className={styles.imgDiv} onClick={(e : any) => {handleOpen2(data[index].subMenu[submenuIndex].src);}}>
+                                            <img src={data[index].subMenu[submenuIndex].src} className={`${styles.submenuImage} ${index === 0 ? styles.bigSize : ""}`} />
                                         </div>
                                     </div>
                                 }
 
                                 {
-                                    (index === 0 && submenuIndex === 1) &&
+                                    (data[index].subMenu && data[index].subMenu[submenuIndex] && data[index].subMenu[submenuIndex].src && index === 0 && submenuIndex === 2) &&
+                                    <div>
+                                        <div className={styles.imgDiv} onClick={(e : any) => {handleOpen2("img/eightweeks2.webp");}}>
+                                            <img src="img/eightweeks2.webp" className={`${styles.submenuImage} ${index === 0 ? styles.bigSize : ""}`} />
+                                        </div>
+                                    </div>
+                                }
+
+                                {
+                                    (index === 0 && submenuIndex === 3) &&
                                     <div className={styles.chartDiv}>
                                         <PreviousChart winterschool={true} />
                                     </div>
@@ -590,33 +715,38 @@ const WinterSchool: React.FC<any> = (props) => {
                 </div>
 
                 <div className={styles.onlymobile}>
-
-                    {transitions((styles2, submenuIndex) => (
-                        <animated.div style={styles2}>
-                            <div style={{ position: "absolute", width: "90.6%", margin: "0 auto" }}>
-                                <div className={`${styles.mobileDescriptionWrapper} ${styles.onlymobile}`}>
-                                    {
-                                        (mobileData[index].subMenu && mobileData[index].subMenu[submenuIndex] && mobileData[index].subMenu[submenuIndex].description)
-                                        &&
-                                        <div>
-                                            <div className={styles.submenuDescriptionTextDiv}>
-                                                {mobileData[index].subMenu[submenuIndex].description}
-                                            </div>
-                                        </div>
-                                    }
-                                </div>
-
+                    <div ref={mobileDescriptionWrapperRef}>
+                        <div ref={mobileDescriptionRef} style={{ width: "90.6%", margin: "0 auto" }}>
+                            <div className={`${styles.mobileDescriptionWrapper} ${styles.onlymobile} ${(index === 0 && submenuIndex === 3) ? styles.moreBottomMargin : ""}`}>
                                 {
-                                    (mobileData[index].subMenu && mobileData[index].subMenu[submenuIndex] && mobileData[index].subMenu[submenuIndex].src) &&
-                                    <div className={`${styles.mobileImageWrapper} ${styles.onlymobile}`}>
-                                        <img src={mobileData[index].subMenu[submenuIndex].src} className={styles.mobileSubmenuImage} />
+                                    (mobileData[index].subMenu && mobileData[index].subMenu[submenuIndex] && mobileData[index].subMenu[submenuIndex].description)
+                                    &&
+                                    <div>
+                                        <div className={styles.submenuDescriptionTextDiv}>
+                                            {mobileData[index].subMenu[submenuIndex].description}
+                                        </div>
                                     </div>
                                 }
-
                             </div>
-                        </animated.div>
-                    ))}
 
+                            {
+                                (mobileData[index].subMenu && mobileData[index].subMenu[submenuIndex] && mobileData[index].subMenu[submenuIndex].src) &&
+                                <div onClick={(e : any) => {handleOpen(mobileData[index].subMenu[submenuIndex].src);} } className={`${styles.mobileImageWrapper} ${styles.onlymobile}`}>
+                                    <img src={mobileData[index].subMenu[submenuIndex].src} className={styles.mobileSubmenuImage} />
+                                </div>
+                            }
+
+                            {
+                                (mobileData[index].subMenu && mobileData[index].subMenu[submenuIndex] && mobileData[index].subMenu[submenuIndex].src && index === 0 && submenuIndex === 2) &&
+                                <div>
+                                    <div onClick={(e : any) => {handleOpen("img/eightweeks2.webp");} } className={`${styles.mobileImageWrapper} ${styles.onlymobile}`}>
+                                        <img src="img/eightweeks2.webp" className={`${styles.mobileSubmenuImage}`} />
+                                    </div>
+                                </div>
+                            }
+
+                        </div>
+                    </div>
                 </div>
 
 
@@ -659,14 +789,26 @@ const WinterSchool: React.FC<any> = (props) => {
             <div className={styles.onlyPC}>
                 {
                     (index === 0 && submenuIndex === 0) &&
-                    <div style={{ height: "700px" }}>
+                    <div style={{ height: "900px" }}>
+
+                    </div>
+                }
+                {
+                    (index === 0 && submenuIndex === 1) &&
+                    <div style={{ height: "900px" }}>
+
+                    </div>
+                }
+                {
+                    (index === 0 && submenuIndex === 2) &&
+                    <div style={{ height: "1700px" }}>
 
                     </div>
                 }
 
                 {
-                    (index === 0 && submenuIndex === 1) &&
-                    <div style={{ height: "900px" }}>
+                    (index === 0 && submenuIndex === 3) &&
+                    <div style={{ height: "950px" }}>
 
                     </div>
                 }
@@ -719,126 +861,139 @@ const WinterSchool: React.FC<any> = (props) => {
 
 
             <div className={styles.onlymobile}>
-                {
-                    (index === 0 && submenuIndex === 0) &&
-                    <div style={{ height: "350px" }}>
+                <div style={{ height: "50px" }}>
 
-                    </div>
-                }
+                </div>
 
-                {
-                    (index === 0 && submenuIndex === 1) &&
-                    <div style={{ height: "350px" }}>
+                <div style={{ display: (isLargeTablet && isTablet) ? "none" : "block" }}>
+                    {/* {
+                        (index === 0 && submenuIndex === 0) &&
+                        <div style={{ height: "400px" }}>
 
-                    </div>
-                }
+                        </div>
+                    }
 
-                {
-                    (index === 1 && submenuIndex === 0) &&
-                    <div style={{ height: "300px" }}>
+                    {
+                        (index === 0 && submenuIndex === 1) &&
+                        <div style={{ height: "400px" }}>
 
-                    </div>
-                }
+                        </div>
+                    }
 
-                {
-                    (index === 1 && submenuIndex === 1) &&
-                    <div style={{ height: "350px" }}>
+                    {
+                        (index === 0 && submenuIndex === 2) &&
+                        <div style={{ height: "350px" }}>
 
-                    </div>
-                }
+                        </div>
+                    }
 
-                {
-                    (index === 1 && submenuIndex === 2) &&
-                    <div style={{ height: "400px" }}>
+                    {
+                        (index === 0 && submenuIndex === 3) &&
+                        <div style={{ height: "350px" }}>
 
-                    </div>
-                }
+                        </div>
+                    }
 
-                {
-                    (index === 1 && submenuIndex === 3) &&
-                    <div style={{ height: "300px" }}>
+                    {
+                        (index === 1 && submenuIndex === 0) &&
+                        <div style={{ height: "300px" }}>
 
-                    </div>
-                }
+                        </div>
+                    }
 
-                {
-                    (index === 2 && submenuIndex === 0) &&
-                    <div style={{ height: "350px" }}>
+                    {
+                        (index === 1 && submenuIndex === 1) &&
+                        <div style={{ height: "350px" }}>
 
-                    </div>
-                }
+                        </div>
+                    }
 
-                {
-                    (index === 2 && submenuIndex === 1) &&
-                    <div style={{ height: "350px" }}>
+                    {
+                        (index === 1 && submenuIndex === 2) &&
+                        <div style={{ height: "400px" }}>
 
-                    </div>
-                }
+                        </div>
+                    }
 
-                {
-                    (index === 2 && submenuIndex === 2) &&
-                    <div style={{ height: "450px" }}>
+                    {
+                        (index === 1 && submenuIndex === 3) &&
+                        <div style={{ height: "300px" }}>
 
-                    </div>
-                }
+                        </div>
+                    }
 
-                {
-                    (index === 2 && submenuIndex === 3) &&
-                    <div style={{ height: "400px" }}>
+                    {
+                        (index === 2 && submenuIndex === 0) &&
+                        <div style={{ height: "350px" }}>
 
-                    </div>
-                }
+                        </div>
+                    }
 
-                {
-                    (index === 2 && submenuIndex === 4) &&
-                    <div style={{ height: "450px" }}>
+                    {
+                        (index === 2 && submenuIndex === 1) &&
+                        <div style={{ height: "350px" }}>
 
-                    </div>
-                }
+                        </div>
+                    }
 
-                {
-                    (index === 2 && submenuIndex === 5) &&
-                    <div style={{ height: "350px" }}>
+                    {
+                        (index === 2 && submenuIndex === 2) &&
+                        <div style={{ height: "450px" }}>
 
-                    </div>
-                }
+                        </div>
+                    }
 
-                {
-                    (index === 3 && submenuIndex === 0) &&
-                    <div style={{ height: "450px" }}>
+                    {
+                        (index === 2 && submenuIndex === 3) &&
+                        <div style={{ height: "400px" }}>
 
-                    </div>
-                }
+                        </div>
+                    }
 
-                {
-                    (index === 3 && submenuIndex === 1) &&
-                    <div style={{ height: "450px" }}>
+                    {
+                        (index === 2 && submenuIndex === 4) &&
+                        <div style={{ height: "450px" }}>
 
-                    </div>
-                }
+                        </div>
+                    }
 
-                {
-                    (index === 3 && submenuIndex === 2) &&
-                    <div style={{ height: "300px" }}>
+                    {
+                        (index === 2 && submenuIndex === 5) &&
+                        <div style={{ height: "350px" }}>
 
-                    </div>
-                }
+                        </div>
+                    }
 
-                {
-                    (index === 3 && submenuIndex === 3) &&
-                    <div style={{ height: "360px" }}>
+                    {
+                        (index === 3 && submenuIndex === 0) &&
+                        <div style={{ height: "450px" }}>
 
-                    </div>
-                }
+                        </div>
+                    }
 
+                    {
+                        (index === 3 && submenuIndex === 1) &&
+                        <div style={{ height: "450px" }}>
 
+                        </div>
+                    }
 
+                    {
+                        (index === 3 && submenuIndex === 2) &&
+                        <div style={{ height: "300px" }}>
 
+                        </div>
+                    }
 
+                    {
+                        (index === 3 && submenuIndex === 3) &&
+                        <div style={{ height: "360px" }}>
 
+                        </div>
+                    }
+ */}
 
-
-
+                </div>
 
             </div>
 
@@ -927,6 +1082,29 @@ const WinterSchool: React.FC<any> = (props) => {
 
                 </div>
             </div>
+
+            <Modal
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+            >
+                <Box sx={style}>
+                    <img className={styles.modalImg} src={imgSrc} />
+                </Box>
+            </Modal>
+
+
+            <Modal
+                open={open2}
+                onClose={handleClose2}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+            >
+                <Box sx={style2}>
+                    <img className={styles.modalImg} src={imgSrc2} />
+                </Box>
+            </Modal>
 
 
 

@@ -231,9 +231,11 @@
     margin-bottom: 18px;
     font-family: "Apple_SB";
     font-size: 20px;
-    display: flex;
-    align-items: center;
+
     justify-content: center;
+    white-space: pre-wrap;
+    text-align: center;
+    line-height: 1.6;
 }
 
 .submenuDescriptionTextDiv.moreMargin{
@@ -252,7 +254,7 @@
 }
 
 .check {
-    width: 20px;
+    width: 24px;
 }
 
 .checkDiv {

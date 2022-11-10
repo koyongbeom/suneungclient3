@@ -21,7 +21,6 @@ import ImageTransitionInterior from "../control/imagetransitioninterior";
 import SpeedDialComponent from "../control/speeddial";
 
 import ReactGa from "react-ga4";
-import interiorList from "../data/interiorlist";
 import PreviousChart from "../control/chart";
 
 import { animated, useTransition } from "react-spring";
@@ -55,6 +54,105 @@ const style2 = {
     boxShadow: 24,
     p: 2,
   };
+
+  const interiorList = [
+    {
+        title : "전체전경1",
+        description : "24시간 환기 설비가 가동되고 있고\n최고의 퍼시스 책걸상으로 구성되어 있습니다",
+        src : "img/newinterior/02BL7589_1.webp"
+    },
+    {
+        title : "전체전경2",
+        description : "항상 최적의 깔끔함을 유지하는데 적합한 자재들을 사용하였고\n충분한 환기 시설을 통해 쾌적함을 유지합니다.",
+        src : "img/newinterior/02BL7841_1.webp"
+    },
+    {
+        title : "자습실전경",
+        description : "24시간 최고급 환기 설비, 공기청정기, 백색소음기가 작동되고 있어\n넓은 자습실에서 쾌적하게 공부할 수 있습니다.",
+        src : "img/newinterior/02BL7643_1.webp"
+    },
+    {
+        title : "교실형구획",
+        description : "학생들이 공부에 집중할 수 있도록 적당한 시선 차단과 동시에\n개방감을 줄 수 있는 책상으로 구성되어 있습니다.",
+        src : "img/newinterior/02BL7616_1.webp"
+    },
+    {
+        title : "교실형책상",
+        description : "최고급 퍼시스 책상과 의자로 구성되어 있으며\n각 책상마다 잠금장치와 3구 콘센트가 설치되어 있습니다.",
+        src : "img/newinterior/02BL7949_1.webp"
+    },
+    {
+        title : "칸막이구획",
+        description : "등 뒤 공간을 넓게 사용하고 싶은 학생들을 위한 공간으로\n칸막이 책상 이용 학생 전부에게는 대형 사물함이 제공됩니다.",
+        src : "img/newinterior/02BL7757_1.webp"
+    },
+    {
+        title : "칸막이책상",
+        description : "최고급 시디즈 책상과 시디즈 의자로 구성되어 있으며\n밝기 조절이 가능한 스탠드가 설치되어 있습니다.",
+        src : "img/newinterior/02BL8045_1.webp"
+    },
+    {
+        title : "휴게실",
+        description : "24시간 환기시설이 작동하는 깔끔하고 쾌적한 넓은 휴게실에서\n식사와 편안한 공부를 할 수 있습니다.",
+        src : "img/newinterior/02BL7823_1.webp"
+    },
+    {
+        title : "상담실전경",
+        description : "자연광이 들어오는 넓고 쾌적한 상담실에서\n담임 멘토와 매주 상담을 진행합니다.",
+        src : "img/newinterior/02BL7844_1.webp"
+    },
+    {
+        title : "상담실",
+        description : "넓은 공간에 데스커 책상과 시디즈 의자로 구성되어 있고\n칠판이 있어 질의응답에 용이합니다.",
+        src : "img/newinterior/02BL7886_1.webp"
+    },
+    // {
+    //     title : "백색소음기",
+    //     description : "백색소음기 음량은 학생들이 가장 집중을 잘 할 수 있는 적당한 크기로 조절하고 있습니다.",
+    //     src : "img/interiore/whitenoise.webp"
+    // },
+    // {
+    //     title : "시스템에어컨",
+    //     description : "모든 에어컨에 윈드바이저가 설치되어 있어 어떤 자리의 학생에게도 직접 바람이 가지 않습니다.",
+    //     src : "img/interiore/aircondition.webp"
+    // },
+    // {
+    //     title : "온습도측정기",
+    //     description : "열람실의 각 위치에 온습도 측정기가 설치되어 있어 매교시마다 온습도를 체크하고 공부에 가장 최적화된 온습도로 조정합니다.",
+    //     src : "img/interiore/temperature5.webp"
+    // },
+    // {
+    //     title : "와이파이",
+    //     description : "IPTIME 공유기 중 최고가 모델을 사용하고 와이파이 동시 접속자 수가 많아도 원활하게 인강 수강 가능합니다.",
+    //     src : "img/interiore/wifi.webp"
+    // },
+    // {
+    //     title : "스탠딩테이블",
+    //     description : "휴게실에는 스탠딩테이블이 설치되어 있어 공부하다 졸린 학생들이 잠을 깨고 공부할 수 있습니다.",
+    //     src : "img/interiore/standing.webp"
+    // },
+    // {
+    //     title : "프린터",
+    //     description : "속도가 빠른 사무형 프린터가 설치되어 있어 학생들은 언제든 프린트를 빠르게 할 수 있습니다.",
+    //     src : "img/interiore/printer.webp"
+    // },
+    // {
+    //     title : "사물함",
+    //     description : "크기가 큰 대형 사물함이 설치되어 있고 모든 학생들에게 한 개의 사물함이 제공됩니다.",
+    //     src : "img/interiore/cabinet5.webp"
+    // },
+    // {
+    //     title : "콘센트",
+    //     description : "모든 휴게실의 테이블에는 콘센트가 설치되어 있어 장시간의 인강 수강도 문제가 없습니다.",
+    //     src : "img/01_1.webp"
+    // },
+    {
+        title : "데스크",
+        description : "생활관리 사감이 상주하면서 학생들의 출석체크 및 생활관리를 하는 데스크입니다.",
+        src : "img/newinterior/02BL7913_1.webp"
+    }
+];
+
 
 
 const mobileInteriorList = [
@@ -134,27 +232,27 @@ const mobileInteriorList = [
 const data: any = [
     {
         title: "개별 학습관리",
-        titleText: "나에게 필요한 강의, 컨텐츠, 공부전략을\n멘토와 함께 상의하고 계획하고 이행합니다",
+        titleText: "나에게 필요한 강의, 컨텐츠, 공부전략을\n최고의 멘토와 함께 상의하고 계획하고 이행합니다",
         subMenu: [
             {
-                title: "학습상담보고서(이과)",
+                title: "학습진단(이과)",
                 src: "img/consultreport1.webp",
                 description: "입학 전, 종합 상담을 통해 학습 상태를 진단하고\n방학 동안의 학습전략과 강의/컨텐츠를 추천(이과생 예시)"
             },
             {
-                title: "학습상담보고서(문과)",
+                title: "학습진단(문과)",
                 src: "img/consultreport3.webp",
                 description: "입학 전, 종합 상담을 통해 학습 상태를 진단하고\n방학 동안의 학습전략과 강의/컨텐츠를 추천(문과생 예시)"
             },
             {
-                title: "8주 계획(문이과)",
+                title: "8주 진도계획",
                 src: "img/eightweeks1.webp",
-                description: "입학 전, 종합 상담을 통해 8주간의 목표와 장기계획을 수립"
+                description: "종합 상담 내용을 바탕으로\n8주간의 목표와 장기계획을 수립"
             },
             {
                 title: "매주 상담일지",
                 src: "",
-                description: "매주 담당 멘토와의 1:1 대면 상담으로\n주단위 계획수립, 진도 체크, 테스트 진행"
+                description: "매주 담당 멘토와의 1:1 대면 상담으로\n주단위 계획수립, 진도 체크, 개인 진도에 맞춘 위클리 테스트 진행"
             }
         ]
     },
@@ -165,7 +263,7 @@ const data: any = [
             {
                 title: "카톡 알림톡",
                 src: "img/chulgyeol.webp",
-                description: "입실/퇴실 시 실시간 알림톡 전송"
+                description: "등하원 뿐만 아니라\n모든 입실/퇴실 시 실시간 알림톡 전송"
             },
             {
                 title: "출결 업무화면",
@@ -198,27 +296,27 @@ const data: any = [
 const mobileData: any = [
     {
         title: "개별 학습관리",
-        titleText: "나에게 필요한\n강의, 컨텐츠, 공부전략을\n멘토와 함께 상의하고\n계획하고 이행합니다",
+        titleText: "나에게 필요한\n강의, 컨텐츠, 공부전략을\n최고의 멘토와 함께 상의하고\n계획하고 이행합니다",
         subMenu: [
             {
-                title: "학습상담보고서(이과)",
+                title: "학습진단(이과)",
                 src: "img/consultreport1.webp",
                 description: "입학 전, 종합 상담을 통해\n학습 상태를 진단하고\n방학 동안의 학습전략과\n강의/컨텐츠를 추천(이과생)"
             },
             {
-                title: "학습상담보고서(문과)",
+                title: "학습진단(문과)",
                 src: "img/consultreport3.webp",
                 description: "입학 전, 종합 상담을 통해\n학습 상태를 진단하고\n방학 동안의 학습전략과\n강의/컨텐츠를 추천(문과생)"
             },
             {
-                title: "8주 계획(문이과)",
+                title: "8주 진도계획",
                 src: "img/eightweeks1.webp",
-                description: "입학 전, 종합 상담을 통해\n8주간의 목표와 장기계획을 수립"
+                description: "종합 상담 내용을 바탕으로\n8주간의 목표와 장기계획을 수립"
             },
             {
                 title: "매주 상담일지",
                 src: "img/consultreport2.webp",
-                description: "매주 담당 멘토와의 1:1 대면 상담으로\n주단위 계획수립, 진도 체크, 테스트 진행"
+                description: "매주 담당 멘토와의 1:1 대면 상담으로\n주단위 계획수립, 진도 체크, \n 개인 진도별 위클리 테스트 진행"
             }
         ]
     },
@@ -229,7 +327,7 @@ const mobileData: any = [
             {
                 title: "카톡 알림톡",
                 src: "img/chulgyeol.webp",
-                description: "입실/퇴실 시 실시간 알림톡 전송"
+                description: "등하원 뿐만 아니라\n모든 입실/퇴실 시 실시간 알림톡 전송"
             },
             {
                 title: "출결 업무화면",
@@ -244,7 +342,7 @@ const mobileData: any = [
             {
                 title: "사이트 차단",
                 src: "img/block.webp",
-                description: "인강 사이트 외 모든 사이트 및 어플 차단"
+                description: "인강 사이트 외 모든 사이트 및 어플 차단\n(상담 후 특정 공부 사이트 오픈 가능)"
             },
         ]
     },
@@ -637,7 +735,7 @@ const WinterSchool: React.FC<any> = (props) => {
                                     <div onClick={(e) => { handleSubmenuIndex(e, eachIndex) }} className={`${styles.eachList} ${eachIndex === submenuIndex ? styles.active : ""}`}>
                                         {eachList.title}
                                     </div>
-                                    <div className={`${styles.eachListBorder} ${(index === 0 && eachIndex === 3) || (index === 1 && eachIndex === 3) || (index === 2 && eachIndex === 4) || (index === 2 && eachIndex === 9) ? styles.none : ""}`}>
+                                    <div className={`${styles.eachListBorder} ${(index === 0 && eachIndex === 3) || (index === 1 && eachIndex === 3) || (index === 2 && eachIndex === 4) || (index === 2 && eachIndex === 10) ? styles.none : ""}`}>
 
                                     </div>
                                 </div>
@@ -686,8 +784,8 @@ const WinterSchool: React.FC<any> = (props) => {
                                 {
                                     (data[index].subMenu && data[index].subMenu[submenuIndex] && data[index].subMenu[submenuIndex].src && index === 0 && submenuIndex === 2) &&
                                     <div>
-                                        <div className={styles.imgDiv} onClick={(e : any) => {handleOpen2("img/eightweeks2.webp");}}>
-                                            <img src="img/eightweeks2.webp" className={`${styles.submenuImage} ${index === 0 ? styles.bigSize : ""}`} />
+                                        <div className={styles.imgDiv} onClick={(e : any) => {handleOpen2("img/eightweeks3.webp");}}>
+                                            <img src="img/eightweeks3.webp" className={`${styles.submenuImage} ${index === 0 ? styles.bigSize : ""}`} />
                                         </div>
                                     </div>
                                 }
@@ -739,8 +837,8 @@ const WinterSchool: React.FC<any> = (props) => {
                             {
                                 (mobileData[index].subMenu && mobileData[index].subMenu[submenuIndex] && mobileData[index].subMenu[submenuIndex].src && index === 0 && submenuIndex === 2) &&
                                 <div>
-                                    <div onClick={(e : any) => {handleOpen("img/eightweeks2.webp");} } className={`${styles.mobileImageWrapper} ${styles.onlymobile}`}>
-                                        <img src="img/eightweeks2.webp" className={`${styles.mobileSubmenuImage}`} />
+                                    <div onClick={(e : any) => {handleOpen("img/eightweeks3.webp");} } className={`${styles.mobileImageWrapper} ${styles.onlymobile}`}>
+                                        <img src="img/eightweeks3.webp" className={`${styles.mobileSubmenuImage}`} />
                                     </div>
                                 </div>
                             }
@@ -789,26 +887,26 @@ const WinterSchool: React.FC<any> = (props) => {
             <div className={styles.onlyPC}>
                 {
                     (index === 0 && submenuIndex === 0) &&
-                    <div style={{ height: "900px" }}>
+                    <div style={{ height: "950px" }}>
 
                     </div>
                 }
                 {
                     (index === 0 && submenuIndex === 1) &&
-                    <div style={{ height: "900px" }}>
+                    <div style={{ height: "950px" }}>
 
                     </div>
                 }
                 {
                     (index === 0 && submenuIndex === 2) &&
-                    <div style={{ height: "1700px" }}>
+                    <div style={{ height: "1750px" }}>
 
                     </div>
                 }
 
                 {
                     (index === 0 && submenuIndex === 3) &&
-                    <div style={{ height: "950px" }}>
+                    <div style={{ height: "1000px" }}>
 
                     </div>
                 }
@@ -822,14 +920,14 @@ const WinterSchool: React.FC<any> = (props) => {
 
                 {
                     (index === 1 && submenuIndex === 1) &&
-                    <div style={{ height: "750px" }}>
+                    <div style={{ height: "800px" }}>
 
                     </div>
                 }
 
                 {
                     (index === 1 && submenuIndex === 2) &&
-                    <div style={{ height: "850px" }}>
+                    <div style={{ height: "800px" }}>
 
                     </div>
                 }
@@ -1061,9 +1159,6 @@ const WinterSchool: React.FC<any> = (props) => {
                                 </div>
                                 <div>
                                     ② 2개월 이상 결제 시 5% 추가 할인
-                                </div>
-                                <div>
-                                    ③ 2인 이상 동반 등록 시 3% 추가 할인
                                 </div>
                             </div>
                         </div>

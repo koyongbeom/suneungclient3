@@ -399,6 +399,7 @@ const clickMenuList = [
 var currentIndex = 0;
 var currentSubmenuIndex = 0;
 var intervalRef: any;
+var intervalStatus : boolean | undefined;
 
 var scrollValue = 0;
 
@@ -406,14 +407,14 @@ const WinterSchool: React.FC<any> = (props) => {
 
     const [open, setOpen] = useState(false);
     const [imgSrc, setImgSrc] = useState("");
-    const handleOpen = (src : string) => { setImgSrc(src); setOpen(true);  clearInterval(intervalRef);}
-    const handleClose = () => {setOpen(false); startInterval();}
+    const handleOpen = (src : string) => { setImgSrc(src); setOpen(true);  clearInterval(intervalRef); intervalStatus = false;}
+    const handleClose = () => {setOpen(false); startInterval(); intervalStatus = true;}
 
 
     const [open2, setOpen2] = useState(false);
     const [imgSrc2, setImgSrc2] = useState("");
-    const handleOpen2 = (src : string) => { setImgSrc2(src); setOpen2(true);  clearInterval(intervalRef);}
-    const handleClose2 = () => {setOpen2(false); startInterval();}
+    const handleOpen2 = (src : string) => { setImgSrc2(src); setOpen2(true);  clearInterval(intervalRef); intervalStatus = false;}
+    const handleClose2 = () => {setOpen2(false); startInterval(); intervalStatus = true;}
 
 
 
@@ -426,6 +427,8 @@ const WinterSchool: React.FC<any> = (props) => {
     const [submenuIndex, setSubmenuIndex] = useState(0);
     const listRef = useRef<any>(null);
     const eachRef = useRef<any>(new Array());
+
+    const bottomBoxRef = useRef<any>(null);
 
     const mobileDescriptionWrapperRef = useCallback((node) => {
         if (!node) {
@@ -488,6 +491,7 @@ const WinterSchool: React.FC<any> = (props) => {
         if (e !== "e") {
             clearInterval(intervalRef);
             startInterval();
+            intervalStatus = true;
         }
     }
 
@@ -498,6 +502,7 @@ const WinterSchool: React.FC<any> = (props) => {
         if (e !== "e") {
             clearInterval(intervalRef);
             startInterval();
+            intervalStatus = true;
         }
     }
 
@@ -558,6 +563,8 @@ const WinterSchool: React.FC<any> = (props) => {
 
         }, 3000);
 
+        intervalStatus = true;
+
         return () => clearInterval(intervalRef);
 
     }, []);
@@ -615,31 +622,58 @@ const WinterSchool: React.FC<any> = (props) => {
 
     useEffect(() => {
 
+
+
+        setInterval(() => {
+
+            console.log("intervalStatus" + intervalStatus);
+
+        }, 1000);
+
+    }, []);
+
+    useEffect(() => {
+
         console.log(isLargeTablet);
 
-        if (!isLargeTablet) {
-            return;
-        }
+        // if (!isLargeTablet) {
+        //     return;
+        // }
 
         console.log("gogogo");
 
         const handleScroll = (e: any) => {
             const value = window.scrollY;
 
-            console.log(value);
-            console.log(scrollValue);
+            // console.log(value);
+            // console.log(scrollValue);
 
             if (scrollValue > 200) {
-                console.log("true");
                 setIsHeaderOpen(false);
             }
 
             if (value <= 200) {
                 setIsHeaderOpen(true);
             }
-
-
             scrollValue = value;
+
+            if(bottomBoxRef && bottomBoxRef.current){
+
+                const topDistance = bottomBoxRef.current.getBoundingClientRect().top;
+   
+                if(topDistance < 350){
+                    if(intervalStatus){
+                        clearInterval(intervalRef);
+                        intervalStatus = false;
+                    }
+                }else{
+                    if(intervalStatus === false){
+                        startInterval();
+                        intervalStatus = true;
+                    }
+                }
+
+            }
 
         }
 
@@ -649,7 +683,7 @@ const WinterSchool: React.FC<any> = (props) => {
 
         return () => window.removeEventListener("scroll", throttleFn);
 
-    }, []);
+    }, [bottomBoxRef]);
 
     return (
         <div>
@@ -1095,10 +1129,8 @@ const WinterSchool: React.FC<any> = (props) => {
 
             </div>
 
-            <div className={styles.bottomBox}>
+            <div className={styles.bottomBox} ref={bottomBoxRef}>
                 <div className={styles.bottomBoxDiv}>
-
-
                     <div className={`${styles.bottomBoxTitle} ${styles.onlyPC}`}>
                         수능선배 강남점 윈터스쿨 예약 안내
                     </div>

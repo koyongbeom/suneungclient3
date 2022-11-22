@@ -301,13 +301,13 @@ const Register: React.FC<any> = (props) => {
 
 
                         //토요일 시간 빼는 기능--------------------------------------------------
-                        if (realSelectedDay.day === 6) {
-                            newAmPm.forEach((eachTime: any) => {
-                                if (eachTime.time < 1020) {
-                                    eachTime.possible = false;
-                                }
-                            })
-                        }
+                        // if (realSelectedDay.day === 6) {
+                        //     newAmPm.forEach((eachTime: any) => {
+                        //         if (eachTime.time < 1020) {
+                        //             eachTime.possible = false;
+                        //         }
+                        //     })
+                        // }
                         //----------------------------------------------------------------------
 
 
@@ -743,7 +743,7 @@ const Register: React.FC<any> = (props) => {
                                 !isPmRemain && 
                                 <div className={styles.noneBox}>
                                     오늘은 가능한 시간이 없어요<br></br>
-                                    다른 날을 선택해주세요 😃
+                                    다른 날을 클릭해주세요 😃
                                 </div>
                             }
 

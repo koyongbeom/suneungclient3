@@ -147,7 +147,7 @@ const Price : React.FC<any> = (props) => {
 
 
 
-            <div className={styles.main2}>
+            {/* <div className={styles.main2}>
                 <div className={styles.innerMain}>
                     <div className={`${styles.mainTitle} ${styles.onlyPC}`}>
                         수능선배에서 최고의 튜터에게<br></br>일대일 과외를 받을 수 있습니다
@@ -196,34 +196,15 @@ const Price : React.FC<any> = (props) => {
                                 이론 점검, 문제 풀이를<br></br>원하는 학생에게 추천합니다
                             </div>
                         </div>
-                        {/* <div className={`${styles.priceBox} ${styles.last}`}>
-                            <div className={styles.priceBoxTitle}>
-                                일대일 과외
-                            </div>
-                            <div className={styles.priceBoxText}>
-                                주 1회&nbsp; 3시간
-                            </div>
-                            <div className={styles.priceBoxAmount}>
-                                <span className={styles.number}>540,000</span>&nbsp;/월
-                            </div>
-                            <div className={styles.priceBoxSubAmount}>
-                                모든 독학재수관리 비용 포함
-                            </div>
-                            <div className={styles.bottomText}>
-                                넓은 시야와 공간을<br></br>원하는 학생에게 추천합니다
-                            </div>
-                        </div> */}
                     </div>
                     <div className={styles.priceSubDescription}>
                         <div className={`${styles.priceSubDescription_1} ${styles.onlyPC}`}>
-                            {/* * 과외 수업 1회 수강 후 불만족 시 지불한 금액 100% 환불 가능합니다. */}
                         </div>
                         <div className={`${styles.priceSubDescription_1} ${styles.onlymobile}`}>
-                            {/* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;▷&nbsp; 과외 수업 1회 수강 후 불만족 시<br></br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;지불한 금액 100% 환불 가능합니다. */}
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> */}
 
             <SpeedDialComponent />
             <Footer />

@@ -107,7 +107,7 @@ const HeaderTwo: any = (props: any) => {
             </div>
             <List>
                 <div onClick={handleClick} className={styles.mobileMenuList}>
-                    <div>학원소개</div>
+                    <div>수능선배 소개</div>
                     {open ? <ExpandLess sx={{ color: "rgb(66, 75, 88)" }} /> : <ExpandMore sx={{ color: "rgb(66, 75, 88)" }} />}
                 </div>
                 <Collapse in={open} timeout="auto" unmountOnExit>
@@ -188,7 +188,7 @@ const HeaderTwo: any = (props: any) => {
                                 style={{ position: "relative" }}
                                 onMouseEnter={() => { setHover(true); setHoverKind("introduce"); }} onMouseLeave={() => { setHover(false); setHoverKind("") }}
                             >
-                                    학원소개
+                                    수능선배 소개
                                 {
                                     hoverKind === "introduce" &&
                                     <div className={styles.cateBox}>

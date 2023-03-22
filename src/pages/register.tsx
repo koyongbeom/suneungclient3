@@ -74,6 +74,8 @@ const Register: React.FC<any> = (props) => {
     const isMobile = useMediaQuery({query : '(max-width : 500px)'});
 
 
+    const [isConstructionDay, setIsConstructionDay] = useState(false);
+
     //ga event------------------------------------------------
     useEffect(() => {
         // ReactGa.event({
@@ -214,6 +216,9 @@ const Register: React.FC<any> = (props) => {
         console.log(time);
         setSelectedTime(time);
     }
+
+
+
 
 
     useEffect(() => {
@@ -376,7 +381,58 @@ const Register: React.FC<any> = (props) => {
         }
 
 
-    }, [realSelectedDay, select])
+    }, [realSelectedDay, select]);
+
+
+
+    //잠깐 이번주 수,목 방문 상담 빼는 기능--------------------------
+    useEffect(() => {
+
+
+        if (!selectedDay || !timeData) {
+            console.log("noData");
+            return;
+        }
+
+        console.log(selectedDay);
+
+        var count = 0;
+
+        timeData.forEach((eachTimeData : any) => {
+            if(eachTimeData.possible === false){
+                count++;
+            }
+        })
+
+        if(count === timeData.length){
+            return;
+        }
+
+
+        if (selectedDay === 20221030 || selectedDay === 20221101) {
+            if (select === 0 || select === 2) {
+
+                console.log("gogogogogog");
+                console.log(select);
+
+                console.log(timeData);
+                const newTimeData = timeData
+                newTimeData.forEach((eachTime: any) => {
+                    eachTime.possible = false;
+                })
+                setTimeData([...newTimeData]);
+            }
+        }
+
+
+
+    }, [selectedDay, select, timeData]);
+
+    //------------------------------------------------------------------------------------------
+
+
+
+
 
 
 

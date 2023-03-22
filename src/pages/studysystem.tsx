@@ -670,7 +670,7 @@ const StudySystem: React.FC = (props: any) => {
 
                     <div className={styles.orderBox}>
                         <div className={styles.orderBoxPictureBox}>
-                            <img src="img/cellphone.webp" className={styles.orderBoxPicture} />
+                            <img src="img/phones.webp" className={styles.orderBoxPicture} />
                         </div>
                         <div className={styles.orderBoxDescriptionBox}>
                             <div className={styles.orderBoxDescriptionBoxTitle}>

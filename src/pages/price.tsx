@@ -147,7 +147,7 @@ const Price : React.FC<any> = (props) => {
 
 
 
-            {/* <div className={styles.main2}>
+            <div className={styles.main2}>
                 <div className={styles.innerMain}>
                     <div className={`${styles.mainTitle} ${styles.onlyPC}`}>
                         수능선배에서 최고의 튜터에게<br></br>일대일 과외를 받을 수 있습니다
@@ -204,7 +204,7 @@ const Price : React.FC<any> = (props) => {
                         </div>
                     </div>
                 </div>
-            </div> */}
+            </div>
 
             <SpeedDialComponent />
             <Footer />

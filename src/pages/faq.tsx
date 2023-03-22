@@ -54,10 +54,10 @@ const categoryList = [
         name : "컨텐츠",
         en : "contents"
     },
-    {
-        name : "과외",
-        en : "coaching"
-    },
+    // {
+    //     name : "과외",
+    //     en : "coaching"
+    // },
     {
         name : "배치상담",
         en : "where"
@@ -312,9 +312,9 @@ const Faq: React.FC<any> = (props) => {
                 <div onClick={(e: any) => { setCurrent("contents") }} className={`${styles.eachList} ${current === "contents" ? styles.active : ""}`}>
                     컨텐츠
                 </div>
-                <div onClick={(e: any) => { setCurrent("coaching") }} className={`${styles.eachList} ${current === "coaching" ? styles.active : ""}`}>
+                {/* <div onClick={(e: any) => { setCurrent("coaching") }} className={`${styles.eachList} ${current === "coaching" ? styles.active : ""}`}>
                     과외
-                </div>
+                </div> */}
                 <div onClick={(e: any) => { setCurrent("where") }} className={`${styles.eachList} ${current === "where" ? styles.active : ""}`}>
                     배치상담
                 </div>

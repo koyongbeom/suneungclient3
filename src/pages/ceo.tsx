@@ -52,7 +52,7 @@ const Ceo: any = (props: any) => {
                         수 많은 경험을 바탕으로
                     </div>
                     <div className={styles.subHeaderTextTitle2}>
-                        최고의 독학관리학원을 만듭니다
+                        최고의 독학재수학원을 만듭니다
                     </div>
                     <div className={styles.subHeaderTextSubTitle}>
 

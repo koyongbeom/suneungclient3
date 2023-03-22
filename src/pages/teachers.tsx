@@ -82,7 +82,7 @@ const Teachers: React.FC<any> = (props) => {
                     </div>
                     <RightChevronSvg className={`${styles.rightChevron} ${styles.second}`} />
                     <div className={styles.currentMenuViewerText_2}>
-                        담임선생님 소개
+                        담임멘토 소개
                     </div>
                 </div>
             </div>
@@ -90,10 +90,10 @@ const Teachers: React.FC<any> = (props) => {
             </div>
 
             <div className={`${styles.titleText} ${styles.onlyPC}`}>
-                담임선생님 소개
+                담임멘토 소개
             </div>
             <div className={`${styles.descriptionText} ${styles.onlyPC}`}>
-                수능선배가 자신하는 수능선배 담임선생님들을 소개합니다.
+                수능선배가 자신하는 수능선배 담임멘토들을 소개합니다.
             </div>
 
             <div ref={listRef} className={`${styles.mobileTitleList} ${styles.onlymobile}`}>
@@ -205,10 +205,10 @@ const Teachers: React.FC<any> = (props) => {
                 <div className={styles.questionDiv}>
                     <div className={styles.questionTitle}>
                         <div className={`${styles.questionTitleText} ${styles.onlyPC}`}>
-                            Q. 수능선배 학생들에게 어떤 담임선생님이 되어주실 건가요?
+                            Q. 수능선배 학생들에게 어떤 담임멘토가 되어주실 건가요?
                         </div>
                         <div className={`${styles.questionTitleText} ${styles.onlymobile}`}>
-                            Q. 어떤 담임선생님이 되어주실 건가요?
+                            Q. 어떤 담임멘토가 되어주실 건가요?
                         </div>
                         <div className={`${styles.rightChevronCircle} ${styles.onlyPC}`}>
                             <RightChevronCircleSvg />

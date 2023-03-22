@@ -1588,10 +1588,10 @@ const MainPage: any = (props: any) => {
             <div className={styles.seventhSection}>
                 <div style={{ backgroundImage: "url(img/banner.webp)" }} className={styles.banner}>
                     <div className={`${styles.bannerFirst} ${styles.onlyPC}`}>
-                        수능선배는 독학관리 학원의 가장 기본인
+                        수능선배는 독학재수 관리의 가장 기본인
                     </div>
                     <div className={`${styles.bannerFirst} ${styles.onlymobile}`}>
-                        수능선배는 독학관리 학원의 가장 기본인
+                        수능선배는 독학재수 관리의 가장 기본인
                     </div>
                     <div className={`${styles.bannerSecond} ${styles.onlyPC}`}>
                         엄격한 생활관리, 양질의 튜터 상담 및 질의응답, 쾌적한 공부환경을
@@ -1672,16 +1672,16 @@ const MainPage: any = (props: any) => {
             <div className={styles.eleventhSection}>
                 <div className={styles.contactBox}>
                     <div className={styles.contactBoxTitle}>
-                        운영시간 안내
+                        상담시간 안내
                     </div>
                     <div className={`${styles.contactBoxTime} ${styles.onlyPC}`}>
-                        평일 : 24시간 운영
+                        방문상담 : 22시 까지
                     </div>
                     <div className={`${styles.contactBoxTime} ${styles.second} ${styles.onlyPC}`}>
-                        주말 : 24시간 운영
+                        전화상담 : 24시 까지
                     </div>
                     <div className={`${styles.contactBoxTime} ${styles.onlymobile}`}>
-                        평일 : 24시간 운영, 주말 : 24시간 운영
+                        방문상담 : ~22시, 전화상담 : ~24시
                     </div>
                     <a href="tel:05078713574" className={styles.atag} style={{ textDecoration: "none", color: "inherit" }}>
                         <div className={styles.contactBoxTelephone}>
@@ -1704,7 +1704,7 @@ const MainPage: any = (props: any) => {
             }
 
 
-            <Modal
+            {/* <Modal
                 open={open5}
                 onClose={handleClose}
                 aria-labelledby="modal-modal-title"
@@ -1721,13 +1721,13 @@ const MainPage: any = (props: any) => {
                         (예비 고1~3 대상)
                     </div>
                     <div className={`${styles.modalDescription} ${styles.sameDescription}`}>
-
+                        1월 2일 개강
                     </div>
                     <div className={`${styles.modalDescription} ${styles.sameDescription2}`}>
                         ** 마감 임박(40명 정원 마감)
                     </div>
                 </Box>
-            </Modal>
+            </Modal> */}
 
             <Footer />
 

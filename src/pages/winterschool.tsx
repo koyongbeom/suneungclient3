@@ -272,7 +272,7 @@ const data: any = [
             },
             {
                 title: "핸드폰 수거",
-                src: "img/cellphone.webp",
+                src: "img/phones.webp",
                 description: "매 등원시 핸드폰 제출"
             },
             {
@@ -336,7 +336,7 @@ const mobileData: any = [
             },
             {
                 title: "핸드폰 수거",
-                src: "img/cellphone.webp",
+                src: "img/phones.webp",
                 description: "매 등원시 핸드폰 제출"
             },
             {
@@ -661,7 +661,7 @@ const WinterSchool: React.FC<any> = (props) => {
 
                 const topDistance = bottomBoxRef.current.getBoundingClientRect().top;
    
-                if(topDistance < 350){
+                if(topDistance < 550){
                     if(intervalStatus){
                         clearInterval(intervalRef);
                         intervalStatus = false;
@@ -1169,7 +1169,7 @@ const WinterSchool: React.FC<any> = (props) => {
                         </div>
                     </div>
 
-                    <div className={styles.differentiationDiv}>
+                    {/* <div className={styles.differentiationDiv}>
                         <div className={styles.differentiationTitle}>
                             등록비 및 할인혜택
                         </div>
@@ -1194,7 +1194,7 @@ const WinterSchool: React.FC<any> = (props) => {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
 
                     <div className={`${styles.lastBtnDiv} ${styles.onlyPC}`}>
                         <a href="https://docs.google.com/forms/d/e/1FAIpQLSeHTXutK-KcBqTj2bfuTV_UAhV3zLGxok6fChySC57eSY-ygQ/viewform?usp=sf_link" className={styles.atag}>

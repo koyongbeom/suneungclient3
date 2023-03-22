@@ -1,6 +1,11 @@
 const list = [
     {
-        title : "전체전경",
+        title : "전체전경1",
+        description : "24시간 작동되는 환기 시설로 많은 학생들이 공기가 정말 쾌적하다고 얘기합니다.",
+        src : "img/newinterior/02BL7589_1.webp"
+    },
+    {
+        title : "전체전경2",
         description : "항상 최적의 깔끔함을 유지하는데 적합한 자재들을 사용하였고 충분한 환기 시설을 통해 쾌적함을 유지합니다.",
         src : "img/newinterior/02BL7841_1.webp"
     },

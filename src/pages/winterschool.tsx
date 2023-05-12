@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef, useCallback } from "react";
 import smoothscroll from "smoothscroll-polyfill";
 import { throttle } from "lodash";
+import Vimeo from '@u-wave/react-vimeo';
 
 
 import Footer from "../components/footer";
@@ -31,6 +32,8 @@ import { useMediaQuery } from "react-responsive";
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
 
+declare var naver : any;
+
 const style = {
     position: 'absolute' as 'absolute',
     top: '50%',
@@ -58,53 +61,49 @@ const style2 = {
   const interiorList = [
     {
         title : "전체전경1",
-        description : "24시간 환기 설비가 가동되고 있고\n최고의 퍼시스 책걸상으로 구성되어 있습니다",
-        src : "img/newinterior/02BL7589_1.webp"
+        description : "24시간 환기 설비가 가동되고 있고\n전면 유리창이 있는 넓은 휴게실에서 편하게 식사할 수 있습니다.",
+        src : "img/daechiinterior/J2V_2023.webp"
     },
     {
-        title : "전체전경2",
-        description : "항상 최적의 깔끔함을 유지하는데 적합한 자재들을 사용하였고\n충분한 환기 시설을 통해 쾌적함을 유지합니다.",
-        src : "img/newinterior/02BL7841_1.webp"
-    },
-    {
-        title : "자습실전경",
+        title : "자습실전경1",
         description : "24시간 최고급 환기 설비, 공기청정기, 백색소음기가 작동되고 있어\n넓은 자습실에서 쾌적하게 공부할 수 있습니다.",
-        src : "img/newinterior/02BL7643_1.webp"
+        src : "img/daechiinterior/J2V_2032.webp"
     },
     {
-        title : "교실형구획",
-        description : "학생들이 공부에 집중할 수 있도록 적당한 시선 차단과 동시에\n개방감을 줄 수 있는 책상으로 구성되어 있습니다.",
-        src : "img/newinterior/02BL7616_1.webp"
+        title : "자습실전경2",
+        description : "자습실 내에 생활관리사감이 상주하고 있으며,\n 최고급 퍼시스 책걸상으로 구성되어 있습니다.",
+        src : "img/daechiinterior/J2V_2053.webp"
     },
     {
-        title : "교실형책상",
-        description : "최고급 퍼시스 책상과 의자로 구성되어 있으며\n각 책상마다 잠금장치와 3구 콘센트가 설치되어 있습니다.",
-        src : "img/newinterior/02BL7949_1.webp"
+        title : "자습실전경3",
+        description : "노출형 천장 대형 자습실로 최고의 쾌적함을 느낄 수 있으며,\n 자동 창문 개폐기를 통해 정해진 시간에 환기를 진행합니다.",
+        src : "img/daechiinterior/J2V_2134.webp"
     },
     {
-        title : "칸막이구획",
-        description : "등 뒤 공간을 넓게 사용하고 싶은 학생들을 위한 공간으로\n칸막이 책상 이용 학생 전부에게는 대형 사물함이 제공됩니다.",
-        src : "img/newinterior/02BL7757_1.webp"
-    },
-    {
-        title : "칸막이책상",
-        description : "최고급 시디즈 책상과 시디즈 의자로 구성되어 있으며\n밝기 조절이 가능한 스탠드가 설치되어 있습니다.",
-        src : "img/newinterior/02BL8045_1.webp"
+        title : "개별콘센트",
+        description : "모든 각 책상에는 고급스러운 퍼시스 3구 콘센트가\n설치되어 있습니다.",
+        src : "img/daechiinterior/J2V_2111.webp"
     },
     {
         title : "휴게실",
-        description : "24시간 환기시설이 작동하는 깔끔하고 쾌적한 넓은 휴게실에서\n식사와 편안한 공부를 할 수 있습니다.",
-        src : "img/newinterior/02BL7823_1.webp"
+        description : "넓고 쾌적한 휴게실에서 맛잇는 식사를 즐기고\n 편안하게 공부할 수 있습니다.",
+        src : "img/daechiinterior/J2V_2015.webp"
+    },
+
+    {
+        title : "데스크",
+        description : "메인 출입구에서 얼굴 인식과 턴게이트를 통해\n단 한명의 오차도 없이 출석체크를 진행하고 있습니다.",
+        src : "img/daechiinterior/J2V_1972.webp"
     },
     {
-        title : "상담실전경",
-        description : "자연광이 들어오는 넓고 쾌적한 상담실에서\n담임 멘토와 매주 상담을 진행합니다.",
-        src : "img/newinterior/02BL7844_1.webp"
+        title : "휴대폰함",
+        description : "모든 학생들은 출입 전에\n잠금장치가 있는 휴대폰함에 휴대폰을 제출해야 합니다.",
+        src : "img/daechiinterior/J2V_2155.webp"
     },
     {
-        title : "상담실",
-        description : "넓은 공간에 데스커 책상과 시디즈 의자로 구성되어 있고\n칠판이 있어 질의응답에 용이합니다.",
-        src : "img/newinterior/02BL7886_1.webp"
+        title : "환기장치",
+        description : "모든 자습실 공간과 휴게실에는\n24시 작동되는 환기설비가 있어 신선한 공기를 유지합니다.",
+        src : "img/daechiinterior/J2V_2149.webp"
     },
     // {
     //     title : "백색소음기",
@@ -147,9 +146,9 @@ const style2 = {
     //     src : "img/01_1.webp"
     // },
     {
-        title : "데스크",
-        description : "생활관리 사감이 상주하면서 학생들의 출석체크 및 생활관리를 하는 데스크입니다.",
-        src : "img/newinterior/02BL7913_1.webp"
+        title : "상담실",
+        description : "넓고 대형 모니터가 설치된 상담실이며\n이 곳에서 매주 담임멘토와의 상담이 이루어집니다.",
+        src : "img/daechiinterior/J2V_1940.webp"
     }
 ];
 
@@ -157,35 +156,51 @@ const style2 = {
 
 const mobileInteriorList = [
     {
-        title: "자습실전경",
-        description: "24시간 최고급 환기 설비,\n공기청정기, 백색소음기 작동",
-        src: "img/newinterior/02BL7589_1.webp"
+        title : "전체전경1",
+        description : "24시간 환기 설비가 가동되고 있고\n전면 유리창이 있는 넓은 휴게실에서\n편하게 식사할 수 있습니다.",
+        src : "img/daechiinterior/J2V_2023.webp"
     },
     {
-        title: "교실형구획",
-        description: "적당한 시선 차단과 동시에\n개방감을 줄 수 있는 책상",
-        src: "img/newinterior/02BL7616_1.webp"
+        title : "자습실전경1",
+        description : "24시간 최고급\n환기 설비, 공기청정기, 백색소음기가\n작동되고 있습니다",
+        src : "img/daechiinterior/J2V_2032.webp"
     },
     {
-        title: "칸막이구획",
-        description: "등 뒤 공간을 넓게 사용하고 싶은\n학생들을 위한 공간",
-        src: "img/newinterior/02BL7757_1.webp"
+        title : "자습실전경2",
+        description : "자습실 내에 생활관리사감이\n상주하고 있으며,\n최고급 퍼시스 책걸상으로\n구성되어 있습니다.",
+        src : "img/daechiinterior/J2V_2053.webp"
     },
     {
-        title: "휴게실",
-        description: "깔끔하고 쾌적한 넓은 휴게실\n식사와 편안한 공부 공간",
-        src: "img/newinterior/02BL7823_1.webp"
+        title : "자습실전경3",
+        description : "노출형 천장 대형 자습실로\n최고의 쾌적함을 느낄 수 있으며,\n 자동 창문 개폐기를 통해\n정해진 시간에 환기를 진행합니다.",
+        src : "img/daechiinterior/J2V_2134.webp"
     },
     {
-        title: "상담실",
-        description: "자연광이 들어오는\n넓고 쾌적한 상담실",
-        src: "img/newinterior/02BL7886_1.webp"
+        title : "개별콘센트",
+        description : "모든 각 책상에는\n고급스러운 퍼시스 3구 콘센트가\n설치되어 있습니다.",
+        src : "img/daechiinterior/J2V_2111.webp"
     },
     {
-        title: "데스크",
-        description: "사감이 상주하면서 \n출석체크 및 생활관리",
-        src: "img/newinterior/02BL7913_1.webp"
-    }
+        title : "휴게실",
+        description : "넓고 쾌적한 휴게실에서\n맛잇는 식사를 즐기고\n 편안하게 공부할 수 있습니다.",
+        src : "img/daechiinterior/J2V_2015.webp"
+    },
+
+    {
+        title : "데스크",
+        description : "출입구에서\n얼굴 인식과 턴게이트를 통해\n단 한명의 오차도 없이\n출석체크를 진행합니다.",
+        src : "img/daechiinterior/J2V_1972.webp"
+    },
+    {
+        title : "휴대폰함",
+        description : "모든 학생들은 출입 전에\n잠금장치가 있는 휴대폰함에\n휴대폰을 제출해야 합니다.",
+        src : "img/daechiinterior/J2V_2155.webp"
+    },
+    {
+        title : "환기장치",
+        description : "모든 자습실 공간과 휴게실에는\n24시 작동되는 환기설비가 있어\n신선한 공기를 유지합니다.",
+        src : "img/daechiinterior/J2V_2149.webp"
+    },
     // {
     //     title : "백색소음기",
     //     description : "백색소음기 음량은 학생들이 가장 집중을 잘 할 수 있는 적당한 크기로 조절하고 있습니다.",
@@ -226,6 +241,11 @@ const mobileInteriorList = [
     //     description : "모든 휴게실의 테이블에는 콘센트가 설치되어 있어 장시간의 인강 수강도 문제가 없습니다.",
     //     src : "img/01_1.webp"
     // },
+    {
+        title : "상담실",
+        description : "대형 모니터가 설치되어 있는,\n넓고 쾌적한 상담실에서\n매주 담임멘토와의 상담이 이루어집니다.",
+        src : "img/daechiinterior/J2V_1940.webp"
+    }
 ];
 
 
@@ -245,14 +265,19 @@ const data: any = [
                 description: "입학 전, 종합 상담을 통해 학습 상태를 진단하고\n방학 동안의 학습전략과 강의/컨텐츠를 추천(문과생 예시)"
             },
             {
-                title: "8주 진도계획",
-                src: "img/eightweeks1.webp",
-                description: "종합 상담 내용을 바탕으로\n8주간의 목표와 장기계획을 수립"
+                title: "매일 단어테스트",
+                src: "img/screenshot1.png",
+                description: "학생 개인의 실력, 진도, 오답에 맞춘\n매일 개별 맞춤형 단어테스트"
             },
             {
                 title: "매주 상담일지",
                 src: "",
-                description: "매주 담당 멘토와의 1:1 대면 상담으로\n주단위 계획수립, 진도 체크, 개인 진도에 맞춘 위클리 테스트 진행"
+                description: "매주 담임 멘토와의 1:1 대면 상담으로\n주단위 계획수립, 진도 체크, 개인 진도에 맞춘 위클리 테스트 진행"
+            },
+            {
+                title: "매주 위클리테스트",
+                src: "img/screenshot2.png",
+                description: "매주 담임 멘토가 학생의 실력, 진도에 맞게\n위클리 테스트 출제 및 점검"
             }
         ]
     },
@@ -266,7 +291,7 @@ const data: any = [
                 description: "등하원 뿐만 아니라\n모든 입실/퇴실 시 실시간 알림톡 전송"
             },
             {
-                title: "출결 업무화면",
+                title: "엄격한 출결",
                 src: "",
                 description: "매 교시 출석체크,\n전용 프로그램을 통한 철저한 관리"
             },
@@ -280,11 +305,16 @@ const data: any = [
                 src: "img/block.webp",
                 description: "인강 사이트 외 모든 사이트 및 어플 차단"
             },
+            {
+                title: "상시 순찰",
+                src: "img/screenshot3.png",
+                description: "생활관리 사감이 자습실에 상주하며\n매 20분마다 순찰"
+            },
         ]
     },
     {
         title: "프리미엄 시설",
-        titleText: "언제든 방문하셔서 쾌적함을\n직접 확인해보세요",
+        titleText: "수능선배 대치점은 강남점과\n동일한 책상 의자를 사용합니다",
         subMenu: interiorList
     },
     {
@@ -309,14 +339,19 @@ const mobileData: any = [
                 description: "입학 전, 종합 상담을 통해\n학습 상태를 진단하고\n방학 동안의 학습전략과\n강의/컨텐츠를 추천(문과생)"
             },
             {
-                title: "8주 진도계획",
-                src: "img/eightweeks1.webp",
-                description: "종합 상담 내용을 바탕으로\n8주간의 목표와 장기계획을 수립"
+                title: "매일 단어테스트",
+                src: "img/screenshot1.png",
+                description: "학생 개인의 실력, 진도, 오답에 맞춘\n매일 개별 맞춤형 단어테스트"
             },
             {
                 title: "매주 상담일지",
                 src: "img/consultreport2.webp",
                 description: "매주 담당 멘토와의 1:1 대면 상담으로\n주단위 계획수립, 진도 체크, \n 개인 진도별 위클리 테스트 진행"
+            },
+            {
+                title: "매주 위클리테스트",
+                src: "img/screenshot2.png",
+                description: "매주 담임 멘토가\n학생의 실력, 진도에 맞게\n위클리 테스트 출제 및 점검"
             }
         ]
     },
@@ -344,11 +379,16 @@ const mobileData: any = [
                 src: "img/block.webp",
                 description: "인강 사이트 외 모든 사이트 및 어플 차단\n(상담 후 특정 공부 사이트 오픈 가능)"
             },
+            {
+                title: "상시 순찰",
+                src: "img/screenshot3.png",
+                description: "생활관리 사감이 자습실에 상주하며\n매 20분마다 순찰"
+            },
         ]
     },
     {
         title: "프리미엄 시설",
-        titleText: "언제든 방문하셔서 쾌적함을\n직접 확인해보세요",
+        titleText: "수능선배 대치점은 강남점과\n동일한 책상 의자를 사용합니다",
         subMenu: mobileInteriorList
     },
     {
@@ -405,16 +445,23 @@ var scrollValue = 0;
 
 const WinterSchool: React.FC<any> = (props) => {
 
+    const [play, setPlay] = useState(true);
+    const [pause, setPause] = useState(false);
+
     const [open, setOpen] = useState(false);
     const [imgSrc, setImgSrc] = useState("");
     const handleOpen = (src : string) => { setImgSrc(src); setOpen(true);  clearInterval(intervalRef); intervalStatus = false;}
-    const handleClose = () => {setOpen(false); startInterval(); intervalStatus = true;}
+    const handleClose = () => {setOpen(false); 
+        // startInterval(); 
+        intervalStatus = true;}
 
 
     const [open2, setOpen2] = useState(false);
     const [imgSrc2, setImgSrc2] = useState("");
     const handleOpen2 = (src : string) => { setImgSrc2(src); setOpen2(true);  clearInterval(intervalRef); intervalStatus = false;}
-    const handleClose2 = () => {setOpen2(false); startInterval(); intervalStatus = true;}
+    const handleClose2 = () => {setOpen2(false); 
+        // startInterval(); 
+        intervalStatus = true;}
 
 
 
@@ -429,6 +476,8 @@ const WinterSchool: React.FC<any> = (props) => {
     const eachRef = useRef<any>(new Array());
 
     const bottomBoxRef = useRef<any>(null);
+
+    const scrollRef = useRef<any>(null);
 
     const mobileDescriptionWrapperRef = useCallback((node) => {
         if (!node) {
@@ -490,7 +539,7 @@ const WinterSchool: React.FC<any> = (props) => {
         currentSubmenuIndex = index;
         if (e !== "e") {
             clearInterval(intervalRef);
-            startInterval();
+            // startInterval();
             intervalStatus = true;
         }
     }
@@ -501,7 +550,7 @@ const WinterSchool: React.FC<any> = (props) => {
         setSubmenuIndex(0); currentSubmenuIndex = 0;
         if (e !== "e") {
             clearInterval(intervalRef);
-            startInterval();
+            // startInterval();
             intervalStatus = true;
         }
     }
@@ -526,93 +575,93 @@ const WinterSchool: React.FC<any> = (props) => {
         config: { duration: 150 }
     });
 
-    useEffect(() => {
+    // useEffect(() => {
 
 
-        intervalRef = setInterval(() => {
+    //     intervalRef = setInterval(() => {
 
-            if (!data[currentIndex]) {
-                return;
-            }
-
-
-
-            if (!isLargeTablet && !data[currentIndex].subMenu) {
-                return;
-            }
-
-            if (isLargeTablet && !mobileData[currentIndex].subMenu) {
-                return;
-            }
-
-
-            const maxSubmenuIndex = !isLargeTablet ? data[currentIndex].subMenu.length - 1 : mobileData[currentIndex].subMenu.length - 1;
-
-            if (currentIndex === 2 && currentSubmenuIndex === 5 && isLargeTablet) {
-                console.log(5);
-                handleSubmenuIndex("e", 0);
-            }
-
-
-            if (currentSubmenuIndex < maxSubmenuIndex) {
-                const newSubmenuIndex = currentSubmenuIndex + 1;
-                handleSubmenuIndex("e", newSubmenuIndex);
-            } else {
-                handleSubmenuIndex("e", 0);
-            }
-
-        }, 3000);
-
-        intervalStatus = true;
-
-        return () => clearInterval(intervalRef);
-
-    }, []);
-
-
-    const startInterval = () => {
-
-        intervalRef = setInterval(() => {
-
-            if (!data[currentIndex]) {
-                console.log(1);
-                return;
-            }
+    //         if (!data[currentIndex]) {
+    //             return;
+    //         }
 
 
 
-            if (!isLargeTablet && !data[currentIndex].subMenu) {
-                console.log(2);
-                return;
-            }
+    //         if (!isLargeTablet && !data[currentIndex].subMenu) {
+    //             return;
+    //         }
 
-            if (isLargeTablet && !mobileData[currentIndex].subMenu) {
-                console.log(3);
-                return;
-            }
+    //         if (isLargeTablet && !mobileData[currentIndex].subMenu) {
+    //             return;
+    //         }
 
 
+    //         const maxSubmenuIndex = !isLargeTablet ? data[currentIndex].subMenu.length - 1 : mobileData[currentIndex].subMenu.length - 1;
 
-            const maxSubmenuIndex = !isLargeTablet ? data[currentIndex].subMenu.length - 1 : mobileData[currentIndex].subMenu.length - 1;
-
-            if (currentIndex === 2 && currentSubmenuIndex === 5 && isLargeTablet) {
-                handleSubmenuIndex("e", 0);
-                return;
-            }
-
+    //         if (currentIndex === 2 && currentSubmenuIndex === 5 && isLargeTablet) {
+    //             console.log(5);
+    //             handleSubmenuIndex("e", 0);
+    //         }
 
 
+    //         if (currentSubmenuIndex < maxSubmenuIndex) {
+    //             const newSubmenuIndex = currentSubmenuIndex + 1;
+    //             handleSubmenuIndex("e", newSubmenuIndex);
+    //         } else {
+    //             handleSubmenuIndex("e", 0);
+    //         }
 
-            if (currentSubmenuIndex < maxSubmenuIndex) {
-                const newSubmenuIndex = currentSubmenuIndex + 1;
-                handleSubmenuIndex("e", newSubmenuIndex);
-            } else {
-                handleSubmenuIndex("e", 0);
-            }
+    //     }, 3000);
 
-        }, 3000);
+    //     intervalStatus = true;
 
-    }
+    //     return () => clearInterval(intervalRef);
+
+    // }, []);
+
+
+    // const startInterval = () => {
+
+    //     intervalRef = setInterval(() => {
+
+    //         if (!data[currentIndex]) {
+    //             console.log(1);
+    //             return;
+    //         }
+
+
+
+    //         if (!isLargeTablet && !data[currentIndex].subMenu) {
+    //             console.log(2);
+    //             return;
+    //         }
+
+    //         if (isLargeTablet && !mobileData[currentIndex].subMenu) {
+    //             console.log(3);
+    //             return;
+    //         }
+
+
+
+    //         const maxSubmenuIndex = !isLargeTablet ? data[currentIndex].subMenu.length - 1 : mobileData[currentIndex].subMenu.length - 1;
+
+    //         if (currentIndex === 2 && currentSubmenuIndex === 5 && isLargeTablet) {
+    //             handleSubmenuIndex("e", 0);
+    //             return;
+    //         }
+
+
+
+
+    //         if (currentSubmenuIndex < maxSubmenuIndex) {
+    //             const newSubmenuIndex = currentSubmenuIndex + 1;
+    //             handleSubmenuIndex("e", newSubmenuIndex);
+    //         } else {
+    //             handleSubmenuIndex("e", 0);
+    //         }
+
+    //     }, 3000);
+
+    // }
 
     const mobileChange = (eachIndex: number) => {
         setIndex(eachIndex);
@@ -620,70 +669,86 @@ const WinterSchool: React.FC<any> = (props) => {
         listRef.current.scrollTo({ left: targetScroll + listRef.current.scrollLeft - 120, behavior: "smooth" });
     }
 
+    // useEffect(() => {
+
+
+
+    //     setInterval(() => {
+
+    //         console.log("intervalStatus" + intervalStatus);
+
+    //     }, 1000);
+
+    // }, []);
+
+    // useEffect(() => {
+
+    //     console.log(isLargeTablet);
+
+    //     // if (!isLargeTablet) {
+    //     //     return;
+    //     // }
+
+    //     console.log("gogogo");
+
+    //     const handleScroll = (e: any) => {
+    //         const value = window.scrollY;
+
+    //         // console.log(value);
+    //         // console.log(scrollValue);
+
+    //         if (scrollValue > 200) {
+    //             setIsHeaderOpen(false);
+    //         }
+
+    //         if (value <= 200) {
+    //             setIsHeaderOpen(true);
+    //         }
+    //         scrollValue = value;
+
+    //         if(bottomBoxRef && bottomBoxRef.current){
+
+    //             const topDistance = bottomBoxRef.current.getBoundingClientRect().top;
+   
+    //             if(topDistance < 550){
+    //                 if(intervalStatus){
+    //                     clearInterval(intervalRef);
+    //                     intervalStatus = false;
+    //                 }
+    //             }else{
+    //                 if(intervalStatus === false){
+    //                     startInterval();
+    //                     intervalStatus = true;
+    //                 }
+    //             }
+
+    //         }
+
+    //     }
+
+    //     const throttleFn = throttle(handleScroll, 10);
+
+    //     window.addEventListener("scroll", throttleFn);
+
+    //     return () => window.removeEventListener("scroll", throttleFn);
+
+    // }, [bottomBoxRef]);
+
     useEffect(() => {
 
+        const map = new naver.maps.Map("map", {
+            center: new naver.maps.LatLng(37.501050900000, 127.053429100000),
+            zoom: 16,
+        });
 
-
-        setInterval(() => {
-
-            console.log("intervalStatus" + intervalStatus);
-
-        }, 1000);
+        const marker = new naver.maps.Marker({
+            map: map,
+            title: "수능선배",
+            position: new naver.maps.LatLng(37.501050900000, 127.053429100000),
+            animation: naver.maps.Animation.BOUNCE
+        })
 
     }, []);
-
-    useEffect(() => {
-
-        console.log(isLargeTablet);
-
-        // if (!isLargeTablet) {
-        //     return;
-        // }
-
-        console.log("gogogo");
-
-        const handleScroll = (e: any) => {
-            const value = window.scrollY;
-
-            // console.log(value);
-            // console.log(scrollValue);
-
-            if (scrollValue > 200) {
-                setIsHeaderOpen(false);
-            }
-
-            if (value <= 200) {
-                setIsHeaderOpen(true);
-            }
-            scrollValue = value;
-
-            if(bottomBoxRef && bottomBoxRef.current){
-
-                const topDistance = bottomBoxRef.current.getBoundingClientRect().top;
-   
-                if(topDistance < 550){
-                    if(intervalStatus){
-                        clearInterval(intervalRef);
-                        intervalStatus = false;
-                    }
-                }else{
-                    if(intervalStatus === false){
-                        startInterval();
-                        intervalStatus = true;
-                    }
-                }
-
-            }
-
-        }
-
-        const throttleFn = throttle(handleScroll, 10);
-
-        window.addEventListener("scroll", throttleFn);
-
-        return () => window.removeEventListener("scroll", throttleFn);
-
-    }, [bottomBoxRef]);
 
     return (
         <div>
@@ -701,10 +766,10 @@ const WinterSchool: React.FC<any> = (props) => {
                 </div>
                 <div className={styles.subHeaderText}>
                     <div className={styles.subHeaderTextTitle}>
-                        &nbsp;&nbsp;&nbsp;2023 수능선배 윈터스쿨
+                        &nbsp;&nbsp;&nbsp;완벽히 준비된
                     </div>
                     <div className={styles.subHeaderTextTitle2}>
-                        &nbsp;&nbsp;&nbsp;1:1 개인별 밀착 관리를 전문으로 합니다
+                        &nbsp;&nbsp;&nbsp;수능선배 대치점을 소개합니다
                     </div>
                     <div className={styles.subHeaderTextSubTitle}>
 
@@ -716,17 +781,42 @@ const WinterSchool: React.FC<any> = (props) => {
                     <HouseSvg className={styles.houseSvg} />
                     <RightChevronSvg className={styles.rightChevron} />
                     <div className={styles.currentMenuViewerText_2}>
-                        윈터스쿨
+                        대치점 오픈
                     </div>
                 </div>
             </div>
             <div className={`${styles.currentMenuViewerBoarder} ${styles.onlyPC}`}>
-
+                
             </div>
 
-            <div className={styles.onlyPC} style={{ height: "120px" }}>
 
+            <div className={styles.openTitleText}>
+                독학재수전문 학원 수능선배<br></br>대치점을 신규 오픈합니다
             </div>
+
+            <div style={{ position: "relative", width : "100%" }}>
+                <div style={{display : "flex"}}>
+
+                </div>
+                <div ref={scrollRef} className={styles.ceoVideo}>
+                    <div className={styles.videoBox}>
+                        <div className={styles.vimeoWrapper}>
+                            <Vimeo
+                                responsive
+                                width="100%"
+                                height="100%"
+                                video="https://vimeo.com/815279269"
+                                autoplay={play}
+                                paused={pause}
+                                muted
+                                className={styles.player}
+                                // onReady={(e: any) => { setTimeout(() => { setPause(true); }, 2000) }}
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
 
 
 
@@ -769,7 +859,7 @@ const WinterSchool: React.FC<any> = (props) => {
                                     <div onClick={(e) => { handleSubmenuIndex(e, eachIndex) }} className={`${styles.eachList} ${eachIndex === submenuIndex ? styles.active : ""}`}>
                                         {eachList.title}
                                     </div>
-                                    <div className={`${styles.eachListBorder} ${(index === 0 && eachIndex === 3) || (index === 1 && eachIndex === 3) || (index === 2 && eachIndex === 4) || (index === 2 && eachIndex === 10) ? styles.none : ""}`}>
+                                    <div className={`${styles.eachListBorder} ${(index === 0 && eachIndex === 4) || (index === 1 && eachIndex === 4) || (index === 2 && eachIndex === 4) || (index === 2 && eachIndex === 8) ? styles.none : ""}`}>
 
                                     </div>
                                 </div>
@@ -782,7 +872,7 @@ const WinterSchool: React.FC<any> = (props) => {
                     {
                         mobileData[index].subMenu && mobileData[index].subMenu?.map((eachList: any, eachIndex: any) => {
                             return (
-                                <div key={eachIndex} className={`${styles.mobileEachListTitleDiv} ${eachIndex === submenuIndex ? styles.active : ""}`} onClick={(e) => { handleSubmenuIndex(e, eachIndex) }}  >
+                                <div key={eachIndex} className={`${styles.mobileEachListTitleDiv} ${eachIndex === 4 ? styles.even : ""} ${eachIndex === 5 ? styles.odd : ""} ${eachIndex === submenuIndex ? styles.active : ""}`} onClick={(e) => { handleSubmenuIndex(e, eachIndex) }}  >
                                     {eachList.title}
                                 </div>
                             );
@@ -806,6 +896,12 @@ const WinterSchool: React.FC<any> = (props) => {
                                     </div>
                                 }
 
+{
+                                    (index === 0 && submenuIndex === 2) &&
+                                    <div style={{height : "30px"}}>
+                                    </div>
+                                }
+
                                 {
                                     (data[index].subMenu && data[index].subMenu[submenuIndex] && data[index].subMenu[submenuIndex].src) &&
                                     <div>
@@ -815,14 +911,14 @@ const WinterSchool: React.FC<any> = (props) => {
                                     </div>
                                 }
 
-                                {
+                                {/* {
                                     (data[index].subMenu && data[index].subMenu[submenuIndex] && data[index].subMenu[submenuIndex].src && index === 0 && submenuIndex === 2) &&
                                     <div>
                                         <div className={styles.imgDiv} onClick={(e : any) => {handleOpen2("img/eightweeks3.webp");}}>
                                             <img src="img/eightweeks3.webp" className={`${styles.submenuImage} ${index === 0 ? styles.bigSize : ""}`} />
                                         </div>
                                     </div>
-                                }
+                                } */}
 
                                 {
                                     (index === 0 && submenuIndex === 3) &&
@@ -868,14 +964,14 @@ const WinterSchool: React.FC<any> = (props) => {
                                 </div>
                             }
 
-                            {
+                            {/* {
                                 (mobileData[index].subMenu && mobileData[index].subMenu[submenuIndex] && mobileData[index].subMenu[submenuIndex].src && index === 0 && submenuIndex === 2) &&
                                 <div>
                                     <div onClick={(e : any) => {handleOpen("img/eightweeks3.webp");} } className={`${styles.mobileImageWrapper} ${styles.onlymobile}`}>
                                         <img src="img/eightweeks3.webp" className={`${styles.mobileSubmenuImage}`} />
                                     </div>
                                 </div>
-                            }
+                            } */}
 
                         </div>
                     </div>
@@ -933,7 +1029,7 @@ const WinterSchool: React.FC<any> = (props) => {
                 }
                 {
                     (index === 0 && submenuIndex === 2) &&
-                    <div style={{ height: "1750px" }}>
+                    <div style={{ height: "950px" }}>
 
                     </div>
                 }
@@ -941,6 +1037,13 @@ const WinterSchool: React.FC<any> = (props) => {
                 {
                     (index === 0 && submenuIndex === 3) &&
                     <div style={{ height: "1000px" }}>
+
+                    </div>
+                }
+
+{
+                    (index === 0 && submenuIndex === 4) &&
+                    <div style={{ height: "950px" }}>
 
                     </div>
                 }
@@ -969,6 +1072,13 @@ const WinterSchool: React.FC<any> = (props) => {
                 {
                     (index === 1 && submenuIndex === 3) &&
                     <div style={{ height: "650px" }}>
+
+                    </div>
+                }
+
+{
+                    (index === 1 && submenuIndex === 4) &&
+                    <div style={{ height: "500px" }}>
 
                     </div>
                 }
@@ -1132,11 +1242,15 @@ const WinterSchool: React.FC<any> = (props) => {
             <div className={styles.bottomBox} ref={bottomBoxRef}>
                 <div className={styles.bottomBoxDiv}>
                     <div className={`${styles.bottomBoxTitle} ${styles.onlyPC}`}>
-                        수능선배 강남점 윈터스쿨 예약 안내
+                        수능선배 대치점 위치 및 예약 안내
                     </div>
 
                     <div className={`${styles.bottomBoxTitle} ${styles.onlymobile}`}>
-                        수능선배 강남점 윈터스쿨<br></br>예약 안내
+                        수능선배 대치점<br></br>위치 및 예약 안내
+                    </div>
+
+                    <div className={styles.mapDiv}>
+                        <div id="map" className={styles.map}></div>
                     </div>
 
                     <div className={styles.differentiationDiv}>
@@ -1148,7 +1262,7 @@ const WinterSchool: React.FC<any> = (props) => {
                                 개강일
                             </div>
                             <div className={styles.differentiationList_2}>
-                                2023년 1월 2일 월요일 (12월 중 선입실 가능)
+                                2023년 4월 17일 월요일(4월 11일 화요일 이후 방문 상담 가능)
                             </div>
                         </div>
                         <div className={`${styles.differentiationList} ${styles.last}`}>
@@ -1157,13 +1271,13 @@ const WinterSchool: React.FC<any> = (props) => {
                             </div>
                             <div className={`${styles.differentiationList_2} ${styles.multiLine}`}>
                                 <div>
-                                    ① 온라인 신청서 작성
+                                    ① 온라인으로 '사전 예약 신청서' 작성
                                 </div>
                                 <div>
-                                    ② 현장 방문 결제 및 좌석 선택 (10월 24일 부터)
+                                    ② 현장 방문 결제 및 좌석 선택 (4월 11일 부터)
                                 </div>
                                 <div>
-                                    ③ 1월 개강일 또는 12월 중 지정한 날짜에 등원
+                                    ③ 정상 등원 (4월 17일 부터)
                                 </div>
                             </div>
                         </div>
@@ -1197,12 +1311,12 @@ const WinterSchool: React.FC<any> = (props) => {
                     </div> */}
 
                     <div className={`${styles.lastBtnDiv} ${styles.onlyPC}`}>
-                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeHTXutK-KcBqTj2bfuTV_UAhV3zLGxok6fChySC57eSY-ygQ/viewform?usp=sf_link" className={styles.atag}>
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdObiJXiEdRsU5Vb0TyREch9SdbXNh87U6QUHYNNitK07YBNw/viewform?usp=sf_link" className={styles.atag}>
                             <Button variant="contained" sx={{ "&:hover": { backgroundColor: "rgb(8,9,12)" }, width: "306px", height: "70px", backgroundColor: "#28303e", borderRadius: "35px", fontSize: "22px", fontWeight: 700, "@media (max-width : 1024px)": { width: "215px", height: "49px", borderRadius: "24.5px", fontSize: "15.5px" } }}>온라인 예약 바로 가기</Button>
                         </a>
                     </div>
                     <div className={`${styles.lastBtnDiv} ${styles.onlymobile}`}>
-                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeHTXutK-KcBqTj2bfuTV_UAhV3zLGxok6fChySC57eSY-ygQ/viewform?usp=sf_link" className={styles.atag}>
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdObiJXiEdRsU5Vb0TyREch9SdbXNh87U6QUHYNNitK07YBNw/viewform?usp=sf_link" className={styles.atag}>
                             <Button className={styles.scheduleBtn} variant="contained" sx={{ "&:hover": { backgroundColor: "rgb(8,9,12)" }, width: "306px", height: "70px", backgroundColor: "#28303e", borderRadius: "35px", fontSize: "22px", fontWeight: 700, "@media (max-width : 1024px)": { width: "215px", height: "49px", borderRadius: "24.5px", fontSize: "15.5px" } }}>온라인 예약</Button>
                         </a>
                     </div>

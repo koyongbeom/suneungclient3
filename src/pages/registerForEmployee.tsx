@@ -553,10 +553,10 @@ const RegisterForEmployee: React.FC<any> = (props) => {
                 </div>
                 <div className={styles.selectDiv}>
                     <div onClick={(e: any) => { setSelect(0); }} className={`${styles.select} ${select === 0 ? styles.active : ""}`}>
-                        원장 대면 상담
+                        방문 상담
                     </div>
                     <div onClick={(e: any) => { setSelect(1); }} className={`${styles.select} ${select === 1 ? styles.active : ""}`}>
-                        원장 전화 상담
+                        전화 상담
                     </div>
                     <div onClick={(e: any) => { setSelect(2); }} className={`${styles.select} ${select === 2 ? styles.active : ""} ${styles.last}`}>
                         상담 없이 시설 구경

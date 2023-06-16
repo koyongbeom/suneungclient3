@@ -193,7 +193,7 @@ const list =
     {
         category: "meal",
         question: '도시락 신청이 가능한가요?',
-        answer: '네, 가능합니다. \'본도시락\' 업체와 제휴 중입니다. :)'
+        answer: '네, 가능합니다. \'본도시락\' 도시락과 특식 메뉴 중 선택해서 드실 수 있습니다. :)'
     },
     {
         category: "meal",
@@ -273,7 +273,7 @@ const list =
     {
         category: "interior",
         question: '[자습실] 좌석 형태에 따른 가격 차이는 어떻게 되나요?',
-        answer: '좌석 형태에 따라 가격 차이는 없고 월 58만원입니다. :)'
+        answer: '좌석 형태에 따라 가격 차이는 없고 월 62만원입니다. :)'
     },
     {
         category: "interior",
@@ -338,7 +338,7 @@ const list =
     {
         category : "price",
         question: '월 등록비는 얼마인가요?',
-        answer: '월 58만원입니다.\n담임멘토 상담, 질의응답, 생활관리 비용이 포함되어 있습니다. :)'
+        answer: '월 62만원입니다.\n담임멘토 상담, 질의응답, 생활관리 비용이 포함되어 있습니다. :)'
     },
     {
         category : "price",

@@ -1,9 +1,16 @@
+
+
 .voidHeader {
     height: 82px;
 }
 
 .void{
     height: 180px;
+}
+
+.itsmain{
+    max-width: 400px;
+    margin: 0 auto;
 }
 
 .titleText{
@@ -31,6 +38,57 @@
     margin: 0 auto;
 }
 
+.waitingNumberBox{
+    border-radius: 8px;
+    margin: 0 auto;
+    max-width: 500px;
+    margin-top: 30px;
+    width: 90.8%;
+    height: 100px;
+    border: 0.7px solid #c8c8c8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.waitingNumberInnerBox{
+    width: 65%;
+    height: 65px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.centerBorder{
+    height: 18px;
+    width: 1px;
+    background-color: #c8c8c8;
+}
+
+.realNumberBox{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.realNumberTitle{
+    margin-bottom: 20px;
+    color: #616161;
+    font-size: 13px;
+
+}
+
+.realNumberDescription{
+    color: #1b49af;
+}
+
+.realNumberDescription span{
+    font-weight: 600;
+    margin-right: 2px;
+}
+
+
+
+
 .questionText{
     border-bottom: 2px solid #c5c5c5;
     font-weight: 700;
@@ -46,6 +104,8 @@
     border-bottom: 2px solid black;
     margin-bottom: 30px;
 }
+
+
 
 .selectDiv{
     display: flex;
@@ -64,6 +124,17 @@
     border-radius: 6px;
     color: #c8c8c8;
     letter-spacing: -0.88px;
+    position: relative;
+}
+
+.chip{
+    background-color: red;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
 }
 
 .select.last{
@@ -461,6 +532,24 @@
     display: none;
 }
 
+.titleText2{
+    margin-top: 101px;
+    text-align: center;
+    font-size: 30.5px;
+    font-weight: 700;
+    letter-spacing: -0.76px;
+    line-height: 42px;
+    color: #272727;
+    margin-top: 40px;
+    font-size: 21.3px;
+    letter-spacing: -0.53px;
+    line-height: 29.3px;
+}
+
+.void2{
+    height: 180px;
+}
+
 @media only screen and (max-width : 500px) {
     .main{
 
@@ -512,6 +601,10 @@
         margin-top: 60px;
         margin-bottom: 21.5px;
         border-bottom: 1px solid black;
+    }
+
+    .questionText.first.real{
+        margin-top: 50px;
     }
     
     .select{

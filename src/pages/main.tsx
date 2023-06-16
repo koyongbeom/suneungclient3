@@ -1675,13 +1675,13 @@ const MainPage: any = (props: any) => {
                         상담시간 안내
                     </div>
                     <div className={`${styles.contactBoxTime} ${styles.onlyPC}`}>
-                        방문상담 : 22시 까지
+                        평일 : 오전 10시 ~ 저녁 8시
                     </div>
                     <div className={`${styles.contactBoxTime} ${styles.second} ${styles.onlyPC}`}>
-                        전화상담 : 24시 까지
+                        토요일 : 오전 10시 ~ 오후 3시
                     </div>
                     <div className={`${styles.contactBoxTime} ${styles.onlymobile}`}>
-                        방문상담 : ~22시, 전화상담 : ~24시
+                        평일 : 10시~20시, 토요일 : 10시~15시
                     </div>
                     <a href="tel:05078713574" className={styles.atag} style={{ textDecoration: "none", color: "inherit" }}>
                         <div className={styles.contactBoxTelephone}>

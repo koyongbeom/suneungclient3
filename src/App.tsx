@@ -23,6 +23,10 @@ import Storyread from './pages/storyread';
 import HeaderTwo from './components/header2';
 import Testmap from './pages/testmap';
 import WinterSchool from './pages/winterschool';
+import RegisterWaiting from './pages/registerwaiting';
+import WaitingRegisterFinish from './pages/waitingregisterfinish';
+import RegisterWaitingCalendar from './pages/registerwaitingcalendar';
+import WaitingRegisterSubmit from './pages/waitingregistersubmit';
 // import Notification from './pages/notification';
 
 
@@ -107,7 +111,10 @@ function App() {
             <Route path="/attendancetable" element={<AttendanceTable />}></Route>
             <Route path="/consultresult" element={<ReportToParent />}></Route>
             <Route path="/testmap" element={<Testmap />}></Route>
-            
+            <Route path="/registerwaiting" element={<RegisterWaiting />}></Route>
+            <Route path="/registerwaitingfinish" element={<WaitingRegisterFinish />}></Route>
+            <Route path="/registerwaitingcalendar" element={<RegisterWaitingCalendar />}></Route>
+            <Route path="/registerwaitingsubmit" element={<WaitingRegisterSubmit />}></Route>
             
             <Route path="/notification" element={<Notification />}></Route>
             <Route path="/notificationRead" element={<NotificationRead />}></Route>

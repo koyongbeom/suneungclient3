@@ -29,6 +29,8 @@ const Register: React.FC<any> = (props) => {
 
     const [startDate, setStartDate] = useState(new Date());
 
+    const [location, setLocation] = useState("gangnam");
+
     const [select, setSelect] = useState(0);
     const [dateValue, setDateValue] = useState();
     const [showingDate, setShowingDate] = useState(startDate.getTime());
@@ -304,16 +306,34 @@ const Register: React.FC<any> = (props) => {
                         }
                         //--------------------------------------------------------------------
 
+                        if(realSelectedDay.day > 0 && realSelectedDay.day < 6){
+                            newAmPm.forEach((eachTime: any) => {
+                                if (eachTime.time >= 1200) {
+                                    eachTime.possible = false;
+                                }
+                            })
+                        }
 
                         //토요일 시간 빼는 기능--------------------------------------------------
-                        // if (realSelectedDay.day === 6) {
-                        //     newAmPm.forEach((eachTime: any) => {
-                        //         if (eachTime.time < 1020) {
-                        //             eachTime.possible = false;
-                        //         }
-                        //     })
-                        // }
+                        if (realSelectedDay.day === 6) {
+                            newAmPm.forEach((eachTime: any) => {
+                                if (eachTime.time >= 900) {
+                                    eachTime.possible = false;
+                                }
+                            })
+                        }
                         //----------------------------------------------------------------------
+
+                        //일요일 시간 빼는 기능--------------------------------------------------
+                        if (realSelectedDay.day === 0) {
+                            newAmPm.forEach((eachTime: any) => {
+                                if (eachTime.time >= 0) {
+                                    eachTime.possible = false;
+                                }
+                            })
+                        }
+                        //----------------------------------------------------------------------
+                        
 
 
 
@@ -584,6 +604,7 @@ const Register: React.FC<any> = (props) => {
         setSubmitStatus("");
 
         const data = {
+            location : location,
             select: select,
             date: realSelectedDay,
             time: selectedTime,
@@ -593,7 +614,7 @@ const Register: React.FC<any> = (props) => {
         }
         console.log(data);
 
-        fetch(`https://suneungsunbae.com/api/booking/submit`, {
+        fetch(`https://suneungsunbae.com/api/booking/submit2`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -633,11 +654,24 @@ const Register: React.FC<any> = (props) => {
             <div className={styles.titleText}>
                 1분 안에<br></br>상담 예약 해드릴게요!
             </div>
-            <div className={styles.subTitleText}>
+            {/* <div className={styles.subTitleText}>
                 전화나 문자로 상담 예약 원하시면<br></br>050-7871-3574로 연락주세요.(24시 가능)
-            </div>
+            </div> */}
 
             <div className={styles.formBody}>
+
+                <div className={`${styles.questionText} ${styles.first}`}>
+                    어느 지점에 문의하고 싶으신가요?
+                </div>
+                <div className={styles.selectDiv}>
+                    <div onClick={(e: any) => { setLocation("gangnam"); }} className={`${styles.select} ${location === "gangnam" ? styles.active : ""}`}>
+                        강남점
+                    </div>
+                    <div onClick={(e: any) => { setLocation("daechi"); }} className={`${styles.select} ${location === "daechi" ? styles.active : ""}`}>
+                        대치점
+                    </div>
+                </div>
+
                 <div className={`${styles.questionText} ${styles.first}`}>
                     어떤 종류의 상담을 원하시나요?
                 </div>

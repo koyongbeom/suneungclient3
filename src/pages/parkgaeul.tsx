@@ -64,6 +64,7 @@ const useStyles2 = makeStyles(
 
 
 const columns: GridColDef[] = [
+    { field: 'location', headerName: '지점', width: 80, filterable : true },
     { field: 'kind', headerName: '상담 종류', width: 120, filterable : true },
     { field: 'date', headerName: '날짜', width: 150 },
     { field: 'time', headerName: '시간', width: 100 },
@@ -109,6 +110,14 @@ const Parkgaeul: React.FC<any> = (props) => {
                         const oneRow: any = {};
                         oneRow.id = eachData.id;
 
+                        if(eachData.location === "gangnam"){
+                            oneRow.location = "강남점"
+                        }
+
+                        if(eachData.location === "daechi"){
+                            oneRow.location = "대치점"
+                        }
+
                         const date = new Date(eachData.date);
                         var day = ""
                         switch (date.getDay()) {
@@ -141,10 +150,10 @@ const Parkgaeul: React.FC<any> = (props) => {
                         var kind = "";
                         switch (eachData.kind) {
                             case 0:
-                                kind = "원장 대면 상담";
+                                kind = "방문 상담";
                                 break;
                             case 1:
-                                kind = "원장 전화 상담";
+                                kind = "전화 상담";
                                 break;
                             case 2:
                                 kind = "시설 구경";
@@ -154,7 +163,11 @@ const Parkgaeul: React.FC<any> = (props) => {
                         oneRow.time = `${Math.floor(eachData.time / 60)}시 ${eachData.time % 60 < 10 ? "0" + eachData.time % 60 : eachData.time % 60}분`
                         oneRow.name = eachData.name;
                         oneRow.telephone = eachData.telephoneNumber;
-                        newRows.push(oneRow);
+                        if(oneRow.telephone.length > 3){
+                            newRows.push(oneRow);
+                        }
+
+
                     })
 
                     setRows(newRows);

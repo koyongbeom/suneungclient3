@@ -29,7 +29,7 @@ const Footer: React.FC<any> = (props) => {
                                 대표자:고용범
                             </div>
                             <div>
-                                수능선배 학원(TEL : 050-7871-3574)
+                                수능선배 학원(TEL : 1668-5786)
                             </div>
                             <div>
                                 사업자번호 : 329-95-01774

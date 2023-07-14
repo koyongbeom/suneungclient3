@@ -1683,9 +1683,9 @@ const MainPage: any = (props: any) => {
                     <div className={`${styles.contactBoxTime} ${styles.onlymobile}`}>
                         평일 : 10시~20시, 토요일 : 10시~15시
                     </div>
-                    <a href="tel:05078713574" className={styles.atag} style={{ textDecoration: "none", color: "inherit" }}>
+                    <a href="tel:16685786" className={styles.atag} style={{ textDecoration: "none", color: "inherit" }}>
                         <div className={styles.contactBoxTelephone}>
-                            050-7871-3574
+                            1668-5786
                         </div>
                     </a>
                     <div className={styles.contactBoxAddress}>

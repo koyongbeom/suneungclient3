@@ -144,7 +144,7 @@ const Complete: React.FC<any> = (props) => {
                     </Button>
                 </div>
                 <div className={styles.contactBox}>
-                    수능선배 연락처 | 050-7871-3574<br></br>
+                    수능선배 연락처 | 1668-5786<br></br>
                 </div>
 
             </div>

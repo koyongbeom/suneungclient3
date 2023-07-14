@@ -31,6 +31,9 @@ const RegisterWaiting: React.FC<any> = (props) => {
     const [select, setSelect] = useState("male");
     const [select2, setSelect2] = useState("n");
 
+    const [gangnamCount, setGangnamCount] = useState(0);
+    const [daechiCount, setDaechiCount] = useState(0);
+
 
 
     const [realSelectedDay, setRealSelectedDay] = useState({ year: today.getFullYear(), month: today.getMonth(), date: today.getDate(), day: today.getDay() });
@@ -74,6 +77,33 @@ const RegisterWaiting: React.FC<any> = (props) => {
 
     }, []);
     //--------------------------------------------------------
+
+
+    useEffect(() => {
+
+        getOrder();
+
+    }, []);
+
+    const getOrder = () => {
+
+        fetch("https://peetsunbae.com/waiting/getorder", {
+            method : "GET"
+        }).then((response : any) => {
+            response.json()
+            .then((result : any) => {
+
+                if(result.message === "success"){
+                    console.log(result);
+                    setGangnamCount(result.gangnamCount);
+                    setDaechiCount(result.daechiCount);
+                }
+
+            })
+        })
+
+    }
+
 
 
     useEffect(()=>{
@@ -284,7 +314,7 @@ const RegisterWaiting: React.FC<any> = (props) => {
                             강남점 대기자
                         </div>
                         <div className={styles.realNumberDescription}>
-                            <span>82</span>명
+                            <span>{gangnamCount && gangnamCount}</span>명
                         </div>
                     </div>
                     <div className={styles.centerBorder}>
@@ -295,7 +325,7 @@ const RegisterWaiting: React.FC<any> = (props) => {
                             대치점 대기자
                         </div>
                         <div className={styles.realNumberDescription}>
-                            <span>64</span>명
+                            <span>{daechiCount && daechiCount}</span>명
                         </div>
                     </div>
                 </div>
@@ -334,7 +364,12 @@ const RegisterWaiting: React.FC<any> = (props) => {
                     <div onClick={(e: any) => { setSelect2("n"); }} className={`${styles.select} ${select2 === "n" ? styles.active : ""}`}>
                         N수생(자퇴생)
                     </div>
-                    <div onClick={(e: any) => { setSelect2("current"); }} className={`${styles.select} ${select2 === "current" ? styles.active : ""}`}>
+                    <div onClick={(e: any) => {
+                        alert("죄송합니다. 6월부터 11월까지 재학생은 신규등록이 불가합니다.")
+                        return;
+                        setSelect2("current"); 
+                        }} 
+                        className={`${styles.select} ${select2 === "current" ? styles.active : ""}`}>
                         재학생
                     </div>
                 </div>

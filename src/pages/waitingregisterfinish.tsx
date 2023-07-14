@@ -9,12 +9,14 @@ const WaitingRegisterFinish = () => {
     const location = useLocation();
     const [loading, setLoading] = useState(false);
 
-    const [genderOrder, setGenderOrder] = useState<number>();
+    const [genderOrder, setGenderOrder] = useState<any>();
     const [totalOrder, setTotalOrder] = useState<number>();
     const [registerDate, setRegisterDate] = useState<string>("");
     const [waitingLocation, setWaitingLocation] = useState<string>("");
     const [gender, setGender] = useState<string>("");
     const [grade, setGrade] = useState<string>("");
+
+    const [isBefore, setIsBefore] = useState(false);
 
     
 
@@ -65,10 +67,10 @@ const WaitingRegisterFinish = () => {
 
         const size = query.size;
 
-        if (!size) {
-            console.log("noQuerySize");
-            return;
-        }
+        // if (!size) {
+        //     console.log("noQuerySize");
+        //     return;
+        // }
 
         const id = query.get("id");
         console.log(id);
@@ -77,6 +79,7 @@ const WaitingRegisterFinish = () => {
             console.log("noCode");
             return;
         }
+        const isBefore = query.get("before");
 
         const numberedId = +id;
         const numberedCode = +code;
@@ -87,6 +90,10 @@ const WaitingRegisterFinish = () => {
         }
 
         getMyInfo(+id);
+
+        if(isBefore){
+            setIsBefore(true);
+        }
 
     }
 
@@ -121,7 +128,7 @@ const WaitingRegisterFinish = () => {
                     setGenderOrder(result.genderOrder);
 
                     const date = new Date(data.createdAt);
-                    const dateString = `${date.getFullYear()}.${date.getMonth() + 1}.${date.getDate()} ${date.getHours()}:${date.getMinutes()}`;
+                    const dateString = `${date.getFullYear()}.${date.getMonth() + 1}.${date.getDate()} ${date.getHours() < 10 ? "0" + date.getHours() : date.getHours()}:${date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes()}`;
                     setRegisterDate(dateString);
 
                     switch(data.location){
@@ -175,10 +182,23 @@ const WaitingRegisterFinish = () => {
                         현재 나의 순서
                     </div>
                     <div className={styles.numberText}>
-                        <span>{genderOrder && genderOrder}</span>번째
+                        {
+                            (genderOrder && genderOrder.toString().includes("↓"))
+                            &&
+                            <>
+                                <span>{genderOrder.split("↓")[0]}</span>번째 이하
+                            </>
+                        }
+                                                {
+                            (genderOrder && !genderOrder.toString().includes("↓"))
+                            &&
+                            <>
+                                <span>{genderOrder}</span>번째
+                            </>
+                        }
                         <div className={styles.speechBubble}>
                             <div className={styles.bubbleBody}>
-                                남학생 기준 대기번호에요!
+                                {gender && gender} 기준 대기번호에요!
                             </div>
                         </div>
                         <div className={styles.triangle}>
@@ -200,12 +220,17 @@ const WaitingRegisterFinish = () => {
                             </div>
                         </div>
                         <div>
-                            <div className={styles.subDataTitle}>
-                                대기 등록 일시
-                            </div>
-                            <div className={styles.subDataDate}>
-                                {registerDate && registerDate}
-                            </div>
+                            {
+                                !isBefore &&
+                                <>
+                                    <div className={styles.subDataTitle}>
+                                        대기 등록 일시
+                                    </div>
+                                    <div className={styles.subDataDate}>
+                                        {registerDate && registerDate}
+                                    </div>
+                                </>
+                            }
                         </div>
                     </div>
                     <div className={styles.cautionContents}>

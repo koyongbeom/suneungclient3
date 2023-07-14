@@ -1,0 +1,52 @@
+.title{
+    display : "flex";
+    text-align: center;
+    width: 100%;
+    font-weight: 600;
+    font-size: 24px;
+    margin-bottom: 40px;
+}
+
+.subTitle{
+    line-height: 1.5;
+    font-size: 14px;
+}
+
+.eachQuestion{
+    margin-bottom: 20px;
+    border: 1px solid #E0E0E0;
+    padding: 15px;
+    padding-top: 23px;
+    padding-bottom : 23px;
+    border-radius: 6px;
+    background-color: white;
+}
+
+.questionTitle{
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.questionSubTitle{
+    font-weight: 300;
+    font-size: 12px;
+    margin-top: 8px;
+}
+
+.answerBox{
+    margin-top: 16px;
+}
+
+.redStar{
+    color : "red" !important;
+}
+
+.checkBoxWrapper{
+    margin-bottom: 12px;
+}
+
+.buttons{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 30px;
+}

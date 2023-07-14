@@ -27,6 +27,9 @@ import RegisterWaiting from './pages/registerwaiting';
 import WaitingRegisterFinish from './pages/waitingregisterfinish';
 import RegisterWaitingCalendar from './pages/registerwaitingcalendar';
 import WaitingRegisterSubmit from './pages/waitingregistersubmit';
+import WaitingRegisterInstant from './pages/waitingregisterinstant';
+import StudentCard from './studentcardform/studentcard';
+import StudentCardFinish from './pages/studentcardfinish';
 // import Notification from './pages/notification';
 
 
@@ -115,6 +118,7 @@ function App() {
             <Route path="/registerwaitingfinish" element={<WaitingRegisterFinish />}></Route>
             <Route path="/registerwaitingcalendar" element={<RegisterWaitingCalendar />}></Route>
             <Route path="/registerwaitingsubmit" element={<WaitingRegisterSubmit />}></Route>
+            <Route path="/waitinginstant" element={<WaitingRegisterInstant />}></Route>
             
             <Route path="/notification" element={<Notification />}></Route>
             <Route path="/notificationRead" element={<NotificationRead />}></Route>
@@ -122,6 +126,9 @@ function App() {
             <Route path="/notificationwrite7" element={<NotificationWrite />}></Route>
             <Route path="/storys" element={<Storys />}></Route>
             <Route path="/storyread" element={<Storyread />}></Route>
+            <Route path="/studentcard" element={<StudentCard />}></Route>
+            <Route path="/studentcardfinish" element={<StudentCardFinish />}></Route>
+
           </Routes>
         </Suspense>
       </div>

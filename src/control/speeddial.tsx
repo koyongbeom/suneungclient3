@@ -17,7 +17,6 @@ import ReactGa from "react-ga4";
 
 const actions = [
     { icon: <CallIcon />, name: '전화문의' },
-    { icon: <MailIcon />, name: '문자문의' },
     { icon: <SmsIcon />, name: '카카오톡' },
     { icon: <EditIcon />, name: '상담신청' },
 ];
@@ -32,7 +31,7 @@ const SpeedDialComponent: React.FC<any> = (props) => {
 
     const click = (e : any, index : number) => {
         if(index === 0){
-            window.location.href = "tel://05078713574";
+            window.location.href = "tel://16685786";
             
             ReactGa.event({
                 category : "contact",
@@ -40,17 +39,17 @@ const SpeedDialComponent: React.FC<any> = (props) => {
             })
 
         }
+        // if(index === 1){
+        //     window.location.href = "sms:05078713574";
+
+        //     ReactGa.event({
+        //         category : "contact",
+        //         action : "sms"
+        //     })
+
+        // }
         if(index === 1){
-            window.location.href = "sms:05078713574";
-
-            ReactGa.event({
-                category : "contact",
-                action : "sms"
-            })
-
-        }
-        if(index === 2){
-            window.location.href = "http://pf.kakao.com/_ViHeb/chat";
+            window.location.href = "http://pf.kakao.com/_Whxexgxj/chat";
 
             ReactGa.event({
                 category : "contact",
@@ -58,7 +57,7 @@ const SpeedDialComponent: React.FC<any> = (props) => {
             })
 
         }
-        if(index === 3){
+        if(index === 2){
             navigate("/register");
         }
         handleClose();

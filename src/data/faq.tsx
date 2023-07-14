@@ -8,7 +8,7 @@ const list =
     {
         category: "register",
         question: '반드시 학원에 방문해서 상담을 받아야 학원 등록이 가능한지 궁금합니다.',
-        answer: '아닙니다. 등록 원하시는 날짜에 오전 9시 이후 방문하시면 등록 안내드리고 있습니다.\n상담 원하실 경우 등록 후 상담 신청하셔도 됩니다.'
+        answer: '아닙니다. 상담 여부 관계 없이 평일 오전 8시부터 \n오후 10시 사이 학원 측으로 문의 주시면 등록 가능합니다.'
     },
     {
         category: "register",
@@ -18,27 +18,32 @@ const list =
     {
         category: "register",
         question: '등록 기간이 따로 있나요?',
-        answer: '아닙니다. 항시 등록 가능합니다.'
+        answer: '아닙니다. 신규등록생 경우 항시 등록 가능합니다.'
     },
     {
         category: "register",
         question: '등록 시 응시해야하는 시험이 있나요?',
-        answer: '입학시험은 따로 없고, 멘토 상담 전 테스트가 있습니다. 등록 시, 전년도 수능 성적을 제출하시면 됩니다. :)'
+        answer: '등록에 필요한 학원 별도의 입학시험은 없습니다. 다만, 멘토링 등 학생별 학습 관리를 위해 등록 시, \n최근 모의고사 성적이나 이전 수능 성적이 요구될 수 있습니다.'
     },
+    // {
+    //     category: "register",
+    //     question: '상담 예약을 하고 싶은데 어디로 연락하면 되나요?',
+    //     answer: '아래 링크를 통해 신청하시거나 050-7871-3574로 연락주시면 됩니다\n<a href="https://suneungsunbae.com/register">상담 신청하기</a>'
+    // },
     {
         category: "register",
         question: '상담 예약을 하고 싶은데 어디로 연락하면 되나요?',
-        answer: '아래 링크를 통해 신청하시거나 050-7871-3574로 연락주시면 됩니다\n<a href="https://suneungsunbae.com/register">상담 신청하기</a>'
+        answer: '아래 링크를 통해 신청해주시면 됩니다\n<a href="https://suneungsunbae.com/register">상담 신청하기</a>'
     },
+    // {
+    //     category: "register",
+    //     question: '전화상담도 가능한가요?',
+    //     answer: '네, 가능합니다. 050-7871-3574로 연락주시면 됩니다.'
+    // },
     {
         category: "register",
-        question: '전화상담도 가능한가요?',
-        answer: '네, 가능합니다. 050-7871-3574로 연락주시면 됩니다.'
-    },
-    {
-        category: "register",
-        question: '등록 전 예약할 수 있나요?',
-        answer: '네, 등록 예약 가능하며 고정 좌석 예약은 등원 3일 전부터 가능합니다.'
+        question: '신규 등원 전 등록을 미리 예약할 수 있나요?',
+        answer: ')네 가능합니다. 다만, 지정좌석 예약은 등록결제 후 가능합니다.'
     },
     // {
     //     category: "register",
@@ -53,12 +58,12 @@ const list =
     {
         category: "register",
         question: '주말에도 등록이 가능한가요?',
-        answer: '토요일 오전 9시부터 오후 3시까지 가능하며, 그 이후 등록 원하실 경우 사전 예약 후 방문하시면 됩니다. :)'
+        answer: '네 가능합니다. 토요일 오전 9시부터 오후 3시까지 해당 지점 데스크 방문 시 가능하며,\n이외의 경우 학원 측으로 사전 문의 해주시면 감사하겠습니다.'
     },
     {
         category: "register",
         question: '개인적으로 궁금한 문의 사항은 어디로 연락하면 되나요?',
-        answer: '050-7871-3574로 연락주시거나 아래 링크 카카오톡 플러스 친구로 연락주시면 됩니다\n<a href="http://pf.kakao.com/_ViHeb/chat">카카오톡 상담</a>'
+        answer: '1668-5786로 연락주시거나 아래 링크 카카오톡 플러스 친구로 연락주시면 됩니다\n<a href="http://pf.kakao.com/_Whxexgxj/chat">카카오톡 상담</a>'
     },
     {
         category: "register",

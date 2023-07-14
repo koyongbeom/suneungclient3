@@ -4,8 +4,7 @@ import { Backdrop, CircularProgress } from "@mui/material";
 import { useLocation } from "react-router-dom";
 import { set } from "lodash";
 
-
-const WaitingRegisterSubmit = () => {
+const WaitingRegisterInstant = () => {
 
     const [loading, setLoading] = useState(true);
     const location = useLocation();
@@ -20,6 +19,9 @@ const WaitingRegisterSubmit = () => {
     const fromQuery = () => {
 
         const query: any = new URLSearchParams(location.search);
+
+        console.log(query);
+
         console.log("query");
 
         if (!query) {
@@ -29,6 +31,8 @@ const WaitingRegisterSubmit = () => {
 
         const size = query.size;
 
+        console.log(query.size);
+
         // if (!size) {
         //     console.log("noQuerySize");
         //     return;
@@ -37,6 +41,16 @@ const WaitingRegisterSubmit = () => {
         const id = query.get("id");
         console.log(id);
         const code = query.get("code");
+        const type = query.get("type");
+
+        if(!id){
+            console.log("noId");
+            return;
+        }
+        if(!type){
+            console.log("noType");
+            return;
+        }
         if(!code){
             console.log("noCode");
             return;
@@ -45,12 +59,12 @@ const WaitingRegisterSubmit = () => {
         const numberedId = +id;
         const numberedCode = +code;
 
-        cancel(+id, +code);
+        instant(+id, +code, type);
 
     }
 
 
-    const cancel = (id : number, numberedCode : number) => {
+    const instant = (id : number, numberedCode : number, type : string) => {
 
         if(!id){
             console.log("noId");
@@ -62,11 +76,16 @@ const WaitingRegisterSubmit = () => {
             return;
         }
 
-        const data = {
-            id, code : numberedCode
+        if(!type){
+            console.log("noType");
+            return;
         }
 
-        fetch("https://peetsunbae.com/waiting/cancelforstudent", {
+        const data = {
+            id, code : numberedCode, type
+        }
+
+        fetch("https://peetsunbae.com/waiting/instantforstudent", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -77,8 +96,13 @@ const WaitingRegisterSubmit = () => {
             .then((result : any) => {
                 console.log(result);
 
-                if(result.message === "alreadyCanceled"){
+                if(result.message === "canceled"){
                     alert("이미 취소된 신청입니다");
+                    return;
+                }
+
+                if(result.message === "overDueDate"){
+                    alert("신청 기간이 지났습니다");
                     return;
                 }
                 
@@ -107,10 +131,10 @@ const WaitingRegisterSubmit = () => {
                 !loading &&
                 <div className={styles.contents}>
                     <div className={styles.contentsTitle}>
-                        대기 취소
+                        즉시 등원 가능
                     </div>
                     <div className={styles.contentsDescription}>
-                        수능선배 대기 신청이 취소되었습니다
+                        즉시 등원 가능 상태로 저장되었습니다.
                     </div>
                 </div>
             }
@@ -127,4 +151,4 @@ const WaitingRegisterSubmit = () => {
 
 }
 
-export default WaitingRegisterSubmit;
+export default WaitingRegisterInstant;

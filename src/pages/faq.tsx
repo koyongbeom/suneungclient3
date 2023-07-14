@@ -15,7 +15,7 @@ import { ReactComponent as ChevronDownSvg } from '../svg/chevron-down-regular.sv
 import { ReactComponent as QSvg } from '../svg/q-solid.svg';
 
 import SearchIcon from '@mui/icons-material/Search';
-import list from "../data/faq";
+import list from "../data/faq2";
 
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
@@ -54,14 +54,18 @@ const categoryList = [
         name : "컨텐츠",
         en : "contents"
     },
+    {
+        name : "앱/알림톡",
+        en : "app"
+    },
     // {
     //     name : "과외",
     //     en : "coaching"
     // },
-    {
-        name : "배치상담",
-        en : "where"
-    },
+    // {
+    //     name : "배치상담",
+    //     en : "where"
+    // },
     {
         name : "식사",
         en : "meal"
@@ -74,10 +78,10 @@ const categoryList = [
         name : "비용 및 결제",
         en : "price"
     },
-    {
-        name : "기타",
-        en : "etc"
-    }
+    // {
+    //     name : "기타",
+    //     en : "etc"
+    // }
 ];
 
 
@@ -144,6 +148,9 @@ const Faq: React.FC<any> = (props) => {
                     break;
                 case "contents":
                     each.string = "컨텐츠"
+                    break;
+                case "app":
+                    each.string = "앱/알림톡"
                     break;
                 case "coaching":
                     each.string = "과외"
@@ -312,12 +319,15 @@ const Faq: React.FC<any> = (props) => {
                 <div onClick={(e: any) => { setCurrent("contents") }} className={`${styles.eachList} ${current === "contents" ? styles.active : ""}`}>
                     컨텐츠
                 </div>
+                <div onClick={(e: any) => { setCurrent("app") }} className={`${styles.eachList} ${current === "app" ? styles.active : ""}`}>
+                    전용 앱
+                </div>
                 {/* <div onClick={(e: any) => { setCurrent("coaching") }} className={`${styles.eachList} ${current === "coaching" ? styles.active : ""}`}>
                     과외
                 </div> */}
-                <div onClick={(e: any) => { setCurrent("where") }} className={`${styles.eachList} ${current === "where" ? styles.active : ""}`}>
+                {/* <div onClick={(e: any) => { setCurrent("where") }} className={`${styles.eachList} ${current === "where" ? styles.active : ""}`}>
                     배치상담
-                </div>
+                </div> */}
                 <div onClick={(e: any) => { setCurrent("meal") }} className={`${styles.eachList} ${current === "meal" ? styles.active : ""}`}>
                     식사
                 </div>
@@ -327,9 +337,9 @@ const Faq: React.FC<any> = (props) => {
                 <div onClick={(e: any) => { setCurrent("price") }} className={`${styles.eachList} ${current === "price" ? styles.active : ""}`}>
                     비용 및 결제 관련
                 </div>
-                <div onClick={(e: any) => { setCurrent("etc") }} className={`${styles.eachList} ${current === "etc" ? styles.active : ""}`}>
+                {/* <div onClick={(e: any) => { setCurrent("etc") }} className={`${styles.eachList} ${current === "etc" ? styles.active : ""}`}>
                     기타
-                </div>
+                </div> */}
             </div>
 
             <div className={styles.selectDiv}>
@@ -423,9 +433,9 @@ const Faq: React.FC<any> = (props) => {
                 <span className={styles.bottomInfoText}>
                     24시 문의사항
                 </span>
-                <a href="tel:05078713574" className={styles.atag} style={{ textDecoration: "none", color: "inherit" }}>
+                <a href="tel:16685786" className={styles.atag} style={{ textDecoration: "none", color: "inherit" }}>
                     <span className={styles.bottomInfoNumber}>
-                        050-7871-3574
+                        1668-5786
                     </span>
                 </a>
             </div>

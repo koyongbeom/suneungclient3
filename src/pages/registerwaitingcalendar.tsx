@@ -83,10 +83,10 @@ const RegisterWaitingCalendar: React.FC<any> = (props) => {
 
         const size = query.size;
 
-        if (!size) {
-            console.log("noQuerySize");
-            return;
-        }
+        // if (!size) {
+        //     console.log("noQuerySize");
+        //     return;
+        // }
 
         const id = query.get("id");
         console.log(id);
@@ -266,22 +266,24 @@ const RegisterWaitingCalendar: React.FC<any> = (props) => {
             response.json()
                 .then((result: any) => {
                     console.log(result.message);
+                    setLoading(false);
                     if (result.message === "fail" || result.message === "error") {
                         alert("오류 관리자 문의(010-9880-0489)")
                     }
                     if(result.message === "canceled"){
                         alert("이미 대기가 취소되었습니다.");
-                        return;
+                    }
+                    if(result.message === "overDueDate"){
+                        notify3();
                     }
                     if(result.message === "already"){
                         notify2();
-                        return;
                     }
                     if (result.message === "success") {
                         notify1();
                     }
 
-                    setLoading(false);
+
                 })
         })
 
@@ -297,6 +299,13 @@ const RegisterWaitingCalendar: React.FC<any> = (props) => {
     
 
     const notify2 = () => toast.warning("이미 제출되었습니다!", {
+        position : "bottom-right",
+        autoClose : 3500,
+        hideProgressBar : true,
+        theme : "colored"
+    });
+
+    const notify3 = () => toast.warning("제출기한이 지났습니다!", {
         position : "bottom-right",
         autoClose : 3500,
         hideProgressBar : true,

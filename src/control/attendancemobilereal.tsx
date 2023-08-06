@@ -209,13 +209,25 @@ const AttendanceMobileReal: React.FC<any> = (props) => {
 
                         result.data.forEach((each: any) => {
                             const date = new Date(+each.time);
-                            const targetDate = date.getDate();
+                            var targetDate = date.getDate();
                             each.hours = date.getHours();
+
+                            if(each.hours < 2){
+                                targetDate = targetDate - 1;
+                            }
+
+                            if(each.hours >= 0 && each.hours < 2){
+                                each.hours = each.hours + 24;
+                            }
+
                             each.minutes = date.getMinutes();
                             each.hoursString = each.hours < 10 ? "0" + each.hours : each.hours;
                             each.minutesString = each.minutes < 10 ? "0" + each.minutes : each.minutes;
                             each.countedTime = each.hours * 60 + each.minutes;
-                            newArray[targetDate - 1].push(each);
+
+                            if(targetDate > 0){
+                                newArray[targetDate - 1].push(each);
+                            }
                         });
 
                         const newRows : any = [];

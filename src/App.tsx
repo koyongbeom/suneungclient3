@@ -30,6 +30,8 @@ import WaitingRegisterSubmit from './pages/waitingregistersubmit';
 import WaitingRegisterInstant from './pages/waitingregisterinstant';
 import StudentCard from './studentcardform/studentcard';
 import StudentCardFinish from './pages/studentcardfinish';
+import Verification from './pages/verification/verification';
+// import KioskMain from './kiosk/kioskmain';
 // import Notification from './pages/notification';
 
 
@@ -45,8 +47,7 @@ const Review = React.lazy(() => import("./pages/review"));
 const StudySystem = React.lazy(() => import("./pages/studysystem"));
 const Teachers = React.lazy(() => import("./pages/teachers"));
 const Notification = React.lazy(() => import("./pages/notification"));
-
-
+const KioskMain = React.lazy(() => import("./kiosk/kioskmain"));
 
 
 
@@ -128,6 +129,11 @@ function App() {
             <Route path="/storyread" element={<Storyread />}></Route>
             <Route path="/studentcard" element={<StudentCard />}></Route>
             <Route path="/studentcardfinish" element={<StudentCardFinish />}></Route>
+
+            <Route path="/phonenumberverification" element={<Verification />}></Route>
+
+
+            <Route path="/kiosk/kioskmain/157292/*" element={<KioskMain />}></Route>
 
           </Routes>
         </Suspense>

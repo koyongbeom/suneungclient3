@@ -169,6 +169,11 @@ const RegisterWaitingCalendar: React.FC<any> = (props) => {
         while (firstDate.getTime() <= lastDate.getTime()) {
             var isPast = false;
             var isToday = false;
+            var tooFar = false;
+
+            const dateForTooFar = new Date();
+            //14일 후를 tooFar로 설정
+            dateForTooFar.setDate(dateForTooFar.getDate() + 14);
 
 
             if (firstDate.getTime() < todayFirstTime.getTime()) {
@@ -179,6 +184,10 @@ const RegisterWaitingCalendar: React.FC<any> = (props) => {
                 isToday = true;
             }
 
+            if (firstDate.getTime() > dateForTooFar.getTime()) {
+                tooFar = true;
+            }
+
 
             const oneDay = {
                 year: firstDate.getFullYear(),
@@ -187,7 +196,8 @@ const RegisterWaitingCalendar: React.FC<any> = (props) => {
                 day: firstDate.getDay(),
                 week,
                 isPast,
-                isToday
+                isToday,
+                tooFar
             }
             calendarData.push(oneDay);
 
@@ -218,10 +228,15 @@ const RegisterWaitingCalendar: React.FC<any> = (props) => {
     //----------------------------------------------------------------------
 
     //날짜 선택하는 기능----------------------------------------------------------------------------------
-    const dateClick = (year: number, month: number, date: number, day: number, isPast: boolean) => {
+    const dateClick = (year: number, month: number, date: number, day: number, isPast: boolean, tooFar : boolean) => {
         if (isPast) {
             return;
         }
+
+        if(tooFar){
+            return;
+        }
+        
         setSelectedDay(year * 10000 + month * 100 + date);
         setRealSelectedDay({ year, month, date, day });
     }
@@ -367,7 +382,7 @@ const RegisterWaitingCalendar: React.FC<any> = (props) => {
                                                 calendar && calendar.map((eachDay: any) => {
                                                     if (eachWeek === eachDay.week) {
                                                         return (
-                                                            <div key={eachDay.month * 100 + eachDay.date} ref={(element) => { eachRef.current.push(element) }} onClick={(e: any) => { dateClick(eachDay.year, eachDay.month, eachDay.date, eachDay.day, eachDay.isPast) }} className={`${styles.date} ${eachDay.day === 0 ? styles.sunday : ""} ${eachDay.isToday ? styles.todayDate : ""} ${eachDay.isPast ? styles.pastDate : ""} ${eachDay.day === 6 ? styles.saturday : ""} ${selectedDay === eachDay.year * 10000 + eachDay.month * 100 + eachDay.date ? styles.active : ""}`}>
+                                                            <div key={eachDay.month * 100 + eachDay.date} ref={(element) => { eachRef.current.push(element) }} onClick={(e: any) => { dateClick(eachDay.year, eachDay.month, eachDay.date, eachDay.day, eachDay.isPast, eachDay.tooFar) }} className={`${styles.date} ${eachDay.day === 0 ? styles.sunday : ""} ${eachDay.isToday ? styles.todayDate : ""} ${eachDay.isPast ? styles.pastDate : ""} ${eachDay.tooFar ? styles.pastDate : ""} ${eachDay.day === 6 ? styles.saturday : ""} ${selectedDay === eachDay.year * 10000 + eachDay.month * 100 + eachDay.date ? styles.active : ""}`}>
                                                                 <div className={styles.eachDate}>
                                                                     {eachDay.date}
                                                                 </div>

@@ -13,7 +13,7 @@ import { ReactComponent as BusSvg } from '../svg/bus-simple-solid.svg';
 import { ReactComponent as LeftChevronLightSvg } from '../svg/chevron-left-light-white.svg';
 import { ReactComponent as RightChevronLightSvg } from '../svg/chevron-right-light-white.svg';
 
-import {list} from "../data/interiorlist";
+import {list2 as list} from "../data/interiorlist";
 import { Button } from "@mui/material";
 import ImageTransitionInterior from "../control/imagetransitioninterior";
 import SpeedDialComponent from "../control/speeddial";
@@ -24,7 +24,7 @@ import ReactGa from "react-ga4";
 
 declare var naver : any;
 
-const Map: React.FC<any> = (props) => {
+const DaechiMap: React.FC<any> = (props) => {
 
     const [size, setSize] = useState(0);
     const [imageStyles, setImageStyles] = useState({
@@ -62,14 +62,14 @@ const Map: React.FC<any> = (props) => {
         window.scrollTo(0, 0);
 
         const map = new naver.maps.Map("map", {
-            center: new naver.maps.LatLng(37.4931655, 127.0286797),
+            center: new naver.maps.LatLng(37.5011, 127.0534),
             zoom: 16,
         });
 
         const marker = new naver.maps.Marker({
             map: map,
             title: "수능선배",
-            position: new naver.maps.LatLng(37.4931655, 127.0286797),
+            position: new naver.maps.LatLng(37.5011, 127.0534),
             animation: naver.maps.Animation.BOUNCE
         })
 
@@ -191,7 +191,7 @@ const Map: React.FC<any> = (props) => {
                     </div>
                     <RightChevronSvg className={`${styles.rightChevron} ${styles.second}`} />
                     <div className={styles.currentMenuViewerText_2}>
-                        강남점
+                        대치점
                     </div>
                 </div>
             </div>
@@ -211,10 +211,10 @@ const Map: React.FC<any> = (props) => {
                         </div>
                         <div className={styles.placeText}>
                             <div className={styles.placeText_1}>
-                                서울 서초구 서초대로78길 52(서초동 1330-12)
+                                서울 강남구 역삼로 424 2층(대치동 909-3)
                             </div>
                             <div>
-                                자습실 06:00~24:00 이용 가능
+                                자습실 06:00~24:00 이용가능
                             </div>
                         </div>
                     </div>
@@ -239,7 +239,7 @@ const Map: React.FC<any> = (props) => {
                                 지하철 이용시
                             </div>
                             <div className={styles.metroPlaceText}>
-                                강남역 5번 출구 하차 후 도보 5분 이내 거리
+                                선릉역 2번 출구 하차 후 도보 7분 거리
                             </div>
                         </div>
                     </div>
@@ -254,7 +254,7 @@ const Map: React.FC<any> = (props) => {
                         <div className={styles.interiorTop}>
                             <div className={styles.interiorTopText}>
                                 <div className={styles.interiorTopText_1}>
-                                    강남점
+                                    대치점
                                 </div>
                                 <div className={styles.interiorTopText_2}>
                                     시설 둘러보기
@@ -268,7 +268,7 @@ const Map: React.FC<any> = (props) => {
                             </div>
                             <div draggable={false} className={styles.interiorTopImages}>
                                 <div draggable={false} className={styles.interiorTopImagesWrapper}>
-                                    <ImageTransitionInterior index={index} location="gangnam" />
+                                    <ImageTransitionInterior index={index} location="daechi" />
 
                                     <Button sx={{ "&:hover": { border: "1px solid black", backgroundColor: "black" }, width: "59px", height: "59px", border: "1px solid black", display: "flex", justifyContent: "center", alignItems: "center", top: "50%", transform: "translate(0, -50%)", position: "absolute", backgroundColor: "black", borderRadius: 0 }} variant="outlined" onClick={() => { move("minus") }}>
                                         <LeftChevronLightSvg className={styles.left} />
@@ -323,12 +323,12 @@ const Map: React.FC<any> = (props) => {
                 <div onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd}>
                     <div className={styles.mobileInteriorImage}>
                         <div className={styles.mobileInteriorImageTitle}>
-                            강남점<br></br>시설 둘러보기
+                            대치점<br></br>시설 둘러보기
                         </div>
 
                         <div draggable={false} className={styles.interiorTopImages}>
                             <div draggable={false} className={styles.interiorTopImagesWrapper}>
-                                <ImageTransitionInterior index={index} location="gangnam" />
+                                <ImageTransitionInterior index={index} location="daechi" />
                             </div>
                         </div>
                     </div>
@@ -355,4 +355,4 @@ const Map: React.FC<any> = (props) => {
     );
 }
 
-export default Map;
+export default DaechiMap;

@@ -412,9 +412,14 @@ const CardSeventhPage = (props: any) => {
                     <Button variant="solid" color="neutral" onClick={props.minusPage} sx={{marginRight : "8px"}}>
                         이전
                     </Button>
-                    <Button variant="solid" color="success" onClick={props.submit} disabled={disabled}>
-                        제출하기
-                    </Button>
+                    {
+                        !props.isView
+                        &&
+                        <Button variant="solid" color="success" onClick={props.submit} disabled={disabled}>
+                            제출하기
+                        </Button>
+                    }
+
                 </div>
 
 

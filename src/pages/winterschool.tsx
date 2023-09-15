@@ -9,9 +9,9 @@ import HeaderTwo from "../components/header2";
 import styles from "../styles/winterschool.module.css";
 import { ReactComponent as RightChevronSvg } from '../svg/chevron-right-thin.svg';
 import { ReactComponent as HouseSvg } from '../svg/house-thin.svg';
-import { ReactComponent as CallSvg } from '../svg/phone-solid.svg';
-import { ReactComponent as PlaceSvg } from '../svg/location-dot-solid.svg';
-import { ReactComponent as BusSvg } from '../svg/bus-simple-solid.svg';
+import { ReactComponent as CallSvg } from '../svg/snowflake-regular.svg';
+import { ReactComponent as PlaceSvg } from '../svg/hat-winter-solid.svg';
+import { ReactComponent as BusSvg } from '../svg/circle-check-solid.svg';
 import { ReactComponent as Check } from "../svg/circle-check-regular.svg";
 
 import { ReactComponent as LeftChevronLightSvg } from '../svg/chevron-left-light-white.svg';
@@ -769,7 +769,7 @@ const WinterSchool: React.FC<any> = (props) => {
                         &nbsp;&nbsp;&nbsp;완벽히 준비된
                     </div>
                     <div className={styles.subHeaderTextTitle2}>
-                        &nbsp;&nbsp;&nbsp;수능선배 대치점을 소개합니다
+                        &nbsp;&nbsp;&nbsp;수능선배 윈터스쿨을 소개합니다
                     </div>
                     <div className={styles.subHeaderTextSubTitle}>
 
@@ -785,13 +785,16 @@ const WinterSchool: React.FC<any> = (props) => {
                     </div>
                 </div>
             </div>
-            <div className={`${styles.currentMenuViewerBoarder} ${styles.onlyPC}`}>
+            <div className={`${styles.currentMenuViewerBoarder}`}>
                 
             </div>
 
 
             <div className={styles.openTitleText}>
-                독학재수전문 학원 수능선배<br></br>대치점을 신규 오픈합니다
+                2024 수능선배 윈터스쿨
+            </div>
+            <div className={`${styles.descriptionText}`}>
+                최상위 담임멘토와 함께하는 8주 완성 프로젝트
             </div>
 
             <div style={{ position: "relative", width : "100%" }}>
@@ -816,6 +819,55 @@ const WinterSchool: React.FC<any> = (props) => {
                     </div>
                 </div>
             </div>
+
+            <div className={styles.mapDescriptionDiv}>
+                <div className={styles.mapDescription}>
+                    <div className={styles.subMapDescription}>
+                        <div className={styles.mapDescriptionPlace}>
+                            <div className={`${styles.svgBox} ${styles.first}`}>
+                                <PlaceSvg className={styles.placeSvg} fill="black" />
+                            </div>
+                            <div className={styles.placeText}>
+                                <div className={styles.placeText_1}>
+                                    PRE-윈터 개강 : 2023.11.20 월요일
+                                </div>
+                                <div>
+                                    등록비 10% 할인
+                                </div>
+                            </div>
+                        </div>
+                        <div className={`${styles.mapDescriptionPlace}`}>
+                            <div className={styles.svgBox}>
+                                <CallSvg className={styles.callSvg} />
+                            </div>
+                            <div className={styles.placeText}>
+                                <div className={styles.placeText_1}>
+                                    정규-윈터 개강 : 2024.1.1 월요일
+                                </div>
+                                <div>
+                                    등록비 5% 할인 (11월 이내 결제시)
+                                </div>
+                            </div>
+                        </div>
+                        <div className={styles.mapDescriptionPlace}>
+                            <div className={styles.svgBox}>
+                                <BusSvg className={styles.busSvg} />
+                            </div>
+                            <div className={styles.placeText}>
+                                <div className={`${styles.placeText_1} ${styles.metroPlaceText_1}`}>
+                                    지하철 이용시
+                                </div>
+                                <div className={styles.metroPlaceText}>
+                                    강남역 5번 출구 하차 후 도보 5분 이내 거리
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
 
 
 

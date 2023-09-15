@@ -4,7 +4,7 @@
 
 .openTitleText {
     margin-top: 125px;
-    margin-bottom: 64px;
+    margin-bottom: 15px;
     text-align: center;
     font-size: 35.5px;
     font-weight: 700;
@@ -13,13 +13,31 @@
     color: #353535;
 }
 
+.divTitleText{
+    font-size: 35.5px;
+    font-weight: 700;
+    line-height: 48px;
+    letter-spacing: -0.89px;
+    text-align: center;
+    color: white;
+}
+
+.descriptionText{
+    text-align: center;
+    font-size: 16.5px;
+    font-weight: 100;
+    color: #7a7a7a;
+    letter-spacing: -0.41px;
+    margin-bottom: 64px;
+}
+
 
 .ceoVideo {
     position: absolute;
     /* top : 826px;
     left: 50%;
     transform: translate(-50%, 0); */
-    width: 750px;
+    width: 900px;
 }
 
 .videoBox{
@@ -481,6 +499,52 @@
     height: 517px;
 }
 
+.mapDescription {
+    width: 1150px;
+    margin: 0 auto;
+    padding-bottom: 90px;
+    border-bottom: 3px solid #ebebeb;
+    margin-bottom: 115px;   
+}
+
+.subMapDescription{
+    width: 900px;
+    margin: 0 auto;
+}
+
+.mapDescriptionPlace{
+    display: flex;
+    margin-bottom: 28px;
+}
+
+.placeSvg{
+    width: 18px;
+    margin-right: 24px;
+}
+
+.callSvg {
+    width: 22px;
+    margin-right: 22px;
+}
+
+.busSvg {
+    width: 22px;
+    margin-right: 22px;
+}
+
+.placeText {
+    font-weight: 700;
+    font-size: 21px;
+    color: #353535;
+    letter-spacing: -0.53px;
+}
+
+.placeText_1{
+    margin-bottom: 15px;
+}
+
+
+
 @media only screen and (min-width : 1024px) {
     .secondSectionBackground{
         margin-bottom: 0px;
@@ -531,7 +595,11 @@
         font-size: 21px;
         letter-spacing: -0.43px;
         line-height: 33px;
-        margin-bottom: 44px;
+        margin-bottom: 16px;
+    }
+
+    .divTitleText{
+        
     }
 
 
@@ -819,6 +887,65 @@
     .map{
         width: 100%;
         height: 236px;
+    }
+
+    .mapDescriptionDiv {
+        margin-bottom: 40px;
+        border-bottom: 5.5px solid #eaeaea;
+    }
+
+    .mapDescription {
+        padding: 0;
+        width: 91.5%;
+        margin: 0 auto;
+        border: 0;
+        padding-bottom: 13.5px;
+    }
+
+    .mapDescriptionPlace{
+        margin-bottom: 17px;
+    }
+
+    .mapDescriptionPlace.second{
+        align-items: center;
+    }
+
+    .placeText {
+        font-size: 13.5px;
+        letter-spacing: -0.34px;
+    }
+
+    .placeText_1 {
+        margin-bottom: 11px;
+    }
+
+    .metroPlaceText_1 {
+        margin-bottom: 5px;
+    }
+
+    .metroPlaceText {
+        line-height: 23px;
+    }
+
+    .svgBox{
+        width: 29px;
+        flex-shrink: 0;
+    }
+
+    .svgBox.first{
+        padding-left: 3px;
+    }
+
+    .placeSvg{
+        width: 11px;
+    }
+
+    .callSvg {
+        width: 13.5px;
+    }
+
+    .busSvg {
+        width: 14.5px;
     }
 
 

@@ -69,7 +69,7 @@ const Price : React.FC<any> = (props) => {
                                 자물쇠반 독학관리
                             </div>
                             <div className={styles.priceBoxAmount}>
-                                <span className={styles.number}>620,000</span>&nbsp;/월
+                                <span className={styles.number}>680,000</span>&nbsp;/월
                             </div>
                             <div className={styles.priceBoxSubAmount}>
                                 모든 독학재수관리 비용 포함
@@ -120,7 +120,7 @@ const Price : React.FC<any> = (props) => {
                                 자물쇠반 독학관리
                             </div>
                             <div className={styles.priceBoxAmount}>
-                                <span className={styles.number}>620,000</span>&nbsp;/월
+                                <span className={styles.number}>680,000</span>&nbsp;/월
                             </div>
                             <div className={styles.priceBoxSubAmount}>
                                 모든 독학재수관리 비용 포함

@@ -11,6 +11,7 @@ import { useLocation } from "react-router-dom";
 import { set } from 'lodash';
 import { Link, useNavigate } from 'react-router-dom';
 import { Backdrop, CircularProgress } from "@mui/material";
+import { is } from 'date-fns/locale';
 
 const StudentCard = (props: any) => {
 
@@ -20,11 +21,14 @@ const StudentCard = (props: any) => {
 
     const [id, setId] = useState<any>();
     const [code, setCode] = useState<any>();
+    const [isView, setIsView] = useState<any>(false);
 
     const [notAllowed, setNotAllowed] = useState<any>(false);
     const navigate = useNavigate();
 
     const [loading, setLoading] = useState<any>(false);
+
+
 
 
 
@@ -70,16 +74,95 @@ const StudentCard = (props: any) => {
 
         const numberedId = +id;
 
+        const isViewQuery = query.get("isView");
+        console.log(isViewQuery);
+
+        var isView = false;
+
+        if(isViewQuery === "true"){
+            console.log("gogogo");
+            setIsView(true);
+            isView = true;
+        }
+
         console.log(numberedId);
 
         setId(numberedId);
         setCode(code);
 
-        certIdAndCode(numberedId, code);
+        certIdAndCode(numberedId, code, isView);
+
+        if(isView){
+            getResultData(numberedId, code);
+        }
 
     }
 
-    const certIdAndCode = (id: number, code: string) => {
+    const getResultData = async (id: number, code: string) => {
+
+        if (!id) {
+            alert("id가 없습니다.")
+            return;
+        }
+
+        if (!code) {
+            alert("code가 없습니다.")
+            return;
+        }
+
+        try {
+
+            const response = await fetch(`https://peetsunbae.com/dashboard/avatar/getstudentcard?id=${id}&code=${code}`, {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
+
+            const result = await response.json();
+
+            if (result.message === "success") {
+
+                console.log(result.data);
+
+                const data = result.data;
+                const targetData = data["목표전형_1_6"]
+                console.log(targetData);
+                console.log(targetData.includes("정시"));
+
+
+                setData(result.data);
+
+
+            }
+
+            if(result.message === "incorrectCode"){
+                alert("잘못된 코드번호 입니다.");
+                return;
+            }
+
+            if (result.message === "notSubmitted") {
+
+                alert("학생이 학생카드를 제출하지 않았습니다.");
+                return;
+
+            }
+
+            if (result.message === "notSended") {
+
+                alert("학생에게 학생카드를 보내지 않았습니다.");
+                return;
+
+            }
+
+        } catch (e) {
+            console.log(e);
+        }
+
+    }
+
+
+    const certIdAndCode = (id: number, code: string, isView = false) => {
 
         if (!id) {
             console.log("noId");
@@ -90,6 +173,10 @@ const StudentCard = (props: any) => {
         if (!code) {
             console.log("noCode");
             setNotAllowed(true);
+            return;
+        }
+
+        if(isView){
             return;
         }
 
@@ -119,6 +206,11 @@ const StudentCard = (props: any) => {
 
     //새로고침 시 confirm 띄워서 데이터 사라질 수 있다는 경고
     const handler = (event: BeforeUnloadEvent) => {
+
+        if(isView){
+            return;
+        }
+        
         event.preventDefault();
         event.returnValue = "";
     };
@@ -131,7 +223,7 @@ const StudentCard = (props: any) => {
             window.removeEventListener("beforeunload", handler);
         }
 
-    }, []);
+    }, [isView]);
 
 
 
@@ -193,6 +285,11 @@ const StudentCard = (props: any) => {
 
     const handleDataChange = (question: string, answer: string) => {
 
+        if(isView){
+            return;
+        }
+
+
         const newData: any = data;
         newData[question] = answer;
         setData({ ...newData });
@@ -212,6 +309,11 @@ const StudentCard = (props: any) => {
 
         if(!code){
             alert("잘못된 접근입니다.");
+            return;
+        }
+
+        if(isView){
+            alert("보기 전용 페이지입니다.");
             return;
         }
 
@@ -322,7 +424,7 @@ const StudentCard = (props: any) => {
                         }
                         {
                             page === 7 &&
-                            <CardSeventhPage plusPage={plusPage} minusPage={minusPage} handleDataChange={handleDataChange} data={data} submit={submit} />
+                            <CardSeventhPage plusPage={plusPage} minusPage={minusPage} handleDataChange={handleDataChange} data={data} submit={submit} isView={isView} />
                         }
                     </div>
                     <div

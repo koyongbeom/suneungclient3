@@ -31,6 +31,7 @@ import WaitingRegisterInstant from './pages/waitingregisterinstant';
 import StudentCard from './studentcardform/studentcard';
 import StudentCardFinish from './pages/studentcardfinish';
 import Verification from './pages/verification/verification';
+import DaechiMap from './pages/daechimap';
 // import KioskMain from './kiosk/kioskmain';
 // import Notification from './pages/notification';
 
@@ -101,6 +102,7 @@ function App() {
             <Route path="/" element={<MainPage />}></Route>
             <Route path="/ceo" element={<Ceo />}></Route>
             <Route path="/map" element={<Map />}></Route>
+            <Route path="/daechimap" element={<DaechiMap />}></Route>
             <Route path="/teachers" element={<Teachers />}></Route>
             <Route path="/studysystem" element={<StudySystem />}></Route>
             <Route path="/review" element={<Review />}></Route>

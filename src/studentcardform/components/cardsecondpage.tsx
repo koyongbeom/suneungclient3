@@ -201,16 +201,16 @@ const CardSecondPage = (props: any) => {
                     </div>
                     <div className={styles.answerBox}>
                         <div className={styles.checkBoxWrapper}>
-                            <Checkbox variant='soft' color='neutral' label="정시" name="정시" onChange={(e) => {onCheckBoxChange(e, "목표전형_1_6")}}/>
+                            <Checkbox variant='soft' color='neutral' label="정시" name="정시" checked={(props.data && props.data["목표전형_1_6"] && props.data["목표전형_1_6"].includes("정시") ? true : false )} onChange={(e) => {onCheckBoxChange(e, "목표전형_1_6")}}/>
                         </div>
                         <div className={styles.checkBoxWrapper}>
-                            <Checkbox variant='soft' color='neutral' label="수시(학종)" name="수시(학종)" onChange={(e) => {onCheckBoxChange(e, "목표전형_1_6")}} />
+                            <Checkbox variant='soft' color='neutral' label="수시(학종)" name="수시(학종)" checked={(props.data && props.data["목표전형_1_6"] && props.data["목표전형_1_6"].includes("수시(학종)") ? true : false )}  onChange={(e) => {onCheckBoxChange(e, "목표전형_1_6")}} />
                         </div>
                         <div className={styles.checkBoxWrapper}>
-                            <Checkbox variant='soft' color='neutral' label="수시(교과)" name="수시(교과)" onChange={(e) => {onCheckBoxChange(e, "목표전형_1_6")}} />
+                            <Checkbox variant='soft' color='neutral' label="수시(교과)" name="수시(교과)" checked={(props.data && props.data["목표전형_1_6"] && props.data["목표전형_1_6"].includes("수시(교과)") ? true : false )} onChange={(e) => {onCheckBoxChange(e, "목표전형_1_6")}} />
                         </div>
                         <div>
-                            <Checkbox variant='soft' color='neutral' label="수시(논술)" name="수시(논술)" onChange={(e) => {onCheckBoxChange(e, "목표전형_1_6")}} />
+                            <Checkbox variant='soft' color='neutral' label="수시(논술)" name="수시(논술)" checked={(props.data && props.data["목표전형_1_6"] && props.data["목표전형_1_6"].includes("수시(논술)") ? true : false )} onChange={(e) => {onCheckBoxChange(e, "목표전형_1_6")}} />
                         </div>
                     </div>
                 </div>

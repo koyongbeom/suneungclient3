@@ -32,6 +32,9 @@ import StudentCard from './studentcardform/studentcard';
 import StudentCardFinish from './pages/studentcardfinish';
 import Verification from './pages/verification/verification';
 import DaechiMap from './pages/daechimap';
+import RegisterWinter from './pages/registerwinter';
+import WinterComplete from './pages/wintercomplete';
+import Parkgaeul2 from './pages/parkgaeul2';
 // import KioskMain from './kiosk/kioskmain';
 // import Notification from './pages/notification';
 
@@ -110,7 +113,9 @@ function App() {
             <Route path="/price" element={<Price />}></Route>
             <Route path="/register" element={<Register />}></Route>
             <Route path="/complete" element={<Complete />}></Route>
+            <Route path="/wintercomplete" element={<WinterComplete />}></Route>
             <Route path="/parkgaeul" element={<Parkgaeul />}></Route>
+            <Route path="/parkgaeul2" element={<Parkgaeul2 />}></Route>
             <Route path="/winterschool" element={<WinterSchool />}></Route>
             
             
@@ -118,6 +123,7 @@ function App() {
             <Route path="/consultresult" element={<ReportToParent />}></Route>
             <Route path="/testmap" element={<Testmap />}></Route>
             <Route path="/registerwaiting" element={<RegisterWaiting />}></Route>
+            <Route path="/registerwinter" element={<RegisterWinter />}></Route>
             <Route path="/registerwaitingfinish" element={<WaitingRegisterFinish />}></Route>
             <Route path="/registerwaitingcalendar" element={<RegisterWaitingCalendar />}></Route>
             <Route path="/registerwaitingsubmit" element={<WaitingRegisterSubmit />}></Route>

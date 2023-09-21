@@ -11,6 +11,22 @@
     line-height: 48px;
     letter-spacing: -0.89px;
     color: #353535;
+    font-weight: 700;
+}
+
+.openTitleText.second{
+    margin-top: 0px;
+    margin-bottom: 90px;
+}
+
+.englishWordTitleText{
+    text-align: center;
+    font-size: 35.5px;
+    font-weight: 700;
+    line-height: 48px;
+    letter-spacing: -0.89px;
+    color: #353535;
+    font-weight: 700;
 }
 
 .divTitleText{
@@ -504,7 +520,14 @@
     margin: 0 auto;
     padding-bottom: 90px;
     border-bottom: 3px solid #ebebeb;
-    margin-bottom: 115px;   
+    margin-bottom: 90px;   
+}
+
+.mapDescription2 {
+    width: 600px;
+    margin: 0 auto;
+    border-bottom: 3px solid #ebebeb;
+    margin-bottom: 70px;   
 }
 
 .subMapDescription{
@@ -543,6 +566,215 @@
     margin-bottom: 15px;
 }
 
+.oddList{
+    position: relative;
+}
+
+.oddList.notFirst{
+    margin-top: 120px;
+}
+
+.oddList::before{
+    left: 0;
+    border-radius: 0 260px 260px 0;
+    content: '';
+    position: absolute;
+    height: 75%;
+    width: 60%;
+    background-color: #ebfbfe;
+    background-color: #f7f7f9;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: -1;
+}
+
+.oddList.even::before{
+    left: auto;
+    right: 0 !important;
+    border-radius: 260px 0 0 260px;
+}
+
+.inner{
+    display: flex;
+
+    align-items: center;
+    gap: 40px;
+
+    width: 100%;
+    max-width: 1520px;
+    max-width: 1250px;
+    margin: 0 auto;
+}
+
+.imgWrap{
+    width: calc(55% - 20px);
+    display: flex;
+    gap: 20px;
+}
+
+.imgWrap.docu{
+    width: 75%;
+    display: block;
+}
+
+.imgBox{
+    width: calc(50% - 10px);
+    max-width: fit-content;
+}
+
+.docu .imgBox{
+    width: 100%;
+    height: 500px;
+}
+
+.exams.imgWrap{
+    background-color: red !important;
+}
+
+.exams .imgBox{
+    width: 70%;
+    margin-left: 60px;
+}
+
+.txtWrap{
+    width: calc(45% - 20px);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.txtWrap.docu.oddDocu{
+    width: 40%;
+    padding-right: 40px;
+}
+
+.txtWrap.docu.evenDocu{
+    width: 40%;
+    padding-left: 40px;
+}
+
+
+.txtBox span{
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 1.78em;
+    letter-spacing: -0.025em;
+    color: #48484b;
+    color: #1b49af;
+}
+
+.txtBox h6{
+    font-weight: 700;
+    font-size: 60px;
+    color: #00cdf5;
+    color: black;
+    font-size: 35.5px;
+    line-height: 48px;
+}
+
+.txtWrapDescription{
+    margin-top: 17px;
+    line-height: 1.8;
+}
+
+.even .imgWrap{
+    order: 1;
+}
+
+.even .txtWrap{
+    display: flex;
+    justify-content: flex-start;
+}
+
+.even{
+
+}
+
+.justHeight{
+    height: 400px;
+}
+
+.englishWordDiv{
+    background-color: #f5f5f6;
+}
+
+.englishWordBody{
+    width: 1150px;
+    margin: 0 auto;
+    padding-top: 90px;
+    padding-bottom: 70px;
+    margin-bottom: 120px;
+}
+
+.englishWordTitleText{
+    margin-bottom: 70px;
+}
+
+.englishWordGridBody{
+    display: grid;
+    grid-template-columns: 1.8fr 1fr;
+    width: 100%;
+    column-gap: 25px;
+}
+
+.englishWordGrid{
+    background-color: white;
+    border-radius: 20px;
+    padding-top: 36px;
+    padding-bottom: 0px;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.englishWordGridTitle{
+    line-height: 1.2858042857;
+    font-size: 21px;
+    font-weight: 600;
+    letter-spacing: 0.011em;
+    color: #1b49af;
+}
+
+.englishWordGridDescription{
+    margin-top: 0.3em;
+    line-height: 1.5263157895;
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: 0.012em;
+}
+
+.englishWordImgWrapper{
+    padding-top: 100px;
+    width: 100%;
+}
+
+.englishWordImgWrapper.secondWrapper{
+    padding-top: 40px;
+}
+
+.englishWordImgDiv{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+
+.englishWordImg1{
+    width: 100%;
+    object-fit: cover;
+}
+
+.englishWordImg2{
+    width: 90%;
+    object-fit: cover;
+}
+
+
+
+@media only screen and (max-width : 1520px){
+    .inner{
+        width: 93.75%;
+    }
+}
 
 
 @media only screen and (min-width : 1024px) {
@@ -553,7 +785,7 @@
     .ceoVideo{
         position: static;
         margin: 0 auto;
-        margin-bottom: 120px;
+        margin-bottom: 80px;
     }
 
     .vimeoWrapper{
@@ -569,8 +801,58 @@
         display: none;
     }
 
+    .inner{
+        flex-wrap: wrap;
+    }
+
     .onlymobile {
         display: block;
+    }
+
+    .docu.imgWrap{
+        width: 100%;
+    }
+
+    .docu .imgBox{
+        width: 100%;
+        height: auto;
+    }
+
+    .even .imgWrap{
+        order: 0;
+    }
+
+    .txtWrap{
+        width: 100% !important; 
+        justify-content: flex-start !important;
+        padding-left: 30px !important;
+    }
+
+    .txtBox span{
+        font-size: 20px;
+
+        font-size: 17px;
+    }
+
+    .txtBox h6{
+        font-size: 23px;
+
+        font-size: 20px;
+        line-height: 1.4;
+    }
+
+    .exams .imgBox{
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .exams{
+        margin-top: 120px !important;
+    }
+
+    .txtWrapDescription{
+        line-height: 1.5;
+        font-size: 14px;
     }
 
     .voidHeader {
@@ -592,10 +874,29 @@
 
     .openTitleText{
         margin-top: 64px;
-        font-size: 21px;
+        margin-top: 0px;
+        padding-top: 64px;
+        font-size: 23px;
         letter-spacing: -0.43px;
         line-height: 33px;
-        margin-bottom: 16px;
+        margin-bottom: 12px !important;
+        font-weight: 800;
+    }
+
+    .openTitleText.second{
+        margin-bottom: 70px !important;
+        padding-top: 80px;
+    }
+
+    .englishWordTitleText{
+        font-size: 23px;
+        letter-spacing: -0.43px;
+        line-height: 33px;
+        font-weight: 800;
+    }
+
+    .descriptionText{
+        font-size: 14px;
     }
 
     .divTitleText{
@@ -902,6 +1203,10 @@
         padding-bottom: 13.5px;
     }
 
+    .subMapDescription{
+        width: 100%;
+    }
+
     .mapDescriptionPlace{
         margin-bottom: 17px;
     }
@@ -948,6 +1253,177 @@
         width: 14.5px;
     }
 
+    .imgWrap{
+        width: 100%;
+        justify-content: center;
+    }
+
+    .txtWrap{
+        width: 100%;
+        justify-content: center;
+    }
+
+    .justHeight{
+        height: 100px;
+    }
+
+    .differentiationTitle{
+        margin-top: 0px;
+    }
+
+    .textBoxGo{
+        width: 90% !important;
+    }
+
+    .textBoxTitle{
+        font-size: 18px !important;
+        
+    }
+
+    .textBoxWrapper{
+        width: 45% !important;
+    }
+
+    .textBoxDescription{
+        font-size: 12px !important;
+    }
+
+    .textBoxWrapper{
+        width: 80% !important;
+        text-align: "center !important";
+    }
+
+    .textBoxWrapper.second{
+        padding-bottom: 65px !important;
+    }
+
+    .mapDescription2{
+        width: 100% !important;
+    }
+
+    .mapDescription2{
+        display: none;
+    }
+
+    .textBoxDescription{
+        display: flex;
+        justify-content: center;
+    }
+
+    .justBorder{
+
+    }
+
+    .textBoxDescription2{
+        text-align: center;
+        font-size: 11px !important;
+    }
+
+    .textBoxGo{
+        margin-bottom: 60px !important;
+    }
+
+    .textBoxWrapperText{
+        font-size: 12px !important;
+    }
+
+    .textBoxTitle{
+        font-size: 14px !important;
+        font-weight: 600;
+    }
+
+    .txtWrap.docu.oddDocu{
+        padding-right: 0px;
+    }
+    
+    .txtWrap.docu.evenDocu{
+        padding-left: 0px;
+    }
+
+    .realFirstSection{
+        background-color: #f5f5f6;
+    }
+
+    .justBorder2{
+    }
+
+
+
+    .englishWordBody{
+        width: 90.6%;
+        margin: 0 auto;
+        padding-top: 60px;
+        padding-bottom: 70px;
+        margin-bottom: 90px;
+    }
+    
+    .englishWordTitleText{
+        margin-bottom: 70px;
+    }
+    
+    .englishWordGridBody{
+        display: grid;
+        grid-template-columns: 100%;
+        width: 100%;
+        column-gap: 0px;
+        row-gap: 15px;
+    }
+    
+    .englishWordGrid{
+        background-color: white;
+        padding-top: 36px;
+        padding-bottom: 0px;
+        padding-left: 0px;
+        padding-right: 0px;
+        border-radius: 20px;
+    }
+
+    .forMobileEnglishWord{
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+    
+    .englishWordGridTitle{
+        line-height: 1.2858042857;
+        font-size: 17px;
+        font-weight: 600;
+        letter-spacing: 0.011em;
+        color: #1b49af;
+    }
+    
+    .englishWordGridDescription{
+        margin-top: 0.6em;
+        line-height: 1.663157895;
+        font-size: 14px;
+        font-weight: 400;
+        letter-spacing: 0.012em;
+    }
+    
+    .englishWordImgWrapper{
+        padding-top: 44px;
+        width: 100%;
+    }
+    
+    .englishWordImgWrapper.secondWrapper{
+        padding-top: 40px;
+    }
+    
+    .englishWordImgDiv{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    
+    
+    .englishWordImg1{
+        width: 95%;
+        object-fit: cover;
+    }
+    
+    .englishWordImg2{
+        width: 85%;
+        object-fit: cover;
+    }
 
 
 
@@ -956,4 +1432,15 @@
 .modalImg{
     width: 100%;
     object-fit: cover;
+}
+
+.justBorder{
+    border-right: 1px solid black;
+}
+
+.justBorder2{
+    margin: 0 auto;
+    border-bottom: 2px solid black;
+    width: 80px;
+    margin-bottom: 20px;
 }

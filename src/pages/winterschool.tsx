@@ -33,6 +33,8 @@ import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
 import { useNavigate } from "react-router-dom";
 
+import { inView, animate } from "motion";
+
 declare var naver: any;
 
 const style = {
@@ -756,6 +758,31 @@ const WinterSchool: React.FC<any> = (props) => {
 
     // }, []);
 
+    useEffect(() => {
+
+        inView("#imgWrap", ({target}) => {
+            animate(target, 
+                {opacity : 1},
+                {delay : 0.2, duration : 0.6, easing : "ease-in"}
+                );
+        });
+
+        inView("#textRight", ({target}) => {
+            animate(target, 
+                {opacity : 1, transform : "none"},
+                {delay : 0.2, duration : 0.6, easing : "ease-out"}
+                )
+        })
+
+        inView("#textLeft", ({target}) => {
+            animate(target, 
+                {opacity : 1, transform : "none"},
+                {delay : 0.2, duration : 0.6, easing : "ease-out"}
+                )
+        })
+
+    }, []);
+
     return (
         <div>
             {
@@ -1025,12 +1052,12 @@ const WinterSchool: React.FC<any> = (props) => {
                 <ul className={styles.secondSectionList}>
                     <li className={`${styles.oddList} ${styles.odd}`}>
                         <div className={styles.inner}>
-                            <div className={`${styles.imgWrap} ${styles.docu}`} data-aos="fade-zoom-in" data-aos-duration="1000">
+                            <div className={`${styles.imgWrap} ${styles.docu}`} id="imgWrap">
                                 <div className={styles.imgBox}>
                                     <img style={{ width: "100%" }} src="img/winterdocu1.png" alt="" />
                                 </div>
                             </div>
-                            <div className={`${styles.txtWrap} ${styles.docu} ${styles.oddDocu}`} data-aos="fade-left" data-aos-duration="1000">
+                            <div className={`${styles.txtWrap} ${styles.docu} ${styles.oddDocu}`} id="textRight">
                                 <div className={styles.txtBox}>
                                     <span>개강 전</span>
                                     <h6>미리보는 나만의 <br></br>방학 솔루션</h6>
@@ -1046,12 +1073,12 @@ const WinterSchool: React.FC<any> = (props) => {
 
                     <li className={`${styles.oddList} ${styles.notFirst} ${styles.even}`}>
                         <div className={styles.inner}>
-                            <div className={`${styles.imgWrap} ${styles.docu}`} data-aos="fade-zoom-in" data-aos-duration="1000">
+                            <div className={`${styles.imgWrap} ${styles.docu}`} id="imgWrap">
                                 <div className={styles.imgBox}>
                                     <img style={{ width: "100%" }} src="img/winterdocu2.png" alt="" />
                                 </div>
                             </div>
-                            <div className={`${styles.txtWrap} ${styles.docu} ${styles.evenDocu}`} data-aos="fade-left" data-aos-duration="1000">
+                            <div className={`${styles.txtWrap} ${styles.docu} ${styles.evenDocu}`} id="textLeft">
                                 <div className={styles.txtBox}>
                                     <span>등원 첫 주</span>
                                     <h6>8주간의 여정 세우기</h6>
@@ -1066,12 +1093,12 @@ const WinterSchool: React.FC<any> = (props) => {
 
                     <li className={`${styles.oddList} ${styles.odd} ${styles.notFirst}`}>
                         <div className={styles.inner}>
-                            <div className={`${styles.imgWrap} ${styles.docu}`} data-aos="fade-zoom-in" data-aos-duration="1000">
+                            <div className={`${styles.imgWrap} ${styles.docu}`} id="imgWrap">
                                 <div className={styles.imgBox}>
                                     <img style={{ width: "100%" }} src="img/winterdocu3.png" alt="" />
                                 </div>
                             </div>
-                            <div className={`${styles.txtWrap} ${styles.docu} ${styles.oddDocu}`} data-aos="fade-left" data-aos-duration="1000">
+                            <div className={`${styles.txtWrap} ${styles.docu} ${styles.oddDocu}`} id="textRight">
                                 <div className={styles.txtBox}>
                                     <span>매주 대면 상담</span>
                                     <h6>매주 40분<br></br>대면상담 체크하기</h6>
@@ -1090,12 +1117,12 @@ const WinterSchool: React.FC<any> = (props) => {
                         marginTop: "160px"
                     }}>
                         <div className={styles.inner}>
-                            <div className={`${styles.imgWrap} ${styles.docu}`} data-aos="fade-zoom-in" data-aos-duration="1000">
+                            <div className={`${styles.imgWrap} ${styles.docu}`} id="imgWrap">
                                 <div className={styles.imgBox}>
                                     <img style={{ width: "100%" }} src="img/winterdocu6.png" alt="" />
                                 </div>
                             </div>
-                            <div className={`${styles.txtWrap} ${styles.docu} ${styles.evenDocu}`} data-aos="fade-left" data-aos-duration="1000">
+                            <div className={`${styles.txtWrap} ${styles.docu} ${styles.evenDocu}`} id="textLeft">
                                 <div className={styles.txtBox}>
                                     <span>상담 후</span>
                                     <h6>나만을 위한 주간테스트</h6>
@@ -1664,14 +1691,14 @@ const WinterSchool: React.FC<any> = (props) => {
                             onClick={(e: any) => {
                                 navigate("/registerwinter");
                             }}
-                            variant="contained" sx={{ "&:hover": { backgroundColor: "rgb(8,9,12)" }, width: "306px", height: "70px", backgroundColor: "#28303e", borderRadius: "35px", fontSize: "22px", fontWeight: 700, "@media (max-width : 1024px)": { width: "215px", height: "49px", borderRadius: "24.5px", fontSize: "15.5px" } }}>사전 예약 바로 가기</Button>
+                            variant="contained" sx={{ "&:hover": { backgroundColor: "rgb(8,9,12)" }, width: "306px", height: "70px", backgroundColor: "#28303e", borderRadius: "35px", fontSize: "22px", fontWeight: 700, "@media (max-width : 1024px)": { width: "215px", height: "49px", borderRadius: "24.5px", fontSize: "15.5px" } }}>사전 신청 바로 가기</Button>
                     </div>
                     <div className={`${styles.lastBtnDiv} ${styles.onlymobile}`}>
                         <Button
                             onClick={(e: any) => {
                                 navigate("/registerwinter");
                             }}
-                            className={styles.scheduleBtn} variant="contained" sx={{ "&:hover": { backgroundColor: "rgb(8,9,12)" }, width: "306px", height: "70px", backgroundColor: "#28303e", borderRadius: "35px", fontSize: "22px", fontWeight: 700, "@media (max-width : 1024px)": { width: "215px", height: "49px", borderRadius: "24.5px", fontSize: "15.5px" } }}>사전 예약</Button>
+                            className={styles.scheduleBtn} variant="contained" sx={{ "&:hover": { backgroundColor: "rgb(8,9,12)" }, width: "306px", height: "70px", backgroundColor: "#28303e", borderRadius: "35px", fontSize: "22px", fontWeight: 700, "@media (max-width : 1024px)": { width: "215px", height: "49px", borderRadius: "24.5px", fontSize: "15.5px" } }}>사전 신청</Button>
                     </div>
 
                 </div>

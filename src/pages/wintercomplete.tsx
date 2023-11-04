@@ -19,6 +19,9 @@ const WinterComplete: React.FC<any> = (props) => {
     const [minutes, setMinutes] = useState<any>();
     const [select, setSelect] = useState<any>();
 
+    const location = useLocation();
+    const [isWaiting, setIsWaiting] = useState<any>(false);
+
     useEffect(()=>{
         window.scrollTo(0, 0);
     }, []);
@@ -35,12 +38,18 @@ const WinterComplete: React.FC<any> = (props) => {
             page_title : "complete"
         });
 
+        const state = location.state as undefined | {isWaiting : boolean};
+
+
+        if(state && state.isWaiting){
+            setIsWaiting(true);
+        }
+
     }, []);
     //--------------------------------------------------------
 
 
     const navigate = useNavigate();
-    const location = useLocation();
 
     const goHome = () => {
         navigate("/");
@@ -60,10 +69,10 @@ const WinterComplete: React.FC<any> = (props) => {
                     <Check />
                 </div>
                 <div className={styles.checkTitle}>
-                    신청이 완료되었습니다.
+                    {isWaiting ? "대기 " : ""}신청이 완료되었습니다.
                 </div>
                 <div className={styles.checkText}>
-                    카카오톡으로 사전신청 내역을 보내드립니다.<br></br>사전신청 취소는 카카오톡 및 전화로 연락주시기 바랍니다.<br></br><br></br>
+                    카카오톡으로 {isWaiting ? "대기" : "사전"}신청 내역을 보내드립니다.<br></br>{isWaiting ? "대기" : "사전"}신청 취소는 카카오톡 및 전화로 연락주시기 바랍니다.<br></br><br></br>
                 </div>
                 <div className={styles.toHomeBtnDiv}>
                     <Button onClick={goHome} variant="contained" sx={{backgroundColor : "#1b49af", width : "120px", height : "40px",fontWeight : 500}}>

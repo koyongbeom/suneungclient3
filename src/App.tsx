@@ -35,6 +35,8 @@ import DaechiMap from './pages/daechimap';
 import RegisterWinter from './pages/registerwinter';
 import WinterComplete from './pages/wintercomplete';
 import Parkgaeul2 from './pages/parkgaeul2';
+import JustPdfViewer from './pages/justpdfviewer';
+import WinterWaitingRegisterFinish from './pages/winterwaitingregisterfinish';
 // import KioskMain from './kiosk/kioskmain';
 // import Notification from './pages/notification';
 
@@ -117,6 +119,7 @@ function App() {
             <Route path="/parkgaeul" element={<Parkgaeul />}></Route>
             <Route path="/parkgaeul2" element={<Parkgaeul2 />}></Route>
             <Route path="/winterschool" element={<WinterSchool />}></Route>
+            <Route path="/winterwaitingregisterfinish" element={<WinterWaitingRegisterFinish />}></Route>
             
             
             <Route path="/attendancetable" element={<AttendanceTable />}></Route>
@@ -142,6 +145,8 @@ function App() {
 
 
             <Route path="/kiosk/kioskmain/157292/*" element={<KioskMain />}></Route>
+
+            <Route path="/pdfviewer" element={<JustPdfViewer />}></Route>
 
           </Routes>
         </Suspense>

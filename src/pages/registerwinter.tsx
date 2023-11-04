@@ -28,6 +28,8 @@ const RegisterWinter: React.FC<any> = (props) => {
     const [kind, setKind] = useState<String>("pre");
     const [location, setLocation] = useState<String>("gangnam");
 
+    const [isWaiting, setIsWaiting] = useState(false);
+
     const [select, setSelect] = useState("male");
     const [select2, setSelect2] = useState("n");
 
@@ -78,6 +80,17 @@ const RegisterWinter: React.FC<any> = (props) => {
     }, []);
     //--------------------------------------------------------
 
+    useEffect(() => {
+
+        if(kind === "regular" && location === "daechi"){
+            setIsWaiting(true);
+        }else{
+            setIsWaiting(false);
+        }
+
+
+    }, [kind, location]);
+ 
 
     useEffect(() => {
 
@@ -271,7 +284,8 @@ const RegisterWinter: React.FC<any> = (props) => {
 
         console.log(data);
 
-        fetch(`https://peetsunbae.com/waiting/winter/submit`, {
+        
+        fetch(`https://peetsunbae.com/waiting/winter/submit${isWaiting ? "waiting" : ""}`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -285,7 +299,7 @@ const RegisterWinter: React.FC<any> = (props) => {
                         alert("오류 관리자 문의(010-9880-0489)")
                     }
                     if (result.message === "success") {
-                        navigate("/wintercomplete");
+                        navigate("/wintercomplete", { state : {isWaiting}});
                     }
                 })
         })
@@ -300,7 +314,7 @@ const RegisterWinter: React.FC<any> = (props) => {
             </div>
 
             <div className={styles.titleText2}>
-                1분 안에<br></br>윈터 사전신청 해드릴게요!
+                1분 안에<br></br>{isWaiting ? "대기 등록" : "윈터 사전신청"} 해드릴게요!
             </div>
 
             <div className={styles.waitingNumberBox}>
@@ -336,19 +350,33 @@ const RegisterWinter: React.FC<any> = (props) => {
                     <div onClick={(e: any) => { setKind("pre") }} className={`${styles.select} ${kind === "pre" ? styles.active : ""}`}>
                         pre-윈터
                     </div>
-                    <div onClick={(e: any) => { setKind("regular") }} className={`${styles.select} ${kind === "regular" ? styles.active : ""}`}>
+                    <div onClick={(e: any) => {    
+                        if(location === "daechi"){
+                            if(!window.confirm("대치점은 정규윈터는 마감입니다. 대기신청으로 계속 진행할까요?")){
+                                return;
+                            }
+                        }
+                        setKind("regular"); 
+                    }} className={`${styles.select} ${kind === "regular" ? styles.active : ""}`}>
                         정규윈터
                     </div>
                 </div>
 
                 <div className={`${styles.questionText} ${styles.first} ${styles.real}`}>
-                    어느 지점의 사전신청을 원하시나요?
+                    어느 지점의 {isWaiting ? "대기 등록을" : "사전 신청을"} 원하시나요?
                 </div>
                 <div className={styles.selectDiv}>
                     <div onClick={(e: any) => { setLocation("gangnam") }} className={`${styles.select} ${location === "gangnam" ? styles.active : ""}`}>
                         강남점
                     </div>
-                    <div onClick={(e: any) => { setLocation("daechi") }} className={`${styles.select} ${location === "daechi" ? styles.active : ""}`}>
+                    <div onClick={(e: any) => { 
+                        if(kind === "regular"){
+                            if(!window.confirm("대치점 정규윈터는 마감입니다. 대기신청으로 계속 진행할까요?")){
+                                return;
+                            }
+                        }
+                        setLocation("daechi") 
+                }} className={`${styles.select} ${location === "daechi" ? styles.active : ""}`}>
                         대치점
                     </div>
                 </div>

@@ -40,10 +40,10 @@ const RegisterForEmployee: React.FC<any> = (props) => {
 
     const [minusMonthDisable, setMinusMonthDisable] = useState(true);
 
-    const [name, setName] = useState("");
+    const [name, setName] = useState("관리자");
 
     const [fullTelephone, setFullTelephone] = useState(false);
-    const [telephoneNumber, setTelephoneNumber] = useState("");
+    const [telephoneNumber, setTelephoneNumber] = useState("123");
     const [isToday, setIsToday] = useState(true);
 
     const [timeData, setTimeData] = useState<any>();
@@ -66,6 +66,8 @@ const RegisterForEmployee: React.FC<any> = (props) => {
 
 
     const [update, setUpdate] = useState(Math.random());
+
+    const [location, setLocation] = useState("gangnam");
 
     const navigate = useNavigate();
 
@@ -198,6 +200,8 @@ const RegisterForEmployee: React.FC<any> = (props) => {
 
         console.log(time);
         setSelectedTime(time);
+
+        submit(time);
     }
 
 
@@ -212,7 +216,7 @@ const RegisterForEmployee: React.FC<any> = (props) => {
             isToday = true;
         }
 
-        if (select === 0 || select === 1) {
+        if (select === 0 || select === 1 || select === 2) {
             setLoading(true);
             fetch(`https://suneungsunbae.com/api/booking?select=${select}&year=${realSelectedDay.year}&month=${realSelectedDay.month}&date=${realSelectedDay.date}`, {
                 method: "GET"
@@ -223,12 +227,34 @@ const RegisterForEmployee: React.FC<any> = (props) => {
 
 
                         const occupiedTimeData: any = [];
+                        const occupiedTimeKind: any = [];
+
+                        // result.data.forEach((eachData: any) => {
+                        //     if (eachData.kind === 0 || eachData.kind === 1) {
+                        //         occupiedTimeData.push(eachData.time);
+                        //     }
+                        // });
 
                         result.data.forEach((eachData: any) => {
-                            if (eachData.kind === 0 || eachData.kind === 1) {
-                                occupiedTimeData.push(eachData.time);
+
+                            if(location !== eachData.location){
+                                return;
                             }
-                        });
+
+                            //관리자가 누른 경우. kind에 따라 각자 막힘
+                            if(eachData.name === "관리자"){
+                                if(eachData.kind === select){
+                                    occupiedTimeData.push(eachData.time);
+                                    occupiedTimeKind.push(eachData.kind);
+                                }
+                            }else{
+                                //고객이 누른 경우 kind에 관계 없이 막힘
+                                occupiedTimeData.push(eachData.time);
+                                occupiedTimeKind.push(eachData.kind);
+                            }
+
+                        })
+
 
                         const newAmPm: any = [];
 
@@ -240,7 +266,9 @@ const RegisterForEmployee: React.FC<any> = (props) => {
                                 oneRow.ampm = "am";
                             }
                             oneRow.possible = true;
-                            if (occupiedTimeData.includes(eachTime) || occupiedTimeData.includes(eachTime - 30)) {
+                            if (occupiedTimeData.includes(eachTime) 
+                            //|| occupiedTimeData.includes(eachTime - 30)
+                        ) {
                                 oneRow.possible = false;
                             }
                             oneRow.isPast = false;
@@ -284,16 +312,34 @@ const RegisterForEmployee: React.FC<any> = (props) => {
                         }
                         //--------------------------------------------------------------------
 
+                        if(realSelectedDay.day > 0 && realSelectedDay.day < 6){
+                            newAmPm.forEach((eachTime: any) => {
+                                if (eachTime.time >= 1200) {
+                                    eachTime.possible = false;
+                                }
+                            })
+                        }
 
                         //토요일 시간 빼는 기능--------------------------------------------------
-                        // if (realSelectedDay.day === 6) {
-                        //     newAmPm.forEach((eachTime: any) => {
-                        //         if (eachTime.time < 1020) {
-                        //             eachTime.possible = false;
-                        //         }
-                        //     })
-                        // }
+                        if (realSelectedDay.day === 6) {
+                            newAmPm.forEach((eachTime: any) => {
+                                if (eachTime.time >= 900) {
+                                    eachTime.possible = false;
+                                }
+                            })
+                        }
                         //----------------------------------------------------------------------
+
+                        //일요일 시간 빼는 기능--------------------------------------------------
+                        if (realSelectedDay.day === 0) {
+                            newAmPm.forEach((eachTime: any) => {
+                                if (eachTime.time >= 0) {
+                                    eachTime.possible = false;
+                                }
+                            })
+                        }
+                        //----------------------------------------------------------------------
+                        
 
 
 
@@ -302,66 +348,68 @@ const RegisterForEmployee: React.FC<any> = (props) => {
                     })
                 setLoading(false);
             })
-        } else if (select === 2) {
-            const newAmPm: any = [];
+        } 
+        // 원래 시설 안내 따로 뺏었는데 이제 시설 안내도 예약 내역에 따라 막으려고 주석 처리함
+        // else if (select === 2) {
+        //     const newAmPm: any = [];
 
-            ampm.forEach((eachTime: number) => {
-                const oneRow: any = {};
-                oneRow.time = eachTime;
-                oneRow.ampm = "pm";
-                if (eachTime <= 690) {
-                    oneRow.ampm = "am";
-                }
-                oneRow.possible = true;
-                oneRow.isPast = false;
-                if (isToday) {
-                    if (oneRow.time < currentTime + 60) {
-                        oneRow.isPast = true;
-                    }
-                }
-                newAmPm.push(oneRow);
-            });
+        //     ampm.forEach((eachTime: number) => {
+        //         const oneRow: any = {};
+        //         oneRow.time = eachTime;
+        //         oneRow.ampm = "pm";
+        //         if (eachTime <= 690) {
+        //             oneRow.ampm = "am";
+        //         }
+        //         oneRow.possible = true;
+        //         oneRow.isPast = false;
+        //         if (isToday) {
+        //             if (oneRow.time < currentTime + 60) {
+        //                 oneRow.isPast = true;
+        //             }
+        //         }
+        //         newAmPm.push(oneRow);
+        //     });
 
-            var amCount = 0;
-            var pmCount = 0;
+        //     var amCount = 0;
+        //     var pmCount = 0;
 
-            if (isToday) {
-            } else {
-                amCount = 1;
-                pmCount = 1;
-            }
-
-
-            newAmPm.forEach((eachTime: any) => {
-                if (eachTime.ampm === "am" && !eachTime.isPast) {
-                    amCount++
-                }
-                if (eachTime.ampm === "pm" && !eachTime.isPast) {
-                    pmCount++;
-                }
-            });
-
-            console.log(amCount);
-
-            if (!amCount) {
-                setIsAmRemain(false);
-            } else {
-                setIsAmRemain(true);
-            }
-            if (!pmCount) {
-                setIsPmRemain(false);
-            } else {
-                setIsPmRemain(true);
-            }
+        //     if (isToday) {
+        //     } else {
+        //         amCount = 1;
+        //         pmCount = 1;
+        //     }
 
 
-            console.log(newAmPm);
-            setTimeData(newAmPm);
+        //     newAmPm.forEach((eachTime: any) => {
+        //         if (eachTime.ampm === "am" && !eachTime.isPast) {
+        //             amCount++
+        //         }
+        //         if (eachTime.ampm === "pm" && !eachTime.isPast) {
+        //             pmCount++;
+        //         }
+        //     });
 
-        }
+        //     console.log(amCount);
+
+        //     if (!amCount) {
+        //         setIsAmRemain(false);
+        //     } else {
+        //         setIsAmRemain(true);
+        //     }
+        //     if (!pmCount) {
+        //         setIsPmRemain(false);
+        //     } else {
+        //         setIsPmRemain(true);
+        //     }
 
 
-    }, [realSelectedDay, select, update])
+        //     console.log(newAmPm);
+        //     setTimeData(newAmPm);
+
+        // }
+
+
+    }, [realSelectedDay, select, location, update]);
 
 
 
@@ -493,8 +541,8 @@ const RegisterForEmployee: React.FC<any> = (props) => {
     }
 
 
-    const submit = () => {
-        if (!selectedTime) {
+    const submit = (time : number) => {
+        if (!time) {
             console.log("noTime");
             setSubmitStatus("noTime");
             return;
@@ -516,14 +564,15 @@ const RegisterForEmployee: React.FC<any> = (props) => {
         const data = {
             select: select,
             date: realSelectedDay,
-            time: selectedTime,
+            time: time,
             name: name,
             telephoneNumber: telephoneNumber,
-            cert: certNumber
+            cert: certNumber,
+            location
         }
         console.log(data);
 
-        fetch(`https://suneungsunbae.com/api/booking/submit`, {
+        fetch(`https://suneungsunbae.com/api/booking/submit2`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -560,6 +609,18 @@ const RegisterForEmployee: React.FC<any> = (props) => {
                     </div>
                     <div onClick={(e: any) => { setSelect(2); }} className={`${styles.select} ${select === 2 ? styles.active : ""} ${styles.last}`}>
                         상담 없이 시설 구경
+                    </div>
+                </div>
+
+                <div className={`${styles.questionText} ${styles.first}`}>
+                    어느 지점에 문의하고 싶으신가요?
+                </div>
+                <div className={styles.selectDiv}>
+                    <div onClick={(e: any) => { setLocation("gangnam"); }} className={`${styles.select} ${location === "gangnam" ? styles.active : ""}`}>
+                        강남점
+                    </div>
+                    <div onClick={(e: any) => { setLocation("daechi"); }} className={`${styles.select} ${location === "daechi" ? styles.active : ""}`}>
+                        대치점
                     </div>
                 </div>
 
@@ -664,7 +725,7 @@ const RegisterForEmployee: React.FC<any> = (props) => {
                                                 const minutes = minuteNumber < 10 ? "0" + minuteNumber : minuteNumber;
 
                                                 return (
-                                                    <div onClick={(e: any) => { selectTime(eachTime.time, eachTime.isPast, eachTime.possible) }} className={`${styles.eachTime} ${eachTime.possible ? "" : styles.booked} ${selectedTime === eachTime.time ? styles.active : ""}`}>
+                                                    <div key={Math.random()} onClick={(e: any) => { selectTime(eachTime.time, eachTime.isPast, eachTime.possible) }} className={`${styles.eachTime} ${eachTime.possible ? "" : styles.booked} ${selectedTime === eachTime.time ? styles.active : ""}`}>
                                                         {hours}:{minutes}
                                                     </div>
                                                 );
@@ -696,7 +757,7 @@ const RegisterForEmployee: React.FC<any> = (props) => {
                                                 const minutes = minuteNumber < 10 ? "0" + minuteNumber : minuteNumber;
 
                                                 return (
-                                                    <div onClick={(e: any) => { selectTime(eachTime.time, eachTime.isPast, eachTime.possible) }} className={`${styles.eachTime} ${eachTime.possible ? "" : styles.booked} ${selectedTime === eachTime.time ? styles.active : ""}`}>
+                                                    <div key={Math.random()} onClick={(e: any) => { selectTime(eachTime.time, eachTime.isPast, eachTime.possible) }} className={`${styles.eachTime} ${eachTime.possible ? "" : styles.booked} ${selectedTime === eachTime.time ? styles.active : ""}`}>
                                                         {hours}:{minutes}
                                                     </div>
                                                 );
@@ -736,7 +797,7 @@ const RegisterForEmployee: React.FC<any> = (props) => {
 
                 </div>
 
-                <div className={`${styles.questionText} ${styles.third}`}>
+                {/* <div className={`${styles.questionText} ${styles.third}`}>
                     간단한 정보만 적어주세요
                 </div>
 
@@ -805,7 +866,7 @@ const RegisterForEmployee: React.FC<any> = (props) => {
                             </>
                         }
                     </div>
-                </div>
+                </div> */}
                 <div className={styles.informResult}>
                     {
                         submitStatus === "noTime" &&
@@ -832,11 +893,11 @@ const RegisterForEmployee: React.FC<any> = (props) => {
                         </span>
                     }
                 </div>
-                <div className={styles.submitBtnDiv}>
+                {/* <div className={styles.submitBtnDiv}>
                     <Button onClick={submit} variant="contained" fullWidth sx={{ height: "72px", backgroundColor: "#3c3c3c", color: "white", fontWeight: 700, fontSize: "20px", "&:hover": { backgroundColor: "rgb(100,100,100)" }, "@media (max-width : 1024px)": {fontSize : "16px", height : '55.5px'} }}>
                         신청서 제출
                     </Button>
-                </div>
+                </div> */}
                 <div className={styles.bottomText}>
                     ※ 예약 내역을 카카오 알림톡으로 전송해드립니다
                 </div>

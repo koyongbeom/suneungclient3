@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import HeaderTwo from "../components/header2";
 import styles from "../styles/parkgaeul.module.css";
 import StyledDataGrid from "../data/tablestyles";
-import { GridSelectionModel, GridColDef, GridToolbar} from '@mui/x-data-grid-pro';
+import { GridSelectionModel, GridColDef, GridToolbar, GridFilterModel} from '@mui/x-data-grid-pro';
 import renderCellExpand from "../data/rendercellexpand";
 import { createTheme, darken, lighten } from '@mui/material/styles';
 import { createStyles, makeStyles } from '@mui/styles';
@@ -11,6 +11,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import RegisterForEmployee from "./registerForEmployee";
 
 import ReactGa from "react-ga4";
+import { ToggleButton, ToggleButtonGroup } from "@mui/material";
 
 
 
@@ -79,6 +80,20 @@ const Parkgaeul: React.FC<any> = (props) => {
     const [loading, setLoading] = useState(false);
     const [selectionModel, setSelectionModel] = React.useState<GridSelectionModel>([]);
     const [update, setUpdate] = useState(Math.random());
+    const [alignment, setAlignment] = React.useState('real');
+
+    const [isFilter, setIsFilter] = useState(true);
+
+    // const [filterModel, setFilterModel] = useState<GridFilterModel>({
+    //     items : [
+    //         {
+    //             id : 1,
+    //             columnField : "location",
+    //             operatorValue : "contains",
+    //             value : "관리자"
+    //         }
+    //     ]
+    // })
 
     //ga event------------------------------------------------
     useEffect(() => {
@@ -107,6 +122,13 @@ const Parkgaeul: React.FC<any> = (props) => {
                     const data = result.data;
 
                     data.forEach((eachData: any) => {
+
+                        if(isFilter){
+                            if(eachData.name === "관리자" || eachData.name === "0"){
+                                return;
+                            }
+                        }
+
                         const oneRow: any = {};
                         oneRow.id = eachData.id;
 
@@ -163,7 +185,7 @@ const Parkgaeul: React.FC<any> = (props) => {
                         oneRow.time = `${Math.floor(eachData.time / 60)}시 ${eachData.time % 60 < 10 ? "0" + eachData.time % 60 : eachData.time % 60}분`
                         oneRow.name = eachData.name;
                         oneRow.telephone = eachData.telephoneNumber;
-                        if(oneRow.telephone.length > 3){
+                        if(oneRow.telephone.length > 3 || true){
                             newRows.push(oneRow);
                         }
 
@@ -174,7 +196,7 @@ const Parkgaeul: React.FC<any> = (props) => {
                     setLoading(false);
                 })
         })
-    }, [update]);
+    }, [update, isFilter]);
 
     const select = (newSelectionModel: any) => {
         console.log(newSelectionModel);
@@ -201,6 +223,26 @@ const Parkgaeul: React.FC<any> = (props) => {
         })
     }
 
+    const handleAlignment = (event: any, newAlignment: any) => {
+
+        if(!newAlignment){
+            return;
+        }
+
+        setAlignment(newAlignment);
+
+    }
+
+    useEffect(() => {
+
+        if(alignment === "real"){
+            setIsFilter(true);
+        }else{
+            setIsFilter(false);
+        }
+
+    }, [alignment]);
+
     return (
         <div>
             <HeaderTwo />
@@ -208,6 +250,17 @@ const Parkgaeul: React.FC<any> = (props) => {
 
             <div className={styles.tableDiv}>
                 <div className={styles.tableDivDiv}>
+                <ToggleButtonGroup
+                    color="primary"
+                    value={alignment}
+                    exclusive
+                    onChange={handleAlignment}
+                    aria-label="Platform"
+                    sx={{ marginRight: "36px" }}
+                >
+                    <ToggleButton value="real">실제 예약자</ToggleButton>
+                    <ToggleButton value="total">전체</ToggleButton>
+                </ToggleButtonGroup>
                     <div className={`${classes.root} ${styles.tableDiv}`} style={{ height: 500, width: '100%', backgroundColor: "white", marginTop: "16px" }}>
                         <StyledDataGrid loading={loading} rows={rows} columns={columns}
                             checkboxSelection={true}

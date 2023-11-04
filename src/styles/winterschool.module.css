@@ -1425,6 +1425,10 @@
         object-fit: cover;
     }
 
+    .secondSection{
+        overflow: hidden;
+    }
+
 
 
 }
@@ -1443,4 +1447,19 @@
     border-bottom: 2px solid black;
     width: 80px;
     margin-bottom: 20px;
+}
+
+
+.imgWrap{
+    opacity: 0;
+}
+
+.txtWrap.oddDocu.docu{
+    opacity: 0;
+    transform: translateX(100px);
+}
+
+.txtWrap.evenDocu.docu{
+    opacity: 0;
+    transform: translateX(-100px);
 }

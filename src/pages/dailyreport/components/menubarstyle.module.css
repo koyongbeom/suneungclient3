@@ -1,0 +1,59 @@
+
+:root {
+    --font: "Pretendard";
+    --gray: #6E757D;
+    --black: #1D1D1F;
+}
+
+.menuBar{
+    font-size: 1.1rem;
+    font-family: "Apple_SB";
+    width: 100%;
+    margin-top: 3.31rem;
+
+    border-bottom: 0.08rem solid #cfd8dc;
+    color: #607d8b;
+
+}
+
+.subMenuBar{
+    width: 86.666%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    position: relative;
+    padding-bottom: 0.88rem;
+}
+
+.menuBarSection{
+    flex-grow: 1;
+    text-align: center;
+    font-family: var(--font);
+    color: var(--gray);
+    font-weight: 600;
+}
+
+.menuBarStatus{
+    flex-grow: 1;
+    text-align: center;
+    font-family: var(--font);
+    color: var(--gray);
+    font-weight: 600;
+}
+
+.menuBarSection.active{
+    color: var(--black);
+}
+
+.menuBarStatus.active{
+    color: var(--black);
+}
+
+.menuUnderBar{
+    position: absolute;
+    width: 50%;
+    border-top: 0.125rem solid var(--black);
+    bottom: 0;
+    transition: all 200ms ease-out;
+    border-radius: 1.25rem;
+}

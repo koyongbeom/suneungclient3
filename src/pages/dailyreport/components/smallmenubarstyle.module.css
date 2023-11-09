@@ -1,0 +1,54 @@
+:root {
+    --font: "Pretendard";
+    --gray: #6E757D;
+    --gray2: #B3B8BF;
+    --backgray: #F3F4F6;
+    --black: #1D1D1F;
+    --blue: #3182F6;
+}
+
+.wrapper {
+    width: 100%;
+    border-radius: 0.5rem;
+    background: #F3F4F6;
+    height: 1.88rem;
+}
+
+.innerWrapper {
+    height: 100%;
+    width: 94%;
+    margin: 0 auto;
+    position: relative;
+}
+
+.menuItem {
+    height: 100%;
+    color: var(--gray);
+    font-family: var(--font);
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.015rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 101;
+}
+
+.menuItem.active {
+    color: var(--black);
+}
+
+.selector {
+    position: absolute;
+    height: 83%;
+    left: 0;
+    top: 50%;
+    transform: translate(0%, -50%);
+    border-radius: 0.5rem;
+    background: #FFF;
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.25);
+    z-index: 100;
+    transition: all 0.2s ease-in-out;
+}

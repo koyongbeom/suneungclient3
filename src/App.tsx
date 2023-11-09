@@ -37,6 +37,8 @@ import WinterComplete from './pages/wintercomplete';
 import Parkgaeul2 from './pages/parkgaeul2';
 import JustPdfViewer from './pages/justpdfviewer';
 import WinterWaitingRegisterFinish from './pages/winterwaitingregisterfinish';
+import DailyReport from './pages/dailyreport';
+import JustPdfViewer2 from './pages/justpdfviewer2';
 // import KioskMain from './kiosk/kioskmain';
 // import Notification from './pages/notification';
 
@@ -147,6 +149,8 @@ function App() {
             <Route path="/kiosk/kioskmain/157292/*" element={<KioskMain />}></Route>
 
             <Route path="/pdfviewer" element={<JustPdfViewer />}></Route>
+            <Route path="/pdfviewer2" element={<JustPdfViewer2 />}></Route>
+            <Route path="/dailyreport" element={<DailyReport />}></Route>
 
           </Routes>
         </Suspense>

@@ -483,7 +483,7 @@ const StudytimeChart: React.FC<any> = (props) => {
 
                     </div>
                     <div className={styles.name}>
-                        윤종웅님
+                        김희태님
                     </div>
                 </div>
                 <div className={`${styles.averageNameDiv} ${styles.nameDiv}`}>

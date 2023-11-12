@@ -6,6 +6,21 @@ const SmallMenubar: React.FC<any> = (props : any) => {
     const [activeIndex, setActiveIndex] = useState(1);
     const wrapperRef = useRef<HTMLDivElement>(null);
     const selectorRef = useRef<HTMLDivElement>(null);
+    const [update, setUpdate] = useState(0);
+
+    useEffect(() => {
+
+        window.addEventListener("resize", () => {
+            setUpdate(Math.random());
+        });
+
+        return () => {
+            window.removeEventListener("resize", () => {
+                setUpdate(Math.random());
+            });
+        }
+
+    }, []);
 
     useEffect(() => {
 
@@ -33,7 +48,7 @@ const SmallMenubar: React.FC<any> = (props : any) => {
 
         selectorDiv.style.transition = `all ${seconds}s ease-in-out`;
 
-    }, [props.menuList, wrapperRef, wrapperRef.current, selectorRef, selectorRef.current]);
+    }, [props.menuList, wrapperRef, wrapperRef.current, selectorRef, selectorRef.current, update]);
 
 
     const handleClick = (selectedIndex : number) => {
@@ -50,6 +65,8 @@ const SmallMenubar: React.FC<any> = (props : any) => {
         }
 
         selectorDiv.style.transform = `translate(${targetPercent}%, -50%)`;
+
+        props.handleCurrentMenu(selectedIndex);
 
     }
 

@@ -7,6 +7,10 @@ import PatrolDemerit from "./dailyreport/patroldemerit";
 import Studytimebar from "./dailyreport/studytimebar";
 import StudytimeChart from "./dailyreport/studytimechart";
 import StudytimeRanking from "./dailyreport/studytimeranking";
+import PatrolViolateList from "./dailyreport/patrolviolatelist";
+import AttendanceDemerit from "./dailyreport/attendancedemerit";
+import EnglishTest from "./dailyreport/englishtest";
+import PhoneInspect from "./dailyreport/phoneinspect";
 
 const DailyReport : React.FC<any> = () => {
 
@@ -110,6 +114,18 @@ const DailyReport : React.FC<any> = () => {
             <div className={styles.justGap}>
             </div>
             <StudytimeRanking />
+            <div className={styles.justGap}>
+            </div>
+            <PatrolViolateList />
+            <div className={styles.justGap}>
+            </div>
+            <AttendanceDemerit />
+            <div className={styles.justGap}>
+            </div>
+            <EnglishTest />
+            <div className={styles.justGap}>
+            </div>
+            <PhoneInspect />
         </div>
     )
 }

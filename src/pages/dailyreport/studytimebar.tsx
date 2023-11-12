@@ -8,9 +8,9 @@ const averageTotalStudyTime = 515;
 const firstTotalStudyTime = 645;
 
 const data = [
-    {name : "윤종웅님", time : 430},
+    {name : "고용범님", time : 430},
     {name : "강남점 평균", time : 515},
-    {name : "박O을님", time : 645, subTitle : "강남점 1등"}
+    {name : "김O태님", time : 645, subTitle : "강남점 1등"}
 ]
 
 

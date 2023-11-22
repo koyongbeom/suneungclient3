@@ -802,7 +802,7 @@ const WinterSchool: React.FC<any> = (props) => {
                         &nbsp;&nbsp;&nbsp;완벽히 준비된
                     </div>
                     <div className={styles.subHeaderTextTitle2}>
-                        &nbsp;&nbsp;&nbsp;수능선배 윈터스쿨을 소개합니다
+                        &nbsp;&nbsp;&nbsp;수능선배 N수대비반을 소개합니다
                     </div>
                     <div className={styles.subHeaderTextSubTitle}>
 
@@ -825,10 +825,10 @@ const WinterSchool: React.FC<any> = (props) => {
             <div className={styles.realFirstSection}>
 
                 <div className={styles.openTitleText}>
-                    2024 수능선배 윈터스쿨
+                    2024 수능선배 N수 대비반
                 </div>
                 <div className={`${styles.descriptionText}`}>
-                    최상위 담임멘토와 함께하는 8주 완성 프로젝트
+                    최상위 담임멘토와 함께하는 학습 프로젝트
                 </div>
 
                 <div style={{ position: "relative", width: "100%" }}>
@@ -854,7 +854,7 @@ const WinterSchool: React.FC<any> = (props) => {
                     </div>
                 </div>
 
-                <div style={{
+                {/* <div style={{
                     width: "600px",
                     margin: "0 auto",
                     display: "flex",
@@ -944,7 +944,7 @@ const WinterSchool: React.FC<any> = (props) => {
                             (단, 11월 이내 결제 시 한정)
                         </div>
                     </div>
-                </div>
+                </div> */}
 
                 <div style={{
                     width: "600px",
@@ -961,7 +961,7 @@ const WinterSchool: React.FC<any> = (props) => {
                     }}
                         className={`${styles.textBoxWrapperText} ${styles.textBoxTitle}`}
                     >
-                        모집일자
+                        등록절차
                     </div>
                     <div style={{
                         marginBottom: "18px",
@@ -969,7 +969,7 @@ const WinterSchool: React.FC<any> = (props) => {
                     }}
                         className={styles.textBoxWrapperText}
                     >
-                        2023.10.4 수요일부터 결제순으로 등록 가능
+                        11월 17일부터 각 지점 방문 등록 접수
                     </div>
                     <div style={{
                         marginBottom: "12px",
@@ -985,7 +985,7 @@ const WinterSchool: React.FC<any> = (props) => {
                     }}
                         className={styles.textBoxWrapperText}
                     >
-                        고등학교 재학생 및 재수생
+                        N수생
                     </div>
                 </div>
 
@@ -1046,7 +1046,7 @@ const WinterSchool: React.FC<any> = (props) => {
 
             <div className={styles.secondSection}>
                 <div className={`${styles.openTitleText} ${styles.second}`}>
-                    최상위 담임멘토와 함께하는<br></br>8주 완성 프로젝트
+                    최상위 담임멘토와 함께하는<br></br>학습 프로젝트
                 </div>
 
                 <ul className={styles.secondSectionList}>
@@ -1059,12 +1059,12 @@ const WinterSchool: React.FC<any> = (props) => {
                             </div>
                             <div className={`${styles.txtWrap} ${styles.docu} ${styles.oddDocu}`} id="textRight">
                                 <div className={styles.txtBox}>
-                                    <span>개강 전</span>
-                                    <h6>미리보는 나만의 <br></br>방학 솔루션</h6>
+                                    <span>등원 첫 주</span>
+                                    <h6>학습 진단 및<br></br>장기 학습컨텐츠 계획</h6>
                                     <div className={styles.txtWrapDescription}>
-                                        담임멘토와 개강 전 미리 상담을 하며<br></br>
-                                        나의 학습 현상황을 토대로<br></br>
-                                        대략적인 8주 학습컨텐츠를 상의합니다.
+                                        담임멘토와 첫 상담시<br></br>
+                                        나의 현재 학습 상황을 토대로<br></br>
+                                        학습방향 및 학습 컨텐츠를 상의합니다.
                                     </div>
                                 </div>
                             </div>
@@ -1083,7 +1083,7 @@ const WinterSchool: React.FC<any> = (props) => {
                                     <span>등원 첫 주</span>
                                     <h6>8주간의 여정 세우기</h6>
                                     <div className={styles.txtWrapDescription}>
-                                        담임멘토와 개강 전 상담했던 내용들을 토대로<br></br>
+                                        담임멘토와 상담한 내용들을 토대로<br></br>
                                         8주차까지 주차별 상세 계획을 정합니다.<br></br>
                                     </div>
                                 </div>
@@ -1631,29 +1631,29 @@ const WinterSchool: React.FC<any> = (props) => {
 
                     <div className={styles.differentiationDiv}>
                         <div className={styles.differentiationTitle}>
-                            사전예약 및 유의사항
+                            등록비 및 등록절차
                         </div>
                         <div className={`${styles.differentiationList} ${styles.first}`}>
                             <div className={styles.differentiationList_1}>
-                                사전예약
+                                등록비
                             </div>
                             <div className={styles.differentiationList_2}>
-                                사전예약자 대상으로 윈터모집 관련 상세사항이 개별 안내될 예정입니다.
+                                월 등록비 680,000원
                             </div>
                         </div>
                         <div className={`${styles.differentiationList} ${styles.last}`}>
                             <div className={styles.differentiationList_1}>
-                                유의사항
+                                등록절차
                             </div>
                             <div className={`${styles.differentiationList_2} ${styles.multiLine}`}>
                                 <div>
-                                    □ 본 사전예약은 등록과 무관합니다.
+                                    □ 현재 12월(개강일 12월 1일) 등록 접수 중입니다.
                                 </div>
                                 <div>
-                                    □ 2023.10.4 수요일부터 결제순으로 등록 가능합니다.
+                                    □ 방문 결제하시면 좌석 지정이 가능합니다.
                                 </div>
                                 <div>
-                                    □ 희망좌석 선택 및 배정은 등록순으로 진행됩니다.
+                                    □ 12월 개강일 이후 마감 전까지는 즉시 등록 가능합니다. (좌석 3일 홀드 가능)
                                 </div>
                             </div>
                         </div>
@@ -1686,7 +1686,7 @@ const WinterSchool: React.FC<any> = (props) => {
                         </div>
                     </div> */}
 
-                    <div className={`${styles.lastBtnDiv} ${styles.onlyPC}`}>
+                    {/* <div className={`${styles.lastBtnDiv} ${styles.onlyPC}`}>
                         <Button
                             onClick={(e: any) => {
                                 navigate("/registerwinter");
@@ -1699,7 +1699,7 @@ const WinterSchool: React.FC<any> = (props) => {
                                 navigate("/registerwinter");
                             }}
                             className={styles.scheduleBtn} variant="contained" sx={{ "&:hover": { backgroundColor: "rgb(8,9,12)" }, width: "306px", height: "70px", backgroundColor: "#28303e", borderRadius: "35px", fontSize: "22px", fontWeight: 700, "@media (max-width : 1024px)": { width: "215px", height: "49px", borderRadius: "24.5px", fontSize: "15.5px" } }}>사전 신청</Button>
-                    </div>
+                    </div> */}
 
                 </div>
             </div>

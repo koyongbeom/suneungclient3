@@ -5,7 +5,7 @@ import { ReactComponent as XSvg } from '../svg/circle-xmark-regular.svg';
 
 const Demerit : React.FC<any> = (props) => {
     return (
-        <div className={styles.demeritMain}>
+        <div className={styles.demeritMain} style={{overflowY : "auto"}}>
             <div className={styles.xBtnDiv}>
                 <div onClick={props.handleClose} className={styles.xBtn}>
                     <XSvg className={styles.xSvg} />
@@ -50,6 +50,8 @@ const Demerit : React.FC<any> = (props) => {
             <div className={styles.firstText}>
                 *20점 - 부모님 연락, 지문 삭제 후 원장님 상담<br></br>*30점 - 부모님과 상의 후 퇴원 결정
             </div>
+
+            <div style={{height : "30px"}} />
         </div>
     )
 }

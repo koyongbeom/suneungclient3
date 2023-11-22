@@ -128,7 +128,7 @@ function App() {
             <Route path="/consultresult" element={<ReportToParent />}></Route>
             <Route path="/testmap" element={<Testmap />}></Route>
             <Route path="/registerwaiting" element={<RegisterWaiting />}></Route>
-            <Route path="/registerwinter" element={<RegisterWinter />}></Route>
+            {/* <Route path="/registerwinter" element={<RegisterWinter />}></Route> */}
             <Route path="/registerwaitingfinish" element={<WaitingRegisterFinish />}></Route>
             <Route path="/registerwaitingcalendar" element={<RegisterWaitingCalendar />}></Route>
             <Route path="/registerwaitingsubmit" element={<WaitingRegisterSubmit />}></Route>

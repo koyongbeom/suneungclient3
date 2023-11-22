@@ -82,12 +82,11 @@ const RegisterWinter: React.FC<any> = (props) => {
 
     useEffect(() => {
 
-        if(kind === "regular" && location === "daechi"){
+        if((kind === "regular" && location === "daechi") || (kind === "regular" && location === "gangnam")){
             setIsWaiting(true);
         }else{
             setIsWaiting(false);
         }
-
 
     }, [kind, location]);
  
@@ -352,10 +351,17 @@ const RegisterWinter: React.FC<any> = (props) => {
                     </div>
                     <div onClick={(e: any) => {    
                         if(location === "daechi"){
-                            if(!window.confirm("대치점은 정규윈터는 마감입니다. 대기신청으로 계속 진행할까요?")){
+                            if(!window.confirm("대치점 정규윈터는 마감입니다. 대기신청으로 계속 진행할까요?")){
                                 return;
                             }
                         }
+
+                        if(location === "gangnam"){
+                            if(!window.confirm("강남점 정규윈터는 마감입니다. 대기신청으로 계속 진행할까요?")){
+                                return;
+                            }
+                        }
+                        
                         setKind("regular"); 
                     }} className={`${styles.select} ${kind === "regular" ? styles.active : ""}`}>
                         정규윈터
@@ -366,7 +372,14 @@ const RegisterWinter: React.FC<any> = (props) => {
                     어느 지점의 {isWaiting ? "대기 등록을" : "사전 신청을"} 원하시나요?
                 </div>
                 <div className={styles.selectDiv}>
-                    <div onClick={(e: any) => { setLocation("gangnam") }} className={`${styles.select} ${location === "gangnam" ? styles.active : ""}`}>
+                    <div onClick={(e: any) => { 
+                        if(kind === "regular"){
+                            if(!window.confirm("강남점 정규윈터는 마감입니다. 대기신청으로 계속 진행할까요?")){
+                                return;
+                            }
+                        }
+                        setLocation("gangnam") 
+                        }} className={`${styles.select} ${location === "gangnam" ? styles.active : ""}`}>
                         강남점
                     </div>
                     <div onClick={(e: any) => { 

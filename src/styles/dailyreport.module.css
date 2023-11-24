@@ -20,44 +20,70 @@
 .dailyreport {
     background-color: #F3F4F6;
     padding-bottom: 1rem;
+    max-width: 500px;
+    margin: 0 auto;
 }
 
 .logoHeader {
     padding-top: 0.87rem;
-    padding-left: 1rem;
+    width: 86.666%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .logo {
-    width: 6.36163rem;
+    width: 5.8125rem;
+}
+
+.logoDate {
+    color: #6A7584;
+    text-align: right;
+    font-family: var(--font);
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
 }
 
 .titleDiv {
-    margin-top: 1.87rem;
+    margin-top: 2.41rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-bottom: 1.63rem;
 }
 
 .title {
+    color: #343D4C;
+    text-align: center;
     font-family: var(--font);
-    font-weight: 700;
-    font-size: 1.75rem;
+    font-size: 1.0625rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
 }
 
-.title {
+.realTitle {
+    color: #343D4C;
+    text-align: center;
     font-family: var(--font);
-    font-size: 1.75rem;
-}
-
-.titleDate {
-    font-family: var(--font);
-    margin-top: 0.62rem;
-    font-size: 0.75rem;
+    font-size: 1.875rem;
+    font-style: normal;
     font-weight: 600;
-    letter-spacing: 0.015rem;
-    color: var(--gray);
+    line-height: normal;
+    margin-top: 0.69rem;
 }
+
+.realTitle2 {
+    margin-top: 0.37rem;
+}
+
+.dailyMainSvgDiv {
+    margin-top: 4.13rem;
+    padding-bottom: 5.05rem;
+}
+
 
 .justGap {
     height: 1rem;
@@ -67,6 +93,10 @@
     padding-top: 1.62rem;
     background-color: white;
     padding-bottom: 1.62rem;
+}
+
+.compBody.noBottomPadding{
+    padding-bottom: 0;
 }
 
 .compTitleDiv {
@@ -1135,12 +1165,25 @@
     margin-top: 2.25rem;
 }
 
+.smallMenuBarDiv2 {
+    width: 86.666%;
+    margin: 0 auto;
+    margin-top: 2.25rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .smallMenuBarWrapper {
     width: 47%;
 }
 
 .smallMenuBarWrapper2 {
     width: 45%;
+}
+
+.smallMenuBarWrapper3 {
+    width: 70%;
 }
 
 .phoneInspectStatusInfo {
@@ -1455,13 +1498,13 @@
     display: flex;
 }
 
-.eachViolationLineWrapper{
+.eachViolationLineWrapper {
     width: 24px;
     display: flex;
     justify-content: center;
 }
 
-.eachViolationLine{
+.eachViolationLine {
     width: 0.25rem;
     border-radius: 0.375rem;
     background-color: #E3E8EB;
@@ -1568,4 +1611,349 @@
     font-style: normal;
     font-weight: 600;
     line-height: normal;
+}
+
+.dailyStarDiv {
+    display: flex;
+    align-items: center;
+}
+
+.dailyStarText {
+    color: var(--gray);
+    font-family: var(--font);
+    font-size: 0.625rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-left: 0.24rem;
+}
+
+.eachTestHistoryDiv {
+    width: 86.666%;
+    margin: 0 auto;
+    margin-top: 1.25rem;
+    display: flex;
+}
+
+.eachTestHistoryDiv0 {
+    margin-top: 2rem;
+}
+
+.eachTestHistoryImgDiv {
+    width: 3.37856rem;
+    position: relative;
+}
+
+.homeworkDoneDiv {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+}
+
+.eachBookImg {
+    width: 100%;
+    object-fit: cover;
+}
+
+.eachTestBookDescriptionDiv {
+    flex-grow: 1;
+    margin-left: 0.63rem;
+}
+
+.eachTestBookTitle {
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    font-family: var(--font);
+    margin-bottom: 0.38rem;
+}
+
+.eachTestDay {
+    color: var(--gray);
+    font-family: var(--font);
+    font-size: 0.8125rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.eachTestCorrectDiv {
+    width: 100%;
+    border-radius: 0.5rem;
+    background: var(--backgray);
+    margin-top: 0.38rem;
+}
+
+.eachTestCorrectWrapperDiv {
+    width: 60%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 0.38rem;
+    padding-bottom: 0.38rem;
+}
+
+.eachTestCorrectDescription {
+    display: flex;
+    align-items: center;
+    font-size: 0.8125rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    color: var(--gray);
+    font-family: var(--font);
+}
+
+.eachTestCorrectText {
+    margin-left: 0.5rem;
+    padding-bottom: 0.075rem;
+}
+
+.eachTestCorrectDescriptionNon {
+    width: 60%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    padding-top: 0.38rem;
+    padding-bottom: 0.38rem;
+}
+
+.eachTestCorrectDescriptionNon .eachTestCorrectText {
+    color: #ef4452;
+    font-family: var(--font);
+    font-size: 0.8125rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    padding-bottom: 0;
+}
+
+.eachTestDueDate {
+    margin-top: 0.25rem;
+    display: flex;
+    justify-content: flex-end;
+    color: var(--blue);
+    text-align: right;
+    font-family: var(--font);
+    font-size: 0.625rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.eachTestDueDate.notDoneHomework {
+    color: #ef4452;
+}
+
+.wrongWordDiv {
+    margin-top: 2.25rem;
+}
+
+.wrongWordDivWrapper{
+    width: 86.666%;
+    margin: 0 auto;
+}
+
+.hideWrongWordDiv {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    color: #000;
+    font-family: var(--font);
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.wrongWords {
+    margin-top: 1.59rem;
+}
+
+.eachWrongWordDiv {
+    margin-top: 0.75rem;
+    border-radius: 0.25rem;
+    box-shadow: 0px 0px 1px 0.2px rgba(0, 0, 0, 0.25);
+    background-color: rgba(255, 255, 255, 0);
+    padding-top: 1.69rem;
+    padding-bottom: 0.88rem;
+}
+
+.eachWrongWordDiv0 {
+    margin-top: 0rem;
+}
+
+.eachWrongWordWrapper {
+    width: 87%;
+    margin: 0 auto;
+}
+
+.eachWrongWordDivFirstLine {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.eachWrongWordEnglish {
+    color: #000;
+    font-family: var(--font);
+    font-size: 1.125rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.eachWrongWordDay {
+    color: var(--gray);
+    text-align: right;
+    font-family: var(--font);
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.eachWrongWordKorean {
+    margin-top: 1rem;
+    color: #000;
+    font-family: var(--font);
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    height: 2.2rem;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    /* 두 줄로 제한 */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+
+}
+
+.eachWeeklyAssignmentDiv{
+    width: 86.666%;
+    margin: 0 auto;
+    margin-top: 1rem;
+}
+
+.eachWeeklyAssignmentTitleDiv{
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.06rem;
+}
+
+.eachWeeklyAssignmentTitle {
+    color: #000;
+    font-family: var(--font);
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.eachWeeklyAssignmentSvgDiv{
+    margin-right: 0.69rem;
+}
+
+.eachWeeklyAssignmentDiv0{
+    margin-top: 2.25rem;
+}
+
+.eachWeeklyAssignmentDescriptionDiv{
+    display: flex;
+}
+
+.eachWeeklyAssignmentBarDiv{
+    width: 1.5rem;
+    display: flex;
+    justify-content: center;
+    margin-right: 0.25rem;
+}
+
+.eachWeeklyAssignmentBar{
+    width: 0.25rem;
+    border-radius: 0.375rem;
+    background-color: #e3ebeb;
+}
+
+.eachWeeklyAssignemtBookImgDiv{
+    width: 3.1875rem;
+    height: 3.1875rem;
+    margin-right: 0.5rem;
+}
+
+.eachWeeklyAssignmentBookImg{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.eachWeeklyAssignmentBookName {
+    color: #000;
+    font-family: var(--font);
+    font-size: 0.625rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin-bottom: 0.31rem;
+}
+
+.eachWeeklyAssignmentBookDay {
+    color: var(--gray);
+    font-family: var(--font);
+    font-size: 0.625rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    height: 1.625rem;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    /* 두 줄로 제한 */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+}
+
+.eachWeeklyAssignmentBookAuthor {
+    color: var(--gray);
+    font-family: var(--font);
+    font-size: 0.5625rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.examinerName {
+    color: var(--gray);
+    font-family: var(--font);
+    font-size: 0.5625rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-right: 0.44rem;
+}
+
+.eachWeeklyAssingmentBookInfoNoHomeworkDiv{
+    height: 3.375rem;
+    display: flex;
+    align-items: center;
+}
+
+.eachWeeklyAssignmentNoHomeWorkTest {
+    color: var(--gray);
+    font-family: var(--font);
+    font-size: 0.625rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin-left: 0.75rem;
 }

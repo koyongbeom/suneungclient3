@@ -96,7 +96,7 @@ const PhoneInspect : React.FC<any> = (props) => {
                         }
 
                         return (
-                            <div className={styles.eachPhoneInspectDiv}>
+                            <div key={index} className={styles.eachPhoneInspectDiv}>
                                 <div className={styles.eachPhoneInspectWrapper}>
                                     <div className={styles.eachPhoneInspectClass}>
                                         {data.class}교시

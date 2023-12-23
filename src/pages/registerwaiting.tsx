@@ -452,7 +452,7 @@ const RegisterWaiting: React.FC<any> = (props) => {
 
                 <div className={styles.inputWrapper}>
                     <div className={styles.inputDiv}>
-                        <input value={etc} onChange={typeEtc} placeholder="요청사항을 적어주세요" className={styles.input} type="text">
+                        <input value={etc} onChange={typeEtc} placeholder="예) 3월부터 등원희망합니다." className={styles.input} type="text">
 
                         </input>
                     </div>
@@ -478,8 +478,12 @@ const RegisterWaiting: React.FC<any> = (props) => {
                         신청서 제출
                     </Button>
                 </div>
-                <div className={styles.bottomText}>
-                    ※ 대기 현황을 카카오 알림톡으로 전송해드립니다
+                <div className={styles.bottomText} style={{lineHeight : 1.5}}>
+                    ** <b>실시간 대기 현황</b>을 카카오 알림톡으로 전송해드립니다
+                    <br></br>
+                    ** <b>흡연자</b>의 경우 등록이 불가합니다
+                    <br></br>
+                    ** 수능선배의 다양한 소식을 전달받으실 수 있습니다.
                 </div>
             </div>
 

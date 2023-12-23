@@ -267,7 +267,7 @@ const EnglishTest: React.FC<any> = (props) => {
                             const src = "/img/wordmaster/" + item.bookKind + ".webp";
 
                             return (
-                                <div className={`${styles.eachTestHistoryDiv} ${styles["eachTestHistoryDiv" + index]}`}>
+                                <div key={index} className={`${styles.eachTestHistoryDiv} ${styles["eachTestHistoryDiv" + index]}`}>
                                     <div className={styles.eachTestHistoryImgDiv}>
                                         <img src={src} className={styles.eachBookImg} />
                                         {
@@ -350,7 +350,7 @@ const EnglishTest: React.FC<any> = (props) => {
                                     }
 
                                     return (
-                                        <div className={`${styles.eachWrongWordDiv} ${styles["eachWrongWordDiv" + index]}`}>
+                                        <div key={index} className={`${styles.eachWrongWordDiv} ${styles["eachWrongWordDiv" + index]}`}>
                                             <div className={styles.eachWrongWordWrapper}>
                                                 <div className={styles.eachWrongWordDivFirstLine}>
                                                     <div className={styles.eachWrongWordEnglish}>
@@ -389,7 +389,7 @@ const EnglishTest: React.FC<any> = (props) => {
                             const OrderString = ["First", "Second", "Third", "Fourth", "Fifth"][order];
 
                             return (
-                                <div className={`${styles.eachWeeklyAssignmentDiv} ${styles["eachWeeklyAssignmentDiv" + index]}`}>
+                                <div key={index} className={`${styles.eachWeeklyAssignmentDiv} ${styles["eachWeeklyAssignmentDiv" + index]}`}>
                                     <div className={styles.eachWeeklyAssignmentTitleDiv}>
                                         <div className={styles.eachWeeklyAssignmentSvgDiv}>
                                             {
@@ -439,7 +439,7 @@ const EnglishTest: React.FC<any> = (props) => {
                                                     {
                                                         item.dayList && item.dayList.map((item2, index2) => {
                                                             return (
-                                                                <span className={styles.eachWeeklyAssignmentBookDaySpan}>
+                                                                <span key={index2} className={styles.eachWeeklyAssignmentBookDaySpan}>
                                                                     Day{item2.day} {item2.kind === "total" ? "(전체 단어)" : "(틀린 단어)"}{index2 === item.dayList.length - 1 ? "" : ", "}
                                                                 </span>
                                                             )
@@ -514,7 +514,7 @@ const EnglishTest: React.FC<any> = (props) => {
                                             wrongwords.map((item, index) => {
 
                                                 return (
-                                                    <div className={`${styles.eachWrongWordDiv} ${styles["eachWrongWordDiv" + index]}`}>
+                                                    <div key={index} className={`${styles.eachWrongWordDiv} ${styles["eachWrongWordDiv" + index]}`}>
                                                         <div className={styles.eachWrongWordWrapper}>
                                                             <div className={styles.eachWrongWordDivFirstLine}>
                                                                 <div className={styles.eachWrongWordEnglish}>

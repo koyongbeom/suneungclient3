@@ -6,6 +6,9 @@ import { ReactComponent as Down } from "../../svg/daily_down.svg"
 import { Button, Modal, ModalClose, ModalDialog } from "@mui/joy";
 import { Collapse, Fade, Grow } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { ReactComponent as FirstPrice } from "../../svg/daily_first_price.svg";
+import { ReactComponent as SecondPrice } from "../../svg/daily_second_price.svg";
+import { ReactComponent as ThirdPrice } from "../../svg/daily_third_price.svg";
 
 const rankingData = [
     { "name": "김O현", "time": 643, "location": "강남점", "rankingChange": "down" },
@@ -147,8 +150,20 @@ const StudytimeRanking: React.FC<any> = (props) => {
                         return (
                             <div className={styles.eachRankingImageWrapper} key={index}>
                                 <div className={`${styles.rankingImageDiv} ${styles[`rankingImageDiv${index + 1}`]}`}>
-                                    <img src={imgSrc1} className={styles.rankingFace} />
-                                    <img src={imgSrc2} className={styles.rankingMedal} />
+                                    {/* <img src={imgSrc1} className={styles.rankingFace} />
+                                    <img src={imgSrc2} className={styles.rankingMedal} /> */}
+                                    {
+                                        index === 0 &&
+                                        <SecondPrice  />
+                                    }
+                                    {
+                                        index === 1 &&
+                                        <FirstPrice  />
+                                    }
+                                    {
+                                        index === 2 &&
+                                        <ThirdPrice  />
+                                    }
                                 </div>
                                 <div className={styles.rankingNameDiv}>
                                     {item.name}

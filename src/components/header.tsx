@@ -359,7 +359,7 @@ const Header: any = (props: any) => {
                                 강남점
                             </div>
                             <div onClick={(e: any) => { navigate("/daechimap") }} className={styles.bottomMenuList}>
-                                강남점
+                                대치점
                             </div>
                             <div onClick={(e: any) => { navigate("/review") }} className={styles.bottomMenuList}>
                                 합격자후기

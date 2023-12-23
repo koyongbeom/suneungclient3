@@ -177,6 +177,15 @@
     padding-top: 2.5rem;
 }
 
+.patrolLoading{
+    width: 86.666%;
+    margin: 0 auto;
+    height: 21.875rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .myPatrol {
     width: 86.666%;
     margin: 0 auto;

@@ -142,13 +142,13 @@ const PatrolViolateList: React.FC<any> = (props) => {
                 (currentMenu === 1 && myViolationList && myViolationList.length > 0) &&
                 <div className={styles.myViolationList}>
                     {
-                        myViolationList.map((item: any) => {
+                        myViolationList.map((item: any, index : number) => {
 
                             const height = item.titleTable.length * 1.5;
 
 
                             return (
-                                <div className={styles.eachMyViolation}>
+                                <div className={styles.eachMyViolation} key={index}>
                                     <div className={styles.eachViolationTitle}>
                                         {
                                             item.color === "yellow" &&
@@ -219,7 +219,7 @@ const PatrolViolateList: React.FC<any> = (props) => {
                                                             }
         
                                                             return (
-                                                                <div className={`${styles.eachViolationGraph} ${styles[eachGraph.bigKind]}`} style={{height : canSee ? `${grpahLength}rem` : "0rem", top : `${startIndex * 1.5}rem`}}>
+                                                                <div key={index} className={`${styles.eachViolationGraph} ${styles[eachGraph.bigKind]}`} style={{height : canSee ? `${grpahLength}rem` : "0rem", top : `${startIndex * 1.5}rem`}}>
                                                                     <div className={`${styles.eachViolationGraphStart} ${styles[eachGraph.kind]}`}>
                                                                         {startKind && eachGraph.kind} {startTime && eachGraph.start}
                                                                     </div>
@@ -276,7 +276,7 @@ const PatrolViolateList: React.FC<any> = (props) => {
                     <div className={styles.locationViolationList}>
                         {
                             locationViolationList.map((item, index) =>
-                                <div className={styles.locationViolationItem}>
+                                <div className={styles.locationViolationItem} key={index}>
                                     <div>
                                         <div className={styles.locationViolationItemTitle}>
                                             위반 {index}건 {index === 2 ? "이상" : ""}

@@ -16,9 +16,14 @@ import { ReactComponent as MainSvg } from "../../src/svg/daily_main.svg"
 
 const DailyReport : React.FC<any> = () => {
 
-    const [name, setName] = useState("윤종웅");
+    const [name, setName] = useState("");
+    const [userId, setUserId] = useState();
+    const [targetDate, setTargetDate] = useState<Date>();
+    const [code, setCode] = useState();
+    const [where, setWhere] = useState();
 
     const location = useLocation();
+    const navigate = useNavigate();
 
     useEffect(() => {
 
@@ -44,16 +49,17 @@ const DailyReport : React.FC<any> = () => {
         // }
 
         const id = query.get("id");
-        console.log(id);
         const code = query.get("code");
-        const type = query.get("type");
+        const date = query.get("date");
+        const name = query.get("name");
+        const where = query.get("location");
 
         if(!id){
             console.log("noId");
             return;
         }
 
-        if(!type){
+        if(!date){
             console.log("noType");
             return;
         }
@@ -63,10 +69,30 @@ const DailyReport : React.FC<any> = () => {
             return;
         }
 
-        console.log(id, code, type)
+        if(!name){
+            console.log("noName");
+            return;
+        }
 
+        if(!where){
+            console.log("noWhere");
+            return;
+        }
 
-        return {id, code, type}
+        console.log(id, code, date, name)
+
+        const newDate = new Date(date);
+
+        setName(name);
+        setUserId(id);
+        setTargetDate(newDate);
+        setCode(code);
+        setWhere(where);
+
+        //query 없애기
+        // navigate("/dailyreport");
+
+        return {id, code, date, name}
 
     }
 
@@ -99,7 +125,7 @@ const DailyReport : React.FC<any> = () => {
                     <LightGrayLogo className={styles.logo}/>
                 </div>
                 <div className={styles.logoDate}>
-                    23년 10월 23일
+                    {targetDate && targetDate.getFullYear().toString().slice(-2)}년 {targetDate && targetDate.getMonth() + 1}월 {targetDate && targetDate.getDate()}일
                 </div>
             </div>
             <div className={styles.titleDiv}>
@@ -116,16 +142,16 @@ const DailyReport : React.FC<any> = () => {
                     <MainSvg className={styles.dailyMainSvg}/>
                 </div>
             </div>
-            <PatrolResult />
+            <PatrolResult targetDate={targetDate} userId={userId} name={name} where={where} />
             <div className={styles.justGap}>
             </div>
-            <PatrolDemerit />
+            <PatrolDemerit targetDate={targetDate} userId={userId} />
             <div className={styles.justGap}>
             </div>
-            <Studytimebar />
+            <Studytimebar targetDate={targetDate} userId={userId} location={where} name={name} />
             <div className={styles.justGap}>
             </div>
-            <StudytimeChart />
+            <StudytimeChart targetDate={targetDate} userId={userId} location={where} name={name} />
             <div className={styles.justGap}>
             </div>
             <StudytimeRanking />

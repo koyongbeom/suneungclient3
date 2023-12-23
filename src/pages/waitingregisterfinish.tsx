@@ -10,6 +10,7 @@ const WaitingRegisterFinish = () => {
     const [loading, setLoading] = useState(false);
 
     const [genderOrder, setGenderOrder] = useState<any>();
+    const [gradeOrder, setGradeOrder] = useState<any>();
     const [totalOrder, setTotalOrder] = useState<number>();
     const [registerDate, setRegisterDate] = useState<string>("");
     const [waitingLocation, setWaitingLocation] = useState<string>("");
@@ -19,7 +20,6 @@ const WaitingRegisterFinish = () => {
     const [isBefore, setIsBefore] = useState(false);
 
     
-
     useEffect(() => {
 
         fromSubmitPage();
@@ -126,6 +126,7 @@ const WaitingRegisterFinish = () => {
 
                     setTotalOrder(result.totalOrder);
                     setGenderOrder(result.genderOrder);
+                    setGradeOrder(result.gradeOrder);
 
                     const date = new Date(data.createdAt);
                     const dateString = `${date.getFullYear()}.${date.getMonth() + 1}.${date.getDate()} ${date.getHours() < 10 ? "0" + date.getHours() : date.getHours()}:${date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes()}`;
@@ -183,22 +184,22 @@ const WaitingRegisterFinish = () => {
                     </div>
                     <div className={styles.numberText}>
                         {
-                            (genderOrder && genderOrder.toString().includes("↓"))
+                            (gradeOrder && gradeOrder.toString().includes("↓"))
                             &&
                             <>
-                                <span>{genderOrder.split("↓")[0]}</span>번째 이하
+                                <span>{gradeOrder.split("↓")[0]}</span>번째 이하
                             </>
                         }
                                                 {
-                            (genderOrder && !genderOrder.toString().includes("↓"))
+                            (gradeOrder&& !gradeOrder.toString().includes("↓"))
                             &&
                             <>
-                                <span>{genderOrder}</span>번째
+                                <span>{gradeOrder}</span>번째
                             </>
                         }
                         <div className={styles.speechBubble}>
                             <div className={styles.bubbleBody}>
-                                {gender && gender} 기준 대기번호에요!
+                                {grade && grade} 기준 대기번호에요!
                             </div>
                         </div>
                         <div className={styles.triangle}>
@@ -238,13 +239,13 @@ const WaitingRegisterFinish = () => {
                             대기 유의사항
                         </div>
                         <div className={styles.cautionContentsText}>
-                            <span>·</span>남/여 8번 이내로 진입 시 1차 확인 알림톡이 전송됩니다.
+                            <span>·</span>재학생/N수생 10번 이내 진입 시 1차 설문 알림톡이 전송됩니다.
                         </div>
                         <div className={styles.cautionContentsText}>
-                            <span>·</span>남/여 3번 이내로 진입 시 2차 확인 알림톡이 전송됩니다.
+                            <span>·</span>재학생/N수생 5번 이내 진입 시 2차 설문 알림톡이 전송됩니다.
                         </div>
                         <div className={styles.cautionContentsText}>
-                            <span>·</span>8번 이내의 경우 등원 가능 분부터 우선순위가 부여됩니다.
+                            <span>·</span>10번 이내 경우 즉시 등원이 가능한 분부터 우선순위 부여됩니다.
                         </div>
                     </div>
                 </div>

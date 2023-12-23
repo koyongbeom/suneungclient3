@@ -10,6 +10,109 @@ const demeritData : any[] = [
 
 const PatrolDemerit: React.FC<any> = (props) => {
 
+    const [demeritData, setDemeritData] = useState<any>([]);
+
+    useEffect(() => {
+
+        if(!props.userId || !props.targetDate){
+            return;
+        }
+
+        start(props.userId, props.targetDate);
+
+    }, [props.userId, props.targetDate]);
+
+    const start = async (userId: number, targetDate: Date) => {
+
+        const result = await getUserPatrolDemeritToday(userId, targetDate);
+        const rows = makeRows(result);
+    
+        setDemeritData(rows);
+    }
+
+
+    const getUserPatrolDemeritToday = async (userId : number, targetDate : Date) => {
+        
+        try{
+
+            const data = {
+                userId: userId,
+                targetDateTime : targetDate.getTime()
+            }
+
+            const response = await fetch("https://peetsunbae.com/dashboard/report/patrolmanager/getPatrolDemerit", {
+                method: "POST",
+                credentials: "include",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            });
+
+            const result = await response.json();
+            console.log(result);
+
+            if (result.message !== "success") {
+                throw new Error("서버와의 통신에 실패했습니다.");
+            }
+
+            return result.data;
+
+        }catch(e){
+            console.log(e);
+            
+        }
+
+    }
+
+    const makeRows = (data : any) => {
+
+        if(!data){
+            return null;
+        }
+
+        const rows : any[] = [];
+
+        data.forEach((eachData : any) => {
+
+            const oneRow : any = {};
+
+            const createdAtDate = new Date(eachData.createdAt);
+            const time = `${createdAtDate.getHours() < 10 ? "0" + createdAtDate.getHours() : createdAtDate.getHours()}:${createdAtDate.getMinutes() < 10 ? "0" + createdAtDate.getMinutes() : createdAtDate.getMinutes()}`;
+
+            var content = "";
+
+            switch(eachData.determinedKind){
+                case "phone" :
+                    content = "자습실 내 휴대폰 사용";
+                    break;
+                case "site" :
+                    content = "학습외 사이트 접속";
+                    break;
+                case "sleep" :
+                    content = "졸음";
+                    break;
+                case "bad" :
+                    content = "피해를 주는 행동";
+                    break;
+            }
+
+            const result = eachData.description;
+            const demerit = eachData.score;
+
+            oneRow.time = time;
+            oneRow.content = content;
+            oneRow.result = result;
+            oneRow.demerit = demerit;
+
+            rows.push(oneRow);
+
+        })
+
+        return rows;
+
+    }
+
     return (
         <div className={styles.compBody}>
             <div className={styles.compTitleDiv}>
@@ -17,7 +120,12 @@ const PatrolDemerit: React.FC<any> = (props) => {
                     순찰 벌점내역
                 </div>
                 <div className={styles.compSubTitle2}>
-                    23년 11월 01일
+                    {
+                        props.targetDate &&
+                        <span>
+                            {props.targetDate.getFullYear().toString().slice(-2)}년 {props.targetDate.getMonth() + 1}월 {props.targetDate.getDate() < 10 ? "0" + props.targetDate.getDate() : props.targetDate.getDate()}일
+                        </span>
+                    }
                 </div>
             </div>
             <div style={{ height: "1.25rem" }}>
@@ -40,7 +148,7 @@ const PatrolDemerit: React.FC<any> = (props) => {
                     </div>
                 </div>
                 {
-                    demeritData.length > 0 && demeritData.map((data, index) => {
+                    demeritData.length > 0 && demeritData.map((data : any, index : number) => {
                         return (
                             <div className={styles.tableBody} key={index}>
                                 <div className={styles.tableRow}>

@@ -365,8 +365,8 @@ const RegisterWaiting: React.FC<any> = (props) => {
                         N수생(자퇴생)
                     </div>
                     <div onClick={(e: any) => {
-                        alert("죄송합니다. 6월부터 11월까지 재학생은 신규등록이 불가합니다.")
-                        return;
+                        // alert("죄송합니다. 6월부터 11월까지 재학생은 신규등록이 불가합니다.")
+                        // return;
                         setSelect2("current"); 
                         }} 
                         className={`${styles.select} ${select2 === "current" ? styles.active : ""}`}>

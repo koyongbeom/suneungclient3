@@ -239,13 +239,13 @@ const WaitingRegisterFinish = () => {
                             대기 유의사항
                         </div>
                         <div className={styles.cautionContentsText}>
-                            <span>·</span>재학생/N수생 10번 이내 진입 시 1차 설문 알림톡이 전송됩니다.
+                            <span>·</span>재학생/N수생 10번 이내 진입 시 1차 설문 알림톡 전송
                         </div>
                         <div className={styles.cautionContentsText}>
-                            <span>·</span>재학생/N수생 5번 이내 진입 시 2차 설문 알림톡이 전송됩니다.
+                            <span>·</span>재학생/N수생 5번 이내 진입 시 2차 설문 알림톡 전송
                         </div>
                         <div className={styles.cautionContentsText}>
-                            <span>·</span>10번 이내 경우 즉시 등원이 가능한 분부터 우선순위 부여됩니다.
+                            <span>·</span>10번 이내 경우 즉시 등원이 가능한 분부터 우선순위 부여
                         </div>
                     </div>
                 </div>

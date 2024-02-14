@@ -39,6 +39,7 @@ import JustPdfViewer from './pages/justpdfviewer';
 import WinterWaitingRegisterFinish from './pages/winterwaitingregisterfinish';
 import DailyReport from './pages/dailyreport';
 import JustPdfViewer2 from './pages/justpdfviewer2';
+import WaitingRegisterInstant2 from './pages/waitingregisterinstant2';
 // import KioskMain from './kiosk/kioskmain';
 // import Notification from './pages/notification';
 
@@ -133,6 +134,7 @@ function App() {
             <Route path="/registerwaitingcalendar" element={<RegisterWaitingCalendar />}></Route>
             <Route path="/registerwaitingsubmit" element={<WaitingRegisterSubmit />}></Route>
             <Route path="/waitinginstant" element={<WaitingRegisterInstant />}></Route>
+            <Route path="/waitingnewinstant" element={<WaitingRegisterInstant2 />}></Route>
             
             <Route path="/notification" element={<Notification />}></Route>
             <Route path="/notificationRead" element={<NotificationRead />}></Route>

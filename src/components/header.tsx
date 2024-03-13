@@ -147,7 +147,7 @@ const Header: any = (props: any) => {
                 </Collapse>
                 <Link to="/winterschool" style={{ textDecoration: "none", color: "inherit" }}>
                     <div className={styles.mobileMenuList}>
-                        24' N수대비반
+                        대치점 확장 오픈
                     </div>
                 </Link>
                 <Link to="/studysystem" style={{ textDecoration: "none", color: "inherit" }}>
@@ -249,7 +249,7 @@ const Header: any = (props: any) => {
                                 <li
                                     onMouseEnter={() => { setHover(true); setHoverKind("winterschool"); }} onMouseLeave={() => setHover(false)}
                                 >
-                                    24' N수대비반
+                                    대치점 확장 오픈
                                 </li>
                             </Link>
                             <Link to="/studysystem" style={{ textDecoration: "none", color: "inherit" }}>
@@ -335,7 +335,7 @@ const Header: any = (props: any) => {
                     <div ref={ref} className={styles.bottomMenuDiv}>
                         <div className={styles.listTab}>
                             <div onClick={(e: any) => { navigate("/winterschool") }} className={styles.bottomMenuList}>
-                                24' N수대비반
+                                대치점 확장 오픈
                                 <div className={styles.dot1}>
 
                                 </div>

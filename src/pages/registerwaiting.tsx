@@ -325,7 +325,7 @@ const RegisterWaiting: React.FC<any> = (props) => {
                             대치점 대기자
                         </div>
                         <div className={styles.realNumberDescription}>
-                            <span>{daechiCount && daechiCount}</span>명
+                            <span>신관 오픈</span>
                         </div>
                     </div>
                 </div>

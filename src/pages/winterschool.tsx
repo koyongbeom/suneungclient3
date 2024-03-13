@@ -94,9 +94,9 @@ const interiorList = [
     },
 
     {
-        title: "데스크",
+        title: "턴게이트",
         description: "메인 출입구에서 얼굴 인식과 턴게이트를 통해\n단 한명의 오차도 없이 출석체크를 진행하고 있습니다.",
-        src: "img/daechiinterior/J2V_1972.webp"
+        src: "img/newdaechi/entrance.webp"
     },
     {
         title: "휴대폰함",
@@ -192,7 +192,7 @@ const mobileInteriorList = [
     {
         title: "데스크",
         description: "출입구에서\n얼굴 인식과 턴게이트를 통해\n단 한명의 오차도 없이\n출석체크를 진행합니다.",
-        src: "img/daechiinterior/J2V_1972.webp"
+        src: "img/newdaechi/entrance.webp"
     },
     {
         title: "휴대폰함",
@@ -269,7 +269,7 @@ const data: any = [
             },
             {
                 title: "매일 단어테스트",
-                src: "img/screenshot1.png",
+                // src: "img/screenshot1.png",
                 description: "학생 개인의 실력, 진도, 오답에 맞춘\n매일 개별 맞춤형 단어테스트"
             },
             {
@@ -295,7 +295,7 @@ const data: any = [
             },
             {
                 title: "엄격한 출결",
-                src: "",
+                src: "img/newdaechi/attendance.webp",
                 description: "매 교시 출석체크,\n전용 프로그램을 통한 철저한 관리"
             },
             {
@@ -323,6 +323,27 @@ const data: any = [
     {
         title: "고퀄리티 식사",
         titleText: "고급의 한식 도시락과 특식 중\n선택할 수 있습니다"
+    },
+    {
+        title: "모의고사/컨텐츠",
+        titleText: "평가원&사설 모의고사를\n원내에서 공식적으로 응시할 수 있습니다.",
+        subMenu: [
+            {
+                title: "평가원 모의고사",
+                description: "평가원 공식 모의고사 응시장소로서\n재원생에 한해 응시가능",
+                src: "img/newdaechi/exam.webp"
+            },
+            {
+                title: "사설 모의고사",
+                description: "매월 사설모의고사를 원내에서 응시가능\n본 시험 당일 시행 및 성적처리",
+                src: "img/newdaechi/external.webp"
+            },
+            {
+                title: "주요 오프라인 컨텐츠",
+                description: "이감, 상상, 한수 등 주요 학원용\n오프랑니 교재 구입가능",
+                src: "img/newdaechi/external2.webp"
+            },
+        ]
     }
 ]
 
@@ -343,7 +364,7 @@ const mobileData: any = [
             },
             {
                 title: "매일 단어테스트",
-                src: "img/screenshot1.png",
+                src: "img/newdaechi/word.webp",
                 description: "학생 개인의 실력, 진도, 오답에 맞춘\n매일 개별 맞춤형 단어테스트"
             },
             {
@@ -369,7 +390,7 @@ const mobileData: any = [
             },
             {
                 title: "출결 업무화면",
-                src: "img/capturechul3.png",
+                src: "img/newdaechi/attendance.webp",
                 description: "매 교시 출석체크,\n전용 프로그램을 통한 철저한 관리"
             },
             {
@@ -417,18 +438,44 @@ const mobileData: any = [
                 title: "특식 2",
                 src: "img/dduk.webp",
                 description: "죠스 떡볶이"
+            },
+            {
+                title : "전용 앱",
+                src : "img/newdaechi/res1mockup.webp",
             }
         ]
+    },
+    {
+        title: "모의고사/컨텐츠",
+        titleText: "평가원&사설 모의고사를\n원내에서 공식적으로\n응시할 수 있습니다.",
+        subMenu: [
+            {
+                title: "평가원 모의고사",
+                description: "평가원 공식 모의고사 응시장소로서\n재원생에 한해 응시가능",
+                src: "img/newdaechi/exam.webp"
+            },
+            {
+                title: "사설 모의고사",
+                description: "매월 사설모의고사를 원내에서 응시가능\n본 시험 당일 시행 및 성적처리",
+                src: "img/newdaechi/external.webp"
+            },
+            {
+                title: "오프라인 컨텐츠",
+                description: "이감, 상상, 한수 등 주요 학원용\n오프랑니 교재 구입가능",
+                src: "img/newdaechi/external2.webp"
+            },
+        ]
     }
+
 ]
 
 
 const list = [
-    "개별 학습관리", "엄격 생활관리", "프리미엄 시설", "고퀄리티 식사"
+    "개별 학습관리", "엄격 생활관리", "프리미엄 시설", "고퀄리티 식사", "모의고사/컨텐츠"
 ]
 
 const mobileList = [
-    "개별 학습관리", "생활관리", "프리미엄 시설", "고퀄리티 식사"
+    "개별 학습관리", "생활관리", "프리미엄 시설", "고퀄리티 식사", "모의고사/컨텐츠"
 ]
 
 
@@ -760,25 +807,25 @@ const WinterSchool: React.FC<any> = (props) => {
 
     useEffect(() => {
 
-        inView("#imgWrap", ({target}) => {
-            animate(target, 
-                {opacity : 1},
-                {delay : 0.2, duration : 0.6, easing : "ease-in"}
-                );
+        inView("#imgWrap", ({ target }) => {
+            animate(target,
+                { opacity: 1 },
+                { delay: 0.2, duration: 0.6, easing: "ease-in" }
+            );
         });
 
-        inView("#textRight", ({target}) => {
-            animate(target, 
-                {opacity : 1, transform : "none"},
-                {delay : 0.2, duration : 0.6, easing : "ease-out"}
-                )
+        inView("#textRight", ({ target }) => {
+            animate(target,
+                { opacity: 1, transform: "none" },
+                { delay: 0.2, duration: 0.6, easing: "ease-out" }
+            )
         })
 
-        inView("#textLeft", ({target}) => {
-            animate(target, 
-                {opacity : 1, transform : "none"},
-                {delay : 0.2, duration : 0.6, easing : "ease-out"}
-                )
+        inView("#textLeft", ({ target }) => {
+            animate(target,
+                { opacity: 1, transform: "none" },
+                { delay: 0.2, duration: 0.6, easing: "ease-out" }
+            )
         })
 
     }, []);
@@ -799,10 +846,10 @@ const WinterSchool: React.FC<any> = (props) => {
                 </div>
                 <div className={styles.subHeaderText}>
                     <div className={styles.subHeaderTextTitle}>
-                        &nbsp;&nbsp;&nbsp;완벽히 준비된
+                        &nbsp;&nbsp;&nbsp;합격을 위한 공간
                     </div>
                     <div className={styles.subHeaderTextTitle2}>
-                        &nbsp;&nbsp;&nbsp;수능선배 N수대비반을 소개합니다
+                        &nbsp;&nbsp;&nbsp;수능선배 대치점 확장 오픈
                     </div>
                     <div className={styles.subHeaderTextSubTitle}>
 
@@ -824,11 +871,12 @@ const WinterSchool: React.FC<any> = (props) => {
 
             <div className={styles.realFirstSection}>
 
+
                 <div className={styles.openTitleText}>
-                    2024 수능선배 N수 대비반
+                    수능선배를 선택한 이유<br></br>설문 답변 1위 쾌적한 시설
                 </div>
                 <div className={`${styles.descriptionText}`}>
-                    최상위 담임멘토와 함께하는 학습 프로젝트
+                    공부에 집중하기 위해서는 쾌적한 환경이 필요합니다.
                 </div>
 
                 <div style={{ position: "relative", width: "100%" }}>
@@ -837,8 +885,10 @@ const WinterSchool: React.FC<any> = (props) => {
                     </div>
                     <div ref={scrollRef} className={styles.ceoVideo}>
                         <div className={styles.videoBox}>
-                            <div className={styles.vimeoWrapper}>
-                                <Vimeo
+                            <div className={styles.vimeoWrapper} style={{
+                                paddingTop: 0,
+                            }}>
+                                {/* <Vimeo
                                     responsive
                                     width="100%"
                                     height="100%"
@@ -848,7 +898,13 @@ const WinterSchool: React.FC<any> = (props) => {
                                     muted
                                     className={styles.player}
                                 // onReady={(e: any) => { setTimeout(() => { setPause(true); }, 2000) }}
-                                />
+                                /> */}
+                                <img src="/img/newdaechi/main.webp" style={{
+                                    width: "100%",
+                                    height: "100%",
+                                    objectFit: "cover",
+                                    borderRadius: "10px"
+                                }} />
                             </div>
                         </div>
                     </div>
@@ -969,7 +1025,7 @@ const WinterSchool: React.FC<any> = (props) => {
                     }}
                         className={styles.textBoxWrapperText}
                     >
-                        11월 17일부터 각 지점 방문 등록 접수
+                        대치점 방문 및 상담 신청
                     </div>
                     <div style={{
                         marginBottom: "12px",
@@ -985,7 +1041,7 @@ const WinterSchool: React.FC<any> = (props) => {
                     }}
                         className={styles.textBoxWrapperText}
                     >
-                        N수생
+                        N수생 및 재학생
                     </div>
                 </div>
 
@@ -1046,7 +1102,7 @@ const WinterSchool: React.FC<any> = (props) => {
 
             <div className={styles.secondSection}>
                 <div className={`${styles.openTitleText} ${styles.second}`}>
-                    최상위 담임멘토와 함께하는<br></br>학습 프로젝트
+                    수능선배가 만든<br></br>대치점 신관을 소개합니다
                 </div>
 
                 <ul className={styles.secondSectionList}>
@@ -1054,17 +1110,19 @@ const WinterSchool: React.FC<any> = (props) => {
                         <div className={styles.inner}>
                             <div className={`${styles.imgWrap} ${styles.docu}`} id="imgWrap">
                                 <div className={styles.imgBox}>
-                                    <img style={{ width: "100%" }} src="img/winterdocu1.png" alt="" />
+                                    <img style={{ width: "100%", borderRadius: "6px" }} src="img/newdaechi/rest.webp" alt=""
+
+                                    />
                                 </div>
                             </div>
                             <div className={`${styles.txtWrap} ${styles.docu} ${styles.oddDocu}`} id="textRight">
                                 <div className={styles.txtBox}>
-                                    <span>등원 첫 주</span>
-                                    <h6>학습 진단 및<br></br>장기 학습컨텐츠 계획</h6>
+                                    <span>햇살이 비추는 휴게실</span>
+                                    <h6>스트레스를 줄이고<br></br>집중력을 높이도록</h6>
                                     <div className={styles.txtWrapDescription}>
-                                        담임멘토와 첫 상담시<br></br>
-                                        나의 현재 학습 상황을 토대로<br></br>
-                                        학습방향 및 학습 컨텐츠를 상의합니다.
+                                        휴게실과 자습실을 높은 층고와<br></br>
+                                        전면 유리창으로 구성하여<br></br>
+                                        개방감을 느낄 수 있게 하였습니다.
                                     </div>
                                 </div>
                             </div>
@@ -1073,18 +1131,22 @@ const WinterSchool: React.FC<any> = (props) => {
 
                     <li className={`${styles.oddList} ${styles.notFirst} ${styles.even}`}>
                         <div className={styles.inner}>
-                            <div className={`${styles.imgWrap} ${styles.docu}`} id="imgWrap">
+                            <div className={`${styles.imgWrap} ${styles.docu}`} id="imgWrap" style={{
+                                display: "flex", justifyContent: "flex-end"
+                            }}>
                                 <div className={styles.imgBox}>
-                                    <img style={{ width: "100%" }} src="img/winterdocu2.png" alt="" />
+                                    <img style={{ width: "100%", borderRadius: "6px" }} src="img/newdaechi/seat.webp" alt="" />
                                 </div>
                             </div>
                             <div className={`${styles.txtWrap} ${styles.docu} ${styles.evenDocu}`} id="textLeft">
                                 <div className={styles.txtBox}>
-                                    <span>등원 첫 주</span>
-                                    <h6>8주간의 여정 세우기</h6>
+                                    <span>집중형 개인좌석</span>
+                                    <h6>집중에 최적화된<br></br>개별 가림막과 개별 책장</h6>
                                     <div className={styles.txtWrapDescription}>
-                                        담임멘토와 상담한 내용들을 토대로<br></br>
-                                        8주차까지 주차별 상세 계획을 정합니다.<br></br>
+                                        좌석마다 설치된 가림판으로 불필요한<br></br>
+                                        방해요소를 차단하고, 개인 수납공간을<br></br>
+                                        충분히 제공하여 공부에만 집중할 수 있도록<br></br>
+                                        모든 공간을 최적화하였습니다.
                                     </div>
                                 </div>
                             </div>
@@ -1095,18 +1157,18 @@ const WinterSchool: React.FC<any> = (props) => {
                         <div className={styles.inner}>
                             <div className={`${styles.imgWrap} ${styles.docu}`} id="imgWrap">
                                 <div className={styles.imgBox}>
-                                    <img style={{ width: "100%" }} src="img/winterdocu3.png" alt="" />
+                                    <img style={{ width: "100%", borderRadius: "6px" }} src="img/newdaechi/air.webp" alt="" />
                                 </div>
                             </div>
                             <div className={`${styles.txtWrap} ${styles.docu} ${styles.oddDocu}`} id="textRight">
                                 <div className={styles.txtBox}>
-                                    <span>매주 대면 상담</span>
-                                    <h6>매주 40분<br></br>대면상담 체크하기</h6>
+                                    <span>신선한 공기</span>
+                                    <h6>최고급 환기설비와<br></br>자동 창문 개폐 장치</h6>
                                     <div className={styles.txtWrapDescription}>
-                                        계획이행 여부 확인 및 진도관리부터<br></br>
-                                        과목별 상세 단원 내용 코칭까지<br></br>
-                                        오로지 학생 한 명만을 위한 솔루션을<br></br>
-                                        주기적으로 제시합니다.
+                                        최고급 환기 설비 장치가<br></br>
+                                        모든 구역에 충분한 용량으로 설비되어 있으며<br></br>
+                                        이에 더해 창문 자동 개폐 장치를 통해<br></br>
+                                        하루도 빠짐없이 신선한 공기를 공급합니다.
                                     </div>
                                 </div>
                             </div>
@@ -1117,20 +1179,21 @@ const WinterSchool: React.FC<any> = (props) => {
                         marginTop: "160px"
                     }}>
                         <div className={styles.inner}>
-                            <div className={`${styles.imgWrap} ${styles.docu}`} id="imgWrap">
+                            <div className={`${styles.imgWrap} ${styles.docu}`} id="imgWrap" style={{
+                                display: "flex", justifyContent: "flex-end"
+                            }}>
                                 <div className={styles.imgBox}>
-                                    <img style={{ width: "100%" }} src="img/winterdocu6.png" alt="" />
+                                    <img style={{ width: "100%", borderRadius: "6px" }} src="img/newdaechi/entrance.webp" alt="" />
                                 </div>
                             </div>
                             <div className={`${styles.txtWrap} ${styles.docu} ${styles.evenDocu}`} id="textLeft">
                                 <div className={styles.txtBox}>
-                                    <span>상담 후</span>
-                                    <h6>나만을 위한 주간테스트</h6>
+                                    <span>빈틈없는 생활관리</span>
+                                    <h6>안면인식 턴게이트를 통한<br></br>완벽한 출결관리</h6>
                                     <div className={styles.txtWrapDescription}>
-                                        주차별 이행한 학습내용들을<br></br>
-                                        잘 숙지 했는지 담임멘토가 직접<br></br>
-                                        담당학생의 진도와 수준에 맞게끔<br></br>
-                                        주간테스트 문제들을 구성하여 출제합니다.
+                                        턴게이트 출입기록을 수능선배만의 스마트<br></br>
+                                        출결 프로그램으로 분석하여 오류와 누락의<br></br>
+                                        가능성 없이 출결을 철저히 관리합니다.<br></br>
                                     </div>
                                 </div>
                             </div>
@@ -1146,7 +1209,7 @@ const WinterSchool: React.FC<any> = (props) => {
 
             </div>
 
-            <div className={styles.englishWordDiv}>
+            {/* <div className={styles.englishWordDiv}>
                 <div className={styles.englishWordBody}>
                     <div className={`${styles.englishWordTitleText} ${styles.third}`}>
                         영단어장 1권,<span className={styles.onlyPC}> </span><br className={styles.onlymobile}></br>8주에 완성하기
@@ -1192,7 +1255,13 @@ const WinterSchool: React.FC<any> = (props) => {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> */}
+
+            {/* <div style={{
+                height : "240px"
+            }}>
+
+            </div> */}
 
 
 
@@ -1235,7 +1304,7 @@ const WinterSchool: React.FC<any> = (props) => {
                                     <div onClick={(e) => { handleSubmenuIndex(e, eachIndex) }} className={`${styles.eachList} ${eachIndex === submenuIndex ? styles.active : ""}`}>
                                         {eachList.title}
                                     </div>
-                                    <div className={`${styles.eachListBorder} ${(index === 0 && eachIndex === 4) || (index === 1 && eachIndex === 4) || (index === 2 && eachIndex === 4) || (index === 2 && eachIndex === 8) ? styles.none : ""}`}>
+                                    <div className={`${styles.eachListBorder} ${(index === 0 && eachIndex === 4) || (index === 1 && eachIndex === 4) || (index === 2 && eachIndex === 4) || (index === 2 && eachIndex === 9) || (index === 4 && eachIndex === 2) ? styles.none : ""}`}>
 
                                     </div>
                                 </div>
@@ -1244,7 +1313,7 @@ const WinterSchool: React.FC<any> = (props) => {
                     }
                 </div>
 
-                <div className={`${styles.mobileListTitleDiv} ${styles.onlymobile} ${(index !== 0 && index !== 1 && index !== 2 && index !== 3) ? styles.none : ""}`}>
+                <div className={`${styles.mobileListTitleDiv} ${styles.onlymobile} ${(index !== 0 && index !== 1 && index !== 2 && index !== 3 && index !== 4) ? styles.none : ""}`}>
                     {
                         mobileData[index].subMenu && mobileData[index].subMenu?.map((eachList: any, eachIndex: any) => {
                             return (
@@ -1279,10 +1348,17 @@ const WinterSchool: React.FC<any> = (props) => {
                                 }
 
                                 {
+                                    (index === 1) &&
+                                    <div style={{ height: "30px" }} className={styles.onlyPC}>
+                                    </div>
+                                }
+
+                                {
                                     (data[index].subMenu && data[index].subMenu[submenuIndex] && data[index].subMenu[submenuIndex].src) &&
                                     <div>
                                         <div className={styles.imgDiv} onClick={(e: any) => { handleOpen2(data[index].subMenu[submenuIndex].src); }}>
-                                            <img src={data[index].subMenu[submenuIndex].src} className={`${styles.submenuImage} ${index === 0 ? styles.bigSize : ""}`} />
+                                            <img src={data[index].subMenu[submenuIndex].src} className={`${styles.submenuImage} ${index === 0 ? styles.bigSize : ""}`}
+                                            />
                                         </div>
                                     </div>
                                 }
@@ -1304,11 +1380,57 @@ const WinterSchool: React.FC<any> = (props) => {
                                 }
 
                                 {
+                                    (index === 0 && submenuIndex === 2) &&
+                                    <div className={styles.chartDiv}>
+                                    <div className={styles.englishWordGridBody}>
+                                        <div className={`${styles.englishWordGrid} ${styles.firstGrid}`}>
+                                            <div className={styles.forMobileEnglishWord}>
+                                                <div className={styles.englishWordGridTitle}>
+                                                    수능선배 영단어 프로그램
+                                                </div>
+                                                <div className={styles.englishWordGridDescription}>
+                                                    매일 담임멘토와 상의한<br className={styles.onlymobile}></br> 스케쥴에 맞춰 영단어를 암기하고<br></br>
+                                                    재원생 전용 프로그램을 통해<br className={styles.onlymobile}></br> 테스트에 필수 응시해야 합니다.
+                                                </div>
+
+                                            </div>
+                                            <div className={styles.englishWordImgWrapper}>
+                                                <div className={styles.englishWordImgDiv}>
+                                                    <img className={styles.englishWordImg1} src="img/englishwordimg1.webp" alt="word" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className={`${styles.englishWordGrid} ${styles.secondGrid}`}>
+                                            <div className={styles.forMobileEnglishWord}>
+
+                                                <div className={styles.englishWordGridTitle}>
+                                                    나만을 위한 단어장
+                                                </div>
+                                                <div className={styles.englishWordGridDescription}>
+                                                    담임멘토가 직접 학생의 수준을 파악 후<br></br>
+                                                    적절한 난이도의 단어장을 선정하여,<br></br>
+                                                    매 주차 과제를 부여합니다.
+                                                </div>
+                                            </div>
+                                            <div className={`${styles.englishWordImgWrapper} ${styles.secondWrapper}`}>
+                                                <div className={styles.englishWordImgDiv}>
+                                                    <img className={styles.englishWordImg2} src="img/englishwordimg2.webp" alt="word" />
+                                                </div>
+                                            </div>
+                                            <div style={{ height: "15px" }}>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                }
+
+                                {/* {
                                     (index === 1 && submenuIndex === 1) &&
                                     <div className={styles.chartDiv} style={{ marginTop: "32px" }}>
                                         <AttendanceCheck2 />
                                     </div>
-                                }
+                                } */}
                             </div>
 
 
@@ -1360,34 +1482,62 @@ const WinterSchool: React.FC<any> = (props) => {
 
             {
                 index === 3 &&
-                <div className={`${styles.mealDiv} ${styles.onlyPC}`}>
-                    <div className={`${styles.mealBox} ${styles.first}`}>
-                        <div className={styles.mealBoxTitle}>
-                            한식
-                        </div>
-                        <div className={styles.mealImagesDiv}>
-                            <div className={styles.mealImageDiv}>
-                                <img src="/img/bon.webp" className={styles.mealImg} />
+                <div className={`${styles.mealDiv} ${styles.onlyPC}`} >
+                    <div className={styles.mealBoxWrapper}>
+                        <div className={`${styles.mealBox} ${styles.first}`} style={{
+                            marginBottom : "24px"
+                        }}>
+                            <div className={styles.mealBoxTitle}>
+                                한식
                             </div>
-                            <div className={styles.mealImageDiv}>
-                                <img src="/img/bon3.webp" className={styles.mealImg} />
+                            <div className={styles.mealImagesDiv}>
+                                <div className={styles.mealImageDiv}>
+                                    <img src="/img/bon.webp" className={styles.mealImg} />
+                                </div>
+                                <div className={styles.mealImageDiv}>
+                                        <img src="/img/bon3.webp" className={styles.mealImg} />
+                                    </div>
+                                </div>
+                            </div>
+                            <div className={styles.mealBox}>
+                                <div className={styles.mealBoxTitle}>
+                                    특식
+                                </div>
+                                <div className={styles.mealImagesDiv}>
+                                    <div className={styles.mealImageDiv}>
+                                        <img src="/img/subway2.webp" className={styles.mealImg} />
+                                    </div>
+                                    <div className={styles.mealImageDiv}>
+                                        <img src="/img/graph/dduk2.webp" className={styles.mealImg} />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className={styles.mealBoxWrapper2} style={{
+                            display : "flex",
+                            justifyContent : "flex-end"
+                        }}>
+                            <div style={{
+                                display : "flex",
+                                width : "90%",
+                                justifyContent : "center",
+                                alignItems : "center"
+                            }}>
+                                <div style={{
+                                    marginRight : "20px"
+                                }}>
+                                    <img src="/img/newdaechi/res1mockup.webp" style={{
+                                        width: "240px"
+                                    }} />
+                                </div>
+                                <div>
+                                    <img src="/img/newdaechi/res2mockup.webp" style={{
+                                        width: "240px"
+                                    }} />
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div className={styles.mealBox}>
-                        <div className={styles.mealBoxTitle}>
-                            특식
-                        </div>
-                        <div className={styles.mealImagesDiv}>
-                            <div className={styles.mealImageDiv}>
-                                <img src="/img/subway2.webp" className={styles.mealImg} />
-                            </div>
-                            <div className={styles.mealImageDiv}>
-                                <img src="/img/graph/dduk2.webp" className={styles.mealImg} />
-                            </div>
-                        </div>
-                    </div>
-                </div>
             }
 
             <div className={styles.onlyPC}>
@@ -1465,6 +1615,14 @@ const WinterSchool: React.FC<any> = (props) => {
 
                     </div>
                 }
+
+                {
+                    (index === 4) &&
+                    <div style={{ height: "750px" }}>
+
+                    </div>
+                }
+
 
 
 
@@ -1631,14 +1789,14 @@ const WinterSchool: React.FC<any> = (props) => {
 
                     <div className={styles.differentiationDiv}>
                         <div className={styles.differentiationTitle}>
-                            등록비 및 등록절차
+                            등록비 및 안내사항
                         </div>
                         <div className={`${styles.differentiationList} ${styles.first}`}>
                             <div className={styles.differentiationList_1}>
                                 등록비
                             </div>
                             <div className={styles.differentiationList_2}>
-                                월 등록비 680,000원
+                                월 등록비 720,000원
                             </div>
                         </div>
                         <div className={`${styles.differentiationList} ${styles.last}`}>
@@ -1647,13 +1805,24 @@ const WinterSchool: React.FC<any> = (props) => {
                             </div>
                             <div className={`${styles.differentiationList_2} ${styles.multiLine}`}>
                                 <div>
-                                    □ 현재 12월(개강일 12월 1일) 등록 접수 중입니다.
+                                    □ 현재 3월 등록 접수중입니다.
                                 </div>
                                 <div>
-                                    □ 방문 결제하시면 좌석 지정이 가능합니다.
+                                    □ 방문 결제 시 좌석 지정이 가능합니다.
                                 </div>
                                 <div>
-                                    □ 12월 개강일 이후 마감 전까지는 즉시 등록 가능합니다. (좌석 3일 홀드 가능)
+                                    □ 흡연자의 경우 등록이 불가합니다.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className={`${styles.differentiationList} ${styles.last}`}>
+                            <div className={styles.differentiationList_1}>
+                                주소
+                            </div>
+                            <div className={`${styles.differentiationList_2}`}>
+                                <div>
+                                    서울 강남구 역삼로 424 3층 (기존 대치점과 동일한 건물)
                                 </div>
                             </div>
                         </div>

@@ -331,13 +331,13 @@ const RegisterForEmployee: React.FC<any> = (props) => {
                         //----------------------------------------------------------------------
 
                         //일요일 시간 빼는 기능--------------------------------------------------
-                        if (realSelectedDay.day === 0) {
-                            newAmPm.forEach((eachTime: any) => {
-                                if (eachTime.time >= 0) {
-                                    eachTime.possible = false;
-                                }
-                            })
-                        }
+                        // if (realSelectedDay.day === 0) {
+                        //     newAmPm.forEach((eachTime: any) => {
+                        //         if (eachTime.time >= 0) {
+                        //             eachTime.possible = false;
+                        //         }
+                        //     })
+                        // }
                         //----------------------------------------------------------------------
                         
 

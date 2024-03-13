@@ -13,6 +13,7 @@ import Footer from "../components/footer";
 import SpeedDialComponent from "../control/speeddial";
 
 import ReactGa from "react-ga4";
+import Vimeo from "@u-wave/react-vimeo";
 
 
 
@@ -20,6 +21,10 @@ const Teachers: React.FC<any> = (props) => {
     const [index, setIndex] = useState(0);
     const listRef = useRef<any>(null);
     const eachRef = useRef<any>(new Array());
+
+    const [play, setPlay] = useState(true);
+    const [pause, setPause] = useState(false);
+    const scrollRef = useRef<any>(null);
 
     //ga event------------------------------------------------
     useEffect(() => {
@@ -94,6 +99,31 @@ const Teachers: React.FC<any> = (props) => {
             </div>
             <div className={`${styles.descriptionText} ${styles.onlyPC}`}>
                 수능선배가 자신하는 수능선배 담임멘토들을 소개합니다.
+            </div>
+
+            <div style={{ position: "relative", width: "100%" }}>
+                <div style={{ display: "flex" }}>
+                    
+                </div>
+                <div ref={scrollRef} className={styles.ceoVideo}>
+                    <div className={styles.videoBox}>
+                        <div className={styles.vimeoWrapper} style={{
+                            paddingTop: 0,
+                        }}>
+                            <Vimeo
+                                responsive
+                                width="100%"
+                                height="100%"
+                                video="https://vimeo.com/815279269"
+                                autoplay={play}
+                                paused={pause}
+                                muted
+                                className={styles.player}
+                            // onReady={(e: any) => { setTimeout(() => { setPause(true); }, 2000) }}
+                            />
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div ref={listRef} className={`${styles.mobileTitleList} ${styles.onlymobile}`}>

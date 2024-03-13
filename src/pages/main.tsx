@@ -1704,7 +1704,7 @@ const MainPage: any = (props: any) => {
             }
 
 
-            {/* <Modal
+            <Modal
                 open={open5}
                 onClose={handleClose}
                 aria-labelledby="modal-modal-title"
@@ -1712,22 +1712,22 @@ const MainPage: any = (props: any) => {
             >
                 <Box sx={style5}>
                     <div className={styles.modalTitle}>
-                        수능선배 강남점 윈터스쿨 모집
+                        수능선배 대치점 3층 확장
                     </div>
                     <div className={styles.modalDescription}>
-                        신청방법 : 윈터스쿨 페이지 확인
+                        신청방법 : 확장 오픈 페이지 참조
                     </div>
                     <div className={styles.modalDescription}>
-                        (예비 고1~3 대상)
+                        (재수생 및 재학생 대상)
                     </div>
-                    <div className={`${styles.modalDescription} ${styles.sameDescription}`}>
+                    {/* <div className={`${styles.modalDescription} ${styles.sameDescription}`}>
                         1월 2일 개강
-                    </div>
+                    </div> */}
                     <div className={`${styles.modalDescription} ${styles.sameDescription2}`}>
-                        ** 마감 임박(40명 정원 마감)
+                        ** 마감 임박
                     </div>
                 </Box>
-            </Modal> */}
+            </Modal>
 
             <Footer />
 

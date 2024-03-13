@@ -211,7 +211,7 @@ const DaechiMap: React.FC<any> = (props) => {
                         </div>
                         <div className={styles.placeText}>
                             <div className={styles.placeText_1}>
-                                서울 강남구 역삼로 424 2층(대치동 909-3)
+                                서울 강남구 역삼로 424 2,3층(대치동 909-3)
                             </div>
                             <div>
                                 자습실 06:00~24:00 이용가능

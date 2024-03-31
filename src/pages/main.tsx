@@ -470,7 +470,7 @@ const MainPage: any = (props: any) => {
                                     </div>
                                     <div className={styles.numberBoxDescription}>
                                         <span className={styles.autoNumber}>
-                                            <NumberAnimation number={100} fixed={0} delay={500} />
+                                            <NumberAnimation number={300} fixed={0} delay={500} />
                                         </span>명 +
                                     </div>
                                 </div>

@@ -350,7 +350,7 @@ const data: any = [
 const mobileData: any = [
     {
         title: "개별 학습관리",
-        titleText: "나에게 필요한\n강의, 컨텐츠, 공부전략을\n최고의 멘토와 함께 상의하고\n계획하고 이행합니다",
+        titleText: "나에게 필요한\n강의, 컨텐츠, 공부전략을\n최고의 멘토와 매주 40분씩\n대면상담으로 계획합니다.",
         subMenu: [
             {
                 title: "학습진단(이과)",
@@ -1199,6 +1199,29 @@ const WinterSchool: React.FC<any> = (props) => {
                             </div>
                         </div>
                     </li>
+
+                    <li className={`${styles.oddList} ${styles.odd} ${styles.notFirst}`}>
+                        <div className={styles.inner}>
+                            <div className={`${styles.imgWrap} ${styles.docu}`} id="imgWrap">
+                                <div className={styles.imgBox}>
+                                    <img style={{ width: "100%", borderRadius: "6px" }} src="img/newdaechi/main2.webp" alt="" />
+                                </div>
+                            </div>
+                            <div className={`${styles.txtWrap} ${styles.docu} ${styles.oddDocu}`} id="textRight">
+                                <div className={styles.txtBox}>
+                                    <span>20분마다 순찰</span>
+                                    <h6>사감선생님이 상주하며<br></br>엄격한 분위기 관리</h6>
+                                    <div className={styles.txtWrapDescription}>
+                                        사감선생님이 자습실에 함께 상주하며<br></br>
+                                        매일 한 교시도 빼놓지 않고<br></br>
+                                        20분마다 자습실을 순찰하며<br></br>
+                                        최고의 공부 분위기를 유지합니다.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    
 
                 </ul>
 

@@ -1705,7 +1705,7 @@ const MainPage: any = (props: any) => {
 
 
             <Modal
-                open={open5}
+                open={!open5}
                 onClose={handleClose}
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
@@ -1728,6 +1728,7 @@ const MainPage: any = (props: any) => {
                     </div>
                 </Box>
             </Modal>
+            
 
             <Footer />
 

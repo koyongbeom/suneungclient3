@@ -1828,10 +1828,7 @@ const WinterSchool: React.FC<any> = (props) => {
                             </div>
                             <div className={`${styles.differentiationList_2} ${styles.multiLine}`}>
                                 <div>
-                                    □ 현재 3월 등록 접수중입니다.
-                                </div>
-                                <div>
-                                    □ 방문 결제 시 좌석 지정이 가능합니다.
+                                    □ 대기등록이 필요합니다.
                                 </div>
                                 <div>
                                     □ 흡연자의 경우 등록이 불가합니다.

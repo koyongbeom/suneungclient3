@@ -5,17 +5,22 @@ import { ReactComponent as Sweat } from "../../svg/daily_sweat.svg";
 import { ca, is } from "date-fns/locale";
 import { set } from "lodash";
 
-const myStudyTimes = [
-    430, 480, 600, 0, 480, 240, 200
-]
+// const myStudyTimes = [
+//     430, 480, 600, 0, 480, 240, 200
+// ]
 
-const averageStudyTimes = [
-    480, 540, 600, 540, 660, 480, 240
-]
+// const averageStudyTimes = [
+//     480, 540, 600, 540, 660, 480, 240
+// ]
+
+
 
 var ctxTwoLayer : CanvasRenderingContext2D | null = null;
 
 const StudytimeChart: React.FC<any> = (props) => {
+
+    const [myStudyTimes, setMyStudyTime] = useState<any>([]);
+    const [averageStudyTimes, setAverageStudyTime] = useState<any>([]);
 
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const canvasRef2 = useRef<HTMLCanvasElement>(null);
@@ -80,6 +85,71 @@ const StudytimeChart: React.FC<any> = (props) => {
 
     useEffect(() => {
 
+        start();
+
+
+    }, [canvasRef, canvasRef.current, canvasRef2, canvasRef2.current, canvasParentRef, canvasParentRef.current, update, myStudyTimes, averageStudyTimes]);
+
+    useEffect(() => {
+
+        //getData();
+
+        if(!props.targetDate || !props.userId || !props.location || !props.name){
+            return;
+        }
+
+        getData(props.targetDate, props.userId, props.location);
+
+    }, [props.targetDate, props.userId, props.location, props.name]);
+
+
+    const getData = async (targetDate : Date, userId : number, location : string) => {
+
+        const targetDateTime = targetDate.getTime();
+
+
+        const response = await fetch("https://peetsunbae.com/dashboard/report/dailyreport/weekstudytimeinfo", {
+            method : "POST",
+            headers : {
+                "Content-Type" : "application/json"
+            },
+            credentials : "include",
+            body : JSON.stringify({
+                targetDateTime, userId, location
+            })
+        });
+
+        const result = await response.json();
+
+        console.log(result);
+
+        if(result.message === "success"){
+
+            const data = result.data;
+            const myStudyTimes = data.myStudyTimes;
+            const averageStudyTimes = data.averageStudyTimes;
+
+            setMyStudyTime([...myStudyTimes]);
+            setAverageStudyTime([...averageStudyTimes]);
+
+        }
+
+    }
+
+
+    const waitMs = async (ms: number) => {
+        return new Promise((resolve : any) => {
+            setTimeout(() => {
+                resolve();
+            }, ms);
+        });
+    }
+
+
+    const start = async () => {
+
+        await waitMs(100);
+
         if (!canvasRef.current) {
             return;
         }
@@ -93,6 +163,14 @@ const StudytimeChart: React.FC<any> = (props) => {
         }
 
         if(!infoRef.current){
+            return;
+        }
+
+        if(myStudyTimes.length === 0){
+            return;
+        }
+
+        if(averageStudyTimes.length === 0){
             return;
         }
 
@@ -183,8 +261,7 @@ const StudytimeChart: React.FC<any> = (props) => {
             });
         }
 
-
-    }, [canvasRef, canvasRef.current, canvasRef2, canvasRef2.current, canvasParentRef, canvasParentRef.current, update]);
+    }
 
     const draw = (dataPoints: { x: number, y: number }[], ctx: CanvasRenderingContext2D, ctx2: CanvasRenderingContext2D, mine: boolean) => {
 

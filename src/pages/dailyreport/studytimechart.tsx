@@ -4,6 +4,7 @@ import { ReactComponent as Flute } from "../../svg/daily_flute.svg";
 import { ReactComponent as Sweat } from "../../svg/daily_sweat.svg";
 import { ca, is } from "date-fns/locale";
 import { set } from "lodash";
+import { englishLocationToKorean } from "./functions/etcfunction";
 
 // const myStudyTimes = [
 //     430, 480, 600, 0, 480, 240, 200
@@ -33,6 +34,7 @@ const StudytimeChart: React.FC<any> = (props) => {
     const dateRef = useRef<HTMLDivElement>(null);
     const myTimeRef = useRef<HTMLDivElement>(null);
     const averageTimeRef = useRef<HTMLDivElement>(null);
+    const [myWeekAverageStudyMinutes, setMyWeekAverageStudyMinutes] = useState(0);
 
     const [currentBar, setCurrentBar] = useState(0);
 
@@ -131,6 +133,17 @@ const StudytimeChart: React.FC<any> = (props) => {
 
             setMyStudyTime([...myStudyTimes]);
             setAverageStudyTime([...averageStudyTimes]);
+
+            if(myStudyTimes && myStudyTimes.length > 0){
+                
+                var total = 0;
+                
+                myStudyTimes.forEach((time : number) => {
+                    total += time;
+                });
+
+                setMyWeekAverageStudyMinutes(Math.floor(total / myStudyTimes.length));
+            }
 
         }
 
@@ -493,14 +506,14 @@ const StudytimeChart: React.FC<any> = (props) => {
         <div className={styles.compBody}>
             <div className={styles.compTitleDiv}>
                 <div className={`${styles.compTitle2} ${styles.compTitleBreak} ${styles.nonSelect}`}>
-                    오늘은 평소보다<br />32분 더 공부하셨네요!
+                    오늘은 평소보다<br />{(myStudyTimes && myWeekAverageStudyMinutes && myStudyTimes.length > 0) && Math.abs(myStudyTimes[myStudyTimes.length - 1] - myWeekAverageStudyMinutes)}분 {(myStudyTimes && myWeekAverageStudyMinutes && myStudyTimes.length > 0) && (myStudyTimes[myStudyTimes.length - 1] - myWeekAverageStudyMinutes) >= 0 ? "더" : "덜"} 공부하셨네요!
                 </div>
                 <div className={styles.fluteDiv}>
                     <Flute className={styles.flute} />
                 </div>
             </div>
             <div className={`${styles.compSubTitle1} ${styles.nonSelect}`}>
-                1주일 평균 공부시간 <span>7시간 10분</span>
+                1주일 평균 공부시간 <span>{Math.floor(myWeekAverageStudyMinutes/60)}시간 {myWeekAverageStudyMinutes % 60}분</span>
             </div>
             <div className={styles.canvasDiv} ref={canvasParentRef}>
                 <canvas
@@ -560,7 +573,7 @@ const StudytimeChart: React.FC<any> = (props) => {
 
                     </div>
                     <div className={styles.name}>
-                        김희태님
+                        {props.name}님
                     </div>
                 </div>
                 <div className={`${styles.averageNameDiv} ${styles.nameDiv}`}>
@@ -568,7 +581,7 @@ const StudytimeChart: React.FC<any> = (props) => {
 
                     </div>
                     <div className={styles.name}>
-                        강남점 평균
+                        {props.location && englishLocationToKorean(props.location)} 평균
                     </div>
                 </div>
             </div>

@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { ReactComponent as FirstPrice } from "../../svg/daily_first_price.svg";
 import { ReactComponent as SecondPrice } from "../../svg/daily_second_price.svg";
 import { ReactComponent as ThirdPrice } from "../../svg/daily_third_price.svg";
+import { englishLocationToKorean } from "./functions/etcfunction";
 
 const rankingData = [
     { "name": "김O현", "time": 643, "location": "강남점", "rankingChange": "down" },
@@ -69,6 +70,44 @@ const StudytimeRanking: React.FC<any> = (props) => {
     const [today, setToday] = useState(new Date());
     const [open, setOpen] = useState(false);
     const [modalHash, setModalHash] = useState("");
+
+    const [myLocation , setMyLocation] = useState("");
+    const [myEnglishLocation, setMyEnglishLocation] = useState("");
+
+    const [myMonthRanking, setMyMonthRanking] = useState(0);
+    const [myWeekRanking, setMyWeekRanking] = useState(0);
+    const [myTodayRanking, setMyTodayRanking] = useState(0);
+
+    const [myMonthRankingInLocation, setMyMonthRankingInLocation] = useState(0);
+    const [myWeekRankingInLocation, setMyWeekRankingInLocation] = useState(0);
+    const [myTodayRankingInLocation, setMyTodayRankingInLocation] = useState(0);
+
+    const [finalData, setFinalData] = useState<any>([]);
+
+    const [targetData, setTargetData] = useState([]);
+
+    const [locationMenu, setLocationMenu] = useState(1);
+    const [timeMenu, setTimeMenu] = useState(1);
+
+    const [totalMonthData, setTotalMonthData] = useState([]);
+    const [totalPreviousMonthData, setTotalPreviousMonthData] = useState([]);
+    const [totalWeekData, setTotalWeekData] = useState([]);
+    const [totalPreviousWeekData, setTotalPreviousWeekData] = useState([]);
+    const [totalYesterdayData, setTotalYesterdayData] = useState([]);
+    const [totalTodayData, setTotalTodayData] = useState([]);
+
+
+    const handleCurrentMenu1 = (index: number) => {
+        console.log(index);
+        setLocationMenu(index);
+    }
+
+    const handleCurrentMenu2 = (index: number) => {
+        console.log(index);
+        setTimeMenu(index);
+    }
+
+
     const navigate = useNavigate();
 
     const handleCloseHash = () => {
@@ -106,7 +145,307 @@ const StudytimeRanking: React.FC<any> = (props) => {
 
     }, [open]);
 
+    useEffect(() => {
+
+        if(!props.targetDate || !props.userId){
+            console.log("noProps");
+            return;
+        }
+
+        console.log("getRankingGoGo");
+
+        getRanking(props.userId, props.targetDate);
+
+    }, [props.userId, props.targetDate]);
+
+
+    const getRanking = async (userId : number, targetDate : Date) => {
+
+        const findMyTime = (data : any, myFingerprintId : number) => {
+
+            var time = 0;
+
+            data.forEach((each : any) => {
+                if(each.fingerprintId === myFingerprintId){
+                    time = each.totalStudyTime;
+                }
+            })
+
+            console.log(time);
+            return time;
+        }
+
+        const findMyRanking = (data : any, myStudyTime : number, totalLength : number) => {
+
+            var myRanking = totalLength;
+
+            data.forEach((each : any) => {
+                if(each.totalStudyTime < myStudyTime){
+                    myRanking--;
+                }
+            })
+
+            return myRanking;
+
+        }
+
+        const findTotalLengthInLocation = (data : any, location : string) => {
+
+            var totalLength = 0;
+
+            data.forEach((each : any) => {
+                if(each.location === location){
+                    totalLength++;
+                }
+            })
+
+            return totalLength;
+
+        }
+
+        const findMyRankingInLocation = (data : any, myStudyTime : number, totalLength : number, location : string) => {
+
+            var myRanking = totalLength;
+
+            data.forEach((each : any) => {
+                if(each.totalStudyTime < myStudyTime && each.location === location){
+                    myRanking--;
+                }
+            })
+
+            return myRanking;
+
+        }
+
+        try{
+
+            const targetDateTime = targetDate.getTime();
+
+            
+            const response = await fetch(`https://peetsunbae.com/dashboard/home/dailyreportranking?userId=${userId}&targetDateTime=${targetDateTime}`, {
+                method : "GET"
+            });
+
+            const result = await response.json();
+
+            console.log(result);
+
+            if(result.message === "success"){
+
+                console.log("gogogogogogo");
+
+                const fingerprintId = result.fingerprintId;
+
+                if(!fingerprintId){
+                    return;
+                }
+
+                const location = result.location;
+
+                if(!location){
+                    return;
+                }
+
+                const koreanLocation = englishLocationToKorean(location);
+
+                if(!koreanLocation){
+                    return;
+                }
+
+
+                const monthInfo = result.monthInfo;
+                const previousMonthInfo = result.previousMonthInfo;
+                const weekInfo = result.weekInfo;
+                const previousWeekInfo = result.previousWeekInfo;
+                const yesterdayInfo = result.yesterdayInfo;
+                const todayInfo = result.todayInfo;
+
+                var myMonthStudyTime = 0;
+                var myPreviousMonthStudyTime = 0;
+                var myWeekStudyTime = 0;
+                var myPreviousWeekStudyTime = 0;
+                var myYesterdayStudyTime = 0;
+                var myTodayStudyTime = 0;
+
+                console.log(monthInfo, previousMonthInfo, weekInfo, previousWeekInfo, yesterdayInfo, todayInfo);
+
+                myMonthStudyTime = findMyTime(monthInfo, fingerprintId);
+                myPreviousMonthStudyTime = findMyTime(previousMonthInfo, fingerprintId);
+                myWeekStudyTime = findMyTime(weekInfo, fingerprintId);
+                myPreviousWeekStudyTime = findMyTime(previousWeekInfo, fingerprintId);
+                myYesterdayStudyTime = findMyTime(yesterdayInfo, fingerprintId);
+                myTodayStudyTime = findMyTime(todayInfo, fingerprintId);
+
+                console.log("=========");
+                console.log(myMonthStudyTime, myPreviousMonthStudyTime, myWeekStudyTime, myPreviousWeekStudyTime, myYesterdayStudyTime, myTodayStudyTime);
+
+                const monthInfoLength = monthInfo.length;
+                const previousMonthInfoLength = previousMonthInfo.length;
+                const weekInfoLength = weekInfo.length;
+                const previousWeekInfoLength = previousWeekInfo.length;
+                const yesterdayInfoLength = yesterdayInfo.length;
+                const todayInfoLength = todayInfo.length;
+
+                const myMonthRanking = findMyRanking(monthInfo, myMonthStudyTime, monthInfoLength);
+                const myPreviousMonthRanking = findMyRanking(previousMonthInfo, myPreviousMonthStudyTime, previousMonthInfoLength);
+                const myWeekRanking = findMyRanking(weekInfo, myWeekStudyTime, weekInfoLength);
+                const myPreviousWeekRanking = findMyRanking(previousWeekInfo, myPreviousWeekStudyTime, previousWeekInfoLength);
+                const myYesterdayRanking = findMyRanking(yesterdayInfo, myYesterdayStudyTime, yesterdayInfoLength);
+                const myTodayRanking = findMyRanking(todayInfo, myTodayStudyTime, todayInfoLength);
+                console.log("=========");
+            
+                console.log(myMonthRanking, myPreviousMonthRanking, myWeekRanking, myPreviousWeekRanking, myYesterdayRanking, myTodayRanking);
+
+                const monthInfoLengthInLocation = findTotalLengthInLocation(monthInfo, location);
+                const previousMonthInfoLengthInLocation = findTotalLengthInLocation(previousMonthInfo, location);
+                const weekInfoLengthInLocation = findTotalLengthInLocation(weekInfo, location);
+                const previousWeekInfoLengthInLocation = findTotalLengthInLocation(previousWeekInfo, location);
+                const yesterdayInfoLengthInLocation = findTotalLengthInLocation(yesterdayInfo, location);
+                const todayInfoLengthInLocation = findTotalLengthInLocation(todayInfo, location);
+
+                const myMonthRankingInLocation = findMyRankingInLocation(monthInfo, myMonthStudyTime, monthInfoLengthInLocation, location);
+                const myPreviousMonthRankingInLocation = findMyRankingInLocation(previousMonthInfo, myPreviousMonthStudyTime, previousMonthInfoLengthInLocation, location);
+                const myWeekRankingInLocation = findMyRankingInLocation(weekInfo, myWeekStudyTime, weekInfoLengthInLocation, location);
+                const myPreviousWeekRankingInLocation = findMyRankingInLocation(previousWeekInfo, myPreviousWeekStudyTime, previousWeekInfoLengthInLocation, location);
+                const myYesterdayRankingInLocation = findMyRankingInLocation(yesterdayInfo, myYesterdayStudyTime, yesterdayInfoLengthInLocation, location);
+                const myTodayRankingInLocation = findMyRankingInLocation(todayInfo, myTodayStudyTime, todayInfoLengthInLocation, location);
+
+                console.log(myMonthRankingInLocation, myPreviousMonthRankingInLocation, myWeekRankingInLocation, myPreviousWeekRankingInLocation, myYesterdayRankingInLocation, myTodayRankingInLocation);
+
+                setMyMonthRanking(myMonthRanking);
+                setMyWeekRanking(myWeekRanking);
+                setMyTodayRanking(myTodayRanking);
+
+                setMyMonthRankingInLocation(myMonthRankingInLocation);
+                setMyWeekRankingInLocation(myWeekRankingInLocation);
+                setMyTodayRankingInLocation(myTodayRankingInLocation);
+
+                setMyLocation(koreanLocation);
+                setMyEnglishLocation(location);
+
+                setTotalMonthData(monthInfo);
+                setTotalPreviousMonthData(previousMonthInfo);
+                setTotalWeekData(weekInfo);
+                setTotalPreviousWeekData(previousWeekInfo);
+                setTotalYesterdayData(yesterdayInfo);
+                setTotalTodayData(todayInfo);
+
+                makeFinalData(monthInfo, previousMonthInfo, weekInfo, previousWeekInfo, yesterdayInfo, todayInfo, location);
+
+            }
+
+        }catch(e){
+            console.log(e);
+        }
+
+    }
+
+    const makeFinalData = (totalMonthData : any, totalPreviousMonthData : any, totalWeekData : any, totalPreviousWeekData : any, totalYesterdayData : any, totalTodayData : any, myLocation : any) => {
+
+        console.log(totalMonthData);
+        console.log(totalPreviousMonthData);
+        console.log(totalWeekData);
+        console.log(totalPreviousWeekData);
+        console.log(totalYesterdayData);
+        console.log(totalTodayData);
+
+        var currentData : any;
+        var previousData : any;
+
+        if(timeMenu === 1){
+            currentData = totalTodayData;
+            previousData = totalYesterdayData;
+        }
+
+        if(timeMenu === 2){
+            currentData = totalWeekData;
+            previousData = totalPreviousWeekData;
+        }
+
+        if(timeMenu === 3){
+            currentData = totalMonthData;
+            previousData = totalPreviousMonthData;
+        }
+
+        if(locationMenu === 1){
+            currentData = currentData.filter((each : any) => each.location === myLocation);
+            previousData = previousData.filter((each : any) => each.location === myLocation);
+        }
+
+        //totalStudyTime기준으로 내림차순 정렬
+        currentData.sort((a : any, b : any) => {
+            return b.totalStudyTime - a.totalStudyTime;
+        });
+
+        previousData.sort((a : any, b : any) => {
+            return b.totalStudyTime - a.totalStudyTime;
+        });
+
+        console.log(currentData);
+        console.log(previousData);
+
+        const finalData : any = [];
+
+        currentData.forEach((each : any, index : number) => {
+
+            const name = each.name;
+            const koreanLocation = englishLocationToKorean(each.location);
+            if(!koreanLocation){
+                return;
+            }
+            //ms 단위를 min 단위로 변환
+            const time = Math.floor(each.totalStudyTime / 60000);
+
+            const currentRanking = index + 1;
+            var previousRanking = index + 1;
+
+            const fingerprintId = each.fingerprintId;
+
+            previousData.forEach((previousEach : any, previousIndex : number) => {
+
+                if(previousEach.fingerprintId === fingerprintId){
+                    previousRanking = previousIndex + 1;
+                }
+
+            });
+
+            var rankingChange = "same";
+
+            if(previousRanking < currentRanking){
+                rankingChange = "up";
+            }else if(previousRanking > currentRanking){
+                rankingChange = "down";
+            }
+
+            finalData.push({
+                name : name,
+                location : koreanLocation,
+                time : time,
+                rankingChange : rankingChange
+            });
+
+
+        })
+
+        console.log(finalData);
+
+        setFinalData(finalData);
     
+    }
+
+    useEffect(() => {
+
+        if(!myLocation){
+            return;
+        }
+
+        console.log(totalMonthData, totalPreviousMonthData, totalWeekData, totalPreviousWeekData, totalYesterdayData, totalTodayData, myEnglishLocation);
+
+        makeFinalData(totalMonthData, totalPreviousMonthData, totalWeekData, totalPreviousWeekData, totalYesterdayData, totalTodayData, myEnglishLocation);
+
+
+    }, [locationMenu, timeMenu]);
+
 
 
     return (
@@ -117,14 +456,21 @@ const StudytimeRanking: React.FC<any> = (props) => {
                 오늘의 공부시간 랭킹
             </div>
             <div className={styles.compSubTitle1}>
-                강남점 하루 공부시간 기준 <span>14등</span>이에요
+                강남점 하루 공부시간 기준 <span>
+                    {(locationMenu === 1 && timeMenu === 1) && myTodayRankingInLocation}
+                    {(locationMenu === 1 && timeMenu === 2) && myWeekRankingInLocation}
+                    {(locationMenu === 1 && timeMenu === 3) && myMonthRankingInLocation}
+                    {(locationMenu === 2 && timeMenu === 1) && myTodayRanking}
+                    {(locationMenu === 2 && timeMenu === 2) && myWeekRanking}
+                    {(locationMenu === 2 && timeMenu === 3) && myMonthRanking}
+                    등</span>이에요
             </div>
             <div className={styles.rankingMenuDiv}>
                 <div className={styles.firstSmallMenu}>
-                    <SmallMenubar menuList={["강남점", "전체"]} />
+                    <SmallMenubar menuList={[myLocation, "전체"]} handleCurrentMenu={handleCurrentMenu1} />
                 </div>
                 <div className={styles.secondSmallMenu}>
-                    <SmallMenubar menuList={["일별", "주별", "월별"]} />
+                    <SmallMenubar menuList={["일별", "주별", "월별"]} handleCurrentMenu={handleCurrentMenu2} />
                 </div>
             </div>
             <div className={styles.rankingBodyDate}>
@@ -132,7 +478,7 @@ const StudytimeRanking: React.FC<any> = (props) => {
             </div>
             <div className={styles.rankingImagesDiv}>
                 {
-                    rankingData.map((item, index) => {
+                    finalData.map((item : any, index : number) => {
 
                         if (index > 2) {
                             return;
@@ -183,7 +529,7 @@ const StudytimeRanking: React.FC<any> = (props) => {
             </div>
             <div className={styles.rankingListBody}>
                 {
-                    rankingData.map((item, index) => {
+                    finalData.map((item : any, index : number) => {
 
                         if (index < 3) {
                             return;

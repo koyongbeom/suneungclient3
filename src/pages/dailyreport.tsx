@@ -154,7 +154,7 @@ const DailyReport : React.FC<any> = () => {
             <StudytimeChart targetDate={targetDate} userId={userId} location={where} name={name} />
             <div className={styles.justGap}>
             </div>
-            <StudytimeRanking />
+            <StudytimeRanking targetDate={targetDate} userId={userId} location={where} name={name} />
             <div className={styles.justGap}>
             </div>
             <PatrolViolateList />

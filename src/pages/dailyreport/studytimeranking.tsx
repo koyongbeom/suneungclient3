@@ -116,34 +116,36 @@ const StudytimeRanking: React.FC<any> = (props) => {
 
 
     const handleOpen = () => {
-        window.location.assign("/dailyreport#modal");
+        setOpen(true);
+        // window.location.assign("/dailyreport#modal");
     }
 
     const handleClose = () => {
-        handleCloseHash();
+        //handleCloseHash();
+        setOpen(false);
     }
 
-    useEffect(()=>{
-        console.log(window.location.hash);
-        console.log(11111);
-        const handleOnHashChange = () => {
-            console.log("hashChange");
-            setModalHash(window.location.hash);
-            console.log(open);
-            if(window.location.hash === "#modal"){
-                console.log(2);
-                setOpen(true);
-            }else if(!window.location.hash){
-                console.log(3);
-                setOpen(false);
-            }
-        }
+    // useEffect(()=>{
+    //     console.log(window.location.hash);
+    //     console.log(11111);
+    //     const handleOnHashChange = () => {
+    //         console.log("hashChange");
+    //         setModalHash(window.location.hash);
+    //         console.log(open);
+    //         if(window.location.hash === "#modal"){
+    //             console.log(2);
+    //             setOpen(true);
+    //         }else if(!window.location.hash){
+    //             console.log(3);
+    //             setOpen(false);
+    //         }
+    //     }
 
-        window.addEventListener("hashchange", handleOnHashChange);
+    //     window.addEventListener("hashchange", handleOnHashChange);
 
-        return ()=> window.removeEventListener("hashchange", handleOnHashChange);
+    //     return ()=> window.removeEventListener("hashchange", handleOnHashChange);
 
-    }, [open]);
+    // }, [open]);
 
     useEffect(() => {
 
@@ -151,6 +153,8 @@ const StudytimeRanking: React.FC<any> = (props) => {
             console.log("noProps");
             return;
         }
+
+        setToday(props.targetDate);
 
         console.log("getRankingGoGo");
 
@@ -456,7 +460,7 @@ const StudytimeRanking: React.FC<any> = (props) => {
                 오늘의 공부시간 랭킹
             </div>
             <div className={styles.compSubTitle1}>
-                강남점 하루 공부시간 기준 <span>
+                {locationMenu === 1 ? myLocation : locationMenu === 2 ? "전 지점" : ""} {timeMenu === 1 ? "하루" : timeMenu === 2 ? "일주일" : timeMenu === 3 ? "한 달" : ""} 공부시간 기준 <span>
                     {(locationMenu === 1 && timeMenu === 1) && myTodayRankingInLocation}
                     {(locationMenu === 1 && timeMenu === 2) && myWeekRankingInLocation}
                     {(locationMenu === 1 && timeMenu === 3) && myMonthRankingInLocation}
@@ -600,14 +604,14 @@ const StudytimeRanking: React.FC<any> = (props) => {
                                 오늘의 공부시간 랭킹
                             </div>
                             <div className={styles.compSubTitle1}>
-                                강남점 하루 공부시간 기준 <span>14등</span>이에요
+                            {locationMenu === 1 ? myLocation : locationMenu === 2 ? "전 지점" : ""} {timeMenu === 1 ? "하루" : timeMenu === 2 ? "일주일" : timeMenu === 3 ? "한 달" : ""} 공부시간 기준 <span>14등</span>이에요
                             </div>
                             <div className={styles.rankingMenuDiv}>
                                 <div className={styles.firstSmallMenu}>
-                                    <SmallMenubar menuList={["강남점", "전체"]} />
+                                    <SmallMenubar menuList={[myLocation, "전체"]} handleCurrentMenu={handleCurrentMenu1} />
                                 </div>
                                 <div className={styles.secondSmallMenu}>
-                                    <SmallMenubar menuList={["일별", "주별", "월별"]} />
+                                    <SmallMenubar menuList={["일별", "주별", "월별"]} handleCurrentMenu={handleCurrentMenu2} />
                                 </div>
                             </div>
                             <div className={styles.rankingBodyDate}>
@@ -618,7 +622,7 @@ const StudytimeRanking: React.FC<any> = (props) => {
                             </div>
                             <div className={styles.rankingListBody}>
                                 {
-                                    rankingData.map((item, index) => {
+                                    finalData.map((item : any, index : number) => {
 
                                         const hours = Math.floor(item.time / 60);
                                         const minutes = item.time % 60;

@@ -340,7 +340,7 @@ const data: any = [
             },
             {
                 title: "주요 오프라인 컨텐츠",
-                description: "이감, 상상, 한수 등 주요 학원용\n오프랑니 교재 구입가능",
+                description: "이감, 상상, 한수 등 주요 학원용\n오프라인 교재 구입가능",
                 src: "img/newdaechi/external2.webp"
             },
         ]
@@ -461,7 +461,7 @@ const mobileData: any = [
             },
             {
                 title: "오프라인 컨텐츠",
-                description: "이감, 상상, 한수 등 주요 학원용\n오프랑니 교재 구입가능",
+                description: "이감, 상상, 한수 등 주요 학원용\n오프라인 교재 구입가능",
                 src: "img/newdaechi/external2.webp"
             },
         ]

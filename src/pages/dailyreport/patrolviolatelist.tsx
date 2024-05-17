@@ -10,12 +10,14 @@ import { ReactComponent as NoViolation } from "../../svg/daily_no_violation.svg"
 import { ReactComponent as Yellow } from "../../svg/daily_yellow.svg";
 import { ReactComponent as Red } from "../../svg/daily_red.svg";
 import { ReactComponent as School } from "../../svg/daily_school.svg";
+import { classifyViolation, demeritAddWithDb, drawingAccessChart, exceptRegularViolation, judgeViolation } from "./functions/calcdemerit";
+import { fil } from "date-fns/locale";
 
 const locationViolationList = [62, 6, 3];
 
 const myViolationList: any = [
     {
-        color: "yellow", kind: "사유지각", demerit: 3, description: "없음", titleTable:
+        color: "yellow", determinedKind: "사유지각", demerit: 3, description: "", titleTable:
             [
                 {
                     time : "08:00", content : {status : [{kind : "지각", sort : "start"}], sudden : [{kind : "결석", sort : "start"}, {kind : "지각", sort : "start"}], regular : []}, deep : {status : 1, sudden : 2, regular : 0}
@@ -42,15 +44,23 @@ const myViolationList: any = [
                     time : "22:00", content : {status : [], sudden : [{kind : "결석", sort : "end"}], regular : []}, deep : {status : 0, sudden : 1, regular : 0}
                 }
             ]
+    },
+    {
+        color: "yellow", determinedKind: "사유지각", demerit: 3, description: "", titleTable: []
     }
 ];
 
 const tailoredViolationList: any = [
+    [
     { bigKind : "status", kind: "지각", start: "08:00", end: "18:35", startIndex: 0, endIndex: 5 },
     { bigKind : "sudden", kind: "결석", start: "08:00", end: "22:00", startIndex: 0, endIndex: 7 },
-    // { bigKind : "sudden", kind: "지각", start: "08:00", end: "13:30", startIndex: 0, endIndex: 3 },
+    //{ bigKind : "sudden", kind: "지각", start: "08:00", end: "13:30", startIndex: 0, endIndex: 3 },
     { bigKind : "regular", kind: "외출", start: "11:50", end: "13:20", startIndex: 1, endIndex: 2 },
     { bigKind : "regular", kind: "외출", start: "17:20", end: "18:40", startIndex: 4, endIndex: 6 },
+    ],
+    [
+
+    ]
 ];
 
 
@@ -61,6 +71,11 @@ const PatrolViolateList: React.FC<any> = (props) => {
     const [graphWrapperWidth, setGraphWrapperWidth] = useState(0);
     const barRefs = useRef<any[]>([]);
     const [canSee, setCanSee] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const [drawingList, setDrawingList] = useState<any[]>();
+    const [violationList, setViolationList] = useState<any[]>();
+    const [suddentNotice, setSuddenNotice] = useState<any[]>();
+    const [regularSchedule, setRegularSchedule] = useState<any[]>();
 
     useEffect(() => {
 
@@ -113,7 +128,6 @@ const PatrolViolateList: React.FC<any> = (props) => {
             return;
         }
 
-
         const graphWrapperDiv = graphWrapper.current;
         const clientRect = graphWrapperDiv.getBoundingClientRect();
         const graphWrapperWidth = clientRect.width;
@@ -126,6 +140,221 @@ const PatrolViolateList: React.FC<any> = (props) => {
     const changeCurrentMenu = (menu: number) => {
         setCurrentMenu(menu);
     }
+
+    useEffect(() => {
+
+        if (!props.targetDate || !props.userId || !props.location || !props.code || !props.name) {
+            return;
+        }
+
+        console.log(props.targetDate, props.userId, props.location, props.code, props.name);
+
+        const targetDate = props.targetDate;
+        const selectedUserId = props.userId;
+        const code = props.code;
+
+        makeUserInfo(selectedUserId, targetDate, code);
+
+
+    }, [props.targetDate, props.userId, props.location, props.code, props.name]);
+
+    const makeUserInfo = async (selectedUserId : number, targetDate : Date, code : any) => {
+
+        //getUserInfo로부터 받아온 정보를 바탕으로
+        //DemeritList, DemeritMemo, DemeritRegularData, DemeritSuddenData를 만들어야 함
+
+        const targetDateTime = targetDate.getTime();
+
+        const userInfo = await getUserInfo(selectedUserId, targetDateTime, code);
+
+        console.log("userInfo");
+        console.log(userInfo);
+
+        if (!userInfo) {
+            console.log("userInfo2");
+            return;
+        }
+
+        const accessControlData = userInfo.accessControlData;
+        const regularScheduleData = userInfo.regularScheduleData;
+        const regularScheduleFormatData = userInfo.regularScheduleFormatData;
+        const suddenNoticeData = userInfo.suddenNoticeData;
+        const userData = userInfo.userData;
+        const demeritListData = userInfo.demeritListData;
+        const regularScheduleMemoData = userInfo.regularScheduleMemoData;
+        const demeritData = userInfo.demeritData;
+
+        const userViolationList = judgeViolation(accessControlData, targetDate);
+
+        classifyViolation(userViolationList, suddenNoticeData, regularScheduleFormatData, targetDate);
+
+
+        demeritAddWithDb(userViolationList, demeritListData);
+
+
+        const filteredViolationList = exceptRegularViolation(userViolationList);
+
+        console.log("filteredViolationList");
+        console.log(filteredViolationList);
+
+        filteredViolationList.forEach((eachViolation : any) => {
+            eachViolation.userId = selectedUserId;
+            eachViolation.targetDate = targetDate;
+        });
+
+        const refilteredViolationList = filteredViolationList.filter((eachViolation : any) => {
+            //벌점 부여된 내역만 필터링
+            if(eachViolation.sendDemerit){
+
+                const sendDemerit = eachViolation.sendDemerit;
+                //sendDemerit을 __별로 나눈다.
+                const sendDemeritArray = sendDemerit.split("__");
+
+                const demerit = sendDemeritArray[4];
+                const isCancel = sendDemeritArray[6];
+
+                eachViolation.demerit = +demerit;
+                eachViolation.isCancel = isCancel;
+                var isCanceled = false;
+
+                if(isCancel === "canceled"){
+                    isCanceled = true;
+                }
+
+                if(!isCanceled){
+                    return true;
+                }else{
+                    return false;
+                }
+                
+            }else{
+                return false;
+            }
+        });
+
+        const drawingList = drawingAccessChart(filteredViolationList, suddenNoticeData, regularScheduleFormatData, targetDate);
+        setDrawingList([...drawingList]);
+
+        setViolationList([...refilteredViolationList]);
+        setSuddenNotice([...suddenNoticeData]);
+        setRegularSchedule(regularScheduleData);
+        
+        console.log("refilteredViolationList");
+        console.log(refilteredViolationList);
+
+
+        refilteredViolationList.forEach((eachViolation : any) => {
+
+            //determinedKind 단어에 "사유", "정기"를 포함하고 있으면 color를 yellow로 바꿔준다.
+            if(eachViolation.determinedKind.includes("사유") || eachViolation.determinedKind.includes("정기")){
+                eachViolation.color = "yellow";
+            }else{
+                eachViolation.color = "red";
+            }
+
+            console.log(eachViolation.drawingList);
+            //drawingList kind를 bigKind로 바꿔주고. 만약 access라면 kind를 status로 바꿔준다.
+            // eachViolation.drawingList.forEach((eachDrawing : any) => {
+            //     console.log(eachDrawing);
+            //     console.log("eachDrawing");
+            //     if(eachDrawing.kind === "access"){
+            //         eachDrawing.bigKind = "status";
+            //     }else{
+            //         eachDrawing.bigKind = eachDrawing.kind;
+            //     }
+            // });
+
+            //drawingList의 type이 early면 kind를 조퇴로, type이 late나 long이면 kind를 지각으로, type이 absent면 kind를 결석으로 바꾸고, type이 among이면 kind를 외출로 바꾸고, lunch나 dinner면 늦은 도착으로 바꾼다.
+            eachViolation.drawingList.forEach((eachDrawing : any) => {
+                if(eachDrawing.type === "early"){
+                    eachDrawing.kind = "조퇴";
+                }else if(eachDrawing.type === "late" || eachDrawing.type === "long"){
+                    eachDrawing.kind = "지각";
+                }else if(eachDrawing.type === "absent"){
+                    eachDrawing.kind = "결석";
+                }else if(eachDrawing.type === "among"){
+                    eachDrawing.kind = "외출";
+                }else if(eachDrawing.type === "lunch" || eachDrawing.type === "dinner"){
+                    eachDrawing.kind = "늦은 도착";
+                }
+            });
+
+        });
+
+        
+
+
+
+        console.log("--------------------");
+        console.log("refilteredViolationList");
+        console.log(refilteredViolationList);
+
+
+        setLoading(false);
+
+
+    }
+
+    const getUserInfo = async (selectedUserId : number, targetDateTime : number, code : any) => {
+
+        try{
+
+            const response = await fetch(`https://peetsunbae.com/dashboard/report/demeritdailyreport/studentinfo?userId=${selectedUserId}&targetDateTime=${targetDateTime}&code=${code}`, {
+                method: "GET",
+                credentials: "include"
+            });
+
+            const result = await response.json();
+
+            console.log(result);
+
+            if (result.message === "success") {
+
+                const accessControlData = result.accessControlData;
+                const regularScheduleData = result.regularScheduleData;
+                const regularScheduleFormatData = result.regularScheduleFormatData;
+                const suddenNoticeData = result.suddenNoticeData;
+                const userData = result.userData;
+                const demeritListData = result.demeritListData;
+                const regularScheduleMemoData = result.regularScheduleMemoData;
+                const demeritData = result.demeritData;
+
+                //accessControlData에 알아볼 수 있는 시간 형식 넣어준다.
+                accessControlData.forEach((eachData: any) => {
+
+                    const date = new Date(+eachData.time);
+
+                    //yyyy-MM-dd HH:mm:ss
+                    const dateString = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()} ${date.getHours() < 10 ? "0" + date.getHours() : date.getHours()}:${date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes()}:${date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds()}`;
+
+                    eachData.timeString = dateString;
+                })
+
+                //accessControlData를 +time으로 오름차순 정렬
+                accessControlData.sort((a: any, b: any) => {
+                    return (+a.time) - (+b.time);
+                });
+
+                return {
+                    accessControlData, regularScheduleData, regularScheduleFormatData, suddenNoticeData, userData, demeritListData, regularScheduleMemoData, demeritData
+                }
+
+            } else {
+                console.log("error");
+                throw new Error(result.message);
+            }
+
+
+
+        }catch(e){
+            console.log(e);
+        }
+
+
+
+    }
+
+
 
 
     return (
@@ -159,7 +388,7 @@ const PatrolViolateList: React.FC<any> = (props) => {
                                             <Red className={styles.eachViolationTitleIcon} />
                                         }
                                         <div className={styles.eachViolationTitleText}>
-                                            {item.kind}
+                                            {item.determinedKind}
                                         </div>
                                     </div>
                                     <div className={styles.eachViolationWrapper}>
@@ -171,13 +400,13 @@ const PatrolViolateList: React.FC<any> = (props) => {
                                                 벌점 : {item.demerit}점
                                             </div>
                                             <div className={styles.eachViolationDescription}>
-                                                기타내역 : {item.description}
+                                                기타내역 : {item.description ? item.description : "없음"}
                                             </div>
                                             <div className={styles.eachViolationGraphDiv}>
                                                 <div className={styles.eachViolationGraphWrapper} ref={graphWrapper} style={{height : `${height}rem`}}>
                                                     {
                                                         (tailoredViolationList && tailoredViolationList.length > 0) &&
-                                                        tailoredViolationList.map((eachGraph : any, index : number) => {
+                                                        tailoredViolationList[index].map((eachGraph : any, index : number) => {
 
                                                             const bigKind = eachGraph.bigKind;
 

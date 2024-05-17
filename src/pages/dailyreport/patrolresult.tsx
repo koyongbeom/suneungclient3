@@ -142,7 +142,7 @@ const PatrolResult: React.FC<any> = (props) => {
     useEffect(() => {
 
         if (currentMenu === 2) {
-            calculateFullGraphMaxNumber(fullGraphExample);
+            calculateFullGraphMaxNumber(totalPatrolData);
         }
 
     }, [currentMenu]);
@@ -157,6 +157,10 @@ const PatrolResult: React.FC<any> = (props) => {
                 }
             })
         })
+
+        console.log(data);
+        console.log("maxNumber");
+        console.log(maxNumber);
         setFullGraphMaxNumber(maxNumber);
     }
 
@@ -207,6 +211,8 @@ const PatrolResult: React.FC<any> = (props) => {
             const totalPatrolData = makeTotalPatrolData(studentList, targetDate);
 
             //console.log(myFullPatrolData);
+
+            console.log(totalPatrolData);
 
             setFullMyPatrolData(myFullPatrolData);
             setTotalPatrolData(totalPatrolData);

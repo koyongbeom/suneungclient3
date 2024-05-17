@@ -85,7 +85,7 @@ const AttendanceDemerit: React.FC<any> = (props) => {
         <div className={styles.compBody}>
             <div className={styles.compTitleDiv}>
                 <div className={styles.compTitle2}>
-                    순찰 벌점내역
+                    출석 벌점내역
                 </div>
                 <div className={styles.compSubTitle2}>
                     23년 11월 01일

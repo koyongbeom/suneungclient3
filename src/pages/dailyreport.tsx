@@ -157,16 +157,16 @@ const DailyReport : React.FC<any> = () => {
             <StudytimeRanking targetDate={targetDate} userId={userId} location={where} name={name} />
             <div className={styles.justGap}>
             </div>
-            <PatrolViolateList />
+            <PatrolViolateList targetDate={targetDate} userId={userId} location={where} name={name} code={code} />
             <div className={styles.justGap}>
             </div>
-            <AttendanceDemerit />
+            <AttendanceDemerit targetDate={targetDate} userId={userId} location={where} name={name} />
             <div className={styles.justGap}>
             </div>
-            <EnglishTest />
+            <EnglishTest targetDate={targetDate} userId={userId} location={where} name={name} />
             <div className={styles.justGap}>
             </div>
-            <PhoneInspect />
+            <PhoneInspect targetDate={targetDate} userId={userId} location={where} name={name} />
         </div>
     )
 }

@@ -431,25 +431,30 @@ const MainPage: any = (props: any) => {
                             <div className={styles.numberBoxChild}>
                                 <div>
                                     <div className={styles.numberBoxTitle}>
-                                        누적 의치약 합격자 수
+                                       강남점 대기자
                                     </div>
                                     <div className={styles.numberBoxDescription}>
                                         <span className={styles.autoNumber}>
-                                            <NumberAnimation number={194} fixed={0} delay={500} />
-                                        </span>명
+                                            <NumberAnimation number={150} fixed={0} delay={500} />
+                                        </span>명 +
                                     </div>
                                 </div>
                                 <div>
                                     <div className={styles.numberBoxTitle2}>
-                                        평균 의치약 합격률
+                                        대치점 대기자
                                     </div>
+                                    {/* <div className={styles.numberBoxDescription}>
+                                        <NumberAnimation number={200} fixed={1} delay={500} />
+                                    </div> */}
                                     <div className={styles.numberBoxDescription}>
-                                        <NumberAnimation number={28.6} fixed={1} delay={500} />%
+                                        <span className={styles.autoNumber}>
+                                            <NumberAnimation number={200} fixed={0} delay={500} />
+                                        </span>명 +
                                     </div>
                                 </div>
                                 <div>
                                     <div className={`${styles.numberBoxTitle3} ${styles.onlyPC}`}>
-                                        2021.03월 기준
+                                        2024.05월 기준
                                     </div>
                                 </div>
                             </div>
@@ -466,12 +471,12 @@ const MainPage: any = (props: any) => {
                                 </div>
                                 <div>
                                     <div className={styles.numberBoxTitle2}>
-                                        등록 대기자
+                                        학생 만족도
                                     </div>
                                     <div className={styles.numberBoxDescription}>
                                         <span className={styles.autoNumber}>
-                                            <NumberAnimation number={300} fixed={0} delay={500} />
-                                        </span>명 +
+                                            <NumberAnimation number={98.2} fixed={1} delay={500} />%
+                                        </span>
                                     </div>
                                 </div>
                             </div>

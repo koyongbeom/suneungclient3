@@ -1025,7 +1025,7 @@ const WinterSchool: React.FC<any> = (props) => {
                     }}
                         className={styles.textBoxWrapperText}
                     >
-                        대치점 방문 및 상담 신청
+                        대기자 신청 (순번에 따른 개별 연락 예정)
                     </div>
                     <div style={{
                         marginBottom: "12px",
@@ -1828,7 +1828,7 @@ const WinterSchool: React.FC<any> = (props) => {
                             </div>
                             <div className={`${styles.differentiationList_2} ${styles.multiLine}`}>
                                 <div>
-                                    □ 대기등록이 필요합니다.
+                                    □ 대기등록이 필요합니다. (커뮤니티 &gt; 공지사항 참조)
                                 </div>
                                 <div>
                                     □ 흡연자의 경우 등록이 불가합니다.
@@ -1842,7 +1842,7 @@ const WinterSchool: React.FC<any> = (props) => {
                             </div>
                             <div className={`${styles.differentiationList_2}`}>
                                 <div>
-                                    서울 강남구 역삼로 424 3층 (기존 대치점과 동일한 건물)
+                                    서울 강남구 역삼로 424 6층 (기존 대치점과 동일한 건물)
                                 </div>
                             </div>
                         </div>

@@ -146,10 +146,10 @@ const WaitingRegisterInstant2 = () => {
                         lineHeight : 1.5
                     }}
                     >
-                    '7월 초 등원희망'으로<br></br> 사전 설문 접수가 완료되었습니다.<br></br><br></br> 
-(*사전 설문은 등록 효력이 없으며,<br></br>6월 16일 일요일 방문 결제 완료 시<br></br>등록 절차가 완료 됩니다.)<br></br><br></br>
+                    '7월 3일 등원희망'으로<br></br> 사전 설문 접수가 완료되었습니다.<br></br><br></br> 
+방문 등록 결제에 관한<br></br>상세사항은 개별적으로<br></br>문자 안내드릴 예정입니다.<br></br><br></br>
 
-6월 16일 방문 등록 접수에<br></br>관한 상세사항은<br></br> 개별 안내드릴 예정입니다. 
+*사전 설문은 등록 효력이 없으며,<br></br>방문 등록 결제 완료 시<br></br> 등록 절차가 완료됩니다. 
                     </div>
                 </div>
             }
@@ -160,10 +160,20 @@ const WaitingRegisterInstant2 = () => {
                     <div className={styles.contentsTitle}>
                         등록 보류
                     </div>
-                    <div className={styles.contentsDescription}>
+                    <div className={styles.contentsDescription}
+                    style={{
+                        textAlign: "center",
+                        lineHeight : 1.5
+                    }}
+                    >
                         차순위 대기자에게<br></br>우선 등록 권한이 양도 되었습니다.
                     </div>
-                    <div className={styles.contentsDescription}>
+                    <div className={styles.contentsDescription}
+                    style={{
+                        textAlign: "center",
+                        lineHeight : 1.5
+                    }}
+                    >
                         *알림톡 수신일 기준 익일 자정까지<br></br>응답 제출 수정이 가능합니다.
                     </div>
                 </div>

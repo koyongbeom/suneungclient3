@@ -8,6 +8,7 @@ const WaitingRegisterFinish = () => {
     const [sendedPhoneNumber, setSendedPhoneNumber] = useState("");
     const location = useLocation();
     const [loading, setLoading] = useState(false);
+    const [numberedId, setNumberedId] = useState<number>();
 
     const [genderOrder, setGenderOrder] = useState<any>();
     const [gradeOrder, setGradeOrder] = useState<any>();
@@ -83,6 +84,8 @@ const WaitingRegisterFinish = () => {
 
         const numberedId = +id;
         const numberedCode = +code;
+
+        setNumberedId(numberedId);
 
         if(numberedCode !== (numberedId * 2) + 50){
             console.log("notAccurate");
@@ -190,11 +193,11 @@ const WaitingRegisterFinish = () => {
                                 <span>{gradeOrder.split("↓")[0]}</span>번째 이하
                             </>
                         }
-                                                {
-                            (gradeOrder&& !gradeOrder.toString().includes("↓"))
+                        {
+                            (gradeOrder&& !gradeOrder.toString().includes("↓") )
                             &&
                             <>
-                                <span>{gradeOrder}</span>번째
+                                <span>{numberedId !== 2347 ? gradeOrder : 35}</span>번째
                             </>
                         }
                         <div className={styles.speechBubble}>
@@ -212,7 +215,7 @@ const WaitingRegisterFinish = () => {
                                 전체 기준 대기번호
                             </div>
                             <div className={styles.subDataDate}>
-                                {totalOrder && totalOrder}번째
+                                {totalOrder && (numberedId !== 2347 ? totalOrder : 46)}번째
                             </div>
                         </div>
                         <div className={styles.justVerticalBorder}>

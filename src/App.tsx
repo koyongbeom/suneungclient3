@@ -41,6 +41,8 @@ import DailyReport from './pages/dailyreport';
 import JustPdfViewer2 from './pages/justpdfviewer2';
 import WaitingRegisterInstant2 from './pages/waitingregisterinstant2';
 import JustPdfViewer3 from './pages/justpdfviewer3';
+import TvShowPage from './pages/tvshowpage';
+import TvShowPage2 from './pages/tvshowpage2';
 // import KioskMain from './kiosk/kioskmain';
 // import Notification from './pages/notification';
 
@@ -155,6 +157,9 @@ function App() {
             <Route path="/pdfviewer2" element={<JustPdfViewer2 />}></Route>
             <Route path="/pdfviewer3" element={<JustPdfViewer3 />} ></Route>
             <Route path="/dailyreport" element={<DailyReport />}></Route>
+
+            <Route path="/tvshowpage" element={<TvShowPage />}></Route>
+            <Route path="/tvshowpage2" element={<TvShowPage2 />}></Route> 
 
           </Routes>
         </Suspense>

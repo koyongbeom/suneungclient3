@@ -334,8 +334,8 @@ const RegisterWaitingCalendar: React.FC<any> = (props) => {
 
                 <div className={styles.formBody}>
 
-                    <div className={`${styles.questionText} ${styles.second}`}>
-                        등원 희망일을 선택해주세요
+                    <div className={`${styles.questionText} ${styles.second}`} style={{lineHeight : 1.3}}>
+                        희망일을 선택해주세요.<br></br>선택하신 날짜까지<br></br>뒷순번 대기자에게 입실 권한이 양도됩니다.
                     </div>
 
                     <div className={styles.calendarBox}>

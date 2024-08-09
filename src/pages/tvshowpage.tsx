@@ -102,8 +102,8 @@ const classInfo = [
             minutes: 0
         },
         end: {
-            hours: 17,
-            minutes: 50
+            hours: 18,
+            minutes: 0
         }
     },
     {

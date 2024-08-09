@@ -10,7 +10,7 @@ const CardSeventhPage = (props: any) => {
     useEffect(() => {
 
         //아래 질문들중 *표시가 있는 질문들의 답변이 모두 채워졌는지 확인한다.
-        const isAllAnswered = ["[등록비 안내]_1", "[환불 안내]_2", "[지정석 제공]_3", "[자리 변경]_4", "[교시제 운영]_5", "[학원운영시간]_6", "[출석 체크]_7", "[교시 중 출입]_8", "[담임멘토 1:1 학습관리 시스템]_9", "[질의응답 시스템]_10", "[1:1 과외 시스템]_11", "[사유 제출]_12", "[정기 일정]_13", 
+        const isAllAnswered = ["[등록비 안내]_1", "[환불 안내]_2", "[지정석 제공]_3", "[자리 변경]_4", "[교시제 운영]_5", "[학원운영시간]_6", "[출석 체크]_7", "[교시 중 출입]_8", "[담임멘토 1:1 학습관리 시스템]_9", "[질의응답 시스템]_10", "[사유 제출]_12", "[정기 일정]_13", 
         "[식사 안내]_14", "[프린트 안내]_15", "[자습실 이용 규칙]_16", "[자습실 내 생활관리]_17", "[벌점 제도]_18", "[와이파이 방화벽]_19"
     ].every((title : string) => {
             return props.data[title] !== undefined && props.data[title].length > 0;
@@ -241,7 +241,7 @@ const CardSeventhPage = (props: any) => {
                 </div>
 
 
-                <div className={styles.eachQuestion}>
+                {/* <div className={styles.eachQuestion}>
                     <div className={styles.questionTitle}>
                     [1:1 과외 시스템] <span className={styles.redStar}>*</span>
                     </div>
@@ -255,7 +255,7 @@ const CardSeventhPage = (props: any) => {
                             <Checkbox variant='soft' color='neutral' label="확인했습니다" name="확인했습니다" onChange={(e) => {onCheckBoxChange(e, "[1:1 과외 시스템]_11")}}/>
                         </div>
                     </div>
-                </div>
+                </div> */}
 
 
                 <div className={styles.eachQuestion}>

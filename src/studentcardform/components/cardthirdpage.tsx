@@ -16,7 +16,7 @@ const CardThirdPage = (props: any) => {
                 "등원시작 예정일_2_1",
                 "수능선배 알게 된 경로_2_2",
                 "수능선배를 선택하게 된 가장 큰 이유_2_3",
-                "과외수업_2_4"
+                // "과외수업_2_4"
             ];
 
             console.log(":ya");
@@ -149,7 +149,7 @@ const CardThirdPage = (props: any) => {
                 </div>
 
 
-                <div className={styles.eachQuestion}>
+                {/* <div className={styles.eachQuestion}>
                     <div className={styles.questionTitle}>
                         과외수업 <span className={styles.redStar}>*</span>
                     </div>
@@ -168,7 +168,7 @@ const CardThirdPage = (props: any) => {
                             <Radio value="상담 후 결정" label="상담 후 결정" variant="soft" />
                         </RadioGroup>
                     </div>
-                </div>
+                </div> */}
 
                 <div className={styles.buttons}>
                     <Button variant="solid" color="neutral" onClick={props.minusPage} sx={{marginRight : "8px"}}>

@@ -73,7 +73,7 @@ const list =
     {
         category: "management",
         question: '자물쇠반 의무자습시간은 몇 시부터 몇 시까지인가요?',
-        answer: '평일 오전 8시부터 오후 10시까지, 토요일 오전 9시부터 오후 3시까지 입니다. :)'
+        answer: '평일 오전 8시부터 오후 10시까지, 토요일 오전 8시부터 오후 3시 45분까지 입니다. :)'
     },
     {
         category: "management",

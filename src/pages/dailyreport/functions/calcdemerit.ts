@@ -1158,6 +1158,7 @@ export const drawingAccessChart = (userViolationList: userViolation[], suddenNot
                     timeString: suddenExitTimeString,
                     reason: eachSuddenNotice.reason,
                     parentpermit: eachSuddenNotice.parentpermit,
+                    sqlId : eachSuddenNotice.id
                 });
 
                 eachDrawingList.push({
@@ -1169,6 +1170,7 @@ export const drawingAccessChart = (userViolationList: userViolation[], suddenNot
                     timeString: suddenEnterTimeString,
                     reason: eachSuddenNotice.reason,
                     parentpermit: eachSuddenNotice.parentpermit,
+                    sqlId : eachSuddenNotice.id
                 });
             }
 
@@ -1220,6 +1222,8 @@ export const drawingAccessChart = (userViolationList: userViolation[], suddenNot
                     reason: eachRegularScheduleFormat.reason,
                     staffpermit: eachRegularScheduleFormat.staffpermit,
                     parentpermit: eachRegularScheduleFormat.parentpermit,
+                    sqlId : eachRegularScheduleFormat.sqlId,
+                    indexNumber : eachRegularScheduleFormat.indexNumber
                 });
 
                 eachDrawingList.push({
@@ -1232,6 +1236,8 @@ export const drawingAccessChart = (userViolationList: userViolation[], suddenNot
                     reason: eachRegularScheduleFormat.reason,
                     staffpermit: eachRegularScheduleFormat.staffpermit,
                     parentpermit: eachRegularScheduleFormat.parentpermit,
+                    sqlId : eachRegularScheduleFormat.sqlId,
+                    indexNumber : eachRegularScheduleFormat.indexNumber
                 });
             }
 
@@ -1390,13 +1396,15 @@ const editRegular = (regularScheduleFormat: any, targetDate: Date) => {
 
         const data = eachRegularScheduleFormat.data;
 
-        data.forEach((eachData: any) => {
+        data.forEach((eachData: any, index : number) => {
 
             if(eachData["종류"] !== "지각" && eachData["종류"] !== "조퇴" && eachData["종류"] !== "외출" && eachData["종류"] !== "결석"){
                 return;
             }
 
             const parsedDataEach: any = {};
+            parsedDataEach.sqlId = eachRegularScheduleFormat.id;
+            parsedDataEach.indexNumber = index;
             parsedDataEach.staffpermit = eachRegularScheduleFormat.staffpermit;
             parsedDataEach.parentpermit = eachRegularScheduleFormat.parentpermit;
             //parsedDataEach.type = eachData["종류"];

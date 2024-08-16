@@ -194,11 +194,315 @@ const Android12Switch = styled(Switch)(({ theme }) => ({
 
 const EnglishTest: React.FC<any> = (props) => {
 
+    const [testhistory, setTestHistory] = useState<any[]>([]);
+    const [wrongwords, setWrongWords] = useState<any[]>([]);
+    const [weeklyAssignment, setWeeklyAssignment] = useState<any[]>([]);
+
     const [currentMenu, setCurrentMenu] = useState(1);
     const [isHide, setIsHide] = useState(false);
     const [modalHash, setModalHash] = useState("");
     const navigate = useNavigate();
     const [open, setOpen] = useState(false);
+
+    useEffect(() => {
+
+        if(!props.targetDate || !props.userId || !props.location || !props.name){
+            return;
+        }
+
+        start(props.targetDate, props.userId, props.location, props.name);
+
+    }, [props.targetDate, props.userId, props.location, props.name]);
+
+    const start = async (targetDate : Date, userId : number, location : string, name : string) => {
+
+        console.log("start");
+        console.log(targetDate);
+        console.log(userId);
+        console.log(location);
+        console.log(name);
+
+        try{
+
+            if(!targetDate || !userId || !location || !name){
+                return;
+            }
+
+            const data = {
+                userId,
+                targetDateTime : targetDate.getTime(),
+                location,
+                name
+            }
+
+            const response = await fetch("https://peetsunbae.com/dashboard/report/dailyreport/englishtest", {
+                method : "POST",
+                headers : {
+                    "Content-Type" : "application/json"
+                },
+                body : JSON.stringify(data)
+            });
+
+            const result = await response.json();
+
+            console.log(result);
+
+            if(result.message !== "success"){
+                throw new Error("서버와의 통신에 실패했습니다.");
+            }
+
+            const wordmasterTestRecord = result.wordmasterTestRecord;
+            const makeWordTest = result.makeWordTest;
+
+            makeTestHistory(wordmasterTestRecord, makeWordTest, targetDate);
+            makeWrongWords(wordmasterTestRecord);
+            makeWeeklyAssignment(targetDate, makeWordTest);
+            
+
+        }catch(e){
+            console.log(e);
+        }
+
+    }
+
+    const makeWeeklyAssignment = (targetDate : any, makeWordTest : any) => {
+
+        const newRows : any = [];
+
+        const year = targetDate.getFullYear();
+        const month = targetDate.getMonth();
+        const date = targetDate.getDate();
+
+        if(!makeWordTest || makeWordTest.length === 0){
+            return;
+        }
+
+        const targetMakeWordTest = makeWordTest[makeWordTest.length - 1];
+
+        targetMakeWordTest.data.forEach((item : any) => {
+
+            const newRow : any = {};
+            const data = item.data;
+
+            const year = item.year;
+            const month = item.month + 1;
+            const date = item.date;
+
+            const newDate = new Date(year, month, date);
+            const day = newDate.getDay();
+            const dayString = ["일", "월", "화", "수", "목", "금", "토"][day];
+
+            const dateString = `${month}/${date}`;
+            
+
+            const examiner = targetMakeWordTest.teacherName;
+            const bookKind = targetMakeWordTest.kind;
+            const bookName = kindToBookName(bookKind);
+
+            newRow.date = dateString;
+            newRow.day = dayString;
+            newRow.bookName = bookName;
+            newRow.bookKind = bookKind;
+            newRow.examiner = examiner;
+            newRow.dayList = [];
+
+
+
+            data.forEach((item2 : any) => {
+
+                const subRow : any = {};
+                subRow.day = item2.day;
+                subRow.type = item2.type;
+
+                newRow.dayList.push(subRow);
+
+            });
+
+            newRows.forEach((item : any) => {
+
+                if(item.dayList.length === 0){
+                    item.noHomework = true;
+                }
+
+            });
+
+            newRows.push(newRow);
+
+        })
+
+        console.log("weeklyAssignment");
+        console.log(newRows);
+
+        setWeeklyAssignment([...newRows]);
+
+    }
+
+    const makeWrongWords = (wordmasterTestRecord : any) => {
+
+        const newWrongWords : any = [];
+
+        wordmasterTestRecord.forEach((item : any) => {
+
+            item.words.forEach((item2 : any) => {
+
+                if(item2.result === "incorrect"){
+
+                    var isAlready = false;
+
+                    newWrongWords.forEach((item3 : any) => {
+
+                        if(item3.id === item2.id){
+                            isAlready = true;
+                        }
+
+                    });
+
+                    if(isAlready){
+                        return;
+                    }
+
+
+                    const newRow : any = {};
+                    newRow.day = item.day;
+                    newRow.english = item2.word;
+                    newRow.korean = item2.meaning;
+                    newRow.id = item2.id;
+
+                    newWrongWords.push(newRow);
+
+                }
+
+            });
+
+        });
+
+        setWrongWords([...newWrongWords]);
+
+    }
+
+    const kindToBookName = (kind : number) => {
+            
+            switch(kind){
+                case 1 :
+                    return "워드마스터 수능 2000 (2018년 버전)";
+                case 2 :
+                    return "워드마스터 수능 2000 (2022년 버전)";
+                case 3 :
+                    return "워드마스터 하이퍼 2000";
+                case 5 :
+                    return "워드마스터 EBS 파이널 1200";
+            }
+    
+    }
+
+
+    const makeTestHistory = (wordmasterTestRecord : any, makeWordTest : any, targetDate : any) => {
+
+        const newHistory : any = [];
+
+        const year = targetDate.getFullYear();
+        const month = targetDate.getMonth();
+        const date = targetDate.getDate();
+
+        makeWordTest.forEach((item : any) => {
+
+            const data = item.data;
+
+            if(!data){
+                return;
+            }
+
+            data.forEach((item2 : any) => {
+
+                if(item2.year === year && item2.month === month && item2.date === date){
+                
+                    item2.data.forEach((item3 : any) => {
+
+                        const newRow : any = {};
+                        newRow.bookName = kindToBookName(item.kind);
+                        newRow.bookKind = item.kind;
+                        newRow.day = item3.day;
+                        newRow.isHomework = true;
+                        newRow.kind = item3.type === "total" ? "전체단어" : "틀린단어";
+                        newRow.didHomework = false;
+
+                        const isTotal = item3.type === "total" ? 1 : 0;
+
+                        wordmasterTestRecord.forEach((item4 : any) => {
+
+                            if(item4.day === item3.day && item4.isTotal === isTotal){
+                                newRow.didHomework = true;
+                                item4.isFinish = true;
+
+                                var correct = 0;
+                                var inCorrect = 0;
+
+                                item4.words.forEach((item5 : any) => {
+
+                                    if(item5.result === "correct"){
+                                        correct++;
+                                    }else{
+                                        inCorrect++;
+                                    }
+
+                                })
+
+                                newRow.correct = correct;
+                                newRow.inCorrect = inCorrect;
+
+                            }
+
+                        });
+
+                        newHistory.push(newRow);
+
+                    });
+
+                    
+                }
+
+            });
+
+        });
+
+
+        wordmasterTestRecord.forEach((item : any) => {
+
+            if(item.isFinish){
+                return;
+            }
+
+            const newRow : any = {};
+
+            newRow.bookName = kindToBookName(item.kind);
+            newRow.bookKind = item.kind;
+            newRow.day = item.day;
+            newRow.kind = item.isTotal === 1 ? "전체단어" : "틀린단어";
+            newRow.isHomework = false;
+
+            var correct = 0;
+            var inCorrect = 0;
+
+            item.words.forEach((item2 : any) => {
+
+                if(item2.result === "correct"){
+                    correct++;
+                }else{
+                    inCorrect++;
+                }
+
+            })
+
+            newRow.correct = correct;
+            newRow.inCorrect = inCorrect;
+
+            newHistory.push(newRow);
+        
+        })
+
+        setTestHistory([...newHistory]);
+
+    }
 
     const handleCloseHash = () => {
         navigate(-1);
@@ -206,34 +510,36 @@ const EnglishTest: React.FC<any> = (props) => {
 
 
     const handleOpen = () => {
-        window.location.assign("/dailyreport#modal2");
+        // window.location.assign("/dailyreport#modal2");
+        setOpen(true);
     }
 
     const handleClose = () => {
-        handleCloseHash();
+        // handleCloseHash();
+        setOpen(false);
     }
 
-    useEffect(() => {
-        console.log(window.location.hash);
-        console.log(11111);
-        const handleOnHashChange = () => {
-            console.log("hashChange");
-            setModalHash(window.location.hash);
-            console.log(open);
-            if (window.location.hash === "#modal2") {
-                console.log(2);
-                setOpen(true);
-            } else if (!window.location.hash) {
-                console.log(3);
-                setOpen(false);
-            }
-        }
+    // useEffect(() => {
+    //     console.log(window.location.hash);
+    //     console.log(11111);
+    //     const handleOnHashChange = () => {
+    //         console.log("hashChange");
+    //         setModalHash(window.location.hash);
+    //         console.log(open);
+    //         if (window.location.hash === "#modal2") {
+    //             console.log(2);
+    //             setOpen(true);
+    //         } else if (!window.location.hash) {
+    //             console.log(3);
+    //             setOpen(false);
+    //         }
+    //     }
 
-        window.addEventListener("hashchange", handleOnHashChange);
+    //     window.addEventListener("hashchange", handleOnHashChange);
 
-        return () => window.removeEventListener("hashchange", handleOnHashChange);
+    //     return () => window.removeEventListener("hashchange", handleOnHashChange);
 
-    }, [open]);
+    // }, [open]);
 
 
     const handleCurrentMenu = (index: number) => {
@@ -323,6 +629,15 @@ const EnglishTest: React.FC<any> = (props) => {
                     <NoViolation />
                     <div className={styles.noViolationText}>
                         오늘 영단어 숙제 분량은 없어요
+                    </div>
+                </div>
+            }
+            {
+                ((currentMenu === 3) && (!weeklyAssignment || weeklyAssignment.length === 0)) &&
+                <div className={styles.noViolationDiv}>
+                    <NoViolation />
+                    <div className={styles.noViolationText}>
+                        영단어 주간 과제가 없어요
                     </div>
                 </div>
             }
@@ -437,7 +752,7 @@ const EnglishTest: React.FC<any> = (props) => {
                                                 </div>
                                                 <div className={styles.eachWeeklyAssignmentBookDay}>
                                                     {
-                                                        item.dayList && item.dayList.map((item2, index2) => {
+                                                        item.dayList && item.dayList.map((item2 : any, index2 : number) => {
                                                             return (
                                                                 <span key={index2} className={styles.eachWeeklyAssignmentBookDaySpan}>
                                                                     Day{item2.day} {item2.kind === "total" ? "(전체 단어)" : "(틀린 단어)"}{index2 === item.dayList.length - 1 ? "" : ", "}

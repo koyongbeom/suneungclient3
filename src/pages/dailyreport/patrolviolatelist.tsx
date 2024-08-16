@@ -52,14 +52,18 @@ const myViolationList: any = [
 
 const tailoredViolationList: any = [
     [
-    { bigKind : "status", kind: "지각", start: "08:00", end: "18:35", startIndex: 0, endIndex: 5 },
-    { bigKind : "sudden", kind: "결석", start: "08:00", end: "22:00", startIndex: 0, endIndex: 7 },
-    //{ bigKind : "sudden", kind: "지각", start: "08:00", end: "13:30", startIndex: 0, endIndex: 3 },
-    { bigKind : "regular", kind: "외출", start: "11:50", end: "13:20", startIndex: 1, endIndex: 2 },
-    { bigKind : "regular", kind: "외출", start: "17:20", end: "18:40", startIndex: 4, endIndex: 6 },
+        { bigKind: "status", kind: "지각", start: "08:00", end: "18:35", startIndex: 0, endIndex: 5 },
+        { bigKind: "sudden", kind: "결석", start: "08:00", end: "22:00", startIndex: 0, endIndex: 7 },
+        //{ bigKind : "sudden", kind: "지각", start: "08:00", end: "13:30", startIndex: 0, endIndex: 3 },
+        { bigKind: "regular", kind: "외출", start: "11:50", end: "13:20", startIndex: 1, endIndex: 2 },
+        { bigKind: "regular", kind: "외출", start: "17:20", end: "18:40", startIndex: 4, endIndex: 6 },
     ],
     [
-
+        { bigKind: "status", kind: "지각", start: "08:00", end: "18:35", startIndex: 0, endIndex: 5 },
+        { bigKind: "sudden", kind: "결석", start: "08:00", end: "22:00", startIndex: 0, endIndex: 7 },
+        //{ bigKind : "sudden", kind: "지각", start: "08:00", end: "13:30", startIndex: 0, endIndex: 3 },
+        { bigKind: "regular", kind: "외출", start: "11:50", end: "13:20", startIndex: 1, endIndex: 2 },
+        { bigKind: "regular", kind: "외출", start: "17:20", end: "18:40", startIndex: 4, endIndex: 6 },
     ]
 ];
 
@@ -76,6 +80,9 @@ const PatrolViolateList: React.FC<any> = (props) => {
     const [violationList, setViolationList] = useState<any[]>();
     const [suddentNotice, setSuddenNotice] = useState<any[]>();
     const [regularSchedule, setRegularSchedule] = useState<any[]>();
+
+    const [myViolationList, setMyViolationList] = useState<any[]>([]);
+    const [tailoredViolationList, setTailoredViolationList] = useState<any[]>([]);
 
     useEffect(() => {
 
@@ -283,12 +290,202 @@ const PatrolViolateList: React.FC<any> = (props) => {
 
         
 
-
-
         console.log("--------------------");
         console.log("refilteredViolationList");
         console.log(refilteredViolationList);
 
+        const newMyViolationList : any = [];
+
+        refilteredViolationList.forEach((eachViolation : any) => {
+
+            const oneRow : any = {};
+
+            //eachViolation의 determinedKind에 "일반"이라는 표시가 있으면 color를 red로 바꿔준다. 없으면 yellow로 바꿔준다.
+            oneRow.color = eachViolation.determinedKind.includes("일반") ? "red" : "yellow";
+            oneRow.determinedKind = eachViolation.determinedKind;
+            oneRow.demerit = eachViolation.demerit;
+            oneRow.description = eachViolation.description ? eachViolation.description : "";
+            
+            const newTitleTable : any = [];
+
+            console.log(eachViolation.drawingList);
+
+            eachViolation.drawingList[0].forEach((eachDrawing : any) => {
+
+                const time = eachDrawing.time;
+
+                var isAlready = false;
+
+                newTitleTable.forEach((eachTitle : any) => {
+                    if(eachTitle.time === time){
+                        isAlready = true;
+                    }
+                });
+                console.log(isAlready);
+
+                if(isAlready){
+                    return;
+                }
+
+                const newRow : any = {};
+                newRow.time = time;
+
+                newRow.content = {
+                    status : [],
+                    sudden : [],
+                    regular : []
+                };
+
+                newTitleTable.push(newRow);
+
+            });
+
+            oneRow.titleTable = newTitleTable;
+
+            newMyViolationList.push(oneRow);
+
+        });
+
+        console.log("newMyViolationList");
+        console.log(newMyViolationList);
+
+        newMyViolationList.forEach((eachViolation : any, index : number) => {
+
+            const violationList : any = refilteredViolationList[index];
+
+            const titleTable = eachViolation.titleTable;
+            titleTable.forEach((eachTitle : any) => {
+
+                violationList.drawingList[0].forEach((eachDrawing : any) => {
+
+                    if(eachTitle.time !== eachDrawing.time){
+                        return;
+                    }
+
+                    var value = eachDrawing.kind;
+
+                    if(value === "access"){
+                        value = "status";
+                    }
+
+                    var kind = "";
+
+                    switch(eachDrawing.type){
+                        case "absent" :
+                            kind = "결석";
+                            break;
+                        case "late" :
+                            kind = "지각";
+                            break;
+                        case "among" :
+                            kind = "외출";
+                            break;
+                        case "early" :
+                            kind = "조퇴";
+                            break;
+                    }
+
+                    const newRow : any = {
+                      kind : kind,
+                      sqlId : eachDrawing.sqlId,
+                      indexNumber : eachDrawing.indexNumber,  
+                    };
+
+                    eachTitle.content[value].push(newRow);
+
+                });
+
+            });
+
+        });
+
+        console.log("newMyViolationList");
+        console.log(newMyViolationList);
+
+        const tailoredViolationList: any = [];
+
+        newMyViolationList.forEach((eachViolation: any) => {
+
+            const newRow: any = [];
+
+            eachViolation.titleTable.forEach((eachTitle: any, index : number) => {
+
+                const time = eachTitle.time;
+
+                const hours = Math.floor(time / 60);
+                const minutes = time % 60;
+
+                const timeString = `${hours < 10 ? "0" + hours : hours}:${minutes < 10 ? "0" + minutes : minutes}`;
+
+                const content = eachTitle.content;
+
+                console.log(111111111);
+
+                for (var key in content) {
+
+                    console.log(222222222);
+
+                    content[key].forEach((eachContent: any) => {
+
+                        console.log(333333333);
+
+                        const bigKind = key;
+                        const kind = eachContent.kind;
+
+                        var matchingKey = "0";
+
+                        if (bigKind === "sudden") {
+                            matchingKey = `${eachContent.sqlId}`
+                        }
+
+                        if (bigKind === "regular") {
+                            matchingKey = `${eachContent.sqlId}_${eachContent.indexNumber}`;
+                        }
+
+                        eachContent.matchingKey = matchingKey;
+
+                        //이제부터 newRow에 넣어보자 !!!
+                        var isAlready = false;
+
+                        newRow.forEach((eachRow: any) => {
+                            if(eachRow.bigKind === bigKind && eachRow.matchingKey === matchingKey){
+                                isAlready = true;
+                                eachRow.end = timeString;
+                                eachRow.endIndex = index;
+                            }
+                        });
+
+                        if(isAlready){
+                            return;
+                        }
+
+                        const oneRow = {
+                            bigKind,
+                            kind,
+                            start: timeString,
+                            startIndex: index,
+                            matchingKey
+                        }
+
+                        newRow.push(oneRow);
+
+                    });
+
+                }
+
+            });
+
+            tailoredViolationList.push(newRow);
+
+        });
+
+        console.log("newMyViolationList");
+        console.log(newMyViolationList);
+        console.log("tailoredViolationList");
+        console.log(tailoredViolationList);
+
+        setMyViolationList([...newMyViolationList]);
+        setTailoredViolationList([...tailoredViolationList]);
 
         setLoading(false);
 
@@ -360,13 +557,13 @@ const PatrolViolateList: React.FC<any> = (props) => {
     return (
         <div className={styles.compBody}>
             <div className={styles.compTitle1}>
-                오늘 출석 위반 내역이 2건 있어요
+                오늘 출석 위반 내역이 {myViolationList.length}건 있어요
             </div>
             <div className={styles.compSubTitle1}>
-                윤종웅 님의 10월 17일 출석 위반 내역
+                윤종웅 님의 {props.targetDate && props.targetDate.getMonth() + 1}월 {props.targetDate && props.targetDate.getDate()}일 출석 위반 내역
             </div>
 
-            <MenuBar text={["나의 위반 내역", "지점별 위반내역"]} changeCurrentMenu={changeCurrentMenu} />
+            {/* <MenuBar text={["나의 위반 내역", "지점별 위반내역"]} changeCurrentMenu={changeCurrentMenu} /> */}
             {
                 (currentMenu === 1 && myViolationList && myViolationList.length > 0) &&
                 <div className={styles.myViolationList}>
@@ -396,9 +593,9 @@ const PatrolViolateList: React.FC<any> = (props) => {
                                             <div className={styles.eachViolationLine} />
                                         </div>
                                         <div className={styles.eachViolationContent}>
-                                            <div className={styles.eachViolationDemerit}>
+                                            {/* <div className={styles.eachViolationDemerit}>
                                                 벌점 : {item.demerit}점
-                                            </div>
+                                            </div> */}
                                             <div className={styles.eachViolationDescription}>
                                                 기타내역 : {item.description ? item.description : "없음"}
                                             </div>
@@ -412,15 +609,15 @@ const PatrolViolateList: React.FC<any> = (props) => {
 
                                                             console.log(bigKind);
 
-                                                            var maxDeep = 0;
+                                                            // var maxDeep = 0;
 
-                                                            item.titleTable.forEach((eachTitle : any) => {
-                                                                if(eachTitle.deep[bigKind] > maxDeep){
-                                                                    maxDeep = eachTitle.deep[bigKind];
-                                                                }
-                                                            });
+                                                            // item.titleTable.forEach((eachTitle : any) => {
+                                                            //     if(eachTitle.deep[bigKind] > maxDeep){
+                                                            //         maxDeep = eachTitle.deep[bigKind];
+                                                            //     }
+                                                            // });
 
-                                                            console.log(maxDeep);
+                                                            // console.log(maxDeep);
 
                                                             const graphLengthNumber = eachGraph.endIndex - eachGraph.startIndex + 1 ;
                                                             const grpahLength = graphLengthNumber *  1.5;

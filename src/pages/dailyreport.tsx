@@ -1,7 +1,8 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import styles from "../styles/dailyreport.module.css";
-import {useLocation, useNavigate} from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { ReactComponent as Logo } from "../svg/newlogo.svg";
+import { ReactComponent as DailySvg } from "../svg/dailysvg.svg";
 import PatrolResult from "./dailyreport/patrolresult";
 import PatrolDemerit from "./dailyreport/patroldemerit";
 import Studytimebar from "./dailyreport/studytimebar";
@@ -11,10 +12,10 @@ import PatrolViolateList from "./dailyreport/patrolviolatelist";
 import AttendanceDemerit from "./dailyreport/attendancedemerit";
 import EnglishTest from "./dailyreport/englishtest";
 import PhoneInspect from "./dailyreport/phoneinspect";
-import { ReactComponent as LightGrayLogo} from "../../src/svg/lightgraylogo.svg";
-import { ReactComponent as MainSvg } from "../../src/svg/daily_main.svg"
+import { ReactComponent as LightGrayLogo } from "../../src/svg/lightgraylogo.svg";
+import { ReactComponent as MainSvg } from "../../src/svg/newdaillymain.svg";
 
-const DailyReport : React.FC<any> = () => {
+const DailyReport: React.FC<any> = () => {
 
     const [name, setName] = useState("");
     const [userId, setUserId] = useState();
@@ -54,27 +55,27 @@ const DailyReport : React.FC<any> = () => {
         const name = query.get("name");
         const where = query.get("location");
 
-        if(!id){
+        if (!id) {
             console.log("noId");
             return;
         }
 
-        if(!date){
+        if (!date) {
             console.log("noType");
             return;
         }
 
-        if(!code){
+        if (!code) {
             console.log("noCode");
             return;
         }
 
-        if(!name){
+        if (!name) {
             console.log("noName");
             return;
         }
 
-        if(!where){
+        if (!where) {
             console.log("noWhere");
             return;
         }
@@ -92,7 +93,7 @@ const DailyReport : React.FC<any> = () => {
         //query 없애기
         // navigate("/dailyreport");
 
-        return {id, code, date, name}
+        return { id, code, date, name }
 
     }
 
@@ -106,7 +107,7 @@ const DailyReport : React.FC<any> = () => {
         link.onload = () => {
             console.log("font loaded");
         }
-    
+
         document.head.appendChild(link);
 
         return () => {
@@ -120,26 +121,37 @@ const DailyReport : React.FC<any> = () => {
 
     return (
         <div className={styles.dailyreport}>
-            <div className={styles.logoHeader}>
-                <div>
-                    <LightGrayLogo className={styles.logo}/>
+            <div className={styles.mainFirstBack}>
+                {/* <div className={styles.logoHeader}>
+                    <div>
+                        <LightGrayLogo className={styles.logo} />
+                    </div>
+                    <div className={styles.logoDate}>
+                        {targetDate && targetDate.getFullYear().toString().slice(-2)}년 {targetDate && targetDate.getMonth() + 1}월 {targetDate && targetDate.getDate()}일
+                    </div>
                 </div>
-                <div className={styles.logoDate}>
-                    {targetDate && targetDate.getFullYear().toString().slice(-2)}년 {targetDate && targetDate.getMonth() + 1}월 {targetDate && targetDate.getDate()}일
+                <div className={styles.titleDiv}>
+                    <div className={styles.title}>
+                        선배 리포트
+                    </div>
+                    <div className={styles.realTitle}>
+                        {name}님을 위한
+                    </div>
+                    <div className={`${styles.realTitle} ${styles.realTitle2}`}>
+                        수능선배 하루 기록이에요
+                    </div>
+                    <div className={styles.dailyMainSvgDiv}>
+                        <MainSvg className={styles.dailyMainSvg} />
+                    </div>
+                </div> */}
+                <div className={styles.mainTitle}>
+                    {name}님의 수능선배<br />데일리 리포트
                 </div>
-            </div>
-            <div className={styles.titleDiv}>
-                <div className={styles.title}>
-                    선배 리포트
+                <div className={styles.mainDate}>
+                    발행일자&nbsp;&nbsp;{targetDate && targetDate.getFullYear() + "년 "  + (targetDate.getMonth() + 1) + "월 " + targetDate.getDate() + "일"}
                 </div>
-                <div className={styles.realTitle}>
-                    {name}님을 위한
-                </div>
-                <div className={`${styles.realTitle} ${styles.realTitle2}`}>
-                    수능선배 하루 기록이에요
-                </div>
-                <div className={styles.dailyMainSvgDiv}>
-                    <MainSvg className={styles.dailyMainSvg}/>
+                <div className={styles.mainSvgDiv}>
+                    <MainSvg className={styles.mainSvg} />
                 </div>
             </div>
             <PatrolResult targetDate={targetDate} userId={userId} name={name} where={where} />

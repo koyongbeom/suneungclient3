@@ -17,7 +17,7 @@ const demeritData: any[] = [
 const regularData: any = {
     staffpermit : 1,
     parentpermit : 1,
-    description : {"etc": "19:30 조퇴", "friday": "19:45 조퇴 ", "monday": "19:45 조퇴 ", "tuesday": "19:45 조퇴 ", "saturday": "국어학원 12시 반 조퇴", "thursday": "19:45 조퇴 ", "wednesday": "19:45 조퇴 "},  
+    data : {"etc": "19:30 조퇴", "friday": "19:45 조퇴 ", "monday": "19:45 조퇴 ", "tuesday": "19:45 조퇴 ", "saturday": "국어학원 12시 반 조퇴", "thursday": "19:45 조퇴 ", "wednesday": "19:45 조퇴 "},  
 }
 
 // const regularData : any = undefined;
@@ -47,6 +47,160 @@ const AttendanceDemerit: React.FC<any> = (props) => {
     const [currentMenu, setCurrentMenu] = useState(1);
     const [staffpermit, setStaffpermit] = useState(1);
     const [parentpermit, setParentpermit] = useState(0);
+    const [data, setData] = useState<any>();
+
+    const [demeritData, setDemeritData] = useState<any[]>([]);
+    const [regularData, setRegularData] = useState<any>();
+    const [regularFormat, setRegularFormat] = useState<any>();
+
+    const [suddenData, setSuddenData] = useState<any[]>([]);
+
+    useEffect(() => {
+
+        if(!props.targetDate || !props.userId || !props.location || !props.name){
+            return;
+        }
+
+        start(props.targetDate, props.userId, props.location, props.name);
+
+    }, [props.targetDate, props.userId, props.location, props.name]);
+
+    const start = async (targetDate : any, useId : any, location : any, name : any) => {
+
+        if(!targetDate || !useId || !location || !name){
+            console.log("noData");
+            return;
+        }
+
+        console.log(targetDate, useId, location, name);
+
+        const data = {
+            targetDateTime : targetDate.getTime(),
+            userId : useId,
+            location : location,
+            name : name
+        }
+
+        const response = await fetch("https://peetsunbae.com/dashboard/report/dailyreport/attendancedemerit", {
+            method : "POST",
+            headers : {
+                "Content-Type" : "application/json"
+            },
+            body : JSON.stringify(data)
+        });
+
+        const result = await response.json();
+
+        console.log(result);
+
+        const {demeritList, regularSchedule, suddenNotice} = result;
+
+
+        console.log("---------------------------%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+        makeDemeritData(demeritList);
+        makeRegularData(regularSchedule);
+        makeSuddenData(suddenNotice);
+
+        return;
+
+    }
+
+    const makeSuddenData = (suddenNotice : any) => {
+
+        if(!suddenNotice){
+            return;
+        }
+
+        const newSuddenNotice : any = [];
+
+        suddenNotice.forEach((data : any) => {
+
+            const oneData : any = {};
+
+            oneData.id = data.id;
+
+            switch(data.type){
+                case "among" :
+                    oneData.kind = "외출";
+                    break;
+                case "early" :
+                    oneData.kind = "조퇴";
+                    break;
+                case "long" :
+                    oneData.kind = "지각";
+                    break;
+                case "absent" :
+                    oneData.kind = "결석";
+                    break;
+            }
+
+            oneData.description = data.reason;
+            oneData.parentpermit = data.parentpermit;
+
+            if(oneData.kind === "외출"){
+                const exitTime = `${data.startHours}:${data.startMinutes}`;
+                const enterTime = `${data.endHours}:${data.endMinutes}`;
+                oneData.exitTime = exitTime;
+                oneData.enterTime = enterTime;
+            }
+
+            if(oneData.kind === "조퇴"){
+                const exitTime = `${data.endHours}:${data.endMinutes}`;
+                oneData.exitTime = exitTime;
+            }
+
+            if(oneData.kind === "지각"){
+                const enterTime = `${data.startHours}:${data.startMinutes}`;
+                oneData.enterTime = enterTime;
+            }
+
+            newSuddenNotice.push(oneData);
+
+        });
+
+        setSuddenData([...newSuddenNotice]);
+
+    }
+
+    const makeRegularData = (regularSchedule : any) => {
+
+        if(!regularSchedule){
+            return;
+        }
+
+        console.log("makeRegularData");
+        console.log(regularSchedule);
+
+        setRegularData(regularSchedule);
+
+    }
+
+    const makeDemeritData = (demeritList : any) => {
+
+        if(!demeritList){
+            return;
+        }
+
+        const newRows : any = [];
+
+        demeritList.forEach((data : any) => {
+
+            const oneRow : any = {};
+
+            oneRow.id = data.id;
+            oneRow.kind = data.determinedKind;
+            oneRow.demerit = data.score + "점";
+            oneRow.description = data.description;
+
+            newRows.push(oneRow);
+
+        });
+
+        setDemeritData([...newRows]);
+
+
+
+    }
 
     const changeCurrentMenu = (index: number) => {
         setCurrentMenu(index);
@@ -143,7 +297,7 @@ const AttendanceDemerit: React.FC<any> = (props) => {
                                     <Zero1 className={styles.zeroSvg} /> 
                                 </div>
                                 <div className={styles.zeroText}>
-                                    오늘 순찰 벌점내역이 없어요
+                                    오늘 출석 벌점내역이 없어요
                                 </div>
                             </div>
                         }
@@ -151,7 +305,7 @@ const AttendanceDemerit: React.FC<any> = (props) => {
                 </div>
             }
             {
-                (currentMenu === 2 && regularData && regularData.description) &&
+                (currentMenu === 2 && regularData && regularData.data) &&
                 <div className={styles.regularScheduleBody}>
                      <div className={styles.regularScheduleStatus}>
                         {
@@ -238,8 +392,11 @@ const AttendanceDemerit: React.FC<any> = (props) => {
                                 }
 
                                 const koreanDay = changeToKoreanDay(day);
-                                const data = regularData.description[day];
-                                const formatData = regularFormat[day];
+                                const data = regularData.data[day];
+                                var formatData : any;
+                                if(regularFormat){
+                                    formatData = regularFormat[day];
+                                }
                                 console.log(regularFormat);
                                 console.log(day);
                                 console.log(formatData);
@@ -260,7 +417,7 @@ const AttendanceDemerit: React.FC<any> = (props) => {
                                             (staffpermit === 1 && formatData && formatData.length > 0) &&
                                             <div className={styles.eachRegularScheduleFormatDiv}>
                                                 {
-                                                    formatData.map((eachFormatData: any, index: number) => 
+                                                    formatData && formatData.map((eachFormatData: any, index: number) => 
                                                         <div className={styles.eachFormat} key={index + 100}>
                                                             <div className={styles.smallCheckDiv}>
                                                                 <SmallCheck className={styles.smallCheckSvg} />
@@ -282,7 +439,7 @@ const AttendanceDemerit: React.FC<any> = (props) => {
                 </div>
             }
             {
-                (currentMenu === 2 && (!regularData || !regularData.description)) &&
+                (currentMenu === 2 && (!regularData || !regularData.data)) &&
                 <div className={styles.zeroDiv}>
                     <Zero2 className={styles.zero2Svg} />
                     <div className={styles.zeroText}>

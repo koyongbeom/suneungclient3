@@ -34,6 +34,20 @@ const PhoneInspect : React.FC<any> = (props) => {
     const [currentClass, setCurrentClass] = useState({min : 0, max : 4});
     const [selectedIndex, setSelectedIndex] = useState(0);
 
+    const [seat, setSeat] = useState();
+
+    const [phoneData, setPhoneData] = useState<any[]>([]);
+
+    useEffect(() => {
+
+        if(!props.targetDate || !props.userId || !props.location || !props.name){
+            return;
+        }
+
+        start(props.targetDate, props.userId, props.location, props.name);
+
+    }, [props.targetDate, props.userId, props.location, props.name]);
+
     useEffect(() => {
 
         if(currentMenu === 1){
@@ -46,6 +60,285 @@ const PhoneInspect : React.FC<any> = (props) => {
 
     const handleCurrentMenu = (index : number) => {
         setCurrentMenu(index);
+    }
+
+    const start = async (targetDate : Date, userId : number, location : string, name : string) => {
+    
+        await getPhoneInspectStatus(targetDate, userId, location);
+    
+    }
+
+    const getPhoneInspectStatus = async (targetDate : Date, userId : number, location : string) => {
+
+        try{
+
+            if(!targetDate || !userId || !location){
+                return;
+            }
+
+            const targetDateTime = targetDate.getTime();
+
+            const body = {
+                targetDateTime,
+                userId,
+                location
+            }
+
+            const response = await fetch("https://peetsunbae.com/dashboard/report/dailyreport/phoneinspectstatus", {
+                method : "POST",
+                credentials : "include",
+                headers : {
+                    "Content-Type" : "application/json"
+                },
+                body : JSON.stringify(body)
+            });
+
+            const result = await response.json();
+
+            console.log(result);
+
+            if(result.message !== "success"){
+                throw new Error("서버와의 통신에 실패했습니다.");
+            }
+
+            const accessControl = result.accessControl;
+            const inspectPhones = result.inspectPhones;
+            const inspectPhonesImage = result.inspectPhonesImage;
+            const inspectPhonesMemo = result.inspectPhonesMemo;
+            const ourLocationInfo = result.ourLocationInfo;
+            const seat = result.seat;
+
+            if(!accessControl || !inspectPhones || !inspectPhonesImage || !inspectPhonesMemo || !ourLocationInfo || !seat){
+                console.log("필수 데이터가 없습니다.");
+                throw new Error("필수 데이터가 없습니다.");
+            }
+
+            const locationInfo = ourLocationInfo.find((info : any) => info.english === location);
+
+            if(!locationInfo){
+                console.log("필수 데이터가 없습니다.");
+                throw new Error("필수 데이터가 없습니다.");
+            }
+
+            const finalData : any = [];
+
+            locationInfo.classInfo.forEach((classInfo : any, index : number) => {
+
+                if(classInfo.classNumber === "lunch" || classInfo.classNumber === "dinner"){
+                    return;
+                }
+
+                const oneRow : any = {};
+
+                oneRow.class = index;
+                oneRow.start = classInfo.start;
+                oneRow.end = classInfo.end;
+
+                finalData.push(oneRow);
+
+            });
+
+            makeAccessControlData(accessControl, locationInfo, finalData);
+            makePhoneInspectData(seat, inspectPhones, inspectPhonesImage, inspectPhonesMemo, finalData, locationInfo, location);
+
+            setPhoneData([...finalData]);
+
+            console.log("phoneInspect");
+            console.log(finalData);
+
+        }catch(e){
+            console.log(e);
+        }
+
+    }
+
+    const makePhoneInspectData = (seat : any, inspectPhones : any, inspectPhonesImage : any, inspectPhonesMemo : any, finalData : any, locationInfo : any, location : any) => {
+        
+        //일단 imageSrc랑 imageTime을 넣어주자
+        finalData.forEach((eachData : any)=> {
+
+            const startTime = eachData.start.hours * 60 + eachData.start.minutes;
+            const endTime = eachData.end.hours * 60 + eachData.end.minutes;
+
+            inspectPhonesImage.forEach((eachImage : any) => {
+
+                const newDate = new Date(eachImage.createdAt);
+                const imageTime = newDate.getHours() * 60 + newDate.getMinutes();
+
+                if(imageTime >= startTime && imageTime <= endTime){
+                    eachData.imageSrc = "https://peetsunbae.com/phonesimage/" + eachImage.src;
+
+                    var ampm = "am";
+                    var hours : any = newDate.getHours();
+
+                    if(hours === 12){
+                        ampm = "pm";
+                    }
+
+                    if(hours > 12){
+                        hours = hours - 12;
+                        ampm = "pm";
+                    }
+
+                    var minutes : any = newDate.getMinutes();
+
+                    hours = hours < 10 ? "0" + hours : hours;
+                    minutes = minutes < 10 ? "0" + minutes : minutes;
+
+                    eachData.imageTime = `${hours}:${minutes} ${ampm}`;
+
+                }
+
+            });
+        })
+
+        //각 교시별 제출, 미제출 여부를 넣어주자
+
+        var correctionNumber = 0;
+
+        if(location === "daechi2"){
+            correctionNumber = 100;
+        }
+
+        if(location === "daechi3"){
+            correctionNumber = 200;
+        }
+
+        if(location === "songdo_free"){
+            correctionNumber = 44;
+        }
+
+        finalData.forEach((eachData : any) => {
+
+            //20까지만
+            const classNumber = ["zero", "first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eighth", "ninth", "tenth", "eleventh", "twelfth", "thirteenth", "fourteenth", "fifteenth", "sixteenth", "seventeenth", "eighteenth", "nineteenth", "twentieth"][eachData.class];
+
+            const selectedInspectPhones = inspectPhones.find((eachInspect : any) => eachInspect.classNumber === classNumber);
+            const selectedInspectPhonesMemo = inspectPhonesMemo.find((eachMemo : any) => eachMemo.classNumber === classNumber);
+
+            const submitPhoneData = selectedInspectPhones.selectedPhoneNumbers;
+
+            if(!submitPhoneData){
+                eachData.finalStatus = 4;
+                return;
+            }
+
+            const searchIndex = ((+seat) - 1) - correctionNumber;
+
+            eachData.phoneStatus = submitPhoneData[searchIndex] ? "제출" : "미제출";
+
+            if(eachData.status === "IN" && eachData.phoneStatus === "제출" ){
+                eachData.finalStatus = 1;
+            }
+
+            if(eachData.status === "OUT" && eachData.phoneStatus === "제출"){
+                eachData.finalStatus = 1;
+            }
+
+            if(eachData.status === "OUT" && eachData.phoneStatus === "미제출"){
+                eachData.finalStatus = 2;
+            }
+
+            if(eachData.status === "IN" && eachData.phoneStatus === "미제출"){
+                eachData.finalStatus = 3;
+            }
+
+            if(selectedInspectPhonesMemo){
+
+                if(selectedInspectPhonesMemo.sendMessageTime){
+
+                    const newDate = new Date(selectedInspectPhonesMemo.sendMessageTime);
+
+                    var hours : any = newDate.getHours();
+                    var minutes : any = newDate.getMinutes();
+
+                    var ampm = "am";
+
+                    if(hours === 12){
+                        ampm = "pm";
+                    }
+
+                    if(hours > 12){
+                        hours = hours - 12;
+                        ampm = "pm";
+                    }
+
+                    hours = hours < 10 ? "0" + hours : hours;
+                    minutes = minutes < 10 ? "0" + minutes : minutes;
+
+                    eachData.kakao = `${hours}:${minutes} ${ampm}`;
+
+                }
+
+                if(selectedInspectPhonesMemo.description){
+                    eachData.description = selectedInspectPhonesMemo.description;
+                }
+
+            }
+
+
+        });
+
+        
+    
+    }
+
+    const makeAccessControlData = (accessControl : any, locationInfo : any, finalData : any) => {
+
+        accessControl.forEach((eachAccess : any) => {
+
+            const date = new Date(eachAccess.DateInserted);
+
+            const hours = date.getHours();
+            const minutes = date.getMinutes();
+
+            const time = hours * 60 + minutes;
+
+
+            eachAccess.ampm = "am";
+            eachAccess.hours = hours;
+
+            if(eachAccess.hours === 12){
+                eachAccess.ampm = "pm";
+            }
+
+            if(eachAccess.hours > 12){
+                eachAccess.hours = eachAccess.hours - 12;
+                eachAccess.ampm = "pm";
+            }
+
+            eachAccess.hours = eachAccess.hours < 10 ? "0" + eachAccess.hours : eachAccess.hours;
+
+            eachAccess.minutes = minutes;
+            eachAccess.minutes = eachAccess.minutes < 10 ? "0" + eachAccess.minutes : eachAccess.minutes;
+
+            eachAccess.time = time;
+
+        });
+
+        finalData.forEach((eachData : any) => {
+
+            eachData.status = "OUT";
+
+            const startTime = eachData.start.hours * 60 + eachData.start.minutes;
+
+            eachData.access = accessControl.filter((eachAccess : any) => eachAccess.time <= (startTime + 1));
+
+            if(eachData.access.length === 0){
+                return;
+            }
+
+            const lastAccess = eachData.access[eachData.access.length - 1];
+
+            if(lastAccess.direction === "outside"){
+                eachData.status = "IN";
+            }
+
+            eachData.lastTime = `${lastAccess.hours}:${lastAccess.minutes} ${lastAccess.ampm}`;
+
+
+        })
+
     }
 
     return (

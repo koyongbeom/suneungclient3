@@ -36,12 +36,26 @@ const daechi2QrMapping = {
     "10" : { min: 179, max: 184 }
 }
 
+const daechi3QrMapping = {
+    "1": { min: 201, max: 210 },
+    "2": { min: 211, max: 220 },
+    "3": { min: 221, max: 229 },
+    "4": { min: 230, max: 236 },
+    "5": { min: 237, max: 242 },
+    "6": { min: 243, max: 248 },
+    "7": { min: 249, max: 252 },
+    "8": { min: 253, max: 260 },
+    "9": { min: 261, max: 266 },
+    "10": { min: 267, max: 273 }
+}
+
 
 
 export const qrSeatData = {
     gangnam : gangnamQrMapping,
     daechi : daechiQrMapping,
-    daechi2 : daechi2QrMapping
+    daechi2 : daechi2QrMapping,
+    daechi3 : daechi3QrMapping
 }
 
 export const patrolTime = [

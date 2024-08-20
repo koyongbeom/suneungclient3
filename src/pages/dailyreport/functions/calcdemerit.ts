@@ -1027,8 +1027,10 @@ export const drawingAccessChart = (userViolationList: userViolation[], suddenNot
 
     const drawingList: any = [];
 
-    const editedSuddenNotice = editSudden(suddenNotice);
-    const editedRegularScheduleFormat = editRegular(regularScheduleFormat, targetDate);
+    const editedSuddenNotice = editSudden(suddenNotice) ? editSudden(suddenNotice) : [];
+    const editedRegularScheduleFormat = editRegular(regularScheduleFormat, targetDate) ? editRegular(regularScheduleFormat, targetDate) : [];
+
+    console.log("aaa");
 
     //위반 기록 순으로 정렬
     userViolationList.forEach((eachUserViolation: any) => {
@@ -1114,6 +1116,9 @@ export const drawingAccessChart = (userViolationList: userViolation[], suddenNot
             koreanType
         });
 
+        console.log("bbb");
+
+
         //얘랑 접점이 있는 suddenNotice를 eachDrawingList에 넣어준다.
         editedSuddenNotice.forEach((eachSuddenNotice: any, index : number) => {
 
@@ -1175,6 +1180,8 @@ export const drawingAccessChart = (userViolationList: userViolation[], suddenNot
             }
 
         });
+
+        console.log("ccc");
 
         //얘랑 접점이 있는 regularScheduleFormat을 eachDrawingList에 넣어준다.
         editedRegularScheduleFormat.forEach((eachRegularScheduleFormat: any, index : number) => {
@@ -1248,6 +1255,8 @@ export const drawingAccessChart = (userViolationList: userViolation[], suddenNot
 
     });
 
+    console.log("ddd");
+
     drawingList.sort((a: any, b: any) => {
         if (a[0].time < b[0].time) {
             return -1;
@@ -1272,8 +1281,14 @@ export const drawingAccessChart = (userViolationList: userViolation[], suddenNot
 
     });
 
+    console.log("eee");
+
     userViolationList.forEach((eachUserViolation: any) => {
-            
+
+            if(!eachUserViolation.drawingList){
+                eachUserViolation.drawingList = [];
+            }
+
             eachUserViolation.drawingList.forEach((eachDrawingList: any) => {
     
                 eachDrawingList.sort((a: any, b: any) => {
@@ -1289,6 +1304,8 @@ export const drawingAccessChart = (userViolationList: userViolation[], suddenNot
             });
     
     });
+
+    console.log("fff");
 
     drawingList.forEach((eachDrawingList: any) => {
 
@@ -1309,6 +1326,8 @@ export const drawingAccessChart = (userViolationList: userViolation[], suddenNot
         });
 
     });
+
+    console.log("ggg");
 
     userViolationList.forEach((eachUserViolation: any) => {
 
@@ -1332,6 +1351,8 @@ export const drawingAccessChart = (userViolationList: userViolation[], suddenNot
         });
 
     });
+
+    console.log("hhh");
 
 
     console.log("letsDraw");

@@ -194,21 +194,31 @@ const PatrolResult: React.FC<any> = (props) => {
 
             setLoading(true);
 
+            console.log(1);
+
             const { data, qrCheckData } = await getUsersData();
 
             const studentList = data;
 
             prettifyAccessControl(studentList);
+            console.log(2);
             prettifyQrCheckData(qrCheckData);
+            console.log(3);
             const seatPatrolData = didPatrol(qrCheckData, where);
+            console.log(4);
             distinguishInAndOut(studentList, seatPatrolData, targetDate);
+            console.log(5);
             sortStudentList(studentList);
+            console.log(6);
 
+            console.log("studentList");
             console.log(studentList);
 
             const myFullPatrolData = makeMyFullPatrolData(studentList, myId, targetDate);
+            console.log(7);
 
             const totalPatrolData = makeTotalPatrolData(studentList, targetDate);
+            console.log(8);
 
             //console.log(myFullPatrolData);
 

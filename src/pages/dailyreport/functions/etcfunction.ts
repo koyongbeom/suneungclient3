@@ -117,6 +117,18 @@ export const ourLocationInfo = [
     {
         korean : "대치3층",
         english : "daechi2"
+    },
+    {
+        korean : "대치6층",
+        english : "daechi3"
+    },
+    {
+        korean : "송도",
+        english : "songdo_fixed"
+    },
+    {
+        korean : "송도",
+        english : "songdo_free"
     }
 ]
 

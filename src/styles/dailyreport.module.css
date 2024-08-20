@@ -34,19 +34,29 @@
 }
 
 .mainFirstBack{
-    padding-top: 2.19rem;
+    padding-top: 1rem;
     padding-left: 1.5rem;
     background: linear-gradient(180deg, #FFF 9.2%, #F1F2F9 35.07%, #DDE3F0 58.68%, #DBE2EF 100%);
     padding-bottom: 1.34rem;
     padding-right: 1.5rem;
 }
 
+.mainShare{
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 2.12rem;
+}
+
+.mainShareBtn{
+    font-family: var(--font);
+}
+
 .mainTitle {
     color: #14171E;
     font-family: var(--font);
     font-size: 1.5625rem;
-    font-style: normal;
-    font-weight: 500;
+    /* font-style: normal; */
+    font-weight: 600;
     line-height: normal;
 }
 
@@ -88,7 +98,7 @@
     font-family: var(--font);
     font-size: 1.0625rem;
     font-style: normal;
-    font-weight: 500;
+    font-weight: 700 !important;
     line-height: normal;
 }
 
@@ -2001,4 +2011,13 @@
     font-weight: 600;
     line-height: normal;
     margin-left: 0.75rem;
+}
+
+.mySeatNumber{
+    font-family: var(--font);
+    color: #6E757D;
+    font-size: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
 }

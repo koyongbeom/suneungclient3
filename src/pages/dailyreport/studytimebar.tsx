@@ -109,6 +109,12 @@ const Studytimebar: React.FC<any> = (props) => {
             case "daechi" :
                 locationString = "대치점";
                 break;
+            case "daechi2" :
+                locationString = "대치3층";
+                break;
+            case "daechi3" :
+                locationString = "대치6층";
+                break;
         }
 
         const lastData = [

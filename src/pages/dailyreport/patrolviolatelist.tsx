@@ -201,7 +201,7 @@ const PatrolViolateList: React.FC<any> = (props) => {
 
         const filteredViolationList = exceptRegularViolation(userViolationList);
 
-        console.log("filteredViolationList");
+        console.log("filteredViolationList1111111111");
         console.log(filteredViolationList);
 
         filteredViolationList.forEach((eachViolation : any) => {
@@ -252,8 +252,19 @@ const PatrolViolateList: React.FC<any> = (props) => {
 
         refilteredViolationList.forEach((eachViolation : any) => {
 
+            if(!eachViolation.determinedKind){
+                const decided = eachViolation.decided;
+                const decidedArray = decided.split("__");
+                const decidedKind = decidedArray[3];
+                eachViolation.determinedKind = decidedKind;
+
+                if(!eachViolation.determinedKind){
+                    eachViolation.determinedKind = "미확정";
+                }
+            }
+
             //determinedKind 단어에 "사유", "정기"를 포함하고 있으면 color를 yellow로 바꿔준다.
-            if(eachViolation.determinedKind.includes("사유") || eachViolation.determinedKind.includes("정기")){
+            if(eachViolation.determinedKind && (eachViolation.determinedKind.includes("사유") || eachViolation.determinedKind.includes("정기"))){
                 eachViolation.color = "yellow";
             }else{
                 eachViolation.color = "red";
@@ -300,8 +311,19 @@ const PatrolViolateList: React.FC<any> = (props) => {
 
             const oneRow : any = {};
 
+            if(!eachViolation.determinedKind){
+                const decided = eachViolation.decided;
+                const decidedArray = decided.split("__");
+                const decidedKind = decidedArray[3];
+                eachViolation.determinedKind = decidedKind;
+
+                if(!eachViolation.determinedKind){
+                    eachViolation.determinedKind = "미확정";
+                }
+            }
+
             //eachViolation의 determinedKind에 "일반"이라는 표시가 있으면 color를 red로 바꿔준다. 없으면 yellow로 바꿔준다.
-            oneRow.color = eachViolation.determinedKind.includes("일반") ? "red" : "yellow";
+            oneRow.color = (eachViolation.determinedKind && eachViolation.determinedKind.includes("일반")) ? "red" : "yellow";
             oneRow.determinedKind = eachViolation.determinedKind;
             oneRow.demerit = eachViolation.demerit;
             oneRow.description = eachViolation.description ? eachViolation.description : "";
@@ -309,6 +331,10 @@ const PatrolViolateList: React.FC<any> = (props) => {
             const newTitleTable : any = [];
 
             console.log(eachViolation.drawingList);
+
+            if(!eachViolation.drawingList[0]){
+                eachViolation.drawingList[0] = [];
+            }
 
             eachViolation.drawingList[0].forEach((eachDrawing : any) => {
 
@@ -374,7 +400,10 @@ const PatrolViolateList: React.FC<any> = (props) => {
                         case "absent" :
                             kind = "결석";
                             break;
-                        case "late" :
+                        case "late":
+                            kind = "지각";
+                            break;
+                        case "long" :
                             kind = "지각";
                             break;
                         case "among" :
@@ -560,7 +589,7 @@ const PatrolViolateList: React.FC<any> = (props) => {
                 오늘 출석 위반 내역이 {myViolationList.length}건 있어요
             </div>
             <div className={styles.compSubTitle1}>
-                윤종웅 님의 {props.targetDate && props.targetDate.getMonth() + 1}월 {props.targetDate && props.targetDate.getDate()}일 출석 위반 내역
+                {props.name ? props.name : ""} 님의 {props.targetDate && props.targetDate.getMonth() + 1}월 {props.targetDate && props.targetDate.getDate()}일 출석 위반 내역
             </div>
 
             {/* <MenuBar text={["나의 위반 내역", "지점별 위반내역"]} changeCurrentMenu={changeCurrentMenu} /> */}
@@ -593,9 +622,9 @@ const PatrolViolateList: React.FC<any> = (props) => {
                                             <div className={styles.eachViolationLine} />
                                         </div>
                                         <div className={styles.eachViolationContent}>
-                                            {/* <div className={styles.eachViolationDemerit}>
+                                            <div className={styles.eachViolationDemerit}>
                                                 벌점 : {item.demerit}점
-                                            </div> */}
+                                            </div>
                                             <div className={styles.eachViolationDescription}>
                                                 기타내역 : {item.description ? item.description : "없음"}
                                             </div>

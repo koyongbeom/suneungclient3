@@ -288,7 +288,7 @@ const EnglishTest: React.FC<any> = (props) => {
             const month = item.month + 1;
             const date = item.date;
 
-            const newDate = new Date(year, month, date);
+            const newDate = new Date(year, month - 1, date);
             const day = newDate.getDay();
             const dayString = ["일", "월", "화", "수", "목", "금", "토"][day];
 
@@ -318,17 +318,17 @@ const EnglishTest: React.FC<any> = (props) => {
 
             });
 
-            newRows.forEach((item : any) => {
-
-                if(item.dayList.length === 0){
-                    item.noHomework = true;
-                }
-
-            });
-
             newRows.push(newRow);
 
         })
+
+        newRows.forEach((item : any) => {
+
+            if(item.dayList.length === 0){
+                item.noHomework = true;
+            }
+
+        });
 
         console.log("weeklyAssignment");
         console.log(newRows);
@@ -614,7 +614,7 @@ const EnglishTest: React.FC<any> = (props) => {
                                         </div>
                                         <div className={`${styles.eachTestDueDate} ${(item.isHomework && !item.date) ? styles.notDoneHomework : ""}`}>
                                             {item.date ? item.date : ""}
-                                            {(item.isHomework && !item.date) ? `기한 : ${new Date().getMonth() + 1}월 ${new Date().getDate()}일 23시 59분 까지` : ""}
+                                            {(item.isHomework && !item.date && props.targetDate) ? `기한 : ${new Date(props.targetDate.getTime()).getMonth() + 1}월 ${new Date(props.targetDate.getTime()).getDate()}일 23시 59분 까지` : ""}
                                         </div>
                                     </div>
                                 </div>
@@ -642,7 +642,7 @@ const EnglishTest: React.FC<any> = (props) => {
                 </div>
             }
             {
-                currentMenu === 2 &&
+                (currentMenu === 2 && testhistory && testhistory.length > 0) &&
                 <div className={styles.wrongWordDiv}>
                     <div className={styles.wrongWordDivWrapper}>
                         <div className={styles.hideWrongWordDiv}>
@@ -755,7 +755,7 @@ const EnglishTest: React.FC<any> = (props) => {
                                                         item.dayList && item.dayList.map((item2 : any, index2 : number) => {
                                                             return (
                                                                 <span key={index2} className={styles.eachWeeklyAssignmentBookDaySpan}>
-                                                                    Day{item2.day} {item2.kind === "total" ? "(전체 단어)" : "(틀린 단어)"}{index2 === item.dayList.length - 1 ? "" : ", "}
+                                                                    Day{item2.day} {item2.type === "total" ? "(전체 단어)" : "(틀린 단어)"}{index2 === item.dayList.length - 1 ? "" : ", "}
                                                                 </span>
                                                             )
                                                         })

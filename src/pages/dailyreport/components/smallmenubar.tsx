@@ -8,6 +8,8 @@ const SmallMenubar: React.FC<any> = (props : any) => {
     const selectorRef = useRef<HTMLDivElement>(null);
     const [update, setUpdate] = useState(0);
 
+    
+
     useEffect(() => {
 
         window.addEventListener("resize", () => {
@@ -54,6 +56,39 @@ const SmallMenubar: React.FC<any> = (props : any) => {
     const handleClick = (selectedIndex : number) => {
 
         setActiveIndex(selectedIndex);
+
+        // var index = selectedIndex - 1;
+        // var targetPercent = index * 100;
+
+        // const selectorDiv = selectorRef.current;
+
+        // if(!selectorDiv){
+        //     return;
+        // }
+
+        // selectorDiv.style.transform = `translate(${targetPercent}%, -50%)`;
+
+        // props.handleCurrentMenu(selectedIndex);
+
+    }
+
+    useEffect(() => {
+
+        moveSelector(activeIndex);
+
+    }, [activeIndex]);
+
+    useEffect(() => {
+
+        if(!props.useOpen){
+            return;
+        }
+
+        setActiveIndex(props.currentMenu);
+
+    }, [props.open]);
+
+    const moveSelector = (selectedIndex : number) => {
 
         var index = selectedIndex - 1;
         var targetPercent = index * 100;

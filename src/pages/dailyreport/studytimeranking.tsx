@@ -290,6 +290,13 @@ const StudytimeRanking: React.FC<any> = (props) => {
                 const yesterdayInfoLength = yesterdayInfo.length;
                 const todayInfoLength = todayInfo.length;
 
+                console.log("monthInfoLength", monthInfoLength);
+                console.log("previousMonthInfoLength", previousMonthInfoLength);
+                console.log("weekInfoLength", weekInfoLength);
+                console.log("previousWeekInfoLength", previousWeekInfoLength);
+                console.log("yesterdayInfoLength", yesterdayInfoLength);
+                console.log("todayInfoLength", todayInfoLength);
+
                 const myMonthRanking = findMyRanking(monthInfo, myMonthStudyTime, monthInfoLength);
                 const myPreviousMonthRanking = findMyRanking(previousMonthInfo, myPreviousMonthStudyTime, previousMonthInfoLength);
                 const myWeekRanking = findMyRanking(weekInfo, myWeekStudyTime, weekInfoLength);
@@ -416,9 +423,9 @@ const StudytimeRanking: React.FC<any> = (props) => {
             var rankingChange = "same";
 
             if(previousRanking < currentRanking){
-                rankingChange = "up";
-            }else if(previousRanking > currentRanking){
                 rankingChange = "down";
+            }else if(previousRanking > currentRanking){
+                rankingChange = "up";
             }
 
             finalData.push({
@@ -460,7 +467,7 @@ const StudytimeRanking: React.FC<any> = (props) => {
                 오늘의 공부시간 랭킹
             </div>
             <div className={styles.compSubTitle1}>
-                {locationMenu === 1 ? myLocation : locationMenu === 2 ? "전 지점" : ""} {timeMenu === 1 ? "하루" : timeMenu === 2 ? "일주일" : timeMenu === 3 ? "한 달" : ""} 공부시간 기준 <span>
+                {locationMenu === 1 ? myLocation : locationMenu === 2 ? "전 지점" : ""} {timeMenu === 1 ? "하루" : timeMenu === 2 ? "이번 주" : timeMenu === 3 ? "이번 달" : ""} 공부시간 기준 <span>
                     {(locationMenu === 1 && timeMenu === 1) && myTodayRankingInLocation}
                     {(locationMenu === 1 && timeMenu === 2) && myWeekRankingInLocation}
                     {(locationMenu === 1 && timeMenu === 3) && myMonthRankingInLocation}
@@ -471,10 +478,10 @@ const StudytimeRanking: React.FC<any> = (props) => {
             </div>
             <div className={styles.rankingMenuDiv}>
                 <div className={styles.firstSmallMenu}>
-                    <SmallMenubar menuList={[myLocation, "전체"]} handleCurrentMenu={handleCurrentMenu1} />
+                    <SmallMenubar menuList={[myLocation, "전체"]} handleCurrentMenu={handleCurrentMenu1} currentMenu={locationMenu} open={open} useOpen={true} />
                 </div>
                 <div className={styles.secondSmallMenu}>
-                    <SmallMenubar menuList={["일별", "주별", "월별"]} handleCurrentMenu={handleCurrentMenu2} />
+                    <SmallMenubar menuList={["일별", "주별", "월별"]} handleCurrentMenu={handleCurrentMenu2} currentMenu={timeMenu} open={open} useOpen={true} />
                 </div>
             </div>
             <div className={styles.rankingBodyDate}>
@@ -483,6 +490,18 @@ const StudytimeRanking: React.FC<any> = (props) => {
             <div className={styles.rankingImagesDiv}>
                 {
                     finalData.map((item : any, index : number) => {
+
+                        var realIndex = index;
+
+                        if(index === 0){
+                            realIndex = 1;
+                        }
+
+                        if(index === 1){
+                            realIndex = 0;
+                        }
+
+                        const realItem = finalData[realIndex];
 
                         if (index > 2) {
                             return;
@@ -494,8 +513,12 @@ const StudytimeRanking: React.FC<any> = (props) => {
                         const imgSrc1 = `/img/daily/daily_${target}_face2.png`;
                         const imgSrc2 = `/img/daily/daily_${target}_medal2.png`;
 
-                        const hours = Math.floor(item.time / 60);
-                        const minutes = item.time % 60;
+                        const hours = Math.floor(realItem.time / 60);
+                        const minutes = realItem.time % 60;
+
+
+
+
 
                         return (
                             <div className={styles.eachRankingImageWrapper} key={index}>
@@ -516,13 +539,13 @@ const StudytimeRanking: React.FC<any> = (props) => {
                                     }
                                 </div>
                                 <div className={styles.rankingNameDiv}>
-                                    {item.name}
+                                    {realItem.name}
                                 </div>
                                 <div className={styles.rankingTimeDiv}>
                                     {hours}시간 {minutes}분
                                 </div>
                                 <div className={styles.rankingNumberDiv}>
-                                    오늘의 강남점 {ranking}등
+                                    {locationMenu === 1 ? myLocation : locationMenu === 2 ? "전체" : ""} {ranking}등
                                 </div>
                             </div>
                         )
@@ -604,14 +627,22 @@ const StudytimeRanking: React.FC<any> = (props) => {
                                 오늘의 공부시간 랭킹
                             </div>
                             <div className={styles.compSubTitle1}>
-                            {locationMenu === 1 ? myLocation : locationMenu === 2 ? "전 지점" : ""} {timeMenu === 1 ? "하루" : timeMenu === 2 ? "일주일" : timeMenu === 3 ? "한 달" : ""} 공부시간 기준 <span>14등</span>이에요
+                            {locationMenu === 1 ? myLocation : locationMenu === 2 ? "전 지점" : ""} {timeMenu === 1 ? "하루" : timeMenu === 2 ? "이번 주" : timeMenu === 3 ? "이번 달" : ""} 공부시간 기준 <span>
+                            {(locationMenu === 1 && timeMenu === 1) && myTodayRankingInLocation}
+                    {(locationMenu === 1 && timeMenu === 2) && myWeekRankingInLocation}
+                    {(locationMenu === 1 && timeMenu === 3) && myMonthRankingInLocation}
+                    {(locationMenu === 2 && timeMenu === 1) && myTodayRanking}
+                    {(locationMenu === 2 && timeMenu === 2) && myWeekRanking}
+                    {(locationMenu === 2 && timeMenu === 3) && myMonthRanking}
+                    등
+                                </span>이에요
                             </div>
                             <div className={styles.rankingMenuDiv}>
                                 <div className={styles.firstSmallMenu}>
-                                    <SmallMenubar menuList={[myLocation, "전체"]} handleCurrentMenu={handleCurrentMenu1} />
+                                    <SmallMenubar menuList={[myLocation, "전체"]} handleCurrentMenu={handleCurrentMenu1} currentMenu={locationMenu} open={open} useOpen={true} />
                                 </div>
                                 <div className={styles.secondSmallMenu}>
-                                    <SmallMenubar menuList={["일별", "주별", "월별"]} handleCurrentMenu={handleCurrentMenu2} />
+                                    <SmallMenubar menuList={["일별", "주별", "월별"]} handleCurrentMenu={handleCurrentMenu2} currentMenu={timeMenu} open={open} useOpen={true} />
                                 </div>
                             </div>
                             <div className={styles.rankingBodyDate}>

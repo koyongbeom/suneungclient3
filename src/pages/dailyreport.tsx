@@ -14,6 +14,7 @@ import EnglishTest from "./dailyreport/englishtest";
 import PhoneInspect from "./dailyreport/phoneinspect";
 import { ReactComponent as LightGrayLogo } from "../../src/svg/lightgraylogo.svg";
 import { ReactComponent as MainSvg } from "../../src/svg/newdaillymain.svg";
+import { set } from "lodash";
 
 const DailyReport: React.FC<any> = () => {
 
@@ -22,6 +23,7 @@ const DailyReport: React.FC<any> = () => {
     const [targetDate, setTargetDate] = useState<Date>();
     const [code, setCode] = useState();
     const [where, setWhere] = useState();
+    const [isCorrectCode, setIsCorrectCode] = useState(true);
 
     const location = useLocation();
     const navigate = useNavigate();
@@ -31,6 +33,29 @@ const DailyReport: React.FC<any> = () => {
         fromQuery();
 
     }, []);
+
+    function shareToKaKao() {
+
+        const query: any = new URLSearchParams(location.search);
+
+        const id = query.get("id");
+        const code = query.get("code");
+        const date = query.get("date");
+        const name = query.get("name");
+        const where = query.get("location");
+
+        const suburl = `dailyreport?id=${id}&code=${code}&date=${date}&name=${name}&location=${where}`;
+
+
+        window.Kakao.Share.sendCustom({
+            templateId : 111199,
+            templateArgs : {
+                suburl,
+                day : date,
+                name
+            }
+        })
+    }
 
     const fromQuery = () => {
 
@@ -80,9 +105,24 @@ const DailyReport: React.FC<any> = () => {
             return;
         }
 
-        console.log(id, code, date, name)
+        console.log(id, code, date, name);
 
-        const newDate = new Date(date);
+        const dateArray = date.split("-");
+        const year = +dateArray[0];
+        const month = +dateArray[1];
+        const day = +dateArray[2];
+
+        const newDate = new Date(year, month - 1, day);
+
+        const correctCode = year * 10000 + month * 100 + day + (+id);
+
+        // if (correctCode !== +code) {
+
+        //     setIsCorrectCode(false);
+        //     return;
+        // }
+
+
 
         setName(name);
         setUserId(id);
@@ -121,8 +161,23 @@ const DailyReport: React.FC<any> = () => {
 
     return (
         <div className={styles.dailyreport}>
-            <div className={styles.mainFirstBack}>
-                {/* <div className={styles.logoHeader}>
+            {
+                !isCorrectCode && <div className={styles.errorCode} style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    height: "100vh",
+                    fontSize: "2rem",
+                    fontWeight: "bold",
+                }}>
+                    코드가 올바르지 않습니다.
+                </div>
+            }
+            {
+                isCorrectCode &&
+                <>
+                    <div className={styles.mainFirstBack}>
+                        {/* <div className={styles.logoHeader}>
                     <div>
                         <LightGrayLogo className={styles.logo} />
                     </div>
@@ -144,41 +199,51 @@ const DailyReport: React.FC<any> = () => {
                         <MainSvg className={styles.dailyMainSvg} />
                     </div>
                 </div> */}
-                <div className={styles.mainTitle}>
-                    {name}님의 수능선배<br />데일리 리포트
-                </div>
-                <div className={styles.mainDate}>
-                    발행일자&nbsp;&nbsp;{targetDate && targetDate.getFullYear() + "년 "  + (targetDate.getMonth() + 1) + "월 " + targetDate.getDate() + "일"}
-                </div>
-                <div className={styles.mainSvgDiv}>
-                    <MainSvg className={styles.mainSvg} />
-                </div>
-            </div>
-            <PatrolResult targetDate={targetDate} userId={userId} name={name} where={where} />
-            <div className={styles.justGap}>
-            </div>
-            <PatrolDemerit targetDate={targetDate} userId={userId} />
-            <div className={styles.justGap}>
-            </div>
-            <Studytimebar targetDate={targetDate} userId={userId} location={where} name={name} />
-            <div className={styles.justGap}>
-            </div>
-            <StudytimeChart targetDate={targetDate} userId={userId} location={where} name={name} />
-            <div className={styles.justGap}>
-            </div>
-            <StudytimeRanking targetDate={targetDate} userId={userId} location={where} name={name} />
-            <div className={styles.justGap}>
-            </div>
-            <PatrolViolateList targetDate={targetDate} userId={userId} location={where} name={name} code={code} />
-            <div className={styles.justGap}>
-            </div>
-            <AttendanceDemerit targetDate={targetDate} userId={userId} location={where} name={name} />
-            <div className={styles.justGap}>
-            </div>
-            <EnglishTest targetDate={targetDate} userId={userId} location={where} name={name} />
-            <div className={styles.justGap}>
-            </div>
-            <PhoneInspect targetDate={targetDate} userId={userId} location={where} name={name} />
+                        <div className={styles.mainShare}>
+                            <div className={styles.mainShareBtn}
+                                onClick={shareToKaKao}
+                            >
+                                공유하기
+                            </div>
+                        </div>
+                        <div className={styles.mainTitle}>
+                            {name}님의 수능선배<br />데일리 리포트
+                        </div>
+                        <div className={styles.mainDate}>
+                            발행일자&nbsp;&nbsp;{targetDate && targetDate.getFullYear() + "년 " + (targetDate.getMonth() + 1) + "월 " + targetDate.getDate() + "일"}
+                        </div>
+                        <div className={styles.mainSvgDiv}>
+                            <MainSvg className={styles.mainSvg} />
+                        </div>
+                    </div>
+                    <PatrolResult targetDate={targetDate} userId={userId} name={name} where={where} />
+                    <div className={styles.justGap}>
+                    </div>
+                    <PatrolDemerit targetDate={targetDate} userId={userId} />
+                    <div className={styles.justGap}>
+                    </div>
+                    <Studytimebar targetDate={targetDate} userId={userId} location={where} name={name} />
+                    <div className={styles.justGap}>
+                    </div>
+                    <StudytimeChart targetDate={targetDate} userId={userId} location={where} name={name} />
+                    <div className={styles.justGap}>
+                    </div>
+                    <StudytimeRanking targetDate={targetDate} userId={userId} location={where} name={name} />
+                    <div className={styles.justGap}>
+                    </div>
+                    <PatrolViolateList targetDate={targetDate} userId={userId} location={where} name={name} code={code} />
+                    <div className={styles.justGap}>
+                    </div>
+                    <AttendanceDemerit targetDate={targetDate} userId={userId} location={where} name={name} />
+                    <div className={styles.justGap}>
+                    </div>
+                    <EnglishTest targetDate={targetDate} userId={userId} location={where} name={name} />
+                    <div className={styles.justGap}>
+                    </div>
+                    <PhoneInspect targetDate={targetDate} userId={userId} location={where} name={name} />
+                </>
+            }
+
         </div>
     )
 }

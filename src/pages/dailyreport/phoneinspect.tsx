@@ -108,6 +108,8 @@ const PhoneInspect : React.FC<any> = (props) => {
             const ourLocationInfo = result.ourLocationInfo;
             const seat = result.seat;
 
+            setSeat(seat);
+
             if(!accessControl || !inspectPhones || !inspectPhonesImage || !inspectPhonesMemo || !ourLocationInfo || !seat){
                 console.log("필수 데이터가 없습니다.");
                 throw new Error("필수 데이터가 없습니다.");
@@ -245,9 +247,9 @@ const PhoneInspect : React.FC<any> = (props) => {
 
             if(selectedInspectPhonesMemo){
 
-                if(selectedInspectPhonesMemo.sendMessageTime){
+                if(selectedInspectPhonesMemo.sentMessageTime){
 
-                    const newDate = new Date(selectedInspectPhonesMemo.sendMessageTime);
+                    const newDate = new Date(selectedInspectPhonesMemo.sentMessageTime);
 
                     var hours : any = newDate.getHours();
                     var minutes : any = newDate.getMinutes();
@@ -349,9 +351,12 @@ const PhoneInspect : React.FC<any> = (props) => {
             <div className={styles.compSubTitle4}>
                 교시 중간에 입실한 경우 제출 결과는<br/>그 다음 교시부터 정상 반영돼요
             </div>
-            <div className={styles.smallMenuBarDiv} style={{marginTop : "1.62rem"}}>
+            <div className={styles.smallMenuBarDiv} style={{marginTop : "1.62rem", display : "flex", justifyContent : "space-between"}}>
                 <div className={styles.smallMenuBarWrapper2}>
                     <SmallMenubar handleCurrentMenu={handleCurrentMenu} menuList={["0-4교시", "5-8교시"]} />
+                </div>
+                <div className={styles.mySeatNumber}>
+                    {props.name ? props.name : ""} 자리 : {seat}번
                 </div>
             </div>
             <div className={styles.phoneInspectStatusInfo}>
@@ -420,7 +425,7 @@ const PhoneInspect : React.FC<any> = (props) => {
                                     </div>
                                     <div className={styles.eachPhoneInspectRealInfo}>
                                         <div className={styles.eachPhoneInspectRealInfoText}>
-                                            {data.status} ({data.lastTime})
+                                            {data.status} ({data.lastTime ? data.lastTime : "미등원"})
                                             <div className={styles.eachPhoneInspectRealInfoMultiArrow}>
                                                 <MultiArrow />
                                             </div>

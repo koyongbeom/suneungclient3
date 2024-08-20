@@ -8,6 +8,7 @@ import {ReactComponent as Check} from "../../svg/daily_check.svg";
 import {ReactComponent as Minus} from "../../svg/daily_minus.svg";
 import {ReactComponent as SmallCheck} from "../../svg/daily_small_check.svg"; 
 import {ReactComponent as Arrow} from "../../svg/daily_arrow.svg";
+import { set } from "lodash";
 
 const demeritData: any[] = [
     {kind : "일반지각", demerit : "3점", description : "사유 2줄 예시 지속적인 자습실 내 음식물 섭취 적발"},
@@ -138,19 +139,19 @@ const AttendanceDemerit: React.FC<any> = (props) => {
             oneData.parentpermit = data.parentpermit;
 
             if(oneData.kind === "외출"){
-                const exitTime = `${data.startHours}:${data.startMinutes}`;
-                const enterTime = `${data.endHours}:${data.endMinutes}`;
+                const exitTime = `${data.startHours < 10 ? "0" + data.startHours : data.startHours}:${data.startMinutes < 10 ? "0" + data.startMinutes : data.startMinutes}`;
+                const enterTime = `${data.endHours < 10 ? "0" + data.endHours : data.endHours}:${data.endMinutes < 10 ? "0" + data.endMinutes : data.endMinutes}`;
                 oneData.exitTime = exitTime;
                 oneData.enterTime = enterTime;
             }
 
             if(oneData.kind === "조퇴"){
-                const exitTime = `${data.endHours}:${data.endMinutes}`;
+                const exitTime = `${data.endHours < 10 ? "0" + data.endHours : data.endHours}:${data.endMinutes < 10 ? "0" + data.endMinutes : data.endMinutes}`;
                 oneData.exitTime = exitTime;
             }
 
             if(oneData.kind === "지각"){
-                const enterTime = `${data.startHours}:${data.startMinutes}`;
+                const enterTime = `${data.startHours < 10 ? "0" + data.startHours : data.startHours}:${data.startMinutes < 10 ? "0" + data.startMinutes : data.startMinutes}`;
                 oneData.enterTime = enterTime;
             }
 
@@ -168,8 +169,11 @@ const AttendanceDemerit: React.FC<any> = (props) => {
             return;
         }
 
-        console.log("makeRegularData");
+        console.log("makeRegularData");;
         console.log(regularSchedule);
+
+        setStaffpermit(regularSchedule.staffpermit);
+        setParentpermit(regularSchedule.parentpermit);
 
         setRegularData(regularSchedule);
 
@@ -242,7 +246,8 @@ const AttendanceDemerit: React.FC<any> = (props) => {
                     출석 벌점내역
                 </div>
                 <div className={styles.compSubTitle2}>
-                    23년 11월 01일
+                    {/* 23년 11월 01일 */}
+                    {props.targetDate ? props.targetDate.getFullYear() + "년 " + (props.targetDate.getMonth() + 1) + "월 " + props.targetDate.getDate() + "일" : ""}
                 </div>
             </div>
             <MenuBarThree text={["출석 벌점", "정기일정", "사유제출"]} changeCurrentMenu={changeCurrentMenu} />
@@ -384,7 +389,11 @@ const AttendanceDemerit: React.FC<any> = (props) => {
                         {
                             ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "etc"].map((day, index) => {
 
-                                var today = new Date().getDay();
+                                if(!props.targetDate){
+                                    return;
+                                }
+
+                                var today = new Date(props.targetDate.getTime()).getDay();
 
                                 //"etc"랑 오늘 요일만 보여주기
                                 if(day !== "etc" && index !== today - 1){

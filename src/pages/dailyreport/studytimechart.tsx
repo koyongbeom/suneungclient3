@@ -40,6 +40,10 @@ const StudytimeChart: React.FC<any> = (props) => {
 
     useEffect(() => {
 
+        if(!props.targetDate){
+            return;
+        }
+
         const myTime = myTimeRef.current;
         const averageTime = averageTimeRef.current;
         const dateDiv = dateRef.current;
@@ -56,7 +60,7 @@ const StudytimeChart: React.FC<any> = (props) => {
             return;
         }
 
-        const date = new Date();
+        const date = new Date(props.targetDate.getTime());
         date.setDate(date.getDate() - (6 - (currentBar - 1)));
 
         const currentMyTime = myStudyTimes[currentBar - 1];
@@ -70,7 +74,7 @@ const StudytimeChart: React.FC<any> = (props) => {
         if(ctxTwoLayer && currentDataPoints.length > 0 && currentDataPoints[currentBar - 1])
         drawDotWithAnimation(ctxTwoLayer, currentDataPoints[currentBar - 1].x, currentDataPoints[currentBar - 1].y, 4);
 
-    }, [currentBar]);
+    }, [currentBar, props.targetDate]);
 
     useEffect(() => {
 
@@ -541,9 +545,10 @@ const StudytimeChart: React.FC<any> = (props) => {
             </div>
             <div className={styles.chartDateDiv}>
                 {
+                    props.targetDate &&
                     new Array(7).fill(0).map((el, index) => {
 
-                        const date = new Date();
+                        const date = new Date(props.targetDate.getTime());
                         date.setDate(date.getDate() - (6 - index));
 
                         const month = date.getMonth() + 1;

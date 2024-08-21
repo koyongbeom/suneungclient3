@@ -46,12 +46,19 @@ const DailyReport: React.FC<any> = () => {
 
         const suburl = `dailyreport?id=${id}&code=${code}&date=${date}&name=${name}&location=${where}`;
 
+        const dateArray = date.split("-");
+        const year = +dateArray[0];
+        const month = +dateArray[1];
+        const day = +dateArray[2];
+
+        const dateString = `${year}년 ${month}월 ${day}일`;
+
 
         window.Kakao.Share.sendCustom({
             templateId : 111199,
             templateArgs : {
                 suburl,
-                day : date,
+                day : dateString,
                 name
             }
         })
@@ -114,13 +121,13 @@ const DailyReport: React.FC<any> = () => {
 
         const newDate = new Date(year, month - 1, day);
 
-        const correctCode = year * 10000 + month * 100 + day + (+id);
+        const correctCode = ((year * 10000) + (month * 100) + day) * (+id);
 
-        // if (correctCode !== +code) {
+        if (correctCode !== +code) {
 
-        //     setIsCorrectCode(false);
-        //     return;
-        // }
+            setIsCorrectCode(false);
+            return;
+        }
 
 
 

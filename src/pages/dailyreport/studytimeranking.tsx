@@ -189,6 +189,10 @@ const StudytimeRanking: React.FC<any> = (props) => {
                 }
             })
 
+            if(myStudyTime === 0){
+                myRanking++;
+            }
+
             return myRanking;
 
         }
@@ -216,6 +220,10 @@ const StudytimeRanking: React.FC<any> = (props) => {
                     myRanking--;
                 }
             })
+
+            if(myStudyTime === 0){
+                myRanking++;
+            }
 
             return myRanking;
 

@@ -87,7 +87,7 @@ const OneBlock: React.FC<any> = (props: any) => {
                                     <WhichSvg type={eachList.type} className={styles.whichSvg} />
                                 </div>
                                 <div className={styles.eachBlockText}>
-                                    {eachList.type === "smile" ? "공부중" : eachList.type === "cry" ? "피해 주는 행동" : eachList.type === "zzz" ? "졸음" : eachList.type === "x" ? "좌석에 없음" : eachList.type === "nophone" ? "학습외 사이트" : eachList.type === "lasttime" ? "의무자습 종료" :  eachList.type === "phone" ? "휴대폰 사용" : ""}
+                                    {eachList.type === "smile" ? "공부중" : eachList.type === "cry" ? "피해 주는 행동" : eachList.type === "zzz" ? "졸음" : eachList.type === "x" ? "좌석에 없음" : eachList.type === "nophone" ? "학습외 사이트" : eachList.type === "lasttime" ? "의무자습 종료" : eachList.type === "phone" ? "휴대폰 사용" : ""}
                                 </div>
                                 <div className={styles.eachBlockTime}>
                                     {eachList.time}
@@ -130,7 +130,7 @@ const PatrolResult: React.FC<any> = (props) => {
 
     useEffect(() => {
 
-        if(!props.targetDate){
+        if (!props.targetDate) {
             return;
         }
 
@@ -141,14 +141,19 @@ const PatrolResult: React.FC<any> = (props) => {
 
     useEffect(() => {
 
+        if (!totalPatrolData) {
+            return;
+        }
+
         if (currentMenu === 2) {
             calculateFullGraphMaxNumber(totalPatrolData);
         }
 
-    }, [currentMenu]);
+    }, [currentMenu, totalPatrolData]);
 
 
     const calculateFullGraphMaxNumber = (data: number[][]) => {
+
         var maxNumber = 0;
         data.forEach((eachClass: number[]) => {
             eachClass.forEach((eachNumber: number) => {
@@ -166,11 +171,11 @@ const PatrolResult: React.FC<any> = (props) => {
 
     const changeCurrentMenu = (menu: number) => {
         setCurrentMenu(menu);
-        if(menu === 2){
+        if (menu === 2) {
             setTimeout(() => {
                 setGoAnimation(true);
             }, 0);
-        }else{
+        } else {
             setGoAnimation(false);
         }
     }
@@ -186,7 +191,7 @@ const PatrolResult: React.FC<any> = (props) => {
 
     }, [props.where, props.targetDate, props.userId, props.name]);
 
-    const start = async (myId : number, targetDate : Date, where : "gangnam" | "daechi") => {
+    const start = async (myId: number, targetDate: Date, where: "gangnam" | "daechi") => {
 
         try {
 
@@ -317,77 +322,94 @@ const PatrolResult: React.FC<any> = (props) => {
 
             {
                 currentMenu === 2 ?
-                    <div className={styles.ourPatrolResult}>
-                        <div className={styles.ourPatrolList}>
-                            {
-                                ["졸음", "학습 외 사이트 접속", "피해 주는 행동"].map((eachList: any, i: number) => {
-                                    return (
-                                        <div key={i} className={`${styles.ourPatrolListDiv} ${styles[`ourPatrolListDiv${i}`]}`}>
-                                            <div className={styles.dot}>
-                                            </div>
-                                            <div style={{
-                                                width: "12px"
-                                            }}>
-                                            </div>
-                                            <div className={styles.ourPatrolListText}>
-                                                {eachList}
-                                            </div>
-                                        </div>
-                                    );
-                                })
-                            }
-                        </div>
-                        <div className={styles.ourPatrolGraph}>
-                            <div className={styles.ourPatrolGraphDiv}>
+                    <>
+                        {
+                            loading ?
+                                <div className={styles.patrolLoading}>
+                                    <CircularProgress />
+                                </div>
+                                :
+                                ""
+                        }
+                        {
+                            !loading ?
+                            <div className={styles.ourPatrolResult}>
+                            <div className={styles.ourPatrolList}>
                                 {
-                                    totalPatrolData &&
-                                    totalPatrolData.map((eachClass: number[], classNumber: number) => {
-                                        var classMaxNumber = 0;
-                                        var maxIndex = 0;
-                                        eachClass.forEach((eachNumber: number, i: number) => {
-                                            if (eachNumber > classMaxNumber) {
-                                                classMaxNumber = eachNumber;
-                                                maxIndex = i;
-                                            }
-                                        });
-
+                                    ["졸음", "학습 외 사이트 접속", "피해 주는 행동"].map((eachList: any, i: number) => {
                                         return (
-                                            <div className={styles.ourPatrolGraphClass} key={classNumber}>
-                                                <div className={styles.ourPatrolGraphPics}>
-                                                    {
-                                                        eachClass.map((eachNumber: number, i: number) => {
-                                                            return (
-                                                                <div className={styles.ourPatrolGraphWrapper} key={i}>
-                                                                    {
-                                                                        i === maxIndex
-                                                                        &&
-                                                                        <div className={styles.ourPatrolGraphPicText} style={{left : (i === 0 ? 6 : i === 1 ? -3 : i === 2 ? -8 : 0)  + "px"}}>
-                                                                            {classMaxNumber}명
-                                                                        </div>
-                                                                    }
-
-                                                                    <div id="graphh" className={`${styles.ourPatrolGraphPic} ${styles['ourPatrolGraphPic' + i]}`} style={{
-                                                                        height: `${(fullGraphMaxNumber === 0 || !goAnimation) ? 0 : (eachNumber === 0 ? 0.01 : eachNumber / fullGraphMaxNumber) * 9.375}rem`
-                                                                    }}>
-                                                                    </div>
-
-
-
-                                                                </div>
-                                                            )
-                                                        })
-                                                    }
+                                            <div key={i} className={`${styles.ourPatrolListDiv} ${styles[`ourPatrolListDiv${i}`]}`}>
+                                                <div className={styles.dot}>
                                                 </div>
-                                                <div className={styles.ourPatrolClassNumber}>
-                                                    {classNumber}교시
+                                                <div style={{
+                                                    width: "12px"
+                                                }}>
+                                                </div>
+                                                <div className={styles.ourPatrolListText}>
+                                                    {eachList}
                                                 </div>
                                             </div>
-                                        )
+                                        );
                                     })
                                 }
                             </div>
+                            <div className={styles.ourPatrolGraph}>
+                                <div className={styles.ourPatrolGraphDiv}>
+                                    {
+                                        totalPatrolData &&
+                                        totalPatrolData.map((eachClass: number[], classNumber: number) => {
+                                            var classMaxNumber = 0;
+                                            var maxIndex = 0;
+                                            eachClass.forEach((eachNumber: number, i: number) => {
+                                                if (eachNumber > classMaxNumber) {
+                                                    classMaxNumber = eachNumber;
+                                                    maxIndex = i;
+                                                }
+                                            });
+
+                                            return (
+                                                <div className={styles.ourPatrolGraphClass} key={classNumber}>
+                                                    <div className={styles.ourPatrolGraphPics}>
+                                                        {
+                                                            eachClass.map((eachNumber: number, i: number) => {
+                                                                return (
+                                                                    <div className={styles.ourPatrolGraphWrapper} key={i}>
+                                                                        {
+                                                                            i === maxIndex
+                                                                            &&
+                                                                            <div className={styles.ourPatrolGraphPicText} style={{ left: (i === 0 ? 6 : i === 1 ? -3 : i === 2 ? -8 : 0) + "px" }}>
+                                                                                {classMaxNumber}명
+                                                                            </div>
+                                                                        }
+
+                                                                        <div id="graphh" className={`${styles.ourPatrolGraphPic} ${styles['ourPatrolGraphPic' + i]}`} style={{
+                                                                            height: `${(fullGraphMaxNumber === 0 || !goAnimation) ? 0 : (eachNumber === 0 ? 0.01 : eachNumber / fullGraphMaxNumber) * 9.375}rem`
+                                                                        }}>
+                                                                        </div>
+
+
+
+                                                                    </div>
+                                                                )
+                                                            })
+                                                        }
+                                                    </div>
+                                                    <div className={styles.ourPatrolClassNumber}>
+                                                        {classNumber}교시
+                                                    </div>
+                                                </div>
+                                            )
+                                        })
+                                    }
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                        :
+                        ""
+                            
+                        }
+                        
+                    </>
                     :
                     ""
             }

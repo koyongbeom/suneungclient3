@@ -60,6 +60,13 @@ const DailyReport: React.FC<any> = () => {
                 suburl,
                 day : dateString,
                 name
+            },
+            serverCallbackArgs : {
+                id,
+                code,
+                date,
+                name,
+                location : where
             }
         })
     }
@@ -139,6 +146,19 @@ const DailyReport: React.FC<any> = () => {
 
         //query 없애기
         // navigate("/dailyreport");
+
+        fetch("https://peetsunbae.com/dashboard/report/dailyreportopen", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                id,
+                date,
+                code,
+                name
+            })
+        })
 
         return { id, code, date, name }
 

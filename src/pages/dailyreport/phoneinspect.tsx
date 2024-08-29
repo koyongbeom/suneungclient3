@@ -218,6 +218,14 @@ const PhoneInspect : React.FC<any> = (props) => {
             const selectedInspectPhones = inspectPhones.find((eachInspect : any) => eachInspect.classNumber === classNumber);
             const selectedInspectPhonesMemo = inspectPhonesMemo.find((eachMemo : any) => eachMemo.classNumber === classNumber);
 
+            if(!selectedInspectPhones){
+                console.log("!!!!!!!!!!!!");
+                console.log(classNumber);
+                console.log(inspectPhones);
+                return;
+            }
+
+
             const submitPhoneData = selectedInspectPhones.selectedPhoneNumbers;
 
             if(!submitPhoneData){

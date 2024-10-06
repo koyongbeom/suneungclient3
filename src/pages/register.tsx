@@ -284,7 +284,7 @@ const Register: React.FC<any> = (props) => {
                             if (eachTime <= 690) {
                                 oneRow.ampm = "am";
                             }
-                            oneRow.possible = true;
+                            //oneRow.possible = true;
                             if (occupiedTimeData.includes(eachTime) 
                             //|| occupiedTimeData.includes(eachTime - 30)
                         ) {
@@ -298,6 +298,8 @@ const Register: React.FC<any> = (props) => {
                             }
                             newAmPm.push(oneRow);
                         });
+
+                        
 
 
                         //am 갯수 아예 없으면 빼버리는 기능-----------------
@@ -329,8 +331,12 @@ const Register: React.FC<any> = (props) => {
                         } else {
                             setIsPmRemain(true);
                         }
-                        //--------------------------------------------------------------------
 
+
+
+
+
+                        //--------------------------------------------------------------------
                         if(realSelectedDay.day > 0 && realSelectedDay.day < 6){
                             newAmPm.forEach((eachTime: any) => {
                                 if (eachTime.time >= 1200) {
@@ -358,6 +364,170 @@ const Register: React.FC<any> = (props) => {
                             })
                         }
                         //----------------------------------------------------------------------
+
+
+                        //특정 시간만 넣는 기능--------------------------------------------------
+
+                        var isSaturday = false;
+
+                        if(realSelectedDay.day === 6){
+                            isSaturday = true;
+                        }
+
+                        var isSunday = false;
+
+                        if(realSelectedDay.day === 0){
+                            isSunday = true;
+                        }
+
+                        if(select === 0 || select === 1){
+
+                            newAmPm.forEach((eachTime : any) => {
+                                eachTime.possible = false;
+                            })
+
+                        }
+
+
+                        if(location === "gangnam"){
+
+                            if(select === 0){
+                                //평일 10:00, 13:30, 19:00
+                                //토요일 10:00, 13:30
+
+                                if(!isSaturday){
+                                    newAmPm.forEach((eachTime : any) => {
+                                        if(eachTime.time === 600 || eachTime.time === 810 || eachTime.time === 1140){
+                                            eachTime.possible = true;
+                                        }
+                                    })
+                                }else{
+                                    newAmPm.forEach((eachTime : any) => {
+                                        if(eachTime.time === 600 || eachTime.time === 810){
+                                            eachTime.possible = true;
+                                        }
+                                    })
+                                }
+                            }
+
+                            if(select === 1){
+                                //평일 10:00, 13:30, 14:00, 15:00, 19:00, 19:30
+                                //토요일 10:00, 13:30, 14:00
+
+                                if(!isSaturday){
+                                    newAmPm.forEach((eachTime : any) => {
+                                        if(eachTime.time === 600 || eachTime.time === 810 || eachTime.time === 840 || eachTime.time === 900 || eachTime.time === 1140 || eachTime.time === 1170){
+                                            eachTime.possible = true;
+                                        }
+                                    })
+                                }else{
+                                    newAmPm.forEach((eachTime : any) => {
+                                        if(eachTime.time === 600 || eachTime.time === 810 || eachTime.time === 840){
+                                            eachTime.possible = true;
+                                        }
+                                    })
+                                }
+                            }
+
+                        }
+
+
+                        if(location === "daechi"){
+
+
+                            if(select === 0){
+                                //평일 10:00, 11:00, 13:30, 15:00, 19:00
+                                //토요일 10:00, 11:00, 13:30
+
+                                if(!isSaturday){
+                                    newAmPm.forEach((eachTime : any) => {
+                                        if(eachTime.time === 600 || eachTime.time === 660 || eachTime.time === 810 || eachTime.time === 900 || eachTime.time === 1140){
+                                            eachTime.possible = true;
+                                        }
+                                    })
+                                }else{
+                                    newAmPm.forEach((eachTime : any) => {
+                                        if(eachTime.time === 600 || eachTime.time === 660 || eachTime.time === 810){
+                                            eachTime.possible = true;
+                                        }
+                                    })
+                                }
+                            }
+
+                            if(select === 1){
+                                //평일 10:00, 11:00, 11:30, 13:30, 14:00, 15:00, 15:30, 19:00, 19:30
+                                //토요일 10:00, 11:00, 11:30, 13:30, 14:00
+
+                                if(!isSaturday){
+                                    newAmPm.forEach((eachTime : any) => {
+                                        if(eachTime.time === 600 || eachTime.time === 660 || eachTime.time === 690 || eachTime.time === 810 || eachTime.time === 840 || eachTime.time === 900 || eachTime.time === 930 || eachTime.time === 1140 || eachTime.time === 1170){
+                                            eachTime.possible = true;
+                                        }
+                                    })
+                                }else{
+                                    newAmPm.forEach((eachTime : any) => {
+                                        if(eachTime.time === 600 || eachTime.time === 660 || eachTime.time === 690 || eachTime.time === 810 || eachTime.time === 840){
+                                            eachTime.possible = true;
+                                        }
+                                    })
+                                }
+                            }
+
+                        }
+                        //----------------------------------------------------------------------
+                        //----------------------------------------------------------------------
+
+
+                        //오늘부터 7일 뒤까지만 예약 가능하게 하는 기능-------------------------
+                        const deadLine = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 7, 23, 59, 59);
+                        const deadLineTime = deadLine.getTime();
+
+                        const realSelectedDayDate = new Date(realSelectedDay.year, realSelectedDay.month, realSelectedDay.date, 0, 0, 0);
+
+                        if (realSelectedDayDate.getTime() > deadLineTime) {
+                            newAmPm.forEach((eachTime: any) => {
+                                eachTime.possible = false;
+                            })
+                        }
+
+                        if(isSunday){
+                            newAmPm.forEach((eachTime: any) => {
+                                eachTime.possible = false;
+                            })
+                        }
+
+                        newAmPm.forEach((eachTime: any) => {
+
+                            if(occupiedTimeData.includes(eachTime.time)){
+                                eachTime.possible = false;
+                            }
+
+                        });
+
+                        // ampm.forEach((eachTime: number) => {
+                        //     const oneRow: any = {};
+                        //     oneRow.time = eachTime;
+                        //     oneRow.ampm = "pm";
+                        //     if (eachTime <= 690) {
+                        //         oneRow.ampm = "am";
+                        //     }
+                        //     //oneRow.possible = true;
+                        //     if (occupiedTimeData.includes(eachTime) 
+                        //     //|| occupiedTimeData.includes(eachTime - 30)
+                        // ) {
+                        //         oneRow.possible = false;
+                        //     }
+                        //     oneRow.isPast = false;
+                        //     if (isToday) {
+                        //         if (oneRow.time < currentTime + 60) {
+                        //             oneRow.isPast = true;
+                        //         }
+                        //     }
+                        //     newAmPm.push(oneRow);
+                        // });
+
+
+                        
                         
 
 
@@ -432,50 +602,7 @@ const Register: React.FC<any> = (props) => {
 
 
 
-    //잠깐 이번주 수,목 방문 상담 빼는 기능--------------------------
-    useEffect(() => {
 
-
-        if (!selectedDay || !timeData) {
-            console.log("noData");
-            return;
-        }
-
-        console.log(selectedDay);
-
-        var count = 0;
-
-        timeData.forEach((eachTimeData : any) => {
-            if(eachTimeData.possible === false){
-                count++;
-            }
-        })
-
-        if(count === timeData.length){
-            return;
-        }
-
-
-        if (selectedDay === 20221030 || selectedDay === 20221101) {
-            if (select === 0 || select === 2) {
-
-                console.log("gogogogogog");
-                console.log(select);
-
-                console.log(timeData);
-                const newTimeData = timeData
-                newTimeData.forEach((eachTime: any) => {
-                    eachTime.possible = false;
-                })
-                setTimeData([...newTimeData]);
-            }
-        }
-
-
-
-    }, [selectedDay, select, timeData]);
-
-    //------------------------------------------------------------------------------------------
 
 
 

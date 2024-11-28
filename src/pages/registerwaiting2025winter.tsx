@@ -1,56 +1,34 @@
 import React, { useState, useEffect, useRef } from "react";
-import HeaderTwo from "../components/header2";
 import styles from "../styles/register.module.css";
 import { ReactComponent as ChevronRight } from '../svg/chevron-right-solid-black.svg';
 import { ReactComponent as ChevronLeft } from '../svg/chevron-left-solid-black.svg';
-import { Box, Button, Modal } from "@mui/material";
+import { Button } from "@mui/material";
 import Footer from "../components/footer";
 import CircularProgress from '@mui/material/CircularProgress';
 import { useNavigate } from "react-router-dom";
 import SpeedDialComponent from "../control/speeddial";
 import { useMediaQuery } from "react-responsive";
-import ReactGa from "react-ga4";
-import { Badge, CssVarsProvider} from "@mui/joy";
+import { Checkbox, Modal, Sheet } from "@mui/joy";
+import { Check } from "@mui/icons-material";
 
 // const startDate = new Date();
 
-
-const weeks = [1, 2, 3, 4, 5, 6];
-const ampm = [600, 630, 660, 690, 720, 750, 780, 810, 840, 870, 900, 930, 960, 990, 1020, 1050, 1080, 1110, 1140, 1170, 1200, 1230, 1260, 1290];
-const pm = [720, 750, 780, 810, 840, 870, 900, 930, 960, 990, 1020, 1050, 1080, 1110, 1140, 1170, 1200, 1230, 1260, 1290, 1320]
-const am = [600, 630, 660, 690];
 var intervalId: any;
 
-const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 300,
-    bgcolor: 'background.paper',
-    opacity : 0.8,
-    p: 3,
-    borderRadius: 2,
-    '&:focus' : {
-        outline : "none"
-    },
-    '&:focus-visible' : {
-        outline : "none"
-    }
-  };
-
-const RegisterWaiting: React.FC<any> = (props) => {
+const RegisterWaiting2025Winter: React.FC<any> = (props) => {
 
     const today = new Date();
+
+
     const [open, setOpen] = useState(true);
-
-    const [location, setLocation] = useState<String>("gangnam");
-
+    const [location, setLocation] = useState<String>("daechi");
     const [select, setSelect] = useState("male");
     const [select2, setSelect2] = useState("n");
+    // const [select3, setSelect3] = useState("n");
+    const [agree, setAgree] = useState(false);
 
-    const [gangnamCount, setGangnamCount] = useState(0);
-    const [daechiCount, setDaechiCount] = useState(0);
+    const [nCount, setNCount] = useState(0);
+    const [currentCount, setCurrentCount] = useState(0);
 
 
 
@@ -84,10 +62,12 @@ const RegisterWaiting: React.FC<any> = (props) => {
     const eachRef = useRef<any>(new Array());
 
     //가로 세로 길이 같게 만드는-----------------------------------------
-    const isMobile = useMediaQuery({query : '(max-width : 500px)'});
+    const isMobile = useMediaQuery({ query: '(max-width : 500px)' });
 
 
     const [isConstructionDay, setIsConstructionDay] = useState(false);
+
+    const [loading, setLoading] = useState(false);
 
     //ga event------------------------------------------------
     useEffect(() => {
@@ -99,42 +79,42 @@ const RegisterWaiting: React.FC<any> = (props) => {
 
     useEffect(() => {
 
-        getOrder();
+        //getOrder();
 
     }, []);
 
     const getOrder = () => {
 
-        fetch("https://peetsunbae.com/waiting/getorder", {
-            method : "GET"
-        }).then((response : any) => {
+        fetch("https://peetsunbae.com/waiting/getorderwinterbundang", {
+            method: "GET"
+        }).then((response: any) => {
             response.json()
-            .then((result : any) => {
+                .then((result: any) => {
 
-                if(result.message === "success"){
-                    console.log(result);
-                    setGangnamCount(result.gangnamCount);
-                    setDaechiCount(result.daechiCount);
-                }
+                    if (result.message === "success") {
+                        console.log(result);
+                        setNCount(result.n + 27);
+                        setCurrentCount(result.current + 22);
+                    }
 
-            })
+                })
         })
 
     }
 
 
 
-    useEffect(()=>{
+    useEffect(() => {
         window.scrollTo(0, 0);
     }, [])
 
-  
+
 
     const typeName = (e: any) => {
         setName(e.target.value);
     }
 
-    const typeEtc = (e : any) => {
+    const typeEtc = (e: any) => {
         setEtc(e.target.value);
     }
 
@@ -255,7 +235,7 @@ const RegisterWaiting: React.FC<any> = (props) => {
                 .then((result: any) => {
                     console.log(result);
                 })
-         }
+        }
         )
     }
 
@@ -274,6 +254,14 @@ const RegisterWaiting: React.FC<any> = (props) => {
             return;
         }
 
+        if(!agree){
+            console.log("noAgree");
+            setSubmitStatus("noAgree");
+            return;
+        }
+
+        setLoading(true);
+
         setSubmitStatus("");
 
         const data = {
@@ -284,6 +272,8 @@ const RegisterWaiting: React.FC<any> = (props) => {
             telephoneNumber: telephoneNumber,
             cert: certNumber,
             etc: etc,
+            year : 2025,
+            type1 : "winter"
         }
 
         console.log(data);
@@ -297,6 +287,9 @@ const RegisterWaiting: React.FC<any> = (props) => {
         }).then((response: any) => {
             response.json()
                 .then((result: any) => {
+
+                    setLoading(false);
+
                     console.log(result.message);
                     if (result.message === "fail" || result.message === "error") {
                         alert("오류 관리자 문의(010-9880-0489)")
@@ -322,47 +315,72 @@ const RegisterWaiting: React.FC<any> = (props) => {
             </div>
 
             <div className={styles.titleText2}>
-                1분 안에<br></br>대기 등록 해드릴게요!
+                1분 안에<br></br>신청해 드릴게요!
             </div>
 
-            <div className={styles.waitingNumberBox}>
+            {/* <div className={styles.waitingNumberBox}>
                 <div className={styles.waitingNumberInnerBox}>
                     <div className={styles.realNumberBox}>
                         <div className={styles.realNumberTitle}>
-                            강남점 대기자
+                            N수생
                         </div>
                         <div className={styles.realNumberDescription}>
-                            <span>{gangnamCount && gangnamCount}</span>명
+                            <span>{winterCount && winterCount}</span>명
                         </div>
                     </div>
                     <div className={styles.centerBorder}>
-                        
+
                     </div>
                     <div className={styles.realNumberBox}>
                         <div className={styles.realNumberTitle}>
-                            대치점 대기자
+                            재학생
                         </div>
                         <div className={styles.realNumberDescription}>
-                            <span>{daechiCount && daechiCount}</span>명
+                            <span>{brefingCount && brefingCount}</span>명
                         </div>
                     </div>
                 </div>
+            </div> */}
+
+            <div className={styles.numberBox}>
+                <div className={styles.realNumberBox2}>
+                    <div className={styles.realNumberTitle}>
+                        대치점 정규윈터
+                    </div>
+                    <div className={styles.realNumberDescription}>
+                        <span>모집 마감 (대기자 접수)</span>
+                    </div>
+                </div>
+                {/* <div className={styles.verticalLine}>
+
+                </div>
+                <div className={styles.realNumberBox2}>
+                    <div className={styles.realNumberTitle}>
+                        {select === "gangnam" ? "강남점" : "대치점"} 정규윈터
+                    </div>
+                    <div className={styles.realNumberDescription}>
+                        <span>모집중</span>
+                    </div>
+                </div> */}
             </div>
 
             <div className={styles.formBody}>
 
+
                 <div className={`${styles.questionText} ${styles.first} ${styles.real}`}>
-                    어느 지점의 대기등록을 원하시나요?
+                    대기자 접수 신청
                 </div>
                 <div className={styles.selectDiv}>
-                    <div onClick={(e: any) => { setLocation("gangnam") }} className={`${styles.select} ${location === "gangnam" ? styles.active : ""}`}>
+                    {/* <div onClick={(e: any) => { return; setSelect("gangnam"); }} className={`${styles.disableBtn} ${styles.select} ${select === "gangnam" ? styles.active : ""}`}>
                         강남점
-                    </div>
-                    <div onClick={(e: any) => { setLocation("daechi") }} className={`${styles.select} ${location === "daechi" ? styles.active : ""}`}>
-                        대치점
-                    </div>
-                    <div onClick={(e: any) => { setLocation("bundang") }} className={`${styles.select} ${location === "bundang" ? styles.active : ""}`}>
-                        분당점
+                    </div> */}
+                    <div onClick={(e: any) => {
+                        // alert("죄송합니다. 6월부터 11월까지 재학생은 신규등록이 불가합니다.")
+                        // return;
+                        setLocation("daechi");
+                    }}
+                        className={`${styles.select} ${location === "daechi" ? styles.active : ""}`}>
+                        대치점 정규윈터
                     </div>
                 </div>
 
@@ -378,22 +396,28 @@ const RegisterWaiting: React.FC<any> = (props) => {
                     </div>
                 </div>
 
-                <div className={`${styles.questionText} ${styles.first}`}>
-                    현재 학년은 어떻게 되시나요?
+                <div className={`${styles.questionText} ${styles.first}`} style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                }}>
+                    <div>
+                        현재 학년
+                    </div>
+                    <div>
+
+                    </div>
                 </div>
                 <div className={styles.selectDiv}>
                     <div onClick={(e: any) => { setSelect2("n"); }} className={`${styles.select} ${select2 === "n" ? styles.active : ""}`}>
-                        N수생(자퇴생)
+                        N수생
                     </div>
-                    <div onClick={(e: any) => {
-                        // alert("죄송합니다. 6월부터 11월까지 재학생은 신규등록이 불가합니다.")
-                        // return;
-                        setSelect2("current"); 
-                        }} 
-                        className={`${styles.select} ${select2 === "current" ? styles.active : ""}`}>
+                    <div onClick={(e: any) => { setSelect2("current"); }} className={`${styles.select} ${select2 === "current" ? styles.active : ""}`}>
                         재학생
                     </div>
                 </div>
+
+
+
 
 
                 <div className={`${styles.questionText} ${styles.third}`}>
@@ -473,11 +497,13 @@ const RegisterWaiting: React.FC<any> = (props) => {
 
                 <div className={styles.inputWrapper}>
                     <div className={styles.inputDiv}>
-                        <input value={etc} onChange={typeEtc} placeholder="예) 3월부터 등원희망합니다." className={styles.input} type="text">
+                        <input value={etc} onChange={typeEtc} placeholder="" className={styles.input} type="text">
 
                         </input>
                     </div>
                 </div>
+
+
 
 
                 <div className={styles.informResult}>
@@ -493,58 +519,69 @@ const RegisterWaiting: React.FC<any> = (props) => {
                             핸드폰 인증을 해주세요
                         </span>
                     }
+                    {
+                        (submitStatus === "noAgree" && !agree) &&
+                        <span className={styles.informResult}>
+                            아래 정보 수신 동의 체크박스를 체크해주세요
+                        </span>
+                    }
                 </div>
                 <div className={styles.submitBtnDiv}>
-                    <Button onClick={submit} variant="contained" fullWidth sx={{ height: "72px", backgroundColor: "#3c3c3c", color: "white", fontWeight: 700, fontSize: "20px", "&:hover": { backgroundColor: "rgb(100,100,100)" }, "@media (max-width : 1024px)": {fontSize : "16px", height : '55.5px'} }}>
-                        신청서 제출
+                    <div style={{
+                        display: "flex",
+                        alignItems: "center",
+                        marginBottom: "12px",
+                        marginTop : "10px"
+                    }}>
+                        <Checkbox 
+                            color={
+                                submitStatus === "noAgree" ? "danger" : "neutral"
+                            }
+                            checked={agree}
+                            onChange={(e : any) => {
+                                setAgree(e.target.checked);
+                            }}
+                            label={<span style={{
+                                fontWeight: 400,
+                                marginLeft: "2px",
+                                fontSize : "14px",
+                                color : submitStatus === "noAgree" ? "#d3232f" : "gray",
+                                display : "flex",
+                                alignItems : "center"
+                            }}
+                        >
+                                수능선배의 다양한 소식을 전달받으실 수 있습니다.
+                            </span>}
+                        />
+
+                    </div>
+                    <Button onClick={submit} variant="contained" fullWidth sx={{ height: "72px", backgroundColor: "#3c3c3c", color: "white", fontWeight: 700, fontSize: "20px", "&:hover": { backgroundColor: "rgb(100,100,100)" }, "@media (max-width : 1024px)": { fontSize: "16px", height: '55.5px' } }}
+                    >
+                        {
+                            !loading ?
+                            "신청서 제출"
+                            :
+                            <CircularProgress
+                            color="inherit"
+                            />
+                        }
                     </Button>
                 </div>
-                <div className={styles.bottomText} style={{lineHeight : 1.5}}>
+                {/* <div className={styles.bottomText} style={{lineHeight : 1.5}}>
                     ** <b>실시간 대기 현황</b>을 카카오 알림톡으로 전송해드립니다
                     <br></br>
                     ** <b>흡연자</b>의 경우 등록이 불가합니다
                     <br></br>
                     ** 수능선배의 다양한 소식을 전달받으실 수 있습니다.
-                </div>
+                </div> */}
             </div>
 
             <div className={styles.void2}>
 
             </div>
 
-            <Modal
-            open={open}
-            onClose={() => {
-                setOpen(false);
-            }}
-            >
-                <Box sx={style}>
-                   <div style={{
-                    marginBottom : "20px",
-                    lineHeight : 1.5,
-                    fontWeight : 500
-                   }}>
-                        현 대기는 2024년 11월 14일 수능일 전까지만 유효합니다. 2024년 11월 18일 이후 입실을 원하시면 윈터스쿨로 등록 바랍니다.
-                   </div>
-                   <div style={{
-                    lineHeight : 1.5
-                   }}>
-                        ※ 2025 윈터스쿨 / N수대비반 공지사항 바로가기
-                   </div>
-                   <div style={{
-                    display : "flex",
-                    justifyContent : "center",
-                    marginTop : "20px"
-                   }}>
-                     <a href="https://suneungsunbae.com/notification">
-                        바로가기
-                     </a>
-                   </div>
-                </Box>
-            </Modal>
-
         </div>
     )
 }
 
-export default RegisterWaiting;
+export default RegisterWaiting2025Winter;

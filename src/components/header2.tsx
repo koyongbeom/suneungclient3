@@ -131,6 +131,11 @@ const HeaderTwo: any = (props: any) => {
                             대치점
                         </div>
                     </Link>
+                    <Link to="/bundangmap" style={{ textDecoration: "none", color: "inherit" }}>
+                        <div className={styles.mobileSubMenuList}>
+                            분당점
+                        </div>
+                    </Link>
                     <Link to="/price" style={{ textDecoration: "none", color: "inherit" }}>
                         <div className={styles.mobileSubMenuList}>
                             비용 안내
@@ -139,7 +144,7 @@ const HeaderTwo: any = (props: any) => {
                 </Collapse>
                 <Link to="/winterschool" style={{ textDecoration: "none", color: "inherit" }}>
                     <div className={styles.mobileMenuList}>
-                        대치점 확장 오픈
+                        2025 윈터스쿨
                     </div>
                 </Link>
                 <Link to="/studysystem" style={{ textDecoration: "none", color: "inherit" }}>
@@ -225,6 +230,13 @@ const HeaderTwo: any = (props: any) => {
                                                 </span>
                                             </div>
                                         </Link>
+                                        <Link to="/bundangmap" style={{ textDecoration: "none", color: "inherit" }}>
+                                            <div className={styles.cateSubMenu}>
+                                                <span className={styles.cateSubMenuText}>
+                                                    분당점
+                                                </span>
+                                            </div>
+                                        </Link>
                                         <Link to="/price" style={{ textDecoration: "none", color: "inherit" }}>
                                             <div className={styles.cateSubMenu}>
                                                 <span className={styles.cateSubMenuText}>
@@ -239,7 +251,7 @@ const HeaderTwo: any = (props: any) => {
                                 <li
                                     onMouseEnter={() => { setHover(true); setHoverKind("winterschool"); }} onMouseLeave={() => setHover(false)}
                                 >
-                                    대치점 확장 오픈
+                                    2025 윈터스쿨
                                 </li>
                             </Link>
                             <Link to="/studysystem" style={{ textDecoration: "none", color: "inherit" }}>
@@ -317,7 +329,7 @@ const HeaderTwo: any = (props: any) => {
                 <div className={styles.bottomMenuDiv} ref={ref}>
                     <div className={styles.listTab}>
                         <div onClick={(e: any) => { navigate("/winterschool") }} className={styles.bottomMenuList}>
-                                대치점 확장 오픈
+                                2025 윈터스쿨
                                 <div className={styles.dot1}>
 
                                 </div>
@@ -342,6 +354,9 @@ const HeaderTwo: any = (props: any) => {
                         </div>
                         <div onClick={(e : any)=>{navigate("/daechimap")}} className={styles.bottomMenuList}>
                             대치점
+                        </div>
+                        <div onClick={(e : any)=>{navigate("/bundangmap")}} className={styles.bottomMenuList}>
+                            분당점
                         </div>
                         <div onClick={(e : any)=>{navigate("/review")}} className={styles.bottomMenuList}>
                             합격자후기

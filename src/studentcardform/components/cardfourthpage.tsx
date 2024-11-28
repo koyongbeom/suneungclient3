@@ -58,7 +58,7 @@ const CardFourthPage = (props: any) => {
                 </div>
 
                 <div className={styles.subTitle} style={{marginBottom : "24px"}}>
-                    <Check sx={{fontSize : "14px"}} /> <span style={{fontWeight : 500}}>멘토상담 및 모의고사 응시에 중요</span>합니다.
+                    <Check sx={{fontSize : "14px"}} /> <span style={{fontWeight : 500}}>필수 작성 (담임멘토 배정 및 모의고사 진행 시 활용)</span>
                 </div>
 
 
@@ -86,7 +86,7 @@ const CardFourthPage = (props: any) => {
 
                 <div className={styles.eachQuestion}>
                     <div className={styles.questionTitle}>
-                        국어 선택과목 ({new Date().getFullYear()}년 응시 예정 기준) <span className={styles.redStar}>*</span>
+                        국어 선택과목 <span className={styles.redStar}>*</span>
                     </div>
                     <div className={styles.questionSubTitle}>
 
@@ -107,7 +107,7 @@ const CardFourthPage = (props: any) => {
 
                 <div className={styles.eachQuestion}>
                     <div className={styles.questionTitle}>
-                        수학 선택과목 ({new Date().getFullYear()}년 응시 예정) <span className={styles.redStar}>*</span>
+                        수학 선택과목 <span className={styles.redStar}>*</span>
                     </div>
                     <div className={styles.questionSubTitle}>
 
@@ -129,7 +129,7 @@ const CardFourthPage = (props: any) => {
 
                 <div className={styles.eachQuestion}>
                     <div className={styles.questionTitle}>
-                        (문) 사회탐구 선택 1과목 ({new Date().getFullYear()}년 응시 예정)
+                        사탐 선택1
                     </div>
                     <div className={styles.questionSubTitle}>
 
@@ -162,7 +162,7 @@ const CardFourthPage = (props: any) => {
 
                 <div className={styles.eachQuestion}>
                     <div className={styles.questionTitle}>
-                        (문) 사회탐구 선택 2과목 ({new Date().getFullYear()}년 응시 예정)
+                        사탐 선택2
                     </div>
                     <div className={styles.questionSubTitle}>
 
@@ -195,7 +195,7 @@ const CardFourthPage = (props: any) => {
 
                 <div className={styles.eachQuestion}>
                     <div className={styles.questionTitle}>
-                        (이) 과학탐구 선택 1과목 ({new Date().getFullYear()}년 응시 예정)
+                        과탐 선택1
                     </div>
                     <div className={styles.questionSubTitle}>
 
@@ -227,7 +227,7 @@ const CardFourthPage = (props: any) => {
 
                 <div className={styles.eachQuestion}>
                     <div className={styles.questionTitle}>
-                        (이) 과학탐구 선택 2과목 ({new Date().getFullYear()}년 응시 예정)
+                        과탐 선택2
                     </div>
                     <div className={styles.questionSubTitle}>
 
@@ -262,7 +262,9 @@ const CardFourthPage = (props: any) => {
                         최근 수능(모의고사) 성적 <span className={styles.redStar}>*</span>
                     </div>
                     <div className={styles.questionSubTitle} style={{lineHeight : 1.5}}>
-                        예시) 22년 수능 : 국어(언매) 3등급 / 수학(미적) 2등급 / 영어 3등급 / 화학1 2등급 / 생물1 3등급
+                        예) 25학년도 수능 : 국어(언매) 98, 수학(미적) 74, 영어 1, 화1 97, 생물1 88
+                        <br />
+                        예) 10월 학평 : 국어(언매) 1등급, 수학(확통) 2등급, 영어 1, 화1 3등급, 생1 2등급
                     </div>
                     <div className={styles.answerBox}>
                         <Textarea

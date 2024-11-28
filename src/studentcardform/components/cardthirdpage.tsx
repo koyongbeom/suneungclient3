@@ -71,7 +71,7 @@ const CardThirdPage = (props: any) => {
 
                 <div className={styles.eachQuestion}>
                     <div className={styles.questionTitle}>
-                        등원시작 예정일 <span className={styles.redStar}>*</span>
+                        첫 등원일 <span className={styles.redStar}>*</span>
                     </div>
                     <div className={styles.questionSubTitle}>
 
@@ -94,7 +94,7 @@ const CardThirdPage = (props: any) => {
 
                 <div className={styles.eachQuestion}>
                     <div className={styles.questionTitle}>
-                        수능선배 알게 된 경로 <span className={styles.redStar}>*</span>
+                        수능선배를 알게 된 경로 <span className={styles.redStar}>*</span>
                     </div>
                     <div className={styles.questionSubTitle}>
 

@@ -440,8 +440,8 @@ const mobileData: any = [
                 description: "죠스 떡볶이"
             },
             {
-                title : "전용 앱",
-                src : "img/newdaechi/res1mockup.webp",
+                title: "전용 앱",
+                src: "img/newdaechi/res1mockup.webp",
             }
         ]
     },
@@ -849,7 +849,7 @@ const WinterSchool: React.FC<any> = (props) => {
                         &nbsp;&nbsp;&nbsp;합격을 위한 공간
                     </div>
                     <div className={styles.subHeaderTextTitle2}>
-                        &nbsp;&nbsp;&nbsp;수능선배 대치점 확장 오픈
+                        &nbsp;&nbsp;&nbsp;수능선배 2025 윈터스쿨
                     </div>
                     <div className={styles.subHeaderTextSubTitle}>
 
@@ -861,7 +861,7 @@ const WinterSchool: React.FC<any> = (props) => {
                     <HouseSvg className={styles.houseSvg} />
                     <RightChevronSvg className={styles.rightChevron} />
                     <div className={styles.currentMenuViewerText_2}>
-                        윈터 스쿨
+                        윈터스쿨
                     </div>
                 </div>
             </div>
@@ -1025,7 +1025,14 @@ const WinterSchool: React.FC<any> = (props) => {
                     }}
                         className={styles.textBoxWrapperText}
                     >
-                        대기자 신청 (순번에 따른 개별 연락 예정)
+                        현장 방문 접수
+                        <div style={{
+                            marginTop : "8px",
+                        }}>
+                            <a href="https://suneungsunbae.com/notification">
+                                (공지사항 바로가기)
+                            </a>
+                        </div>
                     </div>
                     <div style={{
                         marginBottom: "12px",
@@ -1041,7 +1048,7 @@ const WinterSchool: React.FC<any> = (props) => {
                     }}
                         className={styles.textBoxWrapperText}
                     >
-                        N수생 및 재학생
+                        예비고1~고3 및 N수생
                     </div>
                 </div>
 
@@ -1101,9 +1108,9 @@ const WinterSchool: React.FC<any> = (props) => {
 
 
             <div className={styles.secondSection}>
-                <div className={`${styles.openTitleText} ${styles.second}`}>
+                {/* <div className={`${styles.openTitleText} ${styles.second}`}>
                     수능선배가 만든<br></br>대치점 신관을 소개합니다
-                </div>
+                </div> */}
 
                 <ul className={styles.secondSectionList}>
                     <li className={`${styles.oddList} ${styles.odd}`}>
@@ -1221,7 +1228,7 @@ const WinterSchool: React.FC<any> = (props) => {
                             </div>
                         </div>
                     </li>
-                    
+
 
                 </ul>
 
@@ -1405,47 +1412,47 @@ const WinterSchool: React.FC<any> = (props) => {
                                 {
                                     (index === 0 && submenuIndex === 2) &&
                                     <div className={styles.chartDiv}>
-                                    <div className={styles.englishWordGridBody}>
-                                        <div className={`${styles.englishWordGrid} ${styles.firstGrid}`}>
-                                            <div className={styles.forMobileEnglishWord}>
-                                                <div className={styles.englishWordGridTitle}>
-                                                    수능선배 영단어 프로그램
-                                                </div>
-                                                <div className={styles.englishWordGridDescription}>
-                                                    매일 담임멘토와 상의한<br className={styles.onlymobile}></br> 스케쥴에 맞춰 영단어를 암기하고<br></br>
-                                                    재원생 전용 프로그램을 통해<br className={styles.onlymobile}></br> 테스트에 필수 응시해야 합니다.
-                                                </div>
+                                        <div className={styles.englishWordGridBody}>
+                                            <div className={`${styles.englishWordGrid} ${styles.firstGrid}`}>
+                                                <div className={styles.forMobileEnglishWord}>
+                                                    <div className={styles.englishWordGridTitle}>
+                                                        수능선배 영단어 프로그램
+                                                    </div>
+                                                    <div className={styles.englishWordGridDescription}>
+                                                        매일 담임멘토와 상의한<br className={styles.onlymobile}></br> 스케쥴에 맞춰 영단어를 암기하고<br></br>
+                                                        재원생 전용 프로그램을 통해<br className={styles.onlymobile}></br> 테스트에 필수 응시해야 합니다.
+                                                    </div>
 
-                                            </div>
-                                            <div className={styles.englishWordImgWrapper}>
-                                                <div className={styles.englishWordImgDiv}>
-                                                    <img className={styles.englishWordImg1} src="img/englishwordimg1.webp" alt="word" />
+                                                </div>
+                                                <div className={styles.englishWordImgWrapper}>
+                                                    <div className={styles.englishWordImgDiv}>
+                                                        <img className={styles.englishWordImg1} src="img/englishwordimg1.webp" alt="word" />
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div className={`${styles.englishWordGrid} ${styles.secondGrid}`}>
-                                            <div className={styles.forMobileEnglishWord}>
+                                            <div className={`${styles.englishWordGrid} ${styles.secondGrid}`}>
+                                                <div className={styles.forMobileEnglishWord}>
 
-                                                <div className={styles.englishWordGridTitle}>
-                                                    나만을 위한 단어장
+                                                    <div className={styles.englishWordGridTitle}>
+                                                        나만을 위한 단어장
+                                                    </div>
+                                                    <div className={styles.englishWordGridDescription}>
+                                                        담임멘토가 직접 학생의 수준을 파악 후<br></br>
+                                                        적절한 난이도의 단어장을 선정하여,<br></br>
+                                                        매 주차 과제를 부여합니다.
+                                                    </div>
                                                 </div>
-                                                <div className={styles.englishWordGridDescription}>
-                                                    담임멘토가 직접 학생의 수준을 파악 후<br></br>
-                                                    적절한 난이도의 단어장을 선정하여,<br></br>
-                                                    매 주차 과제를 부여합니다.
+                                                <div className={`${styles.englishWordImgWrapper} ${styles.secondWrapper}`}>
+                                                    <div className={styles.englishWordImgDiv}>
+                                                        <img className={styles.englishWordImg2} src="img/englishwordimg2.webp" alt="word" />
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div className={`${styles.englishWordImgWrapper} ${styles.secondWrapper}`}>
-                                                <div className={styles.englishWordImgDiv}>
-                                                    <img className={styles.englishWordImg2} src="img/englishwordimg2.webp" alt="word" />
-                                                </div>
-                                            </div>
-                                            <div style={{ height: "15px" }}>
+                                                <div style={{ height: "15px" }}>
 
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
                                 }
 
                                 {/* {
@@ -1508,7 +1515,7 @@ const WinterSchool: React.FC<any> = (props) => {
                 <div className={`${styles.mealDiv} ${styles.onlyPC}`} >
                     <div className={styles.mealBoxWrapper}>
                         <div className={`${styles.mealBox} ${styles.first}`} style={{
-                            marginBottom : "24px"
+                            marginBottom: "24px"
                         }}>
                             <div className={styles.mealBoxTitle}>
                                 한식
@@ -1518,49 +1525,49 @@ const WinterSchool: React.FC<any> = (props) => {
                                     <img src="/img/bon.webp" className={styles.mealImg} />
                                 </div>
                                 <div className={styles.mealImageDiv}>
-                                        <img src="/img/bon3.webp" className={styles.mealImg} />
-                                    </div>
-                                </div>
-                            </div>
-                            <div className={styles.mealBox}>
-                                <div className={styles.mealBoxTitle}>
-                                    특식
-                                </div>
-                                <div className={styles.mealImagesDiv}>
-                                    <div className={styles.mealImageDiv}>
-                                        <img src="/img/subway2.webp" className={styles.mealImg} />
-                                    </div>
-                                    <div className={styles.mealImageDiv}>
-                                        <img src="/img/graph/dduk2.webp" className={styles.mealImg} />
-                                    </div>
+                                    <img src="/img/bon3.webp" className={styles.mealImg} />
                                 </div>
                             </div>
                         </div>
-                        <div className={styles.mealBoxWrapper2} style={{
-                            display : "flex",
-                            justifyContent : "flex-end"
-                        }}>
-                            <div style={{
-                                display : "flex",
-                                width : "90%",
-                                justifyContent : "center",
-                                alignItems : "center"
-                            }}>
-                                <div style={{
-                                    marginRight : "20px"
-                                }}>
-                                    <img src="/img/newdaechi/res1mockup.webp" style={{
-                                        width: "240px"
-                                    }} />
+                        <div className={styles.mealBox}>
+                            <div className={styles.mealBoxTitle}>
+                                특식
+                            </div>
+                            <div className={styles.mealImagesDiv}>
+                                <div className={styles.mealImageDiv}>
+                                    <img src="/img/subway2.webp" className={styles.mealImg} />
                                 </div>
-                                <div>
-                                    <img src="/img/newdaechi/res2mockup.webp" style={{
-                                        width: "240px"
-                                    }} />
+                                <div className={styles.mealImageDiv}>
+                                    <img src="/img/graph/dduk2.webp" className={styles.mealImg} />
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <div className={styles.mealBoxWrapper2} style={{
+                        display: "flex",
+                        justifyContent: "flex-end"
+                    }}>
+                        <div style={{
+                            display: "flex",
+                            width: "90%",
+                            justifyContent: "center",
+                            alignItems: "center"
+                        }}>
+                            <div style={{
+                                marginRight: "20px"
+                            }}>
+                                <img src="/img/newdaechi/res1mockup.webp" style={{
+                                    width: "240px"
+                                }} />
+                            </div>
+                            <div>
+                                <img src="/img/newdaechi/res2mockup.webp" style={{
+                                    width: "240px"
+                                }} />
+                            </div>
+                        </div>
+                    </div>
+                </div>
             }
 
             <div className={styles.onlyPC}>
@@ -1819,7 +1826,7 @@ const WinterSchool: React.FC<any> = (props) => {
                                 등록비
                             </div>
                             <div className={styles.differentiationList_2}>
-                                월 등록비 720,000원
+                                월 등록비 750,000원
                             </div>
                         </div>
                         <div className={`${styles.differentiationList} ${styles.last}`}>
@@ -1828,10 +1835,10 @@ const WinterSchool: React.FC<any> = (props) => {
                             </div>
                             <div className={`${styles.differentiationList_2} ${styles.multiLine}`}>
                                 <div>
-                                    □ 대기등록이 필요합니다. (커뮤니티 &gt; 공지사항 참조)
+                                    □ 현장 방문 접수
                                 </div>
                                 <div>
-                                    □ 흡연자의 경우 등록이 불가합니다.
+                                    □ 접수 기간 : 지점별 상이(공지사항 참조)
                                 </div>
                             </div>
                         </div>
@@ -1840,9 +1847,15 @@ const WinterSchool: React.FC<any> = (props) => {
                             <div className={styles.differentiationList_1}>
                                 주소
                             </div>
-                            <div className={`${styles.differentiationList_2}`}>
+                            <div className={`${styles.differentiationList_2} ${styles.multiLine}`}>
                                 <div>
-                                    서울 강남구 역삼로 424 6층 (기존 대치점과 동일한 건물)
+                                    □ 강남점 : 서초대로 78길 52 인앤인빌딩 5층
+                                </div>
+                                <div>
+                                    □ 대치점 : 역삼로 424 진영빌딩 2,3,6층
+                                </div>
+                                <div>
+                                    □ 분당점 : 분당구 성남대로 381, 9층
                                 </div>
                             </div>
                         </div>

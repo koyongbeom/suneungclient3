@@ -61,7 +61,7 @@ const CardFifthPage = (props: any) => {
                     <Check sx={{fontSize : "14px"}} /> <span style={{fontWeight : 500}}>담임멘토 배정 및 상담에 중요</span>합니다.
                 </div>
                 <div className={styles.subTitle} style={{marginBottom : "24px"}}>
-                    <Check sx={{fontSize : "14px"}} /> 과목별 현재 공부중인 <span style={{fontWeight : 500}}>교재, 수강강사, 커리큘럼</span> 등 자세히 적어주세요
+                    <Check sx={{fontSize : "14px"}} /> 과목별 현재 공부 중인 <span style={{fontWeight : 500}}>교재, 수강강사, 커리큘럼</span> 등 자세히 적어주세요.
                 </div>
 
 

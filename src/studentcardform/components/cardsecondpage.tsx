@@ -167,7 +167,7 @@ const CardSecondPage = (props: any) => {
 
                 <div className={styles.eachQuestion}>
                     <div className={styles.questionTitle}>
-                        수능응시횟수 <span className={styles.redStar}>*</span>
+                        학년 (25' 기준) <span className={styles.redStar}>*</span>
                     </div>
                     <div className={styles.questionSubTitle}>
 
@@ -217,7 +217,7 @@ const CardSecondPage = (props: any) => {
 
                 <div className={styles.eachQuestion}>
                     <div className={styles.questionTitle}>
-                        출신고 (선택사항)
+                        출신고
                     </div>
                     <div className={styles.questionSubTitle}>
                     </div>
@@ -235,7 +235,7 @@ const CardSecondPage = (props: any) => {
 
                 <div className={styles.eachQuestion}>
                     <div className={styles.questionTitle}>
-                        내신등급 (선택사항)
+                        내신등급
                     </div>
                     <div className={styles.questionSubTitle}>
 
@@ -261,7 +261,7 @@ const CardSecondPage = (props: any) => {
 
                 <div className={styles.eachQuestion}>
                     <div className={styles.questionTitle}>
-                        현재 재학중인 대학교 및 학과 (선택사항)
+                        현재 재학 중인 대학교 및 학과 (선택사항)
                     </div>
                     <div className={styles.questionSubTitle}>
                     </div>

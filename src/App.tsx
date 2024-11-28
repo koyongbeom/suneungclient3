@@ -43,6 +43,10 @@ import WaitingRegisterInstant2 from './pages/waitingregisterinstant2';
 import JustPdfViewer3 from './pages/justpdfviewer3';
 import TvShowPage from './pages/tvshowpage';
 import TvShowPage2 from './pages/tvshowpage2';
+import BundangMap from './pages/bundangmap';
+import RegisterWaitingBundang from './pages/registerwaitingbundang';
+import LetsCall from './pages/letscall';
+import RegisterWaiting2025Winter from './pages/registerwaiting2025winter';
 // import KioskMain from './kiosk/kioskmain';
 // import Notification from './pages/notification';
 
@@ -114,6 +118,7 @@ function App() {
             <Route path="/ceo" element={<Ceo />}></Route>
             <Route path="/map" element={<Map />}></Route>
             <Route path="/daechimap" element={<DaechiMap />}></Route>
+            <Route path="/bundangmap" element={<BundangMap />}></Route>
             <Route path="/teachers" element={<Teachers />}></Route>
             <Route path="/studysystem" element={<StudySystem />}></Route>
             <Route path="/review" element={<Review />}></Route>
@@ -131,7 +136,9 @@ function App() {
             <Route path="/attendancetable" element={<AttendanceTable />}></Route>
             <Route path="/consultresult" element={<ReportToParent />}></Route>
             <Route path="/testmap" element={<Testmap />}></Route>
-            <Route path="/registerwaiting" element={<RegisterWaiting />}></Route>
+            {/* <Route path="/registerwaiting" element={<RegisterWaiting />}></Route> */}
+            <Route path="/registerwaitingbundang" element={<RegisterWaitingBundang />}></Route>
+            <Route path="/registerWaiting2025Winter" element={<RegisterWaiting2025Winter />}></Route>
             {/* <Route path="/registerwinter" element={<RegisterWinter />}></Route> */}
             <Route path="/registerwaitingfinish" element={<WaitingRegisterFinish />}></Route>
             <Route path="/registerwaitingcalendar" element={<RegisterWaitingCalendar />}></Route>
@@ -160,6 +167,10 @@ function App() {
 
             <Route path="/tvshowpage" element={<TvShowPage />}></Route>
             <Route path="/tvshowpage2" element={<TvShowPage2 />}></Route> 
+
+            <Route path="/letscall" element={<LetsCall />}></Route>
+
+            
 
           </Routes>
         </Suspense>

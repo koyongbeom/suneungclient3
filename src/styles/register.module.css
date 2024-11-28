@@ -38,6 +38,27 @@
     margin: 0 auto;
 }
 
+.numberBox{
+    border-radius: 8px;
+    margin: 0 auto;
+    max-width: 500px;
+    margin-top: 30px;
+    width: 90.8%;
+    height: 100px;
+    border: 0.7px solid #c8c8c8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.verticalLine{
+    height: 18px;
+    width: 1px;
+    background-color: #c8c8c8;
+}
+
+
+
 .waitingNumberBox{
     border-radius: 8px;
     margin: 0 auto;
@@ -70,6 +91,14 @@
     flex-direction: column;
     align-items: center;
 }
+
+.realNumberBox2{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: calc(50% - 0.5px);
+}
+
 .realNumberTitle{
     margin-bottom: 20px;
     color: #616161;
@@ -450,6 +479,11 @@
     transition: background-color 150ms ease-in;
     font-size: 16px;
     font-weight: 700;
+}
+
+.disableBtn{
+    background-color: #bdbdbd !important;
+    color: white !important;
 }
 
 .certBtn.active{

@@ -420,7 +420,7 @@ const StudentCard = (props: any) => {
                         }
                         {
                             page === 6 &&
-                            <CardSixthPage plusPage={plusPage} minusPage={minusPage} handleDataChange={handleDataChange} data={data} submit={submit} />
+                            <CardSixthPage plusPage={plusPage} minusPage={minusPage} handleDataChange={handleDataChange} data={data} submit={submit} isView={isView} />
                         }
                         {
                             page === 7 &&

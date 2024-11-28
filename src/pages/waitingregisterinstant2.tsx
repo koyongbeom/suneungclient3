@@ -138,7 +138,7 @@ const WaitingRegisterInstant2 = () => {
                 (!loading && subType === 1) &&
                 <div className={styles.contents}>
                     <div className={styles.contentsTitle}>
-                        사전 설문 접수 완료
+                        즉시 등록 희망
                     </div>
                     <div className={styles.contentsDescription}
                     style={{
@@ -146,10 +146,10 @@ const WaitingRegisterInstant2 = () => {
                         lineHeight : 1.5
                     }}
                     >
-                    '7월 3일 등원희망'으로<br></br> 사전 설문 접수가 완료되었습니다.<br></br><br></br> 
-방문 등록 결제에 관한<br></br>상세사항은 개별적으로<br></br>문자 안내드릴 예정입니다.<br></br><br></br>
+                    현 시점 이후 수능 전까지<br></br>'좌석이 날 경우 즉시 등록 희망'<br></br><br></br> 
+(대기 유지 및 연락 수신 원함)<br></br>으로 응답이 저장되었습니다.<br></br><br></br>
 
-*사전 설문은 등록 효력이 없으며,<br></br>방문 등록 결제 완료 시<br></br> 등록 절차가 완료됩니다. 
+자리나면 순번대로 연락드리겠습니다.<br></br>감사합니다. :D
                     </div>
                 </div>
             }

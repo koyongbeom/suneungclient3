@@ -1694,10 +1694,10 @@ const MainPage: any = (props: any) => {
                         </div>
                     </a>
                     <div className={styles.contactBoxAddress}>
-                        주소 : 서울특별시 서초구 서초동 1330-12
+                        지점안내
                     </div>
                     <div className={`${styles.contactBoxAddress} ${styles.second}`}>
-                        강남역 인앤인 빌딩(강남역 도보 5분)
+                        강남점, 대치점, 분당점
                     </div>
 
                 </div>

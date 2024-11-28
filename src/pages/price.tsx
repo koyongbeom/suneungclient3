@@ -66,16 +66,16 @@ const Price : React.FC<any> = (props) => {
                                 교실형
                             </div>
                             <div className={styles.priceBoxText}>
-                                자물쇠반 독학관리
+                                N수생/재학생
                             </div>
                             <div className={styles.priceBoxAmount}>
-                                <span className={styles.number}>720,000</span>&nbsp;/월
+                                <span className={styles.number}>750,000</span>&nbsp;/월
                             </div>
                             <div className={styles.priceBoxSubAmount}>
-                                모든 독학재수관리 비용 포함
+                                모든 독학관리 비용 포함
                             </div>
                             <div className={styles.bottomText}>
-                                넓은 개방형 공간을<br></br>원하는 학생에게 추천합니다
+                                개방적인 느낌을 선호하는<br></br>학생에게 추천합니다
                             </div>
                         </div>
                         {/* <div className={styles.priceBox}>
@@ -117,13 +117,13 @@ const Price : React.FC<any> = (props) => {
                                 칸막이형
                             </div>
                             <div className={styles.priceBoxText}>
-                                자물쇠반 독학관리
+                                N수생/재학생
                             </div>
                             <div className={styles.priceBoxAmount}>
-                                <span className={styles.number}>720,000</span>&nbsp;/월
+                                <span className={styles.number}>750,000</span>&nbsp;/월
                             </div>
                             <div className={styles.priceBoxSubAmount}>
-                                모든 독학재수관리 비용 포함
+                                모든 독학관리 비용 포함
                             </div>
                             <div className={styles.bottomText}>
                                 개인만의 공간에서 공부하길<br></br>원하는 학생에게 추천합니다

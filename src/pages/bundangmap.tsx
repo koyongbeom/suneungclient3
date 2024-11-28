@@ -24,7 +24,7 @@ import ReactGa from "react-ga4";
 
 declare var naver : any;
 
-const DaechiMap: React.FC<any> = (props) => {
+const BundangMap: React.FC<any> = (props) => {
 
     const [size, setSize] = useState(0);
     const [imageStyles, setImageStyles] = useState({
@@ -62,14 +62,14 @@ const DaechiMap: React.FC<any> = (props) => {
         window.scrollTo(0, 0);
 
         const map = new naver.maps.Map("map", {
-            center: new naver.maps.LatLng(37.5011, 127.0534),
+            center: new naver.maps.LatLng(37.370284, 127.1074897),
             zoom: 16,
         });
 
         const marker = new naver.maps.Marker({
             map: map,
             title: "수능선배",
-            position: new naver.maps.LatLng(37.5011, 127.0534),
+            position: new naver.maps.LatLng(37.370284, 127.1074897),
             animation: naver.maps.Animation.BOUNCE
         })
 
@@ -191,7 +191,7 @@ const DaechiMap: React.FC<any> = (props) => {
                     </div>
                     <RightChevronSvg className={`${styles.rightChevron} ${styles.second}`} />
                     <div className={styles.currentMenuViewerText_2}>
-                        대치점
+                        분당점
                     </div>
                 </div>
             </div>
@@ -211,7 +211,7 @@ const DaechiMap: React.FC<any> = (props) => {
                         </div>
                         <div className={styles.placeText}>
                             <div className={styles.placeText_1}>
-                                서울 강남구 역삼로 424 2,3,6층(대치동 909-3)
+                            경기 성남시 분당구 성남대로 381, 9층(정자동 15-3)
                             </div>
                             <div>
                                 자습실 06:00~24:00 이용가능
@@ -239,7 +239,7 @@ const DaechiMap: React.FC<any> = (props) => {
                                 지하철 이용시
                             </div>
                             <div className={styles.metroPlaceText}>
-                                선릉역 2번 출구 하차 후 도보 7분 거리
+                            정자역 5번 출구 하차 후 도보 3분 거리
                             </div>
                         </div>
                     </div>
@@ -248,7 +248,7 @@ const DaechiMap: React.FC<any> = (props) => {
             </div>
 
 
-            <div className={`${styles.interiorDiv} ${styles.onlyPC}`}>
+            {/* <div className={`${styles.interiorDiv} ${styles.onlyPC}`}>
                 <div className={styles.interior}>
                     <div className={styles.interiorTopDiv}>
                         <div className={styles.interiorTop}>
@@ -343,7 +343,7 @@ const DaechiMap: React.FC<any> = (props) => {
                     </div>
                 </div>
 
-            </div>
+            </div> */}
 
 
 
@@ -355,4 +355,4 @@ const DaechiMap: React.FC<any> = (props) => {
     );
 }
 
-export default DaechiMap;
+export default BundangMap;

@@ -48,16 +48,16 @@ const CardFirstPage = (props: any) => {
                         lineHeight : "1.4"
                     }}
                 >
-                    <Check sx={{fontSize : "16px"}} /> 작성 내용은 담임멘토배정, 모의고사 선택과목 등 학원시스템 이용에 전반적으로 반영되므로 신중하게 작성해주시길 바랍니다.
+                    <Check sx={{fontSize : "16px"}} /> 작성 내용은 담임멘토 배정, 모의고사 진행 등에 활용되니 상세히 작성해주시길 바랍니다.
                 </div>
-                <div
+                {/* <div
                     style={{
                         marginTop: "12px",
                         lineHeight : "1.4"
                     }}
                 >
                     <Check sx={{fontSize : "16px"}} /> 학생카드 작성 완료 후 재원생 전용 어플에서 정기일정을 등록하셔야 됩니다.
-                </div>
+                </div> */}
             </div>
 
             <div

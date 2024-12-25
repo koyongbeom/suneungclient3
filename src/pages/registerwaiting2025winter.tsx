@@ -351,29 +351,27 @@ const RegisterWaiting2025Winter: React.FC<any> = (props) => {
                         <span>모집 마감 (대기자 접수)</span>
                     </div>
                 </div>
-                {/* <div className={styles.verticalLine}>
+                <div className={styles.verticalLine}>
 
                 </div>
                 <div className={styles.realNumberBox2}>
                     <div className={styles.realNumberTitle}>
-                        {select === "gangnam" ? "강남점" : "대치점"} 정규윈터
+                        강남점 정규윈터
                     </div>
                     <div className={styles.realNumberDescription}>
-                        <span>모집중</span>
+                        <span>모집 마감 (대기자 접수)</span>
                     </div>
-                </div> */}
+                </div>
             </div>
 
             <div className={styles.formBody}>
 
 
                 <div className={`${styles.questionText} ${styles.first} ${styles.real}`}>
-                    대기자 접수 신청
+                    어떤 지점 신청 원하시나요?
                 </div>
                 <div className={styles.selectDiv}>
-                    {/* <div onClick={(e: any) => { return; setSelect("gangnam"); }} className={`${styles.disableBtn} ${styles.select} ${select === "gangnam" ? styles.active : ""}`}>
-                        강남점
-                    </div> */}
+
                     <div onClick={(e: any) => {
                         // alert("죄송합니다. 6월부터 11월까지 재학생은 신규등록이 불가합니다.")
                         // return;
@@ -381,6 +379,9 @@ const RegisterWaiting2025Winter: React.FC<any> = (props) => {
                     }}
                         className={`${styles.select} ${location === "daechi" ? styles.active : ""}`}>
                         대치점 정규윈터
+                    </div>
+                    <div onClick={(e: any) => { setLocation("gangnam"); }} className={`${styles.select} ${location === "gangnam" ? styles.active : ""}`}>
+                        강남점 정규윈터
                     </div>
                 </div>
 

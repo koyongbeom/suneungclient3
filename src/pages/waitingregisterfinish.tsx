@@ -114,6 +114,7 @@ const WaitingRegisterFinish = () => {
         }).then((response : any) => {
             response.json()
             .then((result : any) => {
+
                 console.log(result);
 
                 if(result.message === "canceled"){
@@ -126,6 +127,12 @@ const WaitingRegisterFinish = () => {
                     
                     console.log("letsstart");
                     const data = result.data;
+
+                    if (data.type1 !== "winter") {
+                        //임시로 폐쇄시킴
+                        alert("만료된 페이지입니다");
+                        return;
+                    }
 
                     setTotalOrder(result.totalOrder);
                     setGenderOrder(result.genderOrder);

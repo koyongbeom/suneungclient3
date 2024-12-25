@@ -8,6 +8,7 @@ const WaitingRegisterInstant2 = () => {
 
     const [loading, setLoading] = useState(true);
     const location = useLocation();
+    const [mainType, setMainType] = useState<number>();
     const [subType, setSubType] = useState<number>();
 
     useEffect(() => {
@@ -60,10 +61,12 @@ const WaitingRegisterInstant2 = () => {
         const numberedId = +id;
         const numberedCode = +code;
 
+        const mainType = +type.split("_")[0];
         const subType = +type.split("_")[1];
 
         console.log(subType);
 
+        setMainType(mainType);
         setSubType(subType);
 
         instant(+id, +code, type);
@@ -135,7 +138,7 @@ const WaitingRegisterInstant2 = () => {
             </div>
 
             {
-                (!loading && subType === 1) &&
+                (!loading && mainType === 3 && subType === 1) &&
                 <div className={styles.contents}>
                     <div className={styles.contentsTitle}>
                         즉시 등록 희망
@@ -155,7 +158,7 @@ const WaitingRegisterInstant2 = () => {
             }
 
             {
-                (!loading && subType === 2) &&
+                (!loading && mainType === 3 && subType === 2) &&
                 <div className={styles.contents}>
                     <div className={styles.contentsTitle}>
                         등록 보류
@@ -175,6 +178,58 @@ const WaitingRegisterInstant2 = () => {
                     }}
                     >
                         *알림톡 수신일 기준 익일 자정까지<br></br>응답 제출 수정이 가능합니다.
+                    </div>
+                </div>
+            }
+
+{
+                (!loading && mainType === 4 && subType === 1) &&
+                <div className={styles.contents}>
+                    <div className={styles.contentsTitle}>
+                        등록 희망
+                    </div>
+                    <div className={styles.contentsDescription}
+                    style={{
+                        textAlign: "center",
+                        lineHeight : 1.5
+                    }}
+                    >
+                        '정규윈터 등록 희망'으로<br></br>응답이 저장되었습니다.
+                    </div>
+                    <div className={styles.contentsDescription}
+                    style={{
+                        textAlign: "center",
+                        lineHeight : 1.5
+                    }}
+                    >
+                        자리나면 순번대로 연락드리겠습니다.<br></br>감사합니다. :D
+                    </div>
+                </div>
+            }
+
+{
+                (!loading && mainType === 4 && subType === 2) &&
+                <div className={styles.contents}>
+                    <div className={styles.contentsTitle}>
+                        순번 양도
+                    </div>
+                    <div className={styles.contentsDescription}
+                    style={{
+                        textAlign: "center",
+                        lineHeight : 1.5
+                    }}
+                    >
+                        '순번 양도'로<br></br>응답이 저장되었습니다.
+                    </div>
+                    <div className={styles.contentsDescription}
+                    style={{
+                        textAlign: "center",
+                        lineHeight : 1.5
+                    }}
+                    >
+                        12월 26일 개강하는<br></br>정규윈터 등록 권한은
+                        <br></br>후순위 대기자에게 양도됩니다.
+                        <br></br>1월 이후 공석 발생 시<br></br>순번대로 연락드리겠습니다.
                     </div>
                 </div>
             }

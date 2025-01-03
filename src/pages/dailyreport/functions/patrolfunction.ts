@@ -1,5 +1,5 @@
 import { each, max } from "lodash"
-import { patrolTime, qrSeatData } from "../data/data"
+import { qrSeatData, returnCountOfClasses, returnPatrolTime } from "../data/data"
 
 interface PatrolResult {
     type: "smile" | "cry" | "zzz" | "x" | "nophone" | "none" | "lasttime" | "phone";
@@ -76,7 +76,7 @@ export const prettifyAccessControl = (studentList: any) => {
 
 }
 
-export const distinguishInAndOut = (studentList: any, seatPatrolData: SeatPatrolData, targetDate : Date) => {
+export const distinguishInAndOut = (studentList: any, seatPatrolData: SeatPatrolData, targetDate : Date, academy : string) => {
 
     var isToday = false;
 
@@ -87,6 +87,8 @@ export const distinguishInAndOut = (studentList: any, seatPatrolData: SeatPatrol
     }
 
     const currentTargetTime = date.getHours() * 60 + date.getMinutes();
+
+    const patrolTime = returnPatrolTime(academy);
 
     studentList.forEach((eachStudent: any) => {
         eachStudent.patrolData = {};
@@ -183,13 +185,15 @@ export const distinguishInAndOut = (studentList: any, seatPatrolData: SeatPatrol
 
 }
 
-export const didPatrol = (qrCheckDatas: QrCheckData[], location: "gangnam" | "daechi") => {
+export const didPatrol = (qrCheckDatas: QrCheckData[], location: "gangnam" | "daechi", academy : string) => {
 
     var patrolData: any = {};
 
     if(location === "gangnam"){
         gangnamAlphatbetToNumber(qrCheckDatas);
     }
+
+    const patrolTime = returnPatrolTime(academy);
 
     // 각 교시에 각 자리에 대한 QR 체크 데이터가 있는지 확인
     patrolTime.forEach((eachPatrol, classNumber) => {
@@ -333,7 +337,7 @@ const gangnamAlphatbetToNumber = (qrCheckDatas: QrCheckData[]) => {
 
 }
 
-export const makeTotalPatrolData = (studentList : any, targetDate : Date) => {
+export const makeTotalPatrolData = (studentList : any, targetDate : Date, academy : string) => {
 
     var isSaturday = false;
 
@@ -358,12 +362,17 @@ export const makeTotalPatrolData = (studentList : any, targetDate : Date) => {
 
     });
 
+    console.log("studentList");
+    console.log(studentList);
+
     const totalGraphData : any = [];
 
-    var i = 9;
+    const countOfClasses = returnCountOfClasses(academy);
+
+    var i = countOfClasses.day;
 
     if(isSaturday){
-        i = 5;
+        i = countOfClasses.saturday;
     }
 
     for(let j = 0; j < i; j++){

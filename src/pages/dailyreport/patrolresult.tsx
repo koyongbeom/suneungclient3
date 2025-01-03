@@ -182,16 +182,18 @@ const PatrolResult: React.FC<any> = (props) => {
 
     useEffect(() => {
 
-        if (!props.where || !props.targetDate || !props.userId || !props.name) {
+        if (!props.where || !props.targetDate || !props.userId || !props.name || !props.academy) {
+
+            console.log(props.where, props.targetDate, props.userId, props.name, props.academy);
             console.log("noWhereOrTargetDate");
             return;
         }
 
-        start(+props.userId, props.targetDate, props.where);
+        start(+props.userId, props.targetDate, props.where, props.academy);
 
-    }, [props.where, props.targetDate, props.userId, props.name]);
+    }, [props.where, props.targetDate, props.userId, props.name, props.academy]);
 
-    const start = async (myId: number, targetDate: Date, where: "gangnam" | "daechi") => {
+    const start = async (myId: number, targetDate: Date, where: "gangnam" | "daechi", academy : string) => {
 
         try {
 
@@ -209,9 +211,9 @@ const PatrolResult: React.FC<any> = (props) => {
             console.log(2);
             prettifyQrCheckData(qrCheckData);
             console.log(3);
-            const seatPatrolData = didPatrol(qrCheckData, where);
+            const seatPatrolData = didPatrol(qrCheckData, where, academy);
             console.log(4);
-            distinguishInAndOut(studentList, seatPatrolData, targetDate);
+            distinguishInAndOut(studentList, seatPatrolData, targetDate, academy);
             console.log(5);
             sortStudentList(studentList);
             console.log(6);
@@ -222,7 +224,7 @@ const PatrolResult: React.FC<any> = (props) => {
             const myFullPatrolData = makeMyFullPatrolData(studentList, myId, targetDate);
             console.log(7);
 
-            const totalPatrolData = makeTotalPatrolData(studentList, targetDate);
+            const totalPatrolData = makeTotalPatrolData(studentList, targetDate, academy);
             console.log(8);
 
             //console.log(myFullPatrolData);

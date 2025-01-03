@@ -455,6 +455,7 @@ const StudytimeRanking: React.FC<any> = (props) => {
     useEffect(() => {
 
         if(!myLocation){
+            console.log("noMyLocation");
             return;
         }
 

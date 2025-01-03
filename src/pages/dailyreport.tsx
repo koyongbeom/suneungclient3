@@ -15,6 +15,7 @@ import PhoneInspect from "./dailyreport/phoneinspect";
 import { ReactComponent as LightGrayLogo } from "../../src/svg/lightgraylogo.svg";
 import { ReactComponent as MainSvg } from "../../src/svg/newdaillymain.svg";
 import { set } from "lodash";
+import { whichAcademyIncludeLocation } from "./dailyreport/data/data";
 
 const DailyReport: React.FC<any> = () => {
 
@@ -23,6 +24,7 @@ const DailyReport: React.FC<any> = () => {
     const [targetDate, setTargetDate] = useState<Date>();
     const [code, setCode] = useState();
     const [where, setWhere] = useState();
+    const [academy, setAcademy] = useState<string>();
     const [isCorrectCode, setIsCorrectCode] = useState(true);
 
     const location = useLocation();
@@ -94,6 +96,8 @@ const DailyReport: React.FC<any> = () => {
         const name = query.get("name");
         const where = query.get("location");
 
+        console.log(id, code, date, name, where);
+
         if (!id) {
             console.log("noId");
             return;
@@ -116,6 +120,13 @@ const DailyReport: React.FC<any> = () => {
 
         if (!where) {
             console.log("noWhere");
+            return;
+        }
+
+        const academy = whichAcademyIncludeLocation(where);
+
+        if(!academy){
+            console.log("noAcademy");
             return;
         }
 
@@ -143,6 +154,7 @@ const DailyReport: React.FC<any> = () => {
         setTargetDate(newDate);
         setCode(code);
         setWhere(where);
+        setAcademy(academy);
 
         //query 없애기
         // navigate("/dailyreport");
@@ -243,7 +255,7 @@ const DailyReport: React.FC<any> = () => {
                             <MainSvg className={styles.mainSvg} />
                         </div>
                     </div>
-                    <PatrolResult targetDate={targetDate} userId={userId} name={name} where={where} />
+                    <PatrolResult targetDate={targetDate} userId={userId} name={name} where={where} academy={academy} />
                     <div className={styles.justGap}>
                     </div>
                     <PatrolDemerit targetDate={targetDate} userId={userId} />

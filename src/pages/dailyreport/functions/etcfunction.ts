@@ -129,6 +129,14 @@ export const ourLocationInfo = [
     {
         korean : "송도",
         english : "songdo_free"
+    },
+    {
+        korean : "몰입공간",
+        english : "molip"
+    },
+    {
+        korean : "분당점",
+        english : "bundang"
     }
 ]
 

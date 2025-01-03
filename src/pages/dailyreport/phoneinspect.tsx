@@ -28,6 +28,8 @@ const phoneData = [
     {class : 8, status : "OUT", lastTime : "08:11 am", phoneStatus : "미제출", finalStatus : 1, imageSrc : "/img/daily/phone.jpeg", imageTime : "08:12 am"}
 ]
 
+const needMultiplePicturesLocations = ["bundang"];
+
 const PhoneInspect : React.FC<any> = (props) => {
 
     const [currentMenu, setCurrentMenu] = useState(1);
@@ -38,13 +40,20 @@ const PhoneInspect : React.FC<any> = (props) => {
 
     const [phoneData, setPhoneData] = useState<any[]>([]);
 
+
     useEffect(() => {
 
         if(!props.targetDate || !props.userId || !props.location || !props.name){
             return;
         }
 
-        start(props.targetDate, props.userId, props.location, props.name);
+        var isNeedMultiple = false;
+
+        if(needMultiplePicturesLocations.includes(props.location)){
+            isNeedMultiple = true;
+        }
+
+        start(props.targetDate, props.userId, props.location, props.name, isNeedMultiple);
 
     }, [props.targetDate, props.userId, props.location, props.name]);
 
@@ -62,13 +71,13 @@ const PhoneInspect : React.FC<any> = (props) => {
         setCurrentMenu(index);
     }
 
-    const start = async (targetDate : Date, userId : number, location : string, name : string) => {
+    const start = async (targetDate : Date, userId : number, location : string, name : string, isNeedMultiple : boolean) => {
     
-        await getPhoneInspectStatus(targetDate, userId, location);
+        await getPhoneInspectStatus(targetDate, userId, location, isNeedMultiple);
     
     }
 
-    const getPhoneInspectStatus = async (targetDate : Date, userId : number, location : string) => {
+    const getPhoneInspectStatus = async (targetDate : Date, userId : number, location : string, isNeedMultiple : boolean) => {
 
         try{
 
@@ -141,7 +150,7 @@ const PhoneInspect : React.FC<any> = (props) => {
             });
 
             makeAccessControlData(accessControl, locationInfo, finalData);
-            makePhoneInspectData(seat, inspectPhones, inspectPhonesImage, inspectPhonesMemo, finalData, locationInfo, location);
+            makePhoneInspectData(seat, inspectPhones, inspectPhonesImage, inspectPhonesMemo, finalData, locationInfo, location, isNeedMultiple);
 
             setPhoneData([...finalData]);
 
@@ -154,8 +163,18 @@ const PhoneInspect : React.FC<any> = (props) => {
 
     }
 
-    const makePhoneInspectData = (seat : any, inspectPhones : any, inspectPhonesImage : any, inspectPhonesMemo : any, finalData : any, locationInfo : any, location : any) => {
+    const makePhoneInspectData = (seat : any, inspectPhones : any, inspectPhonesImage : any, inspectPhonesMemo : any, finalData : any, locationInfo : any, location : any, isNeedMultiple : boolean) => {
         
+        var boxIndex = 0;
+        const totalNumber = 80;
+
+        if(isNeedMultiple && seat){
+
+            const numberedSeat = +seat;
+            boxIndex = Math.floor((numberedSeat - 1) / totalNumber) + 1;
+
+        }
+
         //일단 imageSrc랑 imageTime을 넣어주자
         finalData.forEach((eachData : any)=> {
 
@@ -192,6 +211,42 @@ const PhoneInspect : React.FC<any> = (props) => {
                 }
 
             });
+
+            if(isNeedMultiple){
+
+                inspectPhonesImage.forEach((eachImage : any) => {
+
+                    const imageBoxIndex = eachImage.boxIndex;
+                    const newDate = new Date(eachImage.createdAt);
+                    const imageTime = newDate.getHours() * 60 + newDate.getMinutes();
+    
+                    if(imageTime >= startTime && imageTime <= endTime && imageBoxIndex === boxIndex){
+                        eachData.imageSrc = "https://peetsunbae.com/phonesimage/" + eachImage.src;
+    
+                        var ampm = "am";
+                        var hours : any = newDate.getHours();
+    
+                        if(hours === 12){
+                            ampm = "pm";
+                        }
+    
+                        if(hours > 12){
+                            hours = hours - 12;
+                            ampm = "pm";
+                        }
+    
+                        var minutes : any = newDate.getMinutes();
+    
+                        hours = hours < 10 ? "0" + hours : hours;
+                        minutes = minutes < 10 ? "0" + minutes : minutes;
+    
+                        eachData.imageTime = `${hours}:${minutes} ${ampm}`;
+    
+                    }
+    
+                });
+
+            }
         })
 
         //각 교시별 제출, 미제출 여부를 넣어주자
